@@ -45,17 +45,19 @@
 
 ## Aseprite 外部依赖与运行时
 
-安装技能/MCP **不等于安装 Aseprite**。本次在 PATH 和标准 macOS 应用路径未找到 Aseprite；没有安装应用或编辑器扩展，也没有做真实绘图测试。
+安装技能/MCP **不等于安装 Aseprite**。在模式初次安装后，用户于 2026-10-27 另行授权从官方源码编译原生应用，现已安装 [Aseprite.app](</Applications/Aseprite.app>)：基于稳定版 v1.3.18.6，原生 arm64，源码默认版本显示 `1.3.18.6-dev`，并非试用版。应用使用本地 ad-hoc 签名；GUI 启动、Lua/WebSocket API、原生保存重开与 PNG 导出测试通过。当前 MCP 的 binary discovery 已能自动找到它，无需修改本模式配置。
 
-绘图需要用户自行安装/授权安装 **Aseprite 1.3+** 与 AI Artist extension，并按[上游说明](vendor/aseprite/README.md)连接。不要直接执行上游“一键安装”来修改其他客户端配置。原生应用或 extension 安装属于单独步骤。
+**AI Artist 0.8.2 扩展现已安装并通过真实 game-dev MCP 绘图测试。** 用户明确授权了该扩展的文件读写与 WebSocket 连接权限；仅为该脚本设置权限值 14（Read=4、Write=2、OpenSocket=8），不授予 Execute/LoadLib，不启用任意 Lua。扩展代码只连接本机 `127.0.0.1:9931`；Aseprite 的权限本身是按脚本类别授权，并非 OS 级目的地址沙箱。没有运行修改其他客户端配置的“一键安装”。
+
+保持 [Aseprite.app](</Applications/Aseprite.app>) 运行，在 DSH 新会话选「游戏开发 · Game Dev」即可提出绘图需求。若关闭了编辑器，先运行 `open -a Aseprite`；扩展会随应用启动并自动连接。DSH 不会在 profile 启动时擅自打开编辑器窗口。实际验证报告见 [live MCP 报告](</Users/ocean/Library/Caches/dsh-aseprite-native-1.3.18.6/live-validation-20261027-01/report.json>)，原生编译信息见[安装记录](</Users/ocean/Library/Caches/dsh-aseprite-native-1.3.18.6/INSTALLATION.md>)。
 
 [DSH stdio wrapper](bin/aseprite-server.mjs)：
 
 - 不调用上游 CLI，不自动 npm install/build，不产生 detached bridge。
-- 默认 live；只列 tools/resources 不开启监听端口。首次工具调用才按需启动进程内 bridge，默认 loopback `9931`/`9932`。
-- stdio 关闭或进程终止时清理自己创建的 bridge；已有 bridge 不会被杀掉。
+- 默认 live；本 preset 显式设置 `DSH_GAME_DEV_BRIDGE_AUTOSTART=1`，MCP 激活时准备进程内 bridge，监听 loopback `9931`/`9932`。不设置该选项时仍保持首次工具调用才启动的行为。
+- stdio 关闭或进程终止时清理自己创建的 bridge；已有 bridge 不会被杀掉。预启动模式会在旧桥退出后重新取得可用端口，避免 preset 更新后永久断连。
 - `run_lua` 未注册。显式 `preflight mode="headless"` 能力保留，但必须由用户明确选择；环境默认值**不是硬性禁用 headless**。禁止因 live 失败自动切换或直接编辑 `.aseprite` 文件。
-- MCP 进程随 eagerly-mounted preset 激活而存在，但它只在实际工具调用时创建 bridge，不会自动打开或修改编辑器。
+- MCP 进程和本模式预启动的 bridge 随 eagerly-mounted preset 激活而存在；不会自动打开编辑器，也不会在没有工具调用时修改文档。
 - 当前 Node 命令固定为 `/opt/homebrew/bin/node`；换机器应先核实 Node >=22.6.0 后更新本模式 patch。测试可用 `DSH_GAME_DEV_PLUGIN_PORT` / `DSH_GAME_DEV_CONTROL_PORT` 指定独立端口。
 
 已发布运行时固定为 `@pebbly/aseprite-ai-artist@0.8.2`（gitHead `5894b12cead839789077b279369409f868451ffc`），实际依赖为 SDK `1.32.2`、ws `8.22.0`、zod `3.25.76`。

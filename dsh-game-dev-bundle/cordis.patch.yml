@@ -132,6 +132,7 @@
               env:
                 ASEPRITE_AI_ALLOW_LUA: '0'
                 ASEPRITE_AI_HEADLESS: '0'
+                DSH_GAME_DEV_BRIDGE_AUTOSTART: '1'
               failOnStartupError: true
               toolCallTimeoutMs: 60000
           - id: game-dev-inspection

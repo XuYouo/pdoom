@@ -10,10 +10,11 @@
     ".": "./index.js",
     "./package.json": "./package.json",
     "./aseprite-server": "./bin/aseprite-server.mjs",
+    "./verify": "./verify.js",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg"
   },
-  "files": ["index.js", "bin", "skills", "workflows", "vendor", "test", "cordis.patch.yml", "pnpm-lock.yaml", "locale", "icon.svg", "README.md", "VALIDATION.md", "LICENSE"],
+  "files": ["index.js", "verify.js", "bin", "skills", "workflows", "vendor", "test", "cordis.patch.yml", "pnpm-lock.yaml", "locale", "icon.svg", "README.md", "VALIDATION.md", "LICENSE"],
   "dependencies": {
     "@pebbly/aseprite-ai-artist": "0.8.2",
     "@modelcontextprotocol/sdk": "1.32.2",

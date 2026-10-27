@@ -27,12 +27,12 @@ async function open(port) {
     socket.setTimeout(1000, () => end(false));
   });
 }
-async function connect(ports) {
+async function connect(ports, extraEnv = {}) {
   const transport = new StdioClientTransport({
     command: process.execPath,
     args: [fileURLToPath(new URL('../bin/aseprite-server.mjs', import.meta.url))],
     stderr: 'pipe',
-    env: { ...process.env, DSH_GAME_DEV_PLUGIN_PORT: String(ports.pluginPort), DSH_GAME_DEV_CONTROL_PORT: String(ports.controlPort), ASEPRITE_AI_ALLOW_LUA: '0', ASEPRITE_AI_HEADLESS: '0' },
+    env: { ...process.env, DSH_GAME_DEV_PLUGIN_PORT: String(ports.pluginPort), DSH_GAME_DEV_CONTROL_PORT: String(ports.controlPort), ASEPRITE_AI_ALLOW_LUA: '0', ASEPRITE_AI_HEADLESS: '0', DSH_GAME_DEV_BRIDGE_AUTOSTART: '0', ...extraEnv },
   });
   let stderr = '';
   transport.stderr?.on('data', chunk => { stderr += chunk; });
@@ -86,4 +86,16 @@ test('closing a client never stops a bridge it did not create', {timeout:15000},
     for (const socket of external.pluginServer?.clients ?? []) socket.terminate();
     await external.stop();
   }
+});
+
+test('preset opt-in starts a managed bridge before any tool call', {timeout:15000}, async () => {
+  const ports = await freePorts();
+  const {client} = await connect(ports, { DSH_GAME_DEV_BRIDGE_AUTOSTART: '1' });
+  try {
+    assert.equal(await open(ports.pluginPort), true);
+    assert.equal(await open(ports.controlPort), true);
+    assert.equal((await client.listTools()).tools.length, 18);
+  } finally { await client.close(); }
+  assert.equal(await open(ports.pluginPort), false);
+  assert.equal(await open(ports.controlPort), false);
 });

@@ -28,14 +28,28 @@ const { server, live } = createServer({
   prompts: false,
 });
 const transport = new StdioServerTransport();
+const autoStartBridge = process.env.DSH_GAME_DEV_BRIDGE_AUTOSTART === '1';
+let recoveryTimer;
+
+async function ensureBridge() {
+  if (stopping || ownsBridge || live.bridgeConnected) return;
+  if (!bridgeStart) {
+    bridgeStart = bridge.start().then(owned => {
+      ownsBridge = owned;
+      if (!owned) log('Reusing occupied bridge ports; external processes remain untouched.');
+    }).finally(() => { bridgeStart = undefined; });
+  }
+  return bridgeStart;
+}
 
 async function stop(code = 0) {
   if (stopping) return;
   stopping = true;
+  clearInterval(recoveryTimer);
   const deadline = setTimeout(() => process.exit(code), 2000);
   deadline.unref();
   try {
-    if (bridgeStart) await bridgeStart;
+    if (bridgeStart) await bridgeStart.catch(error => log(`bridge shutdown: ${error.message}`));
     live.close();
     if (ownsBridge) await bridge.stop();
     await server.close();
@@ -52,22 +66,24 @@ process.once('SIGTERM', () => void stop());
 process.stdin.once('end', () => void stop());
 process.stdin.once('error', () => void stop(1));
 
+if (autoStartBridge) {
+  await ensureBridge();
+  // Recover ownership after an older preset revision or external bridge exits.
+  recoveryTimer = setInterval(() => {
+    void ensureBridge().catch(error => log(`bridge recovery: ${error.message}`));
+  }, 2000);
+  recoveryTimer.unref();
+}
 await server.connect(transport);
 const onmessage = transport.onmessage;
 transport.onmessage = async (message, extra) => {
   try {
-    // Listing skills/resources/tools starts no listener. The first explicit tool
-    // call starts an in-process loopback bridge; no detached singleton survives.
+    // Without preset opt-in, the first explicit live tool call owns startup.
+    // Both modes keep the bridge inside this managed process, never detached.
     if (message.method === 'tools/call' && !stopping) {
       const selectedMode = message.params?.name === 'preflight'
         ? (message.params?.arguments?.mode ?? live.mode) : live.mode;
-      if (selectedMode === 'live') {
-        bridgeStart ??= bridge.start().then((owned) => {
-          ownsBridge = owned;
-          if (!owned) log('Bridge ports already occupied; no external process will be stopped.');
-        });
-        await bridgeStart;
-      }
+      if (selectedMode === 'live') await ensureBridge();
     }
   } catch (error) {
     log(`bridge: ${error.message}`);
