@@ -1,0 +1,11 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+*.bak-*
+coverage/
+.turbo/
+.svelte-kit/
+.vercel/
+docs/kb-notes/*
+!docs/kb-notes/TOPICS.md

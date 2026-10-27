@@ -1,0 +1,103 @@
+{
+  "sha": "2192031cb6ba0c232362fb5e418fee646fbedca3",
+  "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/trees/2192031cb6ba0c232362fb5e418fee646fbedca3",
+  "tree": [
+    {
+      "path": ".claude-plugin",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0773d2e72e01aabec796049b6d612c286a4e094f",
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/trees/0773d2e72e01aabec796049b6d612c286a4e094f"
+    },
+    {
+      "path": ".github",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "95bfb21372a6f2bffdc45fca96240194527e4e56",
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/trees/95bfb21372a6f2bffdc45fca96240194527e4e56"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d755bebe2592aeba7ad08d3085ee7a13158e6012",
+      "size": 312,
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/blobs/d755bebe2592aeba7ad08d3085ee7a13158e6012"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d03c7646022a3058baae4a9a2c1b63852c88f88a",
+      "size": 5595,
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/blobs/d03c7646022a3058baae4a9a2c1b63852c88f88a"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c7fc0c6d59cb8129a0e30fe13f5a6118f3933c44",
+      "size": 11395,
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/blobs/c7fc0c6d59cb8129a0e30fe13f5a6118f3933c44"
+    },
+    {
+      "path": "NOTICE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d4204881c3f79f39151a53a6aae476b188a8c51f",
+      "size": 883,
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/blobs/d4204881c3f79f39151a53a6aae476b188a8c51f"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a7bbc4902a90cb6968525c1b39fe211ff294fb1d",
+      "size": 20838,
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/blobs/a7bbc4902a90cb6968525c1b39fe211ff294fb1d"
+    },
+    {
+      "path": "docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "01b39e98a1aa6fd078d7916730c96f9e01a20850",
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/trees/01b39e98a1aa6fd078d7916730c96f9e01a20850"
+    },
+    {
+      "path": "router",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2404f0e0c9d2812e115c9bddc7f80d5fbe447f34",
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/trees/2404f0e0c9d2812e115c9bddc7f80d5fbe447f34"
+    },
+    {
+      "path": "scripts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5fbe2688022e15c395132803dbab928f85093d70",
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/trees/5fbe2688022e15c395132803dbab928f85093d70"
+    },
+    {
+      "path": "skills",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8cf32496f44e2b4ee4c0a9b69b0ffba4d255dd5f",
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/trees/8cf32496f44e2b4ee4c0a9b69b0ffba4d255dd5f"
+    },
+    {
+      "path": "templates",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "7aa0898e273ef3241eba88f5352f16c2ab7e6c80",
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/trees/7aa0898e273ef3241eba88f5352f16c2ab7e6c80"
+    },
+    {
+      "path": "tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "70ea7eb62f3308f1c564d71768b0e6195f1b1d59",
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/trees/70ea7eb62f3308f1c564d71768b0e6195f1b1d59"
+    }
+  ],
+  "truncated": false
+}

@@ -1,0 +1,1340 @@
+{
+  "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/compare/5894b12cead839789077b279369409f868451ffc...a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+  "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/compare/5894b12cead839789077b279369409f868451ffc...a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+  "permalink_url": "https://github.com/with-pebbly/aseprite-ai-artist/compare/with-pebbly:5894b12...with-pebbly:a32a2a5",
+  "diff_url": "https://github.com/with-pebbly/aseprite-ai-artist/compare/5894b12cead839789077b279369409f868451ffc...a32a2a58e76b06fc9ad7b29b12abd003ec769665.diff",
+  "patch_url": "https://github.com/with-pebbly/aseprite-ai-artist/compare/5894b12cead839789077b279369409f868451ffc...a32a2a58e76b06fc9ad7b29b12abd003ec769665.patch",
+  "base_commit": {
+    "sha": "5894b12cead839789077b279369409f868451ffc",
+    "node_id": "C_kwDOUSIaUNoAKDU4OTRiMTJjZWFkODM5Nzg5MDc3YjI3OTM2OTQwOWY4Njg0NTFmZmM",
+    "commit": {
+      "author": {
+        "name": "fedorovvvv",
+        "email": "nikitafedorov7@yandex.ru",
+        "date": "2026-10-12T15:26:08Z"
+      },
+      "committer": {
+        "name": "fedorovvvv",
+        "email": "nikitafedorov7@yandex.ru",
+        "date": "2026-10-12T15:26:08Z"
+      },
+      "message": "Release 0.8.2: OpenCode plugin loads from a git install\n\nThe plugin resolves hooks/shared.mjs and skills from the published package\nwhen OpenCode caches only the opencode/ subdirectory (rio-ap, #5); the\ninstall command names the #main ref.",
+      "tree": {
+        "sha": "2b4c1e3a9685e4c4c4028f4ead20036584101e22",
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/2b4c1e3a9685e4c4c4028f4ead20036584101e22"
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/5894b12cead839789077b279369409f868451ffc",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/5894b12cead839789077b279369409f868451ffc",
+    "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/5894b12cead839789077b279369409f868451ffc",
+    "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/5894b12cead839789077b279369409f868451ffc/comments",
+    "author": {
+      "login": "fedorovvvv",
+      "id": 50797337,
+      "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/fedorovvvv",
+      "html_url": "https://github.com/fedorovvvv",
+      "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+      "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+      "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+      "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+      "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "fedorovvvv",
+      "id": 50797337,
+      "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/fedorovvvv",
+      "html_url": "https://github.com/fedorovvvv",
+      "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+      "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+      "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+      "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+      "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "449f95ee97009b8e09726a4d9da1940ca5a26ab4",
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/449f95ee97009b8e09726a4d9da1940ca5a26ab4",
+        "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/449f95ee97009b8e09726a4d9da1940ca5a26ab4"
+      }
+    ]
+  },
+  "merge_base_commit": {
+    "sha": "5894b12cead839789077b279369409f868451ffc",
+    "node_id": "C_kwDOUSIaUNoAKDU4OTRiMTJjZWFkODM5Nzg5MDc3YjI3OTM2OTQwOWY4Njg0NTFmZmM",
+    "commit": {
+      "author": {
+        "name": "fedorovvvv",
+        "email": "nikitafedorov7@yandex.ru",
+        "date": "2026-10-12T15:26:08Z"
+      },
+      "committer": {
+        "name": "fedorovvvv",
+        "email": "nikitafedorov7@yandex.ru",
+        "date": "2026-10-12T15:26:08Z"
+      },
+      "message": "Release 0.8.2: OpenCode plugin loads from a git install\n\nThe plugin resolves hooks/shared.mjs and skills from the published package\nwhen OpenCode caches only the opencode/ subdirectory (rio-ap, #5); the\ninstall command names the #main ref.",
+      "tree": {
+        "sha": "2b4c1e3a9685e4c4c4028f4ead20036584101e22",
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/2b4c1e3a9685e4c4c4028f4ead20036584101e22"
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/5894b12cead839789077b279369409f868451ffc",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/5894b12cead839789077b279369409f868451ffc",
+    "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/5894b12cead839789077b279369409f868451ffc",
+    "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/5894b12cead839789077b279369409f868451ffc/comments",
+    "author": {
+      "login": "fedorovvvv",
+      "id": 50797337,
+      "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/fedorovvvv",
+      "html_url": "https://github.com/fedorovvvv",
+      "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+      "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+      "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+      "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+      "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "fedorovvvv",
+      "id": 50797337,
+      "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/fedorovvvv",
+      "html_url": "https://github.com/fedorovvvv",
+      "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+      "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+      "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+      "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+      "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "449f95ee97009b8e09726a4d9da1940ca5a26ab4",
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/449f95ee97009b8e09726a4d9da1940ca5a26ab4",
+        "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/449f95ee97009b8e09726a4d9da1940ca5a26ab4"
+      }
+    ]
+  },
+  "status": "ahead",
+  "ahead_by": 11,
+  "behind_by": 0,
+  "total_commits": 11,
+  "commits": [
+    {
+      "sha": "7b1e795e1172e5385c8cac224a82eabee3fe9cea",
+      "node_id": "C_kwDOUSIaUNoAKDdiMWU3OTVlMTE3MmU1Mzg1YzhjYWMyMjRhODJlYWJlZTNmZTljZWE",
+      "commit": {
+        "author": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-13T14:12:45Z"
+        },
+        "committer": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-13T14:12:45Z"
+        },
+        "message": "fix(reference): cage open/read/close in preserving_site\n\nA throw while reading the source image left it open as the user's active\nsprite, and only app.sprite was restored, never layer or frame.\n\nReported in #6.",
+        "tree": {
+          "sha": "1d4a98e5dbf4fb423962d7653b1bed83b8ddd497",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/1d4a98e5dbf4fb423962d7653b1bed83b8ddd497"
+        },
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/7b1e795e1172e5385c8cac224a82eabee3fe9cea",
+        "comment_count": 0,
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/7b1e795e1172e5385c8cac224a82eabee3fe9cea",
+      "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/7b1e795e1172e5385c8cac224a82eabee3fe9cea",
+      "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/7b1e795e1172e5385c8cac224a82eabee3fe9cea/comments",
+      "author": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "5894b12cead839789077b279369409f868451ffc",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/5894b12cead839789077b279369409f868451ffc",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/5894b12cead839789077b279369409f868451ffc"
+        }
+      ]
+    },
+    {
+      "sha": "a234ad12837be0e96d89f8182d88631da0df2846",
+      "node_id": "C_kwDOUSIaUNoAKGEyMzRhZDEyODM3YmUwZTk2ZDg5ZjgxODJkODg2MzFkYTBkZjI4NDY",
+      "commit": {
+        "author": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T09:12:08Z"
+        },
+        "committer": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T09:12:08Z"
+        },
+        "message": "Declare expected reply fields for look, read_pixels, palette and tileset",
+        "tree": {
+          "sha": "9becc5c5d3c1873afa0ddfa8a675e4f8f0fe6835",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/9becc5c5d3c1873afa0ddfa8a675e4f8f0fe6835"
+        },
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/a234ad12837be0e96d89f8182d88631da0df2846",
+        "comment_count": 0,
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/a234ad12837be0e96d89f8182d88631da0df2846",
+      "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/a234ad12837be0e96d89f8182d88631da0df2846",
+      "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/a234ad12837be0e96d89f8182d88631da0df2846/comments",
+      "author": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "7b1e795e1172e5385c8cac224a82eabee3fe9cea",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/7b1e795e1172e5385c8cac224a82eabee3fe9cea",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/7b1e795e1172e5385c8cac224a82eabee3fe9cea"
+        }
+      ]
+    },
+    {
+      "sha": "4064fa4666fb6fc5e420dcebe4d0ee9b3b50dbef",
+      "node_id": "C_kwDOUSIaUNoAKDQwNjRmYTQ2NjZmYjZmYzVlNDIwZGNlYmU0ZDBlZTliM2I1MGRiZWY",
+      "commit": {
+        "author": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T09:12:08Z"
+        },
+        "committer": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T09:12:08Z"
+        },
+        "message": "ci: build Aseprite CLI and run the Lua handler suite",
+        "tree": {
+          "sha": "647c8acd38ffc188a966ce91f7c9d335936d8837",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/647c8acd38ffc188a966ce91f7c9d335936d8837"
+        },
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/4064fa4666fb6fc5e420dcebe4d0ee9b3b50dbef",
+        "comment_count": 0,
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/4064fa4666fb6fc5e420dcebe4d0ee9b3b50dbef",
+      "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/4064fa4666fb6fc5e420dcebe4d0ee9b3b50dbef",
+      "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/4064fa4666fb6fc5e420dcebe4d0ee9b3b50dbef/comments",
+      "author": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "a234ad12837be0e96d89f8182d88631da0df2846",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/a234ad12837be0e96d89f8182d88631da0df2846",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/a234ad12837be0e96d89f8182d88631da0df2846"
+        }
+      ]
+    },
+    {
+      "sha": "e573c27a35734fef88af73e7309e043b97d71fea",
+      "node_id": "C_kwDOUSIaUNoAKGU1NzNjMjdhMzU3MzRmZWY4OGFmNzNlNzMwOWUwNDNiOTdkNzFmZWE",
+      "commit": {
+        "author": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T09:12:08Z"
+        },
+        "committer": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T09:12:08Z"
+        },
+        "message": "gallery: drop paused model-judge ratings",
+        "tree": {
+          "sha": "0e607d90b1dca430e7aedba400c880bdbbe50209",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/0e607d90b1dca430e7aedba400c880bdbbe50209"
+        },
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/e573c27a35734fef88af73e7309e043b97d71fea",
+        "comment_count": 0,
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/e573c27a35734fef88af73e7309e043b97d71fea",
+      "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/e573c27a35734fef88af73e7309e043b97d71fea",
+      "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/e573c27a35734fef88af73e7309e043b97d71fea/comments",
+      "author": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "4064fa4666fb6fc5e420dcebe4d0ee9b3b50dbef",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/4064fa4666fb6fc5e420dcebe4d0ee9b3b50dbef",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/4064fa4666fb6fc5e420dcebe4d0ee9b3b50dbef"
+        }
+      ]
+    },
+    {
+      "sha": "d161ecd7019e636d58728cff57c0e13a4bffcbb8",
+      "node_id": "C_kwDOUSIaUNoAKGQxNjFlY2Q3MDE5ZTYzNmQ1ODcyOGNmZjU3YzBlMTNhNGJmZmNiYjg",
+      "commit": {
+        "author": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T09:12:08Z"
+        },
+        "committer": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T09:12:08Z"
+        },
+        "message": "web: point analytics FIXME at the sveltekit-next entry",
+        "tree": {
+          "sha": "349f8589b87f4df0b7ac1aa55ebb72d210783670",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/349f8589b87f4df0b7ac1aa55ebb72d210783670"
+        },
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/d161ecd7019e636d58728cff57c0e13a4bffcbb8",
+        "comment_count": 0,
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/d161ecd7019e636d58728cff57c0e13a4bffcbb8",
+      "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/d161ecd7019e636d58728cff57c0e13a4bffcbb8",
+      "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/d161ecd7019e636d58728cff57c0e13a4bffcbb8/comments",
+      "author": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "e573c27a35734fef88af73e7309e043b97d71fea",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/e573c27a35734fef88af73e7309e043b97d71fea",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/e573c27a35734fef88af73e7309e043b97d71fea"
+        }
+      ]
+    },
+    {
+      "sha": "694a498f86f1b334973612d487d81f586af9b382",
+      "node_id": "C_kwDOUSIaUNoAKDY5NGE0OThmODZmMWIzMzQ5NzM2MTJkNDg3ZDgxZjU4NmFmOWIzODI",
+      "commit": {
+        "author": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T09:12:08Z"
+        },
+        "committer": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T09:12:08Z"
+        },
+        "message": "changelog: expect checks and CI Lua suite",
+        "tree": {
+          "sha": "7ae550d337c754893dfec205921cf684d1645f1c",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/7ae550d337c754893dfec205921cf684d1645f1c"
+        },
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/694a498f86f1b334973612d487d81f586af9b382",
+        "comment_count": 0,
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/694a498f86f1b334973612d487d81f586af9b382",
+      "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/694a498f86f1b334973612d487d81f586af9b382",
+      "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/694a498f86f1b334973612d487d81f586af9b382/comments",
+      "author": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "d161ecd7019e636d58728cff57c0e13a4bffcbb8",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/d161ecd7019e636d58728cff57c0e13a4bffcbb8",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/d161ecd7019e636d58728cff57c0e13a4bffcbb8"
+        }
+      ]
+    },
+    {
+      "sha": "71001e611cd86cebba987e220112963f2cb7c928",
+      "node_id": "C_kwDOUSIaUNoAKDcxMDAxZTYxMWNkODZjZWJiYTk4N2UyMjAxMTI5NjNmMmNiN2M5Mjg",
+      "commit": {
+        "author": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T11:45:44Z"
+        },
+        "committer": {
+          "name": "fedorovvvv",
+          "email": "nikitafedorov7@yandex.ru",
+          "date": "2026-10-18T11:45:44Z"
+        },
+        "message": "gallery: Jelly slime spike slam",
+        "tree": {
+          "sha": "adaee8f263d12d6997eb78ed66fb6eb0d6fce2f9",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/adaee8f263d12d6997eb78ed66fb6eb0d6fce2f9"
+        },
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/71001e611cd86cebba987e220112963f2cb7c928",
+        "comment_count": 0,
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/71001e611cd86cebba987e220112963f2cb7c928",
+      "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/71001e611cd86cebba987e220112963f2cb7c928",
+      "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/71001e611cd86cebba987e220112963f2cb7c928/comments",
+      "author": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "694a498f86f1b334973612d487d81f586af9b382",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/694a498f86f1b334973612d487d81f586af9b382",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/694a498f86f1b334973612d487d81f586af9b382"
+        }
+      ]
+    },
+    {
+      "sha": "65980704ccb161c02be5c1e193b7e617fb323754",
+      "node_id": "C_kwDOUSIaUNoAKDY1OTgwNzA0Y2NiMTYxYzAyYmU1YzFlMTkzYjdlNjE3ZmIzMjM3NTQ",
+      "commit": {
+        "author": {
+          "name": "Nik Fedorov",
+          "email": "50797337+fedorovvvv@users.noreply.github.com",
+          "date": "2026-10-18T11:46:41Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-10-18T11:46:41Z"
+        },
+        "message": "Merge pull request #8 from fedorovvvv/gallery/2026-10-18-jelly-slime-spike-slam\n\ngallery: Jelly slime spike slam",
+        "tree": {
+          "sha": "adaee8f263d12d6997eb78ed66fb6eb0d6fce2f9",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/adaee8f263d12d6997eb78ed66fb6eb0d6fce2f9"
+        },
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/65980704ccb161c02be5c1e193b7e617fb323754",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJq1LGhCRC1aQ7uu5UhlAAARJcQADkYZoplo7XMJio4SIalcqVk\n1iW87/Zv6m2erDky+AG9nMqershj/V8z2evG8I+3CyvufyHkLfhw9a1etgoJEgRq\nOKUhKT6eTzG64oUN1EC/4K/jjDD8kmUHDKgs+XlhvvvpRREqt7Ahjpy0lvq4jn1V\ne67PLZMIvQ2gbe58M5F27TH9jCqoqS/wwoEN2lxzaftp3wqB7+AIXbkI9EOLtluO\nJ/x2Y4LD+Pi09t59TSh4GM6sewjdYDiPrVXcznD3fjIooNz7LuVsa+B2lv88Ed+8\nCxx88YDJI1OIdIS5pRBRqbFY7ETB3cJ8+7XWo3SdCRVRDEpKOgEU0Fd2MsstqH/m\nZmg9k7FFu6maFHmUsoF3VzA68ZLKk8hveN3Rf9ox38F8IK6QecxPusmVXUL+LLy5\nVXQp47CaPX6BZUB/6FM/To3fZLzLfZ40I11ngc9EDTWMg5X5d8iRXM1SZjIXz1B9\n6kfCqirDZyjJj/XE9OMRbu0OUnDlsDhC2jubuzH6u+OaOwKuHkemjbO6vGePG5W7\nMlDBF3byIMjmMHMHe/M6+SbYi/C3owZpy1xZS6vDkZV0Tm81k0YeMwU19idPVsPk\nU5ofry8ZpeLlg/cP6tWKtmaf49S+ECEI4xU6TpICpALyhw/GQrcHFlQZ4ahTn1UH\nOOtQ8ZLKpCECSCeK1eyM\n=6j6n\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree adaee8f263d12d6997eb78ed66fb6eb0d6fce2f9\nparent 694a498f86f1b334973612d487d81f586af9b382\nparent 71001e611cd86cebba987e220112963f2cb7c928\nauthor Nik Fedorov <50797337+fedorovvvv@users.noreply.github.com> 1792324001 +0500\ncommitter GitHub <noreply@github.com> 1792324001 +0500\n\nMerge pull request #8 from fedorovvvv/gallery/2026-10-18-jelly-slime-spike-slam\n\ngallery: Jelly slime spike slam",
+          "verified_at": "2026-10-18T11:46:42Z"
+        }
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/65980704ccb161c02be5c1e193b7e617fb323754",
+      "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/65980704ccb161c02be5c1e193b7e617fb323754",
+      "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/65980704ccb161c02be5c1e193b7e617fb323754/comments",
+      "author": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "694a498f86f1b334973612d487d81f586af9b382",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/694a498f86f1b334973612d487d81f586af9b382",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/694a498f86f1b334973612d487d81f586af9b382"
+        },
+        {
+          "sha": "71001e611cd86cebba987e220112963f2cb7c928",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/71001e611cd86cebba987e220112963f2cb7c928",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/71001e611cd86cebba987e220112963f2cb7c928"
+        }
+      ]
+    },
+    {
+      "sha": "b14629b025ce6e006d64a84acd797abc1062cb60",
+      "node_id": "C_kwDOUSIaUNoAKGIxNDYyOWIwMjVjZTZlMDA2ZDY0YTg0YWNkNzk3YWJjMTA2MmNiNjA",
+      "commit": {
+        "author": {
+          "name": "Rio",
+          "email": "91875403+rio-ap@users.noreply.github.com",
+          "date": "2026-10-22T04:49:58Z"
+        },
+        "committer": {
+          "name": "Rio",
+          "email": "91875403+rio-ap@users.noreply.github.com",
+          "date": "2026-10-22T04:49:58Z"
+        },
+        "message": "fix(deps): patch MCP SDK and Vite for Oct 2026 CVEs",
+        "tree": {
+          "sha": "cde2ac72a582837eaec91e3608b2f78538101930",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/cde2ac72a582837eaec91e3608b2f78538101930"
+        },
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/b14629b025ce6e006d64a84acd797abc1062cb60",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgfBW5bO6R2wjSCc4FekSvmk7lkz\nwyuYOnwBPIdraTsUkAAAADZ2l0AAAAAAAAAAZzaGE1MTIAAABTAAAAC3NzaC1lZDI1NTE5\nAAAAQOsjFlnzEFxVjBplNMEZDL5vzQaryRCogqHPlJM1A8s+aiVWIIBdC4p39wrs1wlvzW\nGOqdByrOLZVJF8tnPKhAo=\n-----END SSH SIGNATURE-----",
+          "payload": "tree cde2ac72a582837eaec91e3608b2f78538101930\nparent 65980704ccb161c02be5c1e193b7e617fb323754\nauthor Rio <91875403+rio-ap@users.noreply.github.com> 1792644598 +0700\ncommitter Rio <91875403+rio-ap@users.noreply.github.com> 1792644598 +0700\n\nfix(deps): patch MCP SDK and Vite for Oct 2026 CVEs\n",
+          "verified_at": "2026-10-22T04:50:15Z"
+        }
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/b14629b025ce6e006d64a84acd797abc1062cb60",
+      "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/b14629b025ce6e006d64a84acd797abc1062cb60",
+      "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/b14629b025ce6e006d64a84acd797abc1062cb60/comments",
+      "author": {
+        "login": "rio-ap",
+        "id": 91875403,
+        "node_id": "U_kgDOBXnoSw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91875403?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rio-ap",
+        "html_url": "https://github.com/rio-ap",
+        "followers_url": "https://api.github.com/users/rio-ap/followers",
+        "following_url": "https://api.github.com/users/rio-ap/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rio-ap/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rio-ap/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rio-ap/subscriptions",
+        "organizations_url": "https://api.github.com/users/rio-ap/orgs",
+        "repos_url": "https://api.github.com/users/rio-ap/repos",
+        "events_url": "https://api.github.com/users/rio-ap/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rio-ap/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "rio-ap",
+        "id": 91875403,
+        "node_id": "U_kgDOBXnoSw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91875403?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rio-ap",
+        "html_url": "https://github.com/rio-ap",
+        "followers_url": "https://api.github.com/users/rio-ap/followers",
+        "following_url": "https://api.github.com/users/rio-ap/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rio-ap/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rio-ap/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rio-ap/subscriptions",
+        "organizations_url": "https://api.github.com/users/rio-ap/orgs",
+        "repos_url": "https://api.github.com/users/rio-ap/repos",
+        "events_url": "https://api.github.com/users/rio-ap/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rio-ap/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "65980704ccb161c02be5c1e193b7e617fb323754",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/65980704ccb161c02be5c1e193b7e617fb323754",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/65980704ccb161c02be5c1e193b7e617fb323754"
+        }
+      ]
+    },
+    {
+      "sha": "9a1d44bc6edf78fe4f171a412758667a25f54a36",
+      "node_id": "C_kwDOUSIaUNoAKDlhMWQ0NGJjNmVkZjc4ZmU0ZjE3MWE0MTI3NTg2NjdhMjVmNTRhMzY",
+      "commit": {
+        "author": {
+          "name": "Rio",
+          "email": "91875403+rio-ap@users.noreply.github.com",
+          "date": "2026-10-22T04:51:10Z"
+        },
+        "committer": {
+          "name": "Rio",
+          "email": "91875403+rio-ap@users.noreply.github.com",
+          "date": "2026-10-22T04:51:10Z"
+        },
+        "message": "fix(deps): sync npm lockfile with MCP SDK upgrade",
+        "tree": {
+          "sha": "d2800a09686743838626c16a89b6a80b3afbaf27",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/d2800a09686743838626c16a89b6a80b3afbaf27"
+        },
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/9a1d44bc6edf78fe4f171a412758667a25f54a36",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgfBW5bO6R2wjSCc4FekSvmk7lkz\nwyuYOnwBPIdraTsUkAAAADZ2l0AAAAAAAAAAZzaGE1MTIAAABTAAAAC3NzaC1lZDI1NTE5\nAAAAQONwruypFrx7cqnkwDyBQEKZx6Z++OJO47bpnEc0BbMwliVPpa+S4jlAkmiQYtilEy\nv8bZc9LP5jGA932IdMCAg=\n-----END SSH SIGNATURE-----",
+          "payload": "tree d2800a09686743838626c16a89b6a80b3afbaf27\nparent b14629b025ce6e006d64a84acd797abc1062cb60\nauthor Rio <91875403+rio-ap@users.noreply.github.com> 1792644670 +0700\ncommitter Rio <91875403+rio-ap@users.noreply.github.com> 1792644670 +0700\n\nfix(deps): sync npm lockfile with MCP SDK upgrade\n",
+          "verified_at": "2026-10-22T04:51:13Z"
+        }
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/9a1d44bc6edf78fe4f171a412758667a25f54a36",
+      "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/9a1d44bc6edf78fe4f171a412758667a25f54a36",
+      "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/9a1d44bc6edf78fe4f171a412758667a25f54a36/comments",
+      "author": {
+        "login": "rio-ap",
+        "id": 91875403,
+        "node_id": "U_kgDOBXnoSw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91875403?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rio-ap",
+        "html_url": "https://github.com/rio-ap",
+        "followers_url": "https://api.github.com/users/rio-ap/followers",
+        "following_url": "https://api.github.com/users/rio-ap/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rio-ap/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rio-ap/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rio-ap/subscriptions",
+        "organizations_url": "https://api.github.com/users/rio-ap/orgs",
+        "repos_url": "https://api.github.com/users/rio-ap/repos",
+        "events_url": "https://api.github.com/users/rio-ap/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rio-ap/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "rio-ap",
+        "id": 91875403,
+        "node_id": "U_kgDOBXnoSw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/91875403?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rio-ap",
+        "html_url": "https://github.com/rio-ap",
+        "followers_url": "https://api.github.com/users/rio-ap/followers",
+        "following_url": "https://api.github.com/users/rio-ap/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rio-ap/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rio-ap/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rio-ap/subscriptions",
+        "organizations_url": "https://api.github.com/users/rio-ap/orgs",
+        "repos_url": "https://api.github.com/users/rio-ap/repos",
+        "events_url": "https://api.github.com/users/rio-ap/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rio-ap/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "b14629b025ce6e006d64a84acd797abc1062cb60",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/b14629b025ce6e006d64a84acd797abc1062cb60",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/b14629b025ce6e006d64a84acd797abc1062cb60"
+        }
+      ]
+    },
+    {
+      "sha": "a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "node_id": "C_kwDOUSIaUNoAKGEzMmEyYTU4ZTc2YjA2ZmM5YWQ3YjI5YjEyYWJkMDAzZWM3Njk2NjU",
+      "commit": {
+        "author": {
+          "name": "Nik Fedorov",
+          "email": "50797337+fedorovvvv@users.noreply.github.com",
+          "date": "2026-10-22T09:37:00Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-10-22T09:37:00Z"
+        },
+        "message": "Merge pull request #9 from rio-ap/security/deps-2026-10-22\n\nfix(deps): patch MCP SDK and Vite for Oct 2026 security advisories",
+        "tree": {
+          "sha": "d2800a09686743838626c16a89b6a80b3afbaf27",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/trees/d2800a09686743838626c16a89b6a80b3afbaf27"
+        },
+        "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/git/commits/a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJq2dk8CRC1aQ7uu5UhlAAAN0UQAJSEXMsbNpKMuMGZ/Fio6WoD\nEa+VKyz9APBpSCdkFXOINxkot7wvPGJF1sInC1Mm6h8ZcOnyvSmoqjqjvIzOp579\n9nvsdhZfIwGqXvCf8I3ibGCtTWZJSFVcFD/8mUUwjO2P8BvfGarXb8W6pAIspThE\n76mpaMmVjUdnnwNcvIEjUk2KMf+JExx/axeKA5Hfd6DrDNssdO+6OlBzVTc570Mr\nPIU4Gbm2FGZnyjEu6Q9/2FFm2KO0vAlz9moL/kYoQkDT5rL0pfVlDxcByc8AssIv\n9kmv4GSLLUGWLGWkcn1VJsRe0yraGxUbex9iZo0YCskG6xlTAocQ95CuATL/RnOv\nNhAhyJJSrXDNC9pKo9CDmEmAHILUi2bCQHrGApkUa8+ra70p4Weip2BWb3AEXuD9\nLhUc+DjobduUwlEX3TgHFffjqOXIp3CibMT0IkjAJo40mBlyJW5StT1EG3QCKAUL\nzfGw1Q9khEtBQlwAvLhXKhxuNilVSu9perf0p/nJOjBQYx6HouO2f//FHlA30Fs7\nBUVueLZtD9o2ijRRhTA3kZTr6HwyQtAETjP4OSYDPWn8720vXdu3s1Z6Ap6ZHOiq\noeagD6NjIEtRUG8CVMr85hI2CQ0Os5CzvOXdeK1cG1mJ05h+e2wkmsyIC5Is5ayC\n1pwDbrc/MfY6C7l3js6a\n=bZAx\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree d2800a09686743838626c16a89b6a80b3afbaf27\nparent 65980704ccb161c02be5c1e193b7e617fb323754\nparent 9a1d44bc6edf78fe4f171a412758667a25f54a36\nauthor Nik Fedorov <50797337+fedorovvvv@users.noreply.github.com> 1792661820 +0500\ncommitter GitHub <noreply@github.com> 1792661820 +0500\n\nMerge pull request #9 from rio-ap/security/deps-2026-10-22\n\nfix(deps): patch MCP SDK and Vite for Oct 2026 security advisories",
+          "verified_at": "2026-10-22T09:37:00Z"
+        }
+      },
+      "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "comments_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/a32a2a58e76b06fc9ad7b29b12abd003ec769665/comments",
+      "author": {
+        "login": "fedorovvvv",
+        "id": 50797337,
+        "node_id": "MDQ6VXNlcjUwNzk3MzM3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/50797337?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/fedorovvvv",
+        "html_url": "https://github.com/fedorovvvv",
+        "followers_url": "https://api.github.com/users/fedorovvvv/followers",
+        "following_url": "https://api.github.com/users/fedorovvvv/following{/other_user}",
+        "gists_url": "https://api.github.com/users/fedorovvvv/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/fedorovvvv/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/fedorovvvv/subscriptions",
+        "organizations_url": "https://api.github.com/users/fedorovvvv/orgs",
+        "repos_url": "https://api.github.com/users/fedorovvvv/repos",
+        "events_url": "https://api.github.com/users/fedorovvvv/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/fedorovvvv/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "65980704ccb161c02be5c1e193b7e617fb323754",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/65980704ccb161c02be5c1e193b7e617fb323754",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/65980704ccb161c02be5c1e193b7e617fb323754"
+        },
+        {
+          "sha": "9a1d44bc6edf78fe4f171a412758667a25f54a36",
+          "url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/commits/9a1d44bc6edf78fe4f171a412758667a25f54a36",
+          "html_url": "https://github.com/with-pebbly/aseprite-ai-artist/commit/9a1d44bc6edf78fe4f171a412758667a25f54a36"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "sha": "ce0494c7f9c6287bdefa260b44f88ad6ed39c447",
+      "filename": ".github/workflows/ci.yml",
+      "status": "modified",
+      "additions": 68,
+      "deletions": 4,
+      "changes": 72,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/.github%2Fworkflows%2Fci.yml",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/.github%2Fworkflows%2Fci.yml",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/.github%2Fworkflows%2Fci.yml?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -46,13 +46,77 @@ jobs:\n             luac -p \"$file\"\n           done\n \n-      # The Aseprite-backed suite cannot run here \u2014 no runner has Aseprite \u2014 so\n-      # without this the whole Lua half of the project ships on a green pipeline\n-      # that never executed a line of it. These are the parts that do not need\n-      # the editor: table shape, CIELAB, hex, the autotile mask set.\n+      # The Aseprite-backed suite runs in the `lua-handlers` job below. These\n+      # are the parts that need no editor at all (table shape, CIELAB, hex, the\n+      # autotile mask set), so they stay here where they finish in seconds\n+      # instead of waiting on an Aseprite build.\n       - name: Run the Aseprite-free Lua tests\n         run: lua tests/pure.test.lua\n \n+  # Runs the real command handlers against a real Aseprite, headless. No hosted\n+  # runner ships Aseprite and its licence forbids redistributing binaries, so\n+  # the job builds the scripting-enabled CLI variant (no UI, no Skia) from the\n+  # public source and keeps the result in a private Actions cache.\n+  lua-handlers:\n+    name: Lua handlers (Aseprite CLI)\n+    # Pinned rather than `latest`: the cached binary links the runner's system\n+    # libraries, so an image bump must not reuse a binary built against the old.\n+    runs-on: ubuntu-24.04\n+    env:\n+      # The extension targets Aseprite 1.3.x; this is the version it is\n+      # developed against. Bump together with the cache key (it embeds the tag).\n+      ASEPRITE_TAG: v1.3.17\n+      ASEPRITE_HOME: ${{ github.workspace }}/.aseprite-cli\n+    steps:\n+      - uses: actions/checkout@v4\n+      - name: Install build and runtime dependencies\n+        run: |\n+          sudo apt-get update -qq\n+          sudo apt-get install -y --no-install-recommends \\\n+            g++ cmake ninja-build git ca-certificates \\\n+            libpixman-1-dev libfreetype6-dev libharfbuzz-dev zlib1g-dev \\\n+            libx11-dev libxcursor-dev libxi-dev libxrandr-dev libgl1-mesa-dev \\\n+            libfontconfig1-dev\n+      - name: Restore the Aseprite CLI build\n+        id: aseprite-cache\n+        uses: actions/cache/restore@v4\n+        with:\n+          path: ${{ env.ASEPRITE_HOME }}\n+          key: aseprite-cli-${{ env.ASEPRITE_TAG }}-ubuntu-24.04-${{ runner.arch }}\n+      - name: Build Aseprite CLI\n+        if: steps.aseprite-cache.outputs.cache-hit != 'true'\n+        run: |\n+          git clone --recursive --shallow-submodules --depth 1 \\\n+            --branch \"$ASEPRITE_TAG\" https://github.com/aseprite/aseprite \"$RUNNER_TEMP/aseprite\"\n+          # LAF_BACKEND=none is upstream's own `cli` variant: scripting and\n+          # batch mode without a window system, so no Skia download.\n+          cmake -S \"$RUNNER_TEMP/aseprite\" -B \"$RUNNER_TEMP/aseprite/build\" -G Ninja \\\n+            -DCMAKE_BUILD_TYPE=Release \\\n+            -DLAF_BACKEND=none \\\n+            -DENABLE_SCRIPTING=ON \\\n+            -DENABLE_TESTS=OFF \\\n+            -DENABLE_UPDATER=OFF \\\n+            -DENABLE_CCACHE=OFF\n+          cmake --build \"$RUNNER_TEMP/aseprite/build\" --target aseprite\n+          # The binary resolves its `data/` directory next to itself, so the\n+          # whole bin/ directory is what gets cached.\n+          mkdir -p \"$ASEPRITE_HOME\"\n+          cp -R \"$RUNNER_TEMP/aseprite/build/bin/.\" \"$ASEPRITE_HOME/\"\n+      # Saved right after the build, not in a post step: a post-step save only\n+      # runs when the whole job passes, so a red suite would rebuild every run.\n+      - name: Save the Aseprite CLI build\n+        if: steps.aseprite-cache.outputs.cache-hit != 'true'\n+        uses: actions/cache/save@v4\n+        with:\n+          path: ${{ env.ASEPRITE_HOME }}\n+          key: aseprite-cli-${{ env.ASEPRITE_TAG }}-ubuntu-24.04-${{ runner.arch }}\n+      # Aseprite's Lua has no os.exit, so the suite reports through its last\n+      # line rather than the exit code; a crash before that line must fail too.\n+      - name: Run the Aseprite-backed Lua suite\n+        run: |\n+          \"$ASEPRITE_HOME/aseprite\" -b --script-param root=. --script tests/extension.test.lua 2>&1 | tee extension-test.log\n+          grep -qx 'RESULT: PASS' extension-test.log\n+\n   package:\n     name: Package contents\n     runs-on: ubuntu-latest"
+    },
+    {
+      "sha": "b2bf8c2d1e42fee0804798fcef59c23440301031",
+      "filename": "CHANGELOG.md",
+      "status": "modified",
+      "additions": 16,
+      "deletions": 0,
+      "changes": 16,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/CHANGELOG.md",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/CHANGELOG.md",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/CHANGELOG.md?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -6,6 +6,22 @@ All notable changes to this project are documented here. Format follows\n \n ## [Unreleased]\n \n+### Changed\n+\n+- CI now builds Aseprite 1.3.17's CLI variant from source (cached) and runs\n+  the headless Lua handler suite, which previously ran only on a developer's\n+  machine; a handler regression now fails the pipeline.\n+\n+### Fixed\n+\n+- `reference` no longer leaves the source image open as the active sprite when\n+  reading it fails, and now restores the user's active layer and frame too, not\n+  only the sprite.\n+- `look`, `read_pixels`, `palette` and `tileset` now refuse a reply from an\n+  outdated extension that lacks the fields they summarise, with an\n+  `install-extension` hint, instead of reporting `undefined` or an empty\n+  palette as if the call worked.\n+\n ## [0.8.2] \u2014 2026-10-12\n \n ### Fixed"
+    },
+    {
+      "sha": "b01dfb93562ae3cd4dd00b7f47be7ed608014800",
+      "filename": "apps/web/package.json",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1,
+      "changes": 2,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/apps%2Fweb%2Fpackage.json",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/apps%2Fweb%2Fpackage.json",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/apps%2Fweb%2Fpackage.json?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -47,7 +47,7 @@\n \t\t\"tw-animate-css\": \"^1.4.0\",\n \t\t\"typescript\": \"^6.0.3\",\n \t\t\"unplugin-icons\": \"^24.0.0\",\n-\t\t\"vite\": \"^8.3.2\"\n+\t\t\"vite\": \"^8.3.3\"\n \t},\n \t\"dependencies\": {\n \t\t\"@fontsource-variable/pixelify-sans\": \"^5.3.0\","
+    },
+    {
+      "sha": "ab9aaa1728aea9f1280873b4cba9d3999861ed89",
+      "filename": "apps/web/src/app/analytics/analytics.svelte.ts",
+      "status": "modified",
+      "additions": 3,
+      "deletions": 1,
+      "changes": 4,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/apps%2Fweb%2Fsrc%2Fapp%2Fanalytics%2Fanalytics.svelte.ts",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/apps%2Fweb%2Fsrc%2Fapp%2Fanalytics%2Fanalytics.svelte.ts",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/apps%2Fweb%2Fsrc%2Fapp%2Fanalytics%2Fanalytics.svelte.ts?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -7,7 +7,9 @@ import { inject, pageview } from '@vercel/analytics';\n  *\n  * FIXME(@vercel/analytics 2.0.1): its own `injectAnalytics` from '@vercel/analytics/sveltekit'\n  * subscribes to `$app/stores`, which SvelteKit 3 removed, and throws `app_stores_removed` on\n- * hydration. This is that adapter's body on `$app/state`; switch back once it supports Kit 3.\n+ * hydration. This is that adapter's body on `$app/state`. 2.1.0 (canary.5 on the `beta` tag as\n+ * of 2026-10) ships `injectAnalytics` from '@vercel/analytics/sveltekit-next' on `$app/state`;\n+ * switch to it once 2.1.0 is stable.\n  */\n export function trackAnalytics(): void {\n \tif (!browser) return;"
+    },
+    {
+      "sha": "059bb0e92573910ef324f94574292a5c007d2ec1",
+      "filename": "extension/ai-artist.lua",
+      "status": "modified",
+      "additions": 15,
+      "deletions": 12,
+      "changes": 27,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/extension%2Fai-artist.lua",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/extension%2Fai-artist.lua",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/extension%2Fai-artist.lua?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -2740,18 +2740,21 @@ H[\"reference.apply\"] = function(args)\n   -- NO active sprite at all. app.transaction then refuses to run \u2014 raising a\n   -- value that is not even a string, so the agent saw an unreadable error \u2014 and\n   -- in the UI the user's tab had silently changed under them either way.\n-  local restore = app.sprite\n-  local source = app.open(path)\n-  if not source then\n-    app.sprite = restore\n-    fault(\"aseprite_error\", \"Could not open '\" .. path .. \"'.\")\n-  end\n-\n-  local flat = Image(source.width, source.height, ColorMode.RGB)\n-  flat:drawSprite(source, source.frames[1])\n-  local sw, sh = source.width, source.height\n-  source:close()\n-  app.sprite = restore\n+  -- preserving_site restores sprite, layer and frame on every path, and the\n+  -- source is closed even when reading it throws, so a bad file never leaves a\n+  -- stranger's tab open in the user's window.\n+  local flat, sw, sh\n+  preserving_site(function()\n+    local source = app.open(path)\n+    if not source then fault(\"aseprite_error\", \"Could not open '\" .. path .. \"'.\") end\n+    local ok, err = pcall(function()\n+      flat = Image(source.width, source.height, ColorMode.RGB)\n+      flat:drawSprite(source, source.frames[1])\n+      sw, sh = source.width, source.height\n+    end)\n+    pcall(function() source:close() end)\n+    if not ok then error(err, 0) end\n+  end)\n \n   local function crop(img, r)\n     local out = Image(r.width, r.height, ColorMode.RGB)"
+    },
+    {
+      "sha": "5ebf8379cb5904d1e70ad6bd494e661527140b0c",
+      "filename": "gallery/generations/2026-10-01-boombox-mage-opus/generation.yaml",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 8,
+      "changes": 8,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-01-boombox-mage-opus%2Fgeneration.yaml",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-01-boombox-mage-opus%2Fgeneration.yaml",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/gallery%2Fgenerations%2F2026-10-01-boombox-mage-opus%2Fgeneration.yaml?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -157,14 +157,6 @@ benchmark:\n       pass: true\n       note: Passed with outline warnings on the effect layers only, which are drawn unoutlined on purpose; palette still 16 entries.\n ratings:\n-  - judge: model:gpt-5.5\n-    scores:\n-      read: 2\n-      form: 2\n-      motion: 2\n-      cohesion: 2\n-      appeal: 2\n-    note: The attack and the impact frame read, but at 1\u00d7 the hands, the boombox and part of the effects merge, and the motion rests mostly on the FX while the character stays static and noisy in places.\n   - judge: human:fedorovvvv\n     scores:\n       read: 1"
+    },
+    {
+      "sha": "b983460bc715080c319d3290c3ed7593a47c76a9",
+      "filename": "gallery/generations/2026-10-01-tree-growth-opus/generation.yaml",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 8,
+      "changes": 8,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-01-tree-growth-opus%2Fgeneration.yaml",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-01-tree-growth-opus%2Fgeneration.yaml",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/gallery%2Fgenerations%2F2026-10-01-tree-growth-opus%2Fgeneration.yaml?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -148,14 +148,6 @@ benchmark:\n       pass: true\n       note: Passed with outline warnings only; palette still 16 entries.\n ratings:\n-  - judge: model:gpt-5.5\n-    scores:\n-      read: 3\n-      form: 2\n-      motion: 2\n-      cohesion: 2\n-      appeal: 2\n-    note: The tree reads and the growth is clear, but the canopy breaks into vertical clumps in the animation, weaker than the still, and it plays as staged appearance rather than organic growth.\n   - judge: human:fedorovvvv\n     scores:\n       read: 1"
+    },
+    {
+      "sha": "85034657d6b13a79433cf0335b6f6e6c9030a393",
+      "filename": "gallery/generations/2026-10-01-winding-road-opus/generation.yaml",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 8,
+      "changes": 8,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-01-winding-road-opus%2Fgeneration.yaml",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-01-winding-road-opus%2Fgeneration.yaml",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/gallery%2Fgenerations%2F2026-10-01-winding-road-opus%2Fgeneration.yaml?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -152,14 +152,6 @@ benchmark:\n     - criterion: loop-validate\n       pass: true\n ratings:\n-  - judge: model:gpt-5.5\n-    scores:\n-      read: 2\n-      form: 2\n-      motion: 2\n-      cohesion: 3\n-      appeal: 2\n-    note: The scene and the road read, but the distant landmarks and the moving details are muddy, and the animation feels mechanical rather than atmospheric.\n   - judge: human:fedorovvvv\n     scores:\n       read: 0"
+    },
+    {
+      "sha": "617f3845770d7d080227d12a7e156d459587b74c",
+      "filename": "gallery/generations/2026-10-18-jelly-slime-spike-slam/generation.yaml",
+      "status": "added",
+      "additions": 29,
+      "deletions": 0,
+      "changes": 29,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fgeneration.yaml",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fgeneration.yaml",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fgeneration.yaml?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -0,0 +1,29 @@\n+title: Jelly slime spike slam\n+description: A 64\u00d764 jelly slime enemy whose 18-frame attack jumps, slams down and spreads into a puddle, grows goo spikes, then wobbles back into its dome.\n+date: 2026-10-18\n+author: { name: Nik Fedorov, github: fedorovvvv }\n+plugin: 0.8.0\n+harness: omp\n+models: [claude-opus-5-5]\n+tags: [character, monster, slime, animation, 64x64]\n+references:\n+  source: none\n+steps:\n+  - text: |-\n+      Character - slime\n+      Animation: attack type. It jumps up, hits the ground and flattens, after which spikes grow upward out of it. Then it turns back\n+    original: |-\n+      \u041f\u0435\u0440\u0441\u043e\u043d\u0430\u0436 - \u0441\u043b\u0430\u0439\u043c\n+      \u0410\u043d\u0438\u043c\u0430\u0446\u0438\u044f: \u0442\u0438\u043f \u0430\u0442\u0430\u043a\u0430. \u041f\u043e\u0434\u043f\u0440\u044b\u0433\u0438\u0432\u0430\u0435\u0442 \u0432\u0432\u0435\u0440\u0445, \u0443\u0434\u0430\u0440\u044f\u0435\u0442\u0441\u044f \u043e\u0431 \u0437\u0435\u043c\u043b\u044e \u0438 \u0440\u0430\u0441\u043f\u043b\u044e\u0449\u0438\u0432\u0430\u0435\u0442\u0441\u044f, \u043f\u043e\u0441\u043b\u0435 \u0447\u0435\u0433\u043e \u0438\u0437 \u043d\u0435\u0433\u043e \u0432\u044b\u0440\u0430\u0441\u0442\u0430\u044e\u0442 \u0448\u0438\u043f\u044b \u0432\u0432\u0435\u0440\u0445. \u041f\u043e\u0442\u043e\u043c \u043f\u0440\u0435\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0441\u044f \u043e\u0431\u0440\u0430\u0442\u043d\u043e\n+    interventions:\n+      - \"Asked to confirm the brief (48\u00d748, Resurrect 64, side view, ~13-frame attack) and whether to generate reference images; answered: \u00ab\u041d\u0430\u0434\u043e \u0447\u0443\u0442\u044c \u0431\u043e\u043b\u044c\u0448\u0435 \u0441\u0435\u0442\u043a\u0443 \u0441\u0434\u0435\u043b\u0430\u0442\u044c. \u0411\u0435\u0437 \u0440\u0435\u0444\u0435\u0440\u0435\u043d\u0441\u043e\u0432 \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0430\u0435\u043c\u00bb (make the grid a bit bigger; continue without references) \u2014 canvas became 64\u00d764.\"\n+  - text: Make it more jelly-like, and let it spread out more after the jump\n+    original: \u041d\u0430\u0434\u043e \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u0435\u0433\u043e \u0431\u043e\u043b\u0435\u0435 \u0436\u0435\u043b\u0435\u043e\u0431\u0440\u0430\u0437\u043d\u044b\u043c \u0438 \u043f\u0443\u0441\u0442\u044c \u043f\u043e\u0441\u043b\u0435 \u043f\u0440\u044b\u0436\u043a\u0430 \u043e\u043d \u0431\u043e\u043b\u044c\u0448\u0435 \u0440\u0430\u0441\u0442\u0435\u043a\u0430\u0435\u0442\u0441\u044f\n+    interventions: []\n+files:\n+  - { path: jelly-slime-spike-slam.gif, role: cover, label: \"The attack, 4\u00d7\", step: 2 }\n+  - { path: jelly-slime-spike-slam-strip.png, role: filmstrip, label: \"All 18 frames, 4\u00d7\", step: 2 }\n+  - { path: jelly-slime-spike-slam.aseprite, role: source, label: Source document, step: 2 }\n+validate:\n+  - { step: 1, passed: true, score: 20, errors: 0, warnings: 16 }\n+  - { step: 2, passed: true, score: 5, errors: 0, warnings: 19 }"
+    },
+    {
+      "sha": "26b15147487e7bd43eb30549a22001527cf64d3f",
+      "filename": "gallery/generations/2026-10-18-jelly-slime-spike-slam/jelly-slime-spike-slam-strip.png",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fjelly-slime-spike-slam-strip.png",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fjelly-slime-spike-slam-strip.png",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fjelly-slime-spike-slam-strip.png?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665"
+    },
+    {
+      "sha": "7491288a94d34127edec8d8109ef01616b729e0e",
+      "filename": "gallery/generations/2026-10-18-jelly-slime-spike-slam/jelly-slime-spike-slam.aseprite",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fjelly-slime-spike-slam.aseprite",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fjelly-slime-spike-slam.aseprite",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fjelly-slime-spike-slam.aseprite?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665"
+    },
+    {
+      "sha": "823254fa419a286295e2364b34b4f37fc89967b2",
+      "filename": "gallery/generations/2026-10-18-jelly-slime-spike-slam/jelly-slime-spike-slam.gif",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fjelly-slime-spike-slam.gif",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fjelly-slime-spike-slam.gif",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/gallery%2Fgenerations%2F2026-10-18-jelly-slime-spike-slam%2Fjelly-slime-spike-slam.gif?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665"
+    },
+    {
+      "sha": "f37cbf5171499d79fe063ad01f8a650b9a4dafcb",
+      "filename": "gallery/src/load.ts",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 2,
+      "changes": 4,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fsrc%2Fload.ts",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/gallery%2Fsrc%2Fload.ts",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/gallery%2Fsrc%2Fload.ts?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -304,8 +304,8 @@ export function inspectGallery(root: string = DEFAULT_GALLERY_ROOT): LoadResult\n           ? ' \u00b7 supplied reference'\n           : '';\n     const modelLabel = [...new Set(data.models)].sort().join(' + ') + pipeline;\n-    // TODO(model judges paused): model-judge ratings stay valid in generation.yaml but are ignored\n-    // until they are re-evaluated; only human ratings reach the site and the score.\n+    // Only human ratings reach the site and the score; `model:` judges stay valid in the schema\n+    // so a file can carry one, but a model's craft opinion is not what the benchmark measures.\n     const ratings = data.ratings.filter((rating) => rating.judge.startsWith('human:'));\n     generations.push({ ...data, ratings, id, files, cover, modelLabel, score, outdated, craft: craftOf(ratings), points: null, components: null, pack: null });\n   }"
+    },
+    {
+      "sha": "10743e88d4b9aa1466d740b85d89211bb71cb79b",
+      "filename": "package-lock.json",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 4,
+      "changes": 8,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/package-lock.json",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/package-lock.json",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/package-lock.json?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -9,7 +9,7 @@\n       \"version\": \"0.8.2\",\n       \"license\": \"MIT\",\n       \"dependencies\": {\n-        \"@modelcontextprotocol/sdk\": \"^1.30.0\",\n+        \"@modelcontextprotocol/sdk\": \"^1.32.0\",\n         \"ws\": \"^8.21.3\",\n         \"zod\": \"^3.25.76\"\n       },\n@@ -39,9 +39,9 @@\n       }\n     },\n     \"node_modules/@modelcontextprotocol/sdk\": {\n-      \"version\": \"1.30.0\",\n-      \"resolved\": \"https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.30.0.tgz\",\n-      \"integrity\": \"sha512-xKd8OIzlqNzcqcNumGAa6g+PW2kjD5vrpcKOnfldAUPP3j7lnqMPwlTXQm8gF+UwH72z0lqaRbjr9hqGz0eITA==\",\n+      \"version\": \"1.32.1\",\n+      \"resolved\": \"https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.32.1.tgz\",\n+      \"integrity\": \"sha512-2DdE+SJDtzLEEWzY1ZjY7Q+VcPhcV1KisD3zI4u0XZyktsjHum1mwbMI+JaulUBi2OZk+KJAi2uPXzxichPkdw==\",\n       \"license\": \"MIT\",\n       \"dependencies\": {\n         \"@hono/node-server\": \"^1.19.9 || ^2.0.5\","
+    },
+    {
+      "sha": "3889f6a89bc03d5d266630598b0e98779e84899a",
+      "filename": "package.json",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1,
+      "changes": 2,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/package.json",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/package.json",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/package.json?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -72,7 +72,7 @@\n     ]\n   },\n   \"dependencies\": {\n-    \"@modelcontextprotocol/sdk\": \"^1.30.0\",\n+    \"@modelcontextprotocol/sdk\": \"^1.32.0\",\n     \"ws\": \"^8.21.3\",\n     \"zod\": \"^3.25.76\"\n   },"
+    },
+    {
+      "sha": "db53bab5aaf0738cf92701ca4f8bdfcb15c3cf33",
+      "filename": "pnpm-lock.yaml",
+      "status": "modified",
+      "additions": 66,
+      "deletions": 43,
+      "changes": 109,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/pnpm-lock.yaml",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/pnpm-lock.yaml",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/pnpm-lock.yaml?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -9,8 +9,8 @@ importers:\n   .:\n     dependencies:\n       '@modelcontextprotocol/sdk':\n-        specifier: ^1.30.0\n-        version: 1.30.0(zod@3.25.76)\n+        specifier: ^1.32.0\n+        version: 1.32.1(zod@3.25.76)\n       ws:\n         specifier: ^8.21.3\n         version: 8.21.3\n@@ -41,7 +41,7 @@ importers:\n         version: link:../../gallery\n       '@vercel/analytics':\n         specifier: ^2.0.1\n-        version: 2.0.1(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)\n+        version: 2.0.1(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)\n       clsx:\n         specifier: ^2.1.1\n         version: 2.1.1\n@@ -78,19 +78,19 @@ importers:\n         version: 0.9.0\n       '@sveltejs/adapter-vercel':\n         specifier: ^7.0.0\n-        version: 7.0.0(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))\n+        version: 7.0.0(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))\n       '@sveltejs/kit':\n         specifier: ^3.0.0\n-        version: 3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n+        version: 3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n       '@sveltejs/vite-plugin-svelte':\n         specifier: ^7.1.2\n-        version: 7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n+        version: 7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n       '@tailwindcss/vite':\n         specifier: ^4.3.0\n-        version: 4.3.3(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n+        version: 4.3.3(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n       bits-ui:\n         specifier: ^2.19.5\n-        version: 2.19.5(@internationalized/date@3.12.4)(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)\n+        version: 2.19.5(@internationalized/date@3.12.4)(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)\n       cn:\n         specifier: ^0.4.0\n         version: 0.4.0\n@@ -138,10 +138,10 @@ importers:\n         version: 6.0.3\n       unplugin-icons:\n         specifier: ^24.0.0\n-        version: 24.0.0(esbuild@0.28.2)(rolldown@1.2.12)(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n+        version: 24.0.0(esbuild@0.28.2)(rolldown@1.2.12)(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n       vite:\n-        specifier: ^8.3.2\n-        version: 8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n+        specifier: ^8.3.3\n+        version: 8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n \n   gallery:\n     dependencies:\n@@ -554,8 +554,8 @@ packages:\n     engines: {node: '>=18'}\n     hasBin: true\n \n-  '@modelcontextprotocol/sdk@1.30.0':\n-    resolution: {integrity: sha512-xKd8OIzlqNzcqcNumGAa6g+PW2kjD5vrpcKOnfldAUPP3j7lnqMPwlTXQm8gF+UwH72z0lqaRbjr9hqGz0eITA==}\n+  '@modelcontextprotocol/sdk@1.32.1':\n+    resolution: {integrity: sha512-2DdE+SJDtzLEEWzY1ZjY7Q+VcPhcV1KisD3zI4u0XZyktsjHum1mwbMI+JaulUBi2OZk+KJAi2uPXzxichPkdw==}\n     engines: {node: '>=18'}\n     peerDependencies:\n       '@cfworker/json-schema': ^4.1.1\n@@ -1773,6 +1773,11 @@ packages:\n     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}\n     hasBin: true\n \n+  nanoid@3.3.20:\n+    resolution: {integrity: sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==}\n+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}\n+    hasBin: true\n+\n   negotiator@1.1.0:\n     resolution: {integrity: sha512-NMPBRMJgiQHjbd8phG3Vebdx4kZ1H121rbl5IkMqeOsahptB9BKo/d7oJ3zTXqTgagn2bWlNSXkh0QUGM31RYg==}\n     engines: {node: '>=18'}\n@@ -1875,6 +1880,10 @@ packages:\n     resolution: {integrity: sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A==}\n     engines: {node: ^10 || ^12 || >=14}\n \n+  postcss@8.5.31:\n+    resolution: {integrity: sha512-YUbWYCgErwnMAVkjUnYa+KlMBzGpHwiIt/DE7f0G33AuX2LH9UcTk6KgWxd3zRU+pN3u/C+Xl3EnMLM4Hea7Sg==}\n+    engines: {node: ^10 || ^12 || >=14}\n+\n   prettier-plugin-svelte@4.1.1:\n     resolution: {integrity: sha512-wXvbXMjSvb4C9ENWTHXyd+ihakKCsJ6rJhLP6/8HFNj4GkZr48jqL9PoKsl2sk7SyCZRTnJ7O2TTowUpOxP/KA==}\n     engines: {node: '>=20'}\n@@ -2103,6 +2112,10 @@ packages:\n     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}\n     engines: {node: '>=0.10.0'}\n \n+  source-map-js@1.2.2:\n+    resolution: {integrity: sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==}\n+    engines: {node: '>=0.10.0'}\n+\n   statuses@2.0.2:\n     resolution: {integrity: sha512-DvEy55V3DB7uknRo+4iOGT5fP1slR8wQohVdknigZPMpMstaKJQWhwiYBACJE3Ul2pTnATihhBYnRhZQHGBiRw==}\n     engines: {node: '>= 0.8'}\n@@ -2334,8 +2347,8 @@ packages:\n     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}\n     engines: {node: '>= 0.8'}\n \n-  vite@8.3.2:\n-    resolution: {integrity: sha512-SQr1x6W5vVSbROg7vsyXIaxK9b0G7zsT68acdWWRmnBUsgDieLCRG+Rep9WdZgcposvv/GSnr4GUUBqB3vXq6w==}\n+  vite@8.3.4:\n+    resolution: {integrity: sha512-IftLE8phJhdNRIGNEV4JCCvfNScoZQVfcXaN8TQropWGJtOHcu+iAB9pHcuGvmEb/kddw0LBe/jS8ztdC6xdiQ==}\n     engines: {node: ^20.19.0 || >=22.12.0}\n     hasBin: true\n     peerDependencies:\n@@ -2768,7 +2781,7 @@ snapshots:\n       - encoding\n       - supports-color\n \n-  '@modelcontextprotocol/sdk@1.30.0(zod@3.25.76)':\n+  '@modelcontextprotocol/sdk@1.32.1(zod@3.25.76)':\n     dependencies:\n       '@hono/node-server': 2.1.1(hono@4.13.7)\n       ajv: 8.20.0\n@@ -2878,41 +2891,41 @@ snapshots:\n     dependencies:\n       acorn: 8.18.0\n \n-  '@sveltejs/adapter-vercel@7.0.0(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))':\n+  '@sveltejs/adapter-vercel@7.0.0(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))':\n     dependencies:\n-      '@sveltejs/kit': 3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n+      '@sveltejs/kit': 3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n       '@vercel/nft': 1.11.0\n     transitivePeerDependencies:\n       - encoding\n       - rollup\n       - supports-color\n \n-  '@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))':\n+  '@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))':\n     dependencies:\n       '@rolldown/pluginutils': 1.0.1\n       '@standard-schema/spec': 1.1.0\n-      '@sveltejs/vite-plugin-svelte': 7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n+      '@sveltejs/vite-plugin-svelte': 7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n       cookie: 2.0.1\n       devalue: 5.9.4\n       esm-env: 1.2.2\n       magic-string: 1.4.2\n       mrmime: 2.0.1\n       sirv: 3.0.2\n       svelte: 5.57.1\n-      vite: 8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n+      vite: 8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n     optionalDependencies:\n       typescript: 6.0.3\n \n   '@sveltejs/load-config@0.2.3': {}\n \n-  '@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))':\n+  '@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))':\n     dependencies:\n       deepmerge: 4.3.1\n       magic-string: 1.4.2\n       obug: 2.2.1\n       svelte: 5.57.1\n-      vite: 8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n-      vitefu: 1.1.3(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n+      vite: 8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n+      vitefu: 1.1.3(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n \n   '@svgdotjs/svg.js@3.2.8': {}\n \n@@ -2981,12 +2994,12 @@ snapshots:\n       '@tailwindcss/oxide-win32-arm64-msvc': 4.3.3\n       '@tailwindcss/oxide-win32-x64-msvc': 4.3.3\n \n-  '@tailwindcss/vite@4.3.3(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))':\n+  '@tailwindcss/vite@4.3.3(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))':\n     dependencies:\n       '@tailwindcss/node': 4.3.3\n       '@tailwindcss/oxide': 4.3.3\n       tailwindcss: 4.3.3\n-      vite: 8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n+      vite: 8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n \n   '@turbo/darwin-64@2.11.5':\n     optional: true\n@@ -3080,9 +3093,9 @@ snapshots:\n   '@typescript/typescript-win32-x64@7.0.2':\n     optional: true\n \n-  '@vercel/analytics@2.0.1(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)':\n+  '@vercel/analytics@2.0.1(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)':\n     optionalDependencies:\n-      '@sveltejs/kit': 3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n+      '@sveltejs/kit': 3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n       svelte: 5.57.1\n \n   '@vercel/nft@1.11.0':\n@@ -3152,15 +3165,15 @@ snapshots:\n     dependencies:\n       file-uri-to-path: 1.0.0\n \n-  bits-ui@2.19.5(@internationalized/date@3.12.4)(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1):\n+  bits-ui@2.19.5(@internationalized/date@3.12.4)(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1):\n     dependencies:\n       '@floating-ui/core': 1.8.0\n       '@floating-ui/dom': 1.8.0\n       '@internationalized/date': 3.12.4\n       esm-env: 1.2.2\n-      runed: 0.35.1(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)\n+      runed: 0.35.1(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)\n       svelte: 5.57.1\n-      svelte-toolbelt: 0.10.6(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)\n+      svelte-toolbelt: 0.10.6(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)\n       tabbable: 6.5.0\n     transitivePeerDependencies:\n       - '@sveltejs/kit'\n@@ -3756,6 +3769,8 @@ snapshots:\n \n   nanoid@3.3.19: {}\n \n+  nanoid@3.3.20: {}\n+\n   negotiator@1.1.0:\n     dependencies:\n       content-type: 2.1.0\n@@ -3835,6 +3850,12 @@ snapshots:\n       picocolors: 1.1.1\n       source-map-js: 1.2.1\n \n+  postcss@8.5.31:\n+    dependencies:\n+      nanoid: 3.3.20\n+      picocolors: 1.1.1\n+      source-map-js: 1.2.2\n+\n   prettier-plugin-svelte@4.1.1(prettier@3.9.9)(svelte@5.57.1):\n     dependencies:\n       prettier: 3.9.9\n@@ -3935,14 +3956,14 @@ snapshots:\n       esm-env: 1.2.2\n       svelte: 5.57.1\n \n-  runed@0.35.1(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1):\n+  runed@0.35.1(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1):\n     dependencies:\n       dequal: 2.0.3\n       esm-env: 1.2.2\n       lz-string: 1.5.0\n       svelte: 5.57.1\n     optionalDependencies:\n-      '@sveltejs/kit': 3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n+      '@sveltejs/kit': 3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n \n   sade@1.8.1:\n     dependencies:\n@@ -4066,6 +4087,8 @@ snapshots:\n \n   source-map-js@1.2.1: {}\n \n+  source-map-js@1.2.2: {}\n+\n   statuses@2.0.2: {}\n \n   steiger@0.7.0(typescript@6.0.3):\n@@ -4123,10 +4146,10 @@ snapshots:\n       runed: 0.28.0(svelte@5.57.1)\n       svelte: 5.57.1\n \n-  svelte-toolbelt@0.10.6(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1):\n+  svelte-toolbelt@0.10.6(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1):\n     dependencies:\n       clsx: 2.1.1\n-      runed: 0.35.1(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)\n+      runed: 0.35.1(@sveltejs/kit@3.0.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)(typescript@6.0.3)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)))(svelte@5.57.1)\n       style-to-object: 1.0.14\n       svelte: 5.57.1\n     transitivePeerDependencies:\n@@ -4275,13 +4298,13 @@ snapshots:\n \n   unpipe@1.0.0: {}\n \n-  unplugin-icons@24.0.0(esbuild@0.28.2)(rolldown@1.2.12)(svelte@5.57.1)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)):\n+  unplugin-icons@24.0.0(esbuild@0.28.2)(rolldown@1.2.12)(svelte@5.57.1)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)):\n     dependencies:\n       '@antfu/install-pkg': 1.1.0\n       '@iconify/utils': 3.1.7\n       local-pkg: 1.2.1\n       obug: 2.2.1\n-      unplugin: 3.4.0(esbuild@0.28.2)(rolldown@1.2.12)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n+      unplugin: 3.4.0(esbuild@0.28.2)(rolldown@1.2.12)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))\n     optionalDependencies:\n       svelte: 5.57.1\n     transitivePeerDependencies:\n@@ -4296,23 +4319,23 @@ snapshots:\n       - vite\n       - webpack\n \n-  unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.12)(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)):\n+  unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.12)(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)):\n     dependencies:\n       '@jridgewell/remapping': 2.3.5\n       picomatch: 4.0.7\n       webpack-virtual-modules: 0.6.2\n     optionalDependencies:\n       esbuild: 0.28.2\n       rolldown: 1.2.12\n-      vite: 8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n+      vite: 8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n \n   vary@1.1.2: {}\n \n-  vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1):\n+  vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1):\n     dependencies:\n       lightningcss: 1.33.0\n       picomatch: 4.0.7\n-      postcss: 8.5.28\n+      postcss: 8.5.31\n       rolldown: 1.2.12\n       tinyglobby: 0.2.17\n     optionalDependencies:\n@@ -4322,9 +4345,9 @@ snapshots:\n       jiti: 2.7.0\n       yaml: 2.9.1\n \n-  vitefu@1.1.3(vite@8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)):\n+  vitefu@1.1.3(vite@8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)):\n     optionalDependencies:\n-      vite: 8.3.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n+      vite: 8.3.4(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)\n \n   vscode-jsonrpc@9.0.3: {}\n "
+    },
+    {
+      "sha": "c5b290dec4ac4dce9d41fb5c407e49186c2fbd44",
+      "filename": "src/bridge/client.ts",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 6,
+      "changes": 12,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/src%2Fbridge%2Fclient.ts",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/src%2Fbridge%2Fclient.ts",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/src%2Fbridge%2Fclient.ts?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -145,12 +145,12 @@ export class LiveClient implements AsepriteLink {\n    *   normal state of a freshly started editor, into a hard error telling the\n    *   user to reinstall a perfectly current extension.\n    */\n-  // TODO(boundary): only the call sites whose fields feed a summary or a\n-  // decision declare `expect` \u2014 draw.batch, recolor.apply, export.run,\n-  // session.site, sprite.info, validate.run. The rest (select, transform,\n-  // reference, tileset, look, palette) still rest on `call<T>` alone. Extend as\n-  // each is checked against a real reply; guessing a field name here turns a\n-  // working path into a hard error.\n+  // Every call site whose reply fields feed a summary or a decision declares\n+  // them. select, transform, reference and lua.run pass the reply through\n+  // untouched; layer and frame read optional fields and skip the summary when\n+  // they are absent. Each list was checked against the handler's return in\n+  // extension/ai-artist.lua; guessing a field name here turns a working path\n+  // into a hard error.\n   async call<T = unknown>(\n     cmd: string,\n     args: Record<string, unknown> = {},"
+    },
+    {
+      "sha": "c47b30390e7fb096f0b9d8eb071ccd4b5bc4c662",
+      "filename": "src/tools/assets.ts",
+      "status": "modified",
+      "additions": 15,
+      "deletions": 6,
+      "changes": 21,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/src%2Ftools%2Fassets.ts",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/src%2Ftools%2Fassets.ts",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/src%2Ftools%2Fassets.ts?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -209,7 +209,9 @@ export function registerAssetTools(server: McpServer, live: AsepriteLink): void\n             ),\n           );\n         }\n-        const data = await live.call<Record<string, unknown>>(\"tileset.apply\", args);\n+        const data = await live.call<Record<string, unknown>>(\"tileset.apply\", args, {\n+          expect: TILESET_EXPECT[args.op] ?? [],\n+        });\n         return ok(data, describeTileset(args.op, data));\n       } catch (err) {\n         return fail(err);\n@@ -218,11 +220,18 @@ export function registerAssetTools(server: McpServer, live: AsepriteLink): void\n   );\n }\n \n+/** Fields `describeTileset` reads, per op; only those ops get a summary. */\n+const TILESET_EXPECT: Partial<Record<string, readonly string[]>> = {\n+  pack: [\"cellCount\", \"tileCount\", \"reusedFuzzy\", \"layer\", \"sourceLayer\"],\n+  export: [\"files\", \"format\"],\n+  stamp: [\"tileCount\", \"skipped\", \"columns\", \"rows\"],\n+};\n+\n function describeTileset(op: string, data: Record<string, unknown>): string | undefined {\n   if (op === \"pack\") {\n-    const cells = Number(data.cellCount ?? 0);\n-    const tiles = Number(data.tileCount ?? 0);\n-    const fuzzy = Number(data.reusedFuzzy ?? 0);\n+    const cells = Number(data.cellCount);\n+    const tiles = Number(data.tileCount);\n+    const fuzzy = Number(data.reusedFuzzy);\n     const lines = [\n       `${cells} cell(s) packed into ${tiles} tile(s) on '${String(data.layer)}'. '${String(data.sourceLayer)}' is hidden, not deleted \u2014 unhide it to compare.`,\n     ];\n@@ -237,10 +246,10 @@ function describeTileset(op: string, data: Record<string, unknown>): string | un\n     return lines.join(\" \");\n   }\n   if (op === \"export\") {\n-    const files = (data.files as string[]) ?? [];\n+    const files = data.files as string[];\n     return `Wrote ${files.length} file(s) for ${String(data.format)}: ${files.join(\", \")}`;\n   }\n-  if (op === \"stamp\" && Number(data.skipped ?? 0) > 0) {\n+  if (op === \"stamp\" && Number(data.skipped) > 0) {\n     return `Placed ${String(data.tileCount)} tile(s); skipped ${String(data.skipped)} outside the ${String(data.columns)}x${String(data.rows)} grid or naming a tile that does not exist.`;\n   }\n   return undefined;"
+    },
+    {
+      "sha": "f2604d871bf5c646736ae055227e9ff734e3f16a",
+      "filename": "src/tools/look.ts",
+      "status": "modified",
+      "additions": 49,
+      "deletions": 38,
+      "changes": 87,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/src%2Ftools%2Flook.ts",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/src%2Ftools%2Flook.ts",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/src%2Ftools%2Flook.ts?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -181,17 +181,21 @@ export function registerLookTools(server: McpServer, live: AsepriteLink): void {\n               width: number;\n               height: number;\n               scale: number;\n-            }>(\"look.onion\", {\n-              sprite: args.sprite,\n-              frame: args.frame,\n-              framesBefore: args.framesBefore,\n-              framesAfter: args.framesAfter,\n-              ghostOpacity: args.ghostOpacity,\n-              layer: args.layer,\n-              region: args.region,\n-              path: out,\n-              scale: args.scale,\n-            });\n+            }>(\n+              \"look.onion\",\n+              {\n+                sprite: args.sprite,\n+                frame: args.frame,\n+                framesBefore: args.framesBefore,\n+                framesAfter: args.framesAfter,\n+                ghostOpacity: args.ghostOpacity,\n+                layer: args.layer,\n+                region: args.region,\n+                path: out,\n+                scale: args.scale,\n+              },\n+              { expect: [\"frame\", \"frames\", \"sourceWidth\", \"sourceHeight\", \"scale\"] },\n+            );\n             const image = await readAndClean(out);\n             return okWithImage(\n               {\n@@ -215,12 +219,11 @@ export function registerLookTools(server: McpServer, live: AsepriteLink): void {\n               width: number;\n               height: number;\n               scale: number;\n-            }>(\"look.filmstrip\", {\n-              sprite: args.sprite,\n-              layer: args.layer,\n-              path: out,\n-              scale: args.scale,\n-            });\n+            }>(\n+              \"look.filmstrip\",\n+              { sprite: args.sprite, layer: args.layer, path: out, scale: args.scale },\n+              { expect: [\"frames\", \"width\", \"height\", \"scale\"] },\n+            );\n             const layout = filmstripLayout(meta.frames);\n             const image = await readAndClean(out);\n             return okWithImage(\n@@ -284,15 +287,19 @@ export function registerLookTools(server: McpServer, live: AsepriteLink): void {\n               width: number;\n               height: number;\n               scale: number;\n-            }>(\"look.preview\", {\n-              sprite: args.sprite,\n-              frame: args.frame,\n-              layer: args.layer,\n-              region: args.region,\n-              path: out,\n-              // Omitted scale means the extension picks one from the sprite size.\n-              scale: args.scale,\n-            });\n+            }>(\n+              \"look.preview\",\n+              {\n+                sprite: args.sprite,\n+                frame: args.frame,\n+                layer: args.layer,\n+                region: args.region,\n+                path: out,\n+                // Omitted scale means the extension picks one from the sprite size.\n+                scale: args.scale,\n+              },\n+              { expect: [\"sourceWidth\", \"sourceHeight\", \"scale\"] },\n+            );\n             const image = await readAndClean(out);\n             return okWithImage(\n               {\n@@ -392,22 +399,26 @@ async function readRegion(\n     height: number;\n     colors: string[];\n     grid: number[];\n-  }>(\"pixels.read\", {\n-    sprite: args.sprite,\n-    layer: args.layer,\n-    frame: args.frame,\n-    region: args.region,\n-    // `look` has no `composite` field: its `layer` promises a single layer, so\n-    // naming one must read that layer's cel. Defaulting to the composite here\n-    // made op 'diff' with layer=\u2026 silently diff the whole image.\n-    composite: args.composite ?? args.layer === undefined,\n-  });\n+  }>(\n+    \"pixels.read\",\n+    {\n+      sprite: args.sprite,\n+      layer: args.layer,\n+      frame: args.frame,\n+      region: args.region,\n+      // `look` has no `composite` field: its `layer` promises a single layer, so\n+      // naming one must read that layer's cel. Defaulting to the composite here\n+      // made op 'diff' with layer=\u2026 silently diff the whole image.\n+      composite: args.composite ?? args.layer === undefined,\n+    },\n+    { expect: [\"x\", \"y\", \"width\", \"height\", \"colors\", \"grid\"] },\n+  );\n   return { ...data, spriteName: data.sprite };\n }\n \n async function readPalette(live: AsepriteLink, sprite: string | undefined): Promise<string[]> {\n-  const data = await live.call<{ colors?: string[] }>(\"palette.get\", { sprite });\n-  return data.colors ?? [];\n+  const data = await live.call<{ colors: string[] }>(\"palette.get\", { sprite }, { expect: [\"colors\"] });\n+  return data.colors;\n }\n \n function offPaletteNote(glyphs: string[]): string {"
+    },
+    {
+      "sha": "52655970412cc0a3c990278eeb6e09a8fea199ac",
+      "filename": "src/tools/palette.ts",
+      "status": "modified",
+      "additions": 12,
+      "deletions": 9,
+      "changes": 21,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/src%2Ftools%2Fpalette.ts",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/src%2Ftools%2Fpalette.ts",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/src%2Ftools%2Fpalette.ts?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -235,29 +235,32 @@ export function registerPaletteTools(server: McpServer, live: AsepriteLink): voi\n               colors: string[];\n               usage: { index: number; hex: string; pixels: number }[];\n               offPalette: { hex: string; pixels: number }[];\n-            }>(\"palette.stats\", { sprite: args.sprite });\n+            }>(\"palette.stats\", { sprite: args.sprite }, { expect: [\"colors\", \"usage\", \"offPalette\"] });\n             return ok(\n               { op: \"analyze\", sprite: state.sprite, colors: state.colors, analysis: analyze(state) },\n               describeAnalysis(analyze(state)),\n             );\n           }\n \n           case \"extract\": {\n-            const data = await live.call<{ sprite: string; colors: string[] }>(\"palette.extract\", {\n-              sprite: args.sprite,\n-              maxColors: args.maxColors,\n-            });\n+            const data = await live.call<{ sprite: string; colors: string[] }>(\n+              \"palette.extract\",\n+              { sprite: args.sprite, maxColors: args.maxColors },\n+              { expect: [\"colors\"] },\n+            );\n             return ok(\n               { op: \"extract\", ...data },\n               `Extracted a ${data.colors.length}-colour palette from the art: ${data.colors.join(\" \")}`,\n             );\n           }\n \n           default: {\n-            const data = await live.call<Record<string, unknown>>(\"palette.get\", {\n-              sprite: args.sprite,\n-            });\n-            const colors = (data.colors as string[]) ?? [];\n+            const data = await live.call<Record<string, unknown>>(\n+              \"palette.get\",\n+              { sprite: args.sprite },\n+              { expect: [\"colors\"] },\n+            );\n+            const colors = data.colors as string[];\n             return ok(\n               { op: \"get\", ...data },\n               `${colors.length} colours: ${colors.join(\" \")}`,"
+    },
+    {
+      "sha": "9c1b5a6d05577b68888b57b3acd6b1d3151f0440",
+      "filename": "tests/extension.test.lua",
+      "status": "modified",
+      "additions": 40,
+      "deletions": 4,
+      "changes": 44,
+      "blob_url": "https://github.com/with-pebbly/aseprite-ai-artist/blob/a32a2a58e76b06fc9ad7b29b12abd003ec769665/tests%2Fextension.test.lua",
+      "raw_url": "https://github.com/with-pebbly/aseprite-ai-artist/raw/a32a2a58e76b06fc9ad7b29b12abd003ec769665/tests%2Fextension.test.lua",
+      "contents_url": "https://api.github.com/repos/with-pebbly/aseprite-ai-artist/contents/tests%2Fextension.test.lua?ref=a32a2a58e76b06fc9ad7b29b12abd003ec769665",
+      "patch": "@@ -5,12 +5,10 @@\n --\n -- Runs the real command handlers against a real sprite in batch mode, which is\n -- the only way to prove the Lua side works without a human clicking in the UI.\n+-- CI runs it too (the `lua-handlers` job builds Aseprite's CLI variant), so\n+-- the last line is the verdict: Aseprite's Lua has no os.exit.\n --------------------------------------------------------------------------------\n \n--- FIXME(ci): this suite never runs in CI \u2014 no runner has Aseprite \u2014 so a\n--- regression in a command handler passes a green pipeline. tests/pure.test.lua\n--- covers the editor-free half; the rest is guarded only by running this locally\n--- before a release. Fixing it properly means building Aseprite in the workflow.\n local root = app.params[\"root\"] or \".\"\n dofile(root .. \"/extension/ai-artist.lua\")\n \n@@ -1075,6 +1073,44 @@ check(\"reference.apply imports, lists, samples and removes\", function()\n   os.remove(ref_path)\n end)\n \n+check(\"reference.apply leaves the user's site alone when reading the file throws\", function()\n+  local ref_path = app.fs.joinPath(app.fs.tempPath, \"ai-artist-test-reference-throw.png\")\n+  withMockSprite(6, 6, ColorMode.RGB, function(mock)\n+    mock:saveCopyAs(ref_path)\n+  end)\n+\n+  withMockSprite(6, 6, ColorMode.RGB, function(mock)\n+    mock:newEmptyFrame()\n+    mock:newLayer()\n+    app.frame = mock.frames[2]\n+    app.layer = mock.layers[1]\n+    local open_before = #app.sprites\n+\n+    -- Fail after app.open, inside the read: the path the scorer found uncaged.\n+    local real_image = Image\n+    Image = function(...)\n+      local img = real_image(...)\n+      return setmetatable({}, { __index = function(_, k)\n+        if k == \"drawSprite\" then return function() error(\"simulated read failure\", 0) end end\n+        local v = img[k]\n+        if type(v) == \"function\" then return function(_, ...) return v(img, ...) end end\n+        return v\n+      end })\n+    end\n+    local ok, reply = pcall(A.handleCommand, { id = \"t\", cmd = \"reference.apply\",\n+      args = { op = \"sample_palette\", path = ref_path } })\n+    Image = real_image\n+\n+    assert(ok, \"handler raised instead of replying: \" .. tostring(reply))\n+    assertEq(reply.ok, false, \"a failed read must be reported\")\n+    assertEq(#app.sprites, open_before, \"the reference file was left open\")\n+    assert(app.sprite == mock, \"a failed read left the reference as the active sprite\")\n+    assertEq(app.frame.frameNumber, 2, \"active frame changed\")\n+    assert(app.layer == mock.layers[1], \"active layer changed\")\n+  end)\n+  os.remove(ref_path)\n+end)\n+\n --- A 12x4 strip of three 4x4 panels \u2014 red, blue, white \u2014 written to disk, the\n --- shape a storyboard sheet from an image model arrives in.\n local function write_strip(path)"
+    }
+  ]
+}

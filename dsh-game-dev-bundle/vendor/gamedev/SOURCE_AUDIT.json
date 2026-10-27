@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills",
+  "requestedRef": "main",
+  "commit": "184b72be02884f782a0058f2eeae2ce4277453e4",
+  "auditedAt": "2026-10-27",
+  "scope": "Complete upstream repository with original relative layout, root LICENSE/NOTICE, and nested assets/licenses retained; installation metadata and workflows are inert vendored files.",
+  "method": "Static safe-YAML parsing with duplicate-key detection, JSON/Python-AST parsing, Markdown/resource path checks, command-pattern review, and full SHA-256 plus Git blob SHA-1 verification. Targeted manual review of script side effects and publishing instructions. No upstream code executed.",
+  "counts": {
+    "upstreamFiles": 242,
+    "upstreamBytes": 3647713,
+    "skills": 77,
+    "catalogSkills": 76,
+    "routerSkills": 1,
+    "pythonFiles": 20,
+    "skillHelperScripts": 9,
+    "repositoryMaintenanceScripts": 3,
+    "pythonTestModules": 8,
+    "metadataFiles": 2,
+    "totalVendoredFiles": 244
+  },
+  "validation": {
+    "integrityErrors": 0,
+    "unsafeArchiveEntriesAccepted": 0,
+    "frontmatterErrors": 0,
+    "duplicateNamesWithinSource": 0,
+    "duplicateNamesAcrossPhaserAndGamedev": 0,
+    "nameConstraints": "All names are 1-64 lowercase ASCII alphanumeric/hyphen characters, without leading/trailing/repeated hyphens, and match their containing directory.",
+    "descriptions": "All parsed descriptions are nonempty strings of at most 1024 characters.",
+    "markdownLocalLinkOccurrencesChecked": 188,
+    "brokenMarkdownLinkOccurrences": 0,
+    "inlineResourceCandidatesChecked": 123,
+    "missingRealSkillResources": 0,
+    "contextualCrossSkillReferencesResolved": 1,
+    "templatePlaceholderReferencesIgnored": 2,
+    "routerTableEntries": 76,
+    "routerUnknownNames": [],
+    "routerMissingNames": [],
+    "pythonSyntaxErrors": 0,
+    "suspiciousInstructionPatternCandidates": 0,
+    "upstreamContentModified": false,
+    "scriptsExecuted": false,
+    "packagesInstalled": false,
+    "runtimeTestsExecuted": false
+  },
+  "license": {
+    "identifier": "Apache-2.0",
+    "files": ["LICENSE", "NOTICE"],
+    "additionalNotice": "skills/ebitengine/ebitengine-game/assets/starter/licenses/Go-Fonts.txt",
+    "additionalNoticeLicense": "BSD-style Go font license",
+    "note": "Retain Apache LICENSE/NOTICE and the font notice in redistribution. GitHub reported the pinned commit verified; the signature was not independently reverified locally."
+  },
+  "resourceNotes": [
+    {
+      "file": "skills/disciplines/game-ui-ux/references/layout-and-flow.md",
+      "line": 114,
+      "reference": "references/state-stack.md",
+      "resolution": "The sentence explicitly identifies love2d-core as the owner; resolve to skills/other-engines/love2d-core/references/state-stack.md, which exists."
+    },
+    {
+      "file": "templates/SKILL.template.md",
+      "lines": [43, 45],
+      "references": ["references/example.md", "assets/example.ext"],
+      "resolution": "Intentional authoring placeholders, not missing packaged skill resources."
+    },
+    {
+      "file": "skills/ebitengine/ebitengine-game/assets/starter/web/index.html",
+      "lines": [16, 20],
+      "references": ["wasm_exec.js", "game.wasm"],
+      "resolution": "Generated/copied by the build workflow, not missing vendored inputs. No remote SDK is included; the template comment leaves optional portal SDK integration to the project."
+    },
+    {
+      "file": "router/SKILL.md",
+      "resolution": "skills/<category>/<name>/SKILL.md paths are repository-relative rather than relative to router/. Resolve from this vendor root; load only selected skill bodies and on-demand references."
+    }
+  ],
+  "scriptReview": [
+    {
+      "path": "scripts/check-site.py",
+      "effects": "Read-only scan of a selected generated-site directory; no network or subprocess.",
+      "risk": "Do not run as a startup hook; static documentation maintenance, not a game-development helper."
+    },
+    {
+      "path": "scripts/validate-skills.py",
+      "effects": "Read-only repository frontmatter/resource/catalog checks; no network or subprocess.",
+      "risk": "Not executed. Our independent audit used a full safe YAML parser rather than executing this upstream parser."
+    },
+    {
+      "path": "scripts/generate-site.py",
+      "effects": "Writes a generated documentation site; line 534 recursively deletes an existing --out directory with shutil.rmtree without a narrow path guard.",
+      "risk": "HIGH destructive output-path risk. Never execute automatically; require an explicit reviewed disposable output directory."
+    },
+    {
+      "path": "skills/disciplines/create-game-assets/scripts/asset_report.py",
+      "effects": "Reads images with Pillow and prints a report; no network or subprocess.",
+      "risk": "Parse only trusted/bounded image inputs. Pillow dependency is declared as >=10,<14 in adjacent requirements.txt; no dependency was installed."
+    },
+    {
+      "path": "skills/disciplines/create-game-assets/scripts/build_preview_sheet.py",
+      "effects": "Reads images, creates output parents, and writes/overwrites the --out contact sheet using Pillow; no network or subprocess.",
+      "risk": "Review and constrain input count/size and the exact output path."
+    },
+    {
+      "path": "skills/ebitengine/ebitengine-game/scripts/check_ebitengine.py",
+      "effects": "Read-only heuristic scan of Go sources and go.mod; no network or subprocess.",
+      "risk": "Not a compiler or a guarantee of correctness; inspect project scope before scanning."
+    },
+    {
+      "path": "skills/ebitengine/ebitengine-game/scripts/new_game.py",
+      "effects": "Copies a starter into absent/empty --out and writes Go module/title values. --ci additionally writes .github/workflows/ci.yml and copies checker/packager helpers. No network or subprocess.",
+      "risk": "The emitted CI workflow installs system dependencies and publishes GitHub releases on v* tags. Do not pass --ci or activate publication without explicit approval. go mod tidy/test/run and git commands are printed next steps, not executed by this script.",
+      "resourcePathsChecked": ["../assets/starter", "../assets/ci/github-actions.yml", "check_ebitengine.py", "package_macos_app.py"]
+    },
+    {
+      "path": "skills/ebitengine/ebitengine-game/scripts/package_macos_app.py",
+      "effects": "Writes a staged .app; optionally invokes lipo/llvm-lipo with an argv list and no shell=True. --force recursively replaces an existing non-symlink target .app after assembly; sets executable permissions.",
+      "risk": "Review --out, --name, inputs, local lipo executable and --force. No signing or notarization occurs in the script; printed signing/notarization instructions require separate authorization."
+    },
+    {
+      "path": "skills/godot/godot-nodes-scenes/scripts/check_godot_project.py",
+      "effects": "Read-only Godot source/resource/project checker; no network or subprocess.",
+      "risk": "Not an engine run; review symlink scope and input sizes before checking untrusted projects."
+    },
+    {
+      "path": "skills/other-engines/defold-core/scripts/check_defold_project.py",
+      "effects": "Read-only Defold checker including cached library ZIP directory metadata and a game.project member; does not extract archives, fetch dependencies, or spawn subprocesses.",
+      "risk": "ZIP member reads at lines 317-323 have no explicit decompressed-size bound. Inspect/limit archives and scan scope before using on untrusted projects."
+    },
+    {
+      "path": "skills/unity/unity-csharp-scripting/scripts/check_unity_project.py",
+      "effects": "Read-only Unity source/meta/package checker; no network or subprocess.",
+      "risk": "Local file: package references can point outside the selected project (lines 417-437), and caches/symlinks enlarge the read scope. Review these paths rather than treating the project root as a sandbox."
+    },
+    {
+      "path": "skills/workflows/steam-publish/scripts/check_steam_build.py",
+      "effects": "Read-only VDF/depot/content checker; does not run SteamCMD, upload, log in, or read login files.",
+      "risk": "Absolute/parent paths and content mappings may inspect outside the starting project. Review every resolved content root and file mapping."
+    }
+  ],
+  "publishingAndInstallRisks": [
+    {
+      "paths": ["docs/INSTALLATION.md", "docs/COMPATIBILITY.md", "README.md", ".claude-plugin/marketplace.json"],
+      "finding": "Contains alternative-agent/global npx skills and marketplace installation instructions. Inert documentation/metadata only; not used to install this bundle and not permission to modify global skill configuration."
+    },
+    {
+      "paths": [".github/workflows/ci.yml", ".github/workflows/pages.yml"],
+      "finding": "Upstream CI installs Pillow and runs tests/builds; Pages workflow uploads and deploys documentation with pages/id-token write permissions. Nested vendor workflows are inactive; never copy them into the host repository's root .github automatically."
+    },
+    {
+      "paths": ["skills/ebitengine/ebitengine-game/assets/ci/github-actions.yml"],
+      "finding": "Starter CI uses sudo apt-get, Go dependency/build tooling, artifact uploads, and softprops/action-gh-release on v* tags with contents:write. Actions are tag-pinned rather than immutable commit-pinned. These are opt-in external side effects, not part of vendoring."
+    },
+    {
+      "paths": ["skills/workflows/itch-publish/SKILL.md", "skills/workflows/itch-publish/references/butler-ci.md"],
+      "finding": "Contains butler login/push, user credential-file locations, BUTLER_API_KEY, and curl download of a mutable LATEST binary ZIP followed by unzip/chmod/execute. No digest verification is shown. Actual installation, credential access, CI-secret handling, uploads or visibility changes require explicit separate authorization."
+    },
+    {
+      "paths": ["skills/workflows/steam-publish/SKILL.md", "skills/workflows/steam-publish/references/steampipe-build-scripts.md"],
+      "finding": "Contains SteamCMD self-update/login/uploads, credential/token paths, restoration of config.vdf from CI secrets, branch SetLive, and release steps. Review target account/app/depot/branch/content first; do not obtain or disclose credentials or upload/set live without explicit authorization."
+    },
+    {
+      "paths": ["skills/ebitengine/ebitengine-game/references/project-and-builds.md", "skills/ebitengine/ebitengine-game/references/publishing-and-platforms.md", "skills/godot/godot-export/references/presets-and-cli.md"],
+      "finding": "Installation, signing/notarization, platform distribution and package-manager examples are instructional. Verify installed engine versions, toolchain compatibility, exact destinations, and user authorization before any execution."
+    }
+  ],
+  "limitations": [
+    "Static AST parsing and targeted manual review do not establish absence of every vulnerability or hidden behavior.",
+    "The eight Python test modules were syntax-parsed but not imported or executed; they create fixtures and invoke helper subprocesses when run.",
+    "The Go starter was inspected for imports, file writes and web loading behavior but not compiled or run. Its screenshot option writes the requested path.",
+    "Read-only checkers can still consume excessive resources or follow project-controlled references outside a selected directory; they are not sandboxes.",
+    "External URLs, API baselines and every example's engine correctness were not exhaustively validated.",
+    "Preserve the target project's actual pinned engine/toolchain versions; upstream defaults (including Phaser 4.2.1) are not migration permission.",
+    "No installation scripts, package managers, npm/skills commands, credential operations, uploads, or global configuration changes were performed."
+  ]
+}

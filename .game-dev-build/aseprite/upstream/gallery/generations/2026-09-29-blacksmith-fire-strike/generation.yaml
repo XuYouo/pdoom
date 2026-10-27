@@ -1,0 +1,41 @@
+title: The blacksmith's fire strike
+description: >-
+  A stocky, bald, grey-bearded blacksmith in a leather apron, 64×64, facing
+  3/4 right, with an 8-frame attack skill: ready stance, back-swing, the
+  hammer head catching fire overhead, a flaming arc on the swing, a ground
+  impact burst with a shock ring, a pillar of flame, then smoke and embers
+  that each follow one trajectory and cool from white to dark red while he
+  recovers. Rigged onto ten layers, with all fire and particles on separate
+  fx-back and fx-front layers. Hand-built 27-colour palette with hue-shifted
+  ramps per material; light from the upper left, warm rim light from the
+  fire on frames 5–7. The design was the agent's; the pixels were computed
+  by a script and pushed with `draw`, one cel per call.
+date: 2026-09-29
+author:
+  name: Nik Fedorov
+  github: fedorovvvv
+plugin: 0.4.0
+harness: omp
+models: [claude-opus-5-5]
+tags: [character, animation, attack, fire, particles, 64x64]
+steps:
+  - text: |-
+      Draw a character: a blacksmith with a hammer
+      Animation: a strike as an attack skill, and fire effects with particles from the hammer
+      Pose: 3/4 to the camera, so it has volume
+
+      No reference and no image generation
+
+      Size: 64 x 64
+    interventions:
+      - The prompt was sent with the aseprite:studio skill invoked; the agent asked no clarifying questions.
+      - The prompt was originally written in Russian; the text above is the author's requested English translation.
+references:
+  source: none
+files:
+  - { path: blacksmith.gif, role: cover, label: "Attack loop, 4×", step: 1 }
+  - { path: blacksmith.aseprite, role: source, label: "Source document, ten layers, tag attack", step: 1 }
+  - { path: blacksmith.png, role: frame, label: "Frame 1, ready stance, 4×", step: 1 }
+  - { path: blacksmith-strip.png, role: filmstrip, label: "All eight frames, 4×", step: 1 }
+validate:
+  - { step: 1, passed: true, score: 60, errors: 0, warnings: 8 }

@@ -1,0 +1,65 @@
+title: Pebbly, the mascot
+description: >-
+  A living pebble with a paintbrush growing out of its head like a sprout.
+  48×48 on the PICO-8 palette, rigged onto six layers (shadow, feet, brush,
+  body, face, drop) with an 8-frame idle: a drop of paint gathers on the
+  bristles, falls, splats and settles into one square pixel, and Pebbly beams
+  at it. Crosshair pupils, because it is always aiming at a pixel. Steps 2–4
+  shrink it for the logo and favicon: a 16×16 redraw and a 12×12 mark with the
+  brush were both too busy, so the final mark drops the brush and keeps a
+  12×9 pebble — outline, fill, one highlight, two eyes, two blush pixels. The
+  design was the agent's; the pixels were computed by a short script and
+  pushed with `draw`, one cel per call.
+date: 2026-09-29
+author:
+  name: Nikita Fedorov
+plugin: 0.3.2
+harness: omp
+models: [claude-opus-5-5]
+tags: [mascot, character, animation, icon, 48x48, 16x16, 12x12, pico-8]
+steps:
+  - text: |-
+      Let's make a proper mascot instead of a knight.
+      It should be something genuinely unusual.
+    original: |-
+      И давай нормального маскота сделаем, а не рыцаря
+      Надо что-то прям необычное
+    interventions:
+      - >-
+        The agent proposed four concepts; the user picked "Pebbly, a living
+        pebble": a round pebble golem (after with-pebbly) with a brush
+        sprouting from its head, dripping the PICO-8 palette, crosshair
+        pupils; animation — it blinks, a drop falls and becomes a pixel.
+      - The user agreed to open Aseprite so the plugin itself would draw it.
+  - text: |-
+      The logo and favicon need a smaller grid. Otherwise they're too detailed and clash with the design.
+    original: |-
+      Для лого и favicon надо меньше сетку сделать. Иначе слишком детализированные и выбиваются по дизайну
+  - text: |-
+      No, I still don't like the logo and favicon.
+      Too much detail.
+    original: |-
+      Не, мне лого и фавиконка все равно не нравятся
+      Слишком много деталей
+  - text: |-
+      Let's drop the brush from the logo and favicon entirely. Just make it a cute little pebble.
+    original: |-
+      Давай вообще лого и фавиконку без кисти сделаем. Просто милый "булыжничек" пусть будет.
+references:
+  source: none
+files:
+  - { path: pebbly.gif, role: cover, label: "Idle loop, 8×" }
+  - { path: pebbly.aseprite, role: source, label: "Source document, six layers", step: 1 }
+  - { path: pebbly.png, role: frame, label: "Frame 1, 8×", step: 1 }
+  - { path: pebbly-strip.png, role: filmstrip, label: "All eight frames, 1×", step: 1 }
+  - { path: pebbly-icon.aseprite, role: source, label: "16×16 logo, rejected as too busy", step: 2 }
+  - { path: pebbly-icon.png, role: frame, label: "16×16 logo, 8×", step: 2 }
+  - { path: pebbly-mark.aseprite, role: source, label: "12×12 mark with brush, rejected as too busy", step: 3 }
+  - { path: pebbly-mark.png, role: frame, label: "12×12 mark with brush, 8×", step: 3 }
+  - { path: pebbly-pebble.aseprite, role: source, label: "Final logo and favicon: the pebble alone", step: 4 }
+  - { path: pebbly-pebble.png, role: frame, label: "Final logo, 8×", step: 4 }
+validate:
+  - { step: 1, passed: true, score: 35, errors: 0, warnings: 13 }
+  - { step: 2, passed: true, score: 85, errors: 0, warnings: 3 }
+  - { step: 3, passed: true, score: 90, errors: 0, warnings: 2 }
+  - { step: 4, passed: true, score: 100, errors: 0, warnings: 0 }

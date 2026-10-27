@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/phaserjs/phaser",
+  "requestedRef": "master",
+  "commit": "02d8931b626d9764c133cbb3fbf99966c03c757c",
+  "tree": "6d36c90fe18bd4f21561060dbaabe71fe8a7337b",
+  "fetchedAt": "2026-10-27T03:50:40.084685+00:00",
+  "commitVerificationReportedByGitHub": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  },
+  "selectedPaths": [
+    "skills/**",
+    "LICENSE.md"
+  ],
+  "upstreamFileCount": 37,
+  "skillCount": 28,
+  "upstreamBytes": 588539,
+  "licenseFiles": [
+    "LICENSE.md"
+  ],
+  "download": {
+    "method": "Git tree + raw commit-pinned blobs",
+    "archiveUsed": false
+  },
+  "limits": {
+    "perFileBytes": 8388608,
+    "totalSourceBytes": 67108864,
+    "compressedArchiveBytes": 16777216,
+    "decompressedTarBytes": 67108864,
+    "entryCount": 4096,
+    "requestTimeoutSeconds": 30,
+    "requestDeadlineSeconds": 120,
+    "parallelRequests": 6
+  },
+  "safety": {
+    "scriptsExecuted": false,
+    "packagesInstalled": false,
+    "symlinksAllowed": false,
+    "hardlinksAllowed": false,
+    "specialFilesAllowed": false,
+    "relativeLayoutPreserved": true,
+    "allFileContentGitBlobVerified": true,
+    "upstreamContentModified": false,
+    "executableBitsCleared": true
+  },
+  "files": [
+    {
+      "path": "LICENSE.md",
+      "bytes": 1100,
+      "gitBlobSha1": "33aa21b2adf01a08ca6acb55ddaf8fd2dc4b3368",
+      "sha256": "c3a9ba7e38d4ef33dccf5fdd1046655c63df06714f84776118fe406f43db5cf2",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/actions-and-utilities/SKILL.md",
+      "bytes": 16789,
+      "gitBlobSha1": "d92b239100644eef9d4970c635988a5ef6f89d66",
+      "sha256": "afcda53523029354d59f51b4abebb2a509e2c08f0372638cd209470a2cff3bdc",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/animations/SKILL.md",
+      "bytes": 17889,
+      "gitBlobSha1": "3492b04b751fa1bc15b774e7f90d63136422ae58",
+      "sha256": "ea86dbfe87da895799995e36e7a3382be8a069d60f4b075077b1cdac74a68383",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/audio-and-sound/SKILL.md",
+      "bytes": 19469,
+      "gitBlobSha1": "9e5b6ba34e08b7b9552c839ff53093d63785fa6d",
+      "sha256": "c17c36b104d287846157ba5aceaf64f59fb5b5700e80d74ddd2b73beb3b0700a",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/cameras/SKILL.md",
+      "bytes": 15893,
+      "gitBlobSha1": "d9cd9c567cf56d4ab50f2e7e69078bfeaa8ff81f",
+      "sha256": "3c07e8d97539c0df6906612a046c8e86078fa0dc0e4a00485713189a0c0cc9b4",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/cameras/references/REFERENCE.md",
+      "bytes": 7264,
+      "gitBlobSha1": "9d6a8689c2415378d1c2b734567cadd6ebb6fd37",
+      "sha256": "759b6d3e95514efe37ab3b24d9b7d1cc2cddf05fbf215f1f39bd51eac2210b1f",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/curves-and-paths/SKILL.md",
+      "bytes": 16806,
+      "gitBlobSha1": "fc30828baa690e2f48cce7b94743f3e0c4def832",
+      "sha256": "5334b72730b45bcb5c3adffe68831c1890febd99e5cb41afcd4eba603f1838db",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/data-manager/SKILL.md",
+      "bytes": 16859,
+      "gitBlobSha1": "1727de64c3d83ed0f07fc9a84c0d9a2e230f7aa4",
+      "sha256": "401f5aacb4cf6ae849267851071dd7d0ba2e47a86d50c8de664e19ee5a7e41f5",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/events-system/SKILL.md",
+      "bytes": 22082,
+      "gitBlobSha1": "5c315b84a08aa93ba4068df6d9c696852ba8838f",
+      "sha256": "aa6f05286584e1301f37ff1f4e74bf26166c44d294a05a88b055d42083717957",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/filters-and-postfx/SKILL.md",
+      "bytes": 20077,
+      "gitBlobSha1": "970fd8c800082849ea00ef3dc0ce9e2e5fff62e6",
+      "sha256": "451c4e60b738fb491693b5f4063c622f8e2807a56a39680e4b5ffd140de8c996",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/game-object-components/SKILL.md",
+      "bytes": 23055,
+      "gitBlobSha1": "daa5a649cdf6e3841e653c8d7963f2ad507332bd",
+      "sha256": "ccfa17b9df05e0b8d3da34b9cded23b3b239ca47536fa586388ecdedafff6ecc",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/game-object-components/references/REFERENCE.md",
+      "bytes": 3854,
+      "gitBlobSha1": "be17d6974fb9f307df5510c512be0e57816f352d",
+      "sha256": "23c207ddf2d9571f47ba12afbc941bd7d1902949bcda98a981f8dffb527308b2",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/game-setup-and-config/SKILL.md",
+      "bytes": 19616,
+      "gitBlobSha1": "03cce487e45be7aeba2b173e9c386e3c94590c02",
+      "sha256": "d93abdb3123d74583a6792081c54a90cd8f0e8d3ddeee476d1e96a401b9f12a9",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/geometry-and-math/SKILL.md",
+      "bytes": 23603,
+      "gitBlobSha1": "f3ee24248464ed87c5fc5cecaa5bcc6a9d972e1e",
+      "sha256": "b03b95ae172a541b3ff7447efde10e004e0c12b580324ae50f9f614e7a8cc452",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/graphics-and-shapes/SKILL.md",
+      "bytes": 19801,
+      "gitBlobSha1": "aeea9534610ebd720ec94be354df61f219d56e88",
+      "sha256": "524e103f0331b73b47c98352555bf3519ed7f01f07be5458bd7f1cb5acddb389",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/groups-and-containers/SKILL.md",
+      "bytes": 17456,
+      "gitBlobSha1": "0add88c0c056ef3cf59db12d54eda1e109066f89",
+      "sha256": "abf1e8a02e292e22cb7e445578351a50d4e3542ae0805287ef8819b856e2f419",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/input-keyboard-mouse-touch/SKILL.md",
+      "bytes": 18362,
+      "gitBlobSha1": "95753c489ca48ed53b7e1d7d5f04b9b0e2f44e1a",
+      "sha256": "ef3753ade8ec8278af1918c775e1a02cbd0005080478b8f2e5979539f58050d8",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/input-keyboard-mouse-touch/references/REFERENCE.md",
+      "bytes": 17074,
+      "gitBlobSha1": "0be3f1d1bfb93a4962197569df3db660bdb5fa79",
+      "sha256": "f56106fbffe9ad0c1c9d6c2d49553f6bf62aaffab4d68e6cd3ae9c2815adf0c2",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/loading-assets/SKILL.md",
+      "bytes": 16174,
+      "gitBlobSha1": "ed152b3009d29a7082679e94b57a5b128e75534c",
+      "sha256": "2ba246be24e434d3647dd62cd1b51ac70258a57c1963b97a960a80e1aca8b638",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/loading-assets/references/REFERENCE.md",
+      "bytes": 9751,
+      "gitBlobSha1": "4596e4f506f75b2879df15907454aa0ae268f958",
+      "sha256": "ad41bc500a44515179bd1170f5861007b4fd2c4a38be1ba27bae2045625c5787",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/particles/SKILL.md",
+      "bytes": 20770,
+      "gitBlobSha1": "0df5c3fb30944855170ed0b3badebe0b6052f82a",
+      "sha256": "02d3c380502ece0898933a045868d2a3e5050dc3466d7b3aba94cee0ba5cd2c1",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/particles/references/REFERENCE.md",
+      "bytes": 1023,
+      "gitBlobSha1": "0dcfc10076d6e225a79fab98c30be1d5b715d159",
+      "sha256": "c336894a050e55a5d5738e254e961f4624b7e64f6200e02b66c38a95c460b7e3",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/physics-arcade/SKILL.md",
+      "bytes": 23230,
+      "gitBlobSha1": "dee84cf6ad78a68ed66a7b58702dcb933bded8e8",
+      "sha256": "ebee7a1c98dd6a05e393d33d9aeacf3ef6d247c9fdca0aeab212c18c22c79de7",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/physics-matter/SKILL.md",
+      "bytes": 23771,
+      "gitBlobSha1": "66c821f56f396497e244842ccf43bd566fc74599",
+      "sha256": "99b889df86e68a9067ed54609d3290606bd3e957f75beb0cc334e381fe095257",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/render-textures/SKILL.md",
+      "bytes": 17268,
+      "gitBlobSha1": "df1450d569390dc3c775440e6c8abdae0ad1e4d4",
+      "sha256": "9c44b258b4b69e41ff330bb504536cd45aa10be2402e76df876de9da1463f3bd",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/scale-and-responsive/SKILL.md",
+      "bytes": 18570,
+      "gitBlobSha1": "c52f9e3fd2eec1c1aec68dca7cabbd9bb6e78479",
+      "sha256": "32ddfb9ea66ff2a3640df7adf40d1b0173560bb94737ac79405e09a43cd70e8a",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/scenes/SKILL.md",
+      "bytes": 18712,
+      "gitBlobSha1": "c90c5e8b26993e6cd726ab8c4f36e4129cbf277d",
+      "sha256": "31a07e16634d7b49e33cdb681576e158037d4856d40aaa8f7177d662da47cfa8",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/scenes/references/REFERENCE.md",
+      "bytes": 4236,
+      "gitBlobSha1": "4c75186dbeef2b294624b1572fc562d569602b33",
+      "sha256": "448eb141648f23ce43e999f8d835a1f829d85ec9bac5d96a1e7636dff4ace045",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/sprites-and-images/SKILL.md",
+      "bytes": 14942,
+      "gitBlobSha1": "9c06c463def21c4eca9be57b0b493dda05ae3671",
+      "sha256": "e012da6dd694b5a54f8f708ecee7f085c36a915d4c8d167984e80a08b944c785",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/sprites-and-images/references/REFERENCE.md",
+      "bytes": 8770,
+      "gitBlobSha1": "fa898f790277166e7e8bbd06e35c8e0cbd856ed9",
+      "sha256": "db2b97f06293baa22bc0e42d702339be76684dec5c0edac5ade6d38c35b1daf7",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/text-and-bitmaptext/SKILL.md",
+      "bytes": 20048,
+      "gitBlobSha1": "cbd640562e569349c632c6fc46d4e3457cc90412",
+      "sha256": "12ce613bb1651f82e725fce7fc2d35e1b99b0b90d7a7ae78a80afd0ed8a61846",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/tilemaps/SKILL.md",
+      "bytes": 19529,
+      "gitBlobSha1": "c86b9c89ce15211c4f4035fa7cecac48be3d036b",
+      "sha256": "c1754852ce72c05987c41e1e122eea8f2888cdf46f719259b252d2fda66073eb",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/time-and-timers/SKILL.md",
+      "bytes": 18579,
+      "gitBlobSha1": "1e14edf23d269ef41b54badae93293171844c508",
+      "sha256": "f65c4f5be072e911fde9c6f1977dfd42e01e90bf19c1af7f829d7cd87ead22ff",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/tweens/SKILL.md",
+      "bytes": 18411,
+      "gitBlobSha1": "ea3d092edb3f266f1bc0fa80a6b2c57973aeb670",
+      "sha256": "08bdb1c76848cae80dfc9c7720f79041d46eef2f790399a5d248b254ea87b8b4",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/v3-to-v4-migration/SKILL.md",
+      "bytes": 19702,
+      "gitBlobSha1": "aecfd05c3c5f6c4860ddc84fada6787251e289c6",
+      "sha256": "a7d2e1533ecb06874f54e4b93383e6b2c14f6c1dac13f0a10a0d7fe56b6020c3",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/v4-new-features/SKILL.md",
+      "bytes": 15024,
+      "gitBlobSha1": "e06a1828337d32cfa78cd9c00b4c89c77a023b07",
+      "sha256": "6b4e2ae40e31e5537f36e4734191f7bea50907d0cce2aafde8dfa1a5bd03a6cf",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    },
+    {
+      "path": "skills/v4-new-features/references/REFERENCE.md",
+      "bytes": 2980,
+      "gitBlobSha1": "bd936658a630ecb184b03f3032c73f3785667ff6",
+      "sha256": "2b446dc6f7341acfde8a46188bf0a417943176f66d2c44f9324053b0eb070838",
+      "upstreamMode": "100644",
+      "localMode": "0644"
+    }
+  ]
+}

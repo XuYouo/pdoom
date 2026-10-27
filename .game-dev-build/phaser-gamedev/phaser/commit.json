@@ -1,0 +1,35 @@
+{
+  "sha": "02d8931b626d9764c133cbb3fbf99966c03c757c",
+  "node_id": "C_kwDOAI9WX9oAKDAyZDg5MzFiNjI2ZDk3NjRjMTMzY2JiM2ZiZjk5OTY2YzAzYzc1N2M",
+  "url": "https://api.github.com/repos/phaserjs/phaser/git/commits/02d8931b626d9764c133cbb3fbf99966c03c757c",
+  "html_url": "https://github.com/phaserjs/phaser/commit/02d8931b626d9764c133cbb3fbf99966c03c757c",
+  "author": {
+    "name": "Ben Richards",
+    "email": "benjamindrichards@gmail.com",
+    "date": "2026-08-21T06:04:38Z"
+  },
+  "committer": {
+    "name": "Ben Richards",
+    "email": "benjamindrichards@gmail.com",
+    "date": "2026-08-21T06:04:38Z"
+  },
+  "tree": {
+    "sha": "6d36c90fe18bd4f21561060dbaabe71fe8a7337b",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/6d36c90fe18bd4f21561060dbaabe71fe8a7337b"
+  },
+  "message": "Create CHANGELOG-v4.3.md.",
+  "parents": [
+    {
+      "sha": "12401c6eb03449bcfcd101a5b8b72169818f1d24",
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/commits/12401c6eb03449bcfcd101a5b8b72169818f1d24",
+      "html_url": "https://github.com/phaserjs/phaser/commit/12401c6eb03449bcfcd101a5b8b72169818f1d24"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

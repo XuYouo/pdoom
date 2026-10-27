@@ -1,0 +1,25 @@
+{
+  "name": "@local/dsh-game-dev-bundle",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Isolated game-development preset with Phaser, multi-engine skills, workflows and Aseprite MCP.",
+  "license": "MIT",
+  "engines": { "dsh": "0.2.1-rc.3", "node": ">=22.6.0" },
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./aseprite-server": "./bin/aseprite-server.mjs",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": ["index.js", "bin", "skills", "workflows", "vendor", "test", "cordis.patch.yml", "pnpm-lock.yaml", "locale", "icon.svg", "README.md", "VALIDATION.md", "LICENSE"],
+  "dependencies": {
+    "@pebbly/aseprite-ai-artist": "0.8.2",
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "ws": "8.22.0",
+    "zod": "3.25.76"
+  },
+  "scripts": { "test": "node --test test/*.test.mjs" },
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

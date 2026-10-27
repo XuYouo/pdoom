@@ -1,0 +1,165 @@
+title: Winding road and its ambient loop — critic loop, third version
+description: "A benchmark run on an experimental variant of the skills, not on released plugin code: Plugin 0.7.0 plus unreleased skill and agent changes from commit 738aeb4: A draft with no BLOCKING finding shipped as it was; a fix round was kept only if one critic call, shown the old and new versions blind, chose the new one; a fix touching more than a quarter of a layer counted as a redraw and was restored; objects that grow on screen were drawn at three or four hand-made sizes. Each step ran in its own fresh omp session (claude-opus-5-5, thinking high), launched through Herdr one after another, with the winding-road step text sent verbatim after the `/skill:studio ` command prefix; the operator created the document and loaded PICO-8 before step 1 and handed step 2 a copy of the saved step-1 file. omp's built-in advisor was on, as in the earlier omp runs. No image model, no reference, no messages beyond the step text. Blind: the most balanced of three road runs; the mountains look odd and the wagon slightly misses its path."
+date: 2026-10-07
+author:
+  name: Nik Fedorov
+  github: fedorovvvv
+plugin: 0.7.0
+harness: omp
+models:
+  - claude-opus-5-5
+steps:
+  - text: |-
+      The document is already open: 160×96 pixels, RGB, with the PICO-8 palette loaded (16 colours). Use only those 16 colours — do not add, widen or replace the palette. This brief is complete: do not ask me to confirm it. Decide anything it leaves open yourself and list those decisions in your final report. Coordinates below are 0-based pixels, x to the right, y down.
+
+      Draw ONE frame: a green valley in late afternoon, seen from a low hill, with a dirt road that starts right under the viewer's feet and winds all the way to a castle on a distant mountain. The road and its perspective are the subject of the picture. A later step will animate this scene, so build it on the layers listed below.
+
+      Layout, back to front
+      - Horizon line at y=34. The sun sits low on the right at about (144, 20), so light comes from the right and shadows fall to the left.
+      - Sky, y 0–34: blue (#29adff) at the top fading to peach (#ffccaa) near the horizon, using horizontal bands and ordered dithering, not noise. Two or three flat clouds with lit right edges. The sun is a small disc (#fff1e8 core, #ffec27 rim).
+      - Far mountains along the horizon: low-contrast silhouettes in lavender (#83769c) and blue (#29adff), no black.
+      - A castle on the highest far peak, right of centre around x 108–120: a keep and one tall tower, drawn in lavender and dark blue (#1d2b53), lit on the right.
+      - Midground: rolling green hills (#008751, #00e436). A river (#29adff with #fff1e8 glints, #1d2b53 banks) enters from the left edge around y=44 and winds toward the viewer, leaving through the bottom-left part of the canvas.
+      - On a hill on the left, a farmhouse with a chimney and, beside it, a windmill with exactly 4 blades.
+      - Foreground, bottom of the canvas: tall grass tufts and a few wildflowers (#ff77a8, #ffec27) in both bottom corners, and a wooden signpost leaning beside the near road. The darkest darks (#000000) appear only in the foreground and nearest midground.
+
+      The road
+      - It enters at the bottom edge about 60 px wide (roughly x 50–110) and narrows continuously with distance: no stretch is ever wider than a nearer stretch, and it ends 1 px wide at the castle gate.
+      - Its route, from near to far: a broad S-curve sweeping left; across the river on an arched stone bridge (#c2c3c7, #5f574f); a bend to the right where it disappears behind a hill for a stretch; it reappears smaller on the far slope; then at least 3 switchbacks climbing the mountain to the castle gate.
+      - Surface: packed dirt (#ffccaa lit, #ab5236 shadow) with darker edges, two wheel ruts and pebbles in the near stretch. The detail gets finer and sparser with distance until the far road is a single line.
+      - Along the near stretch, a row of fence posts or milestones on one side that shrink and bunch closer together as they recede.
+
+      Perspective and depth
+      - Everything diminishes toward the horizon: road width, posts, trees, buildings.
+      - Atmospheric perspective: the further away, the lighter, cooler and lower in contrast. The far mountains and castle use only lavender, blue, dark blue, peach and white.
+      - Depth is shown by overlap: the hill must visibly hide part of the road.
+
+      Layers, exactly these names, bottom to top: `sky`, `mountains`, `castle`, `hills`, `river`, `road`, `props` (bridge, farmhouse, windmill tower, signpost, fence posts), `windmill-blades` (only the 4 blades and their hub), `foreground`. Order them however the overlaps need, but keep the names and keep each element on its layer.
+
+      Before you finish: look at the result (use look op="ascii" with a region to inspect details, since the canvas is larger than 64×64), run validate, and fix what it reports. In your final report, describe the road's route with approximate coordinates of the bridge, the hidden stretch and the castle gate, and any decision you made that the brief did not specify.
+    interventions: []
+  - text: |-
+      The open document holds a valley landscape with a road winding to a castle (canvas 160×96, PICO-8 palette, layers `sky`, `mountains`, `castle`, `hills`, `river`, `road`, `props`, `windmill-blades`, `foreground`). Keep the palette — use only its 16 colours — and keep the picture exactly as it is wherever this brief does not ask for motion. This brief is complete: do not ask me to confirm it. Decide anything it leaves open yourself and list those decisions in your final report. Coordinates are 0-based pixels, x to the right, y down.
+
+      Animate an ambient, seamlessly looping scene. Exactly 24 frames, every frame 100 ms, one tag named `loop` covering every frame, direction forward. Playing frame 24 straight into frame 1 must show no jump in any element. The existing frame is frame 1.
+
+      What moves
+      - Windmill: the 4 blades turn clockwise around a fixed hub, exactly 15° per frame, so the blades redraw through 6 distinct angles and repeat 4 times over the loop. Blade length and thickness stay the same at every angle. Only `windmill-blades` changes for this.
+      - River: ripples and glints flow downstream, toward the viewer, along the river's course. The ripple pattern repeats every 8 or 12 frames so it closes on frame 24. Only `river` changes for this; the banks do not move.
+      - Chimney smoke: on a new layer named `smoke`, puffs rise from the farmhouse chimney, drift to the left with the wind, grow and break up into dithered wisps, then vanish. A new puff starts every 8 frames, so three puffs are always at different heights and the cycle closes on frame 24.
+      - Foreground grass: the tufts in `foreground` sway gently to the left and back in a 12-frame cycle (2 cycles per loop); the signpost does not move.
+      - Wagon: on a new layer named `wagon`, a small covered wagon (cream canvas top #fff1e8, #ab5236 body, two dark wheels, no horse) travels the road toward the viewer. On frame 1 it is completely hidden behind the hill where the road disappears. It emerges, follows the road's curves and stays on the road surface, crosses the bridge, and drives out through the bottom edge, fully off canvas by frame 24. It grows steadily as it approaches — about 4 px wide when it first appears, at least 14 px wide at the bottom — and covers more ground per frame the nearer it is, as perspective demands.
+
+      What stays still: `sky` (clouds included), `mountains`, `castle`, `hills`, `road` and `props` are identical on every frame. Link their cels.
+
+      Before you finish: check the whole loop as a filmstrip, check the windmill and the wagon with onion skin, and compare frame 24 against frame 1 for each moving element. Run validate and fix what it reports. In your final report, give each cycle's length in frames and the wagon's width and position on frames 4, 12 and 20.
+    interventions: []
+references:
+  source: none
+tags:
+  - landscape
+  - environment
+  - perspective
+  - animation
+  - loop
+  - 160x96
+  - pico-8
+  - experiment
+  - benchmark
+files:
+  - path: anim.gif
+    role: cover
+    label: The animation, 4×
+    step: 2
+  - path: step1.aseprite
+    role: source
+    label: Step 1
+    step: 1
+  - path: step1.png
+    role: frame
+    label: Step 1, 4×
+    step: 1
+  - path: step2.aseprite
+    role: source
+    label: Step 2
+    step: 2
+  - path: filmstrip.png
+    role: filmstrip
+    label: Every frame, 2×
+    step: 2
+validate:
+  - step: 1
+    passed: true
+    errors: 0
+    warnings: 2
+  - step: 2
+    passed: true
+    errors: 0
+    warnings: 0
+metrics:
+  - step: 1
+    minutes: 40.8
+    toolCalls: 119
+    outputTokens: 215787
+    costUsd: 12.78
+  - step: 2
+    minutes: 26.1
+    toolCalls: 151
+    outputTokens: 123508
+    costUsd: 10.05
+ratings:
+  - judge: human:fedorovvvv
+    scores:
+      read: 2
+      form: 2
+      motion: 2
+      cohesion: 2
+      appeal: 2
+    note: Overall 4/10, given as one number on the rating page of 2026-10-07; each axis set to round(4/10 × 4) = 2.
+    overall: 4
+benchmark:
+  prompt: winding-road
+  revision: 1
+  results:
+    - criterion: land-validate
+      pass: true
+      note: "validate on step1.aseprite: 0 errors, 2 outline warnings on the mountains and river edges (dithered edges, not silhouettes)."
+    - criterion: land-palette
+      pass: true
+      note: "palette op get returns exactly the 16 PICO-8 entries; a pixel scan of every exported layer finds no off-palette or semi-transparent pixel."
+    - criterion: land-read
+      pass: true
+      note: "Road, castle, farmhouse, windmill and bridge read; the river is a broken dashed line in the upper half and only reads clearly in the lower left."
+    - criterion: land-spec
+      pass: true
+      note: "Nine layers with the exact names in the stated order; sky ends at y=34 and hills start at y=35 (within 1); sun rim spans x140-148, y16-24 on the right; river enters at the left edge y44 and leaves at the bottom, x2-27; windmill has 4 blades."
+    - criterion: land-road
+      pass: true
+      note: "61 px wide at the bottom (x51-111); hidden behind a hill between y47 and y41; ends at 1 px at (117,20); the switchbacks are one long diagonal leg then three short zigzags only 3-5 px wide, so the count of 3 is marginal."
+    - criterion: land-depth
+      pass: true
+      note: "Posts shrink and bunch along the near road; mountains use only lavender, blue and peach and castle only #1d2b53, #83769c, #ffccaa, #fff1e8; #000000 appears only in props (rows 72-94) and foreground (rows 81-95)."
+    - criterion: loop-frames
+      pass: true
+      note: "frame op list: 24 frames of 100 ms; tag op list: loop, frames 1-24, forward."
+    - criterion: loop-seamless
+      pass: true
+      note: "Pixels changed between consecutive frames (all layers except wagon) are 156-272 per step and 167 for frame 24 to 1; wagon is absent on frames 1 and 24; river repeats every 12, windmill every 6, foreground every 12, smoke every 8."
+    - criterion: loop-static
+      pass: true
+      note: "sky, mountains, castle, hills, road and props: one distinct image across all 24 frames (hash-identical exported cels)."
+    - criterion: loop-windmill
+      pass: true
+      note: "Blade orientation advances 13.6-16 degrees per frame clockwise around a fixed hub at about (24,27), 6 distinct images, period 6; reach 8.2-9.0 px at every angle."
+    - criterion: loop-river
+      pass: true
+      note: "12 distinct river images, period 12; glints move on average 0.61 px/frame down-screen (toward the viewer); no #1d2b53 bank pixel changes against frame 1."
+    - criterion: loop-smoke
+      pass: true
+      note: "Pale grey puffs leave the chimney near y=28, rise to y=4 and drift left while the pixel count grows from 37 to 50 and breaks into dither; 8 distinct images, period 8. Wisps are faint; judged from rendered frames."
+    - criterion: loop-wagon
+      pass: true
+      note: "Hidden on frame 1; emerges as a 1 px sliver on frame 2 and reaches 4-5 px wide by frame 4 at (42-46,44-48), stays on the road, over the bridge area on frames 14-22, 17 px wide on frame 22, gone on frame 24; step grows from 1.0 to 9.9 px per frame."
+    - criterion: loop-validate
+      pass: true
+      note: "validate on step2.aseprite: clean, 0 errors, 0 warnings; palette is the 16 PICO-8 entries."

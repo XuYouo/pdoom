@@ -1,0 +1,40 @@
+{
+  "sha": "184b72be02884f782a0058f2eeae2ce4277453e4",
+  "node_id": "C_kwDOTDo3l9oAKDE4NGI3MmJlMDI4ODRmNzgyYTAwNThmMmVlYWUyY2U0Mjc3NDUzZTQ",
+  "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/commits/184b72be02884f782a0058f2eeae2ce4277453e4",
+  "html_url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/commit/184b72be02884f782a0058f2eeae2ce4277453e4",
+  "author": {
+    "name": "Abhishek Barali",
+    "email": "abhibidut@gmail.com",
+    "date": "2026-10-24T02:31:39Z"
+  },
+  "committer": {
+    "name": "GitHub",
+    "email": "noreply@github.com",
+    "date": "2026-10-24T02:31:39Z"
+  },
+  "tree": {
+    "sha": "2192031cb6ba0c232362fb5e418fee646fbedca3",
+    "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/trees/2192031cb6ba0c232362fb5e418fee646fbedca3"
+  },
+  "message": "Merge pull request #26 from gamedev-skills/refresh/2026-10\n\nRefresh all skills against current releases and official vendor skills",
+  "parents": [
+    {
+      "sha": "7eb1b53305fab881f4758e2eff2e371cd7869221",
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/commits/7eb1b53305fab881f4758e2eff2e371cd7869221",
+      "html_url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/commit/7eb1b53305fab881f4758e2eff2e371cd7869221"
+    },
+    {
+      "sha": "c7976e4873e14e893f7bc09a91da584e8e6cf946",
+      "url": "https://api.github.com/repos/gamedev-skills/awesome-gamedev-agent-skills/git/commits/c7976e4873e14e893f7bc09a91da584e8e6cf946",
+      "html_url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/commit/c7976e4873e14e893f7bc09a91da584e8e6cf946"
+    }
+  ],
+  "verification": {
+    "verified": true,
+    "reason": "valid",
+    "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJq3BiLCRC1aQ7uu5UhlAAA1rIQACp484On0eue/yHKwu6VeQbS\nPD8oWOLA95ZT5QCmHaS8V6Yjy8fwhmwMHXNyrQweb6AIw3lxJySPxSEYreOP2OGo\nEQz79IKmOVgEYwYBUQF8wu0twg9r55bR8cWR/e1gJ4ZeQ1znQ7IYYF48ARd8yu0i\n59+HHRFUaTNoLj8QuM6kM43+k5GIeY89l0XG4FTpAb1YyujLQmj+K94CFoilvFR/\ngEIHUrWcPadShnChwvIgMjfWeH/G/7mB036T848weKEnwGZs6Qi9EtrEpqME6/OC\njJT6iZNnczdw/UsP2saIwOeJOYL0jc61YM8Mx3fXG01Lm4v/v5V2Iq45f3AfSEkC\nZL9jtiqX4FGsj/XhwVJ4ktdz/zxVjzvciJUAL01W59hndeFzj8yDazwW7VLJTCgQ\nEMjpHmxm2E2u6xm00UYEaTnxbZ0fzvhILfGTqDRGn/dII68CYAry0VacTJI3tmdm\n9NQB87ZXevVR3ezUOjggQEb7WBphImxKHkEcKPgTZIeZllqzq12/sp68bBNRqar9\nvDVykG6KdyFk4VAzGPQOiI9sUJupWHSTgmKzlxA0TpOxOCTu4t64Q5GslD2uJpF+\nzT7pw1C8ZOLL1FZm6ungwFKmCkAWeb/96Ub0RjGmbPRbaXWfPrUjB2I7rVvPqN2Z\nMu6JzWjc8Q47wy0RqpdU\n=drEs\n-----END PGP SIGNATURE-----\n",
+    "payload": "tree 2192031cb6ba0c232362fb5e418fee646fbedca3\nparent 7eb1b53305fab881f4758e2eff2e371cd7869221\nparent c7976e4873e14e893f7bc09a91da584e8e6cf946\nauthor Abhishek Barali <abhibidut@gmail.com> 1792809099 +0545\ncommitter GitHub <noreply@github.com> 1792809099 +0545\n\nMerge pull request #26 from gamedev-skills/refresh/2026-10\n\nRefresh all skills against current releases and official vendor skills",
+    "verified_at": "2026-10-24T02:31:39Z"
+  }
+}

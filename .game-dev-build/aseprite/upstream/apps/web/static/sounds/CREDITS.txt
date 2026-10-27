@@ -1,0 +1,25 @@
+Sound effects by Kenney (https://kenney.nl), CC0 1.0, picked from soundcn
+(https://soundcn.xyz). The site names each file by what it means; the soundcn
+name is the original.
+
+click.mp3         click-8bit
+select.mp3        select-001
+toggle.mp3        toggle-001
+expand.mp3        maximize-007
+collapse.mp3      minimize-007
+open.mp3          open-002
+close.mp3         close-002
+confirm.mp3       confirmation-001
+error.mp3         error-004
+switch-on.mp3     switch-on
+switch-off.mp3    switch-off
+card.mp3          card-slide-5
+pack-take.mp3     card-slide-5
+pack-shake.mp3    cards-pack-take-out-1
+pack-tear.mp3     cards-pack-open-2
+card-rise.mp3     card-slide-3
+card-deal-1.mp3   card-slide-1
+card-deal-2.mp3   card-slide-4
+card-deal-3.mp3   card-slide-6
+card-deal-4.mp3   card-slide-7
+card-fan.mp3      card-fan-2

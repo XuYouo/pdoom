@@ -1,0 +1,112 @@
+{
+  "bin": {
+    "aseprite-ai-artist": "dist/cli.js"
+  },
+  "omp": {
+    "extensions": [
+      "./omp/aseprite-ai-artist.mjs"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/with-pebbly/aseprite-ai-artist/issues"
+  },
+  "dist": {
+    "shasum": "c99e76880de10dc7720b10db9b72e760ada03a73",
+    "tarball": "https://registry.npmjs.org/@pebbly/aseprite-ai-artist/-/aseprite-ai-artist-0.8.2.tgz",
+    "fileCount": 186,
+    "integrity": "sha512-blkv8UK24ti+2jCwi+fZPvi91l29FTh+iQSnHmOAfkqAqODd2ifbFN0y+qdBVm0fSe28eP1I7Ert1TW34UpCZg==",
+    "signatures": [
+      {
+        "sig": "MEUCIQCt/zl7uNwhoXeaVKx8Lw6907bHdp/Jk5gk4tXXHCCmPQIgRDc9eXlYhBWlmwBbpWdfKKpjQGlgE1LaykTv8V5NykQ=",
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      },
+      {
+        "sig": "MEYCIQDZLAFb86cMSXNfQ0eI50UFZnT6J5iYpdZ50kUkaxeOTQIhAJFUJT8UX2GN3BAh/yJXk4ImgRMgSjj4E2AYR0rb7xzH",
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      }
+    ],
+    "attestations": {
+      "url": "https://registry.npmjs.org/-/npm/v1/attestations/@pebbly%2faseprite-ai-artist@0.8.2",
+      "provenance": {
+        "predicateType": "https://slsa.dev/provenance/v1"
+      }
+    },
+    "unpackedSize": 2835322
+  },
+  "main": "dist/index.js",
+  "name": "@pebbly/aseprite-ai-artist",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "gitHead": "5894b12cead839789077b279369409f868451ffc",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc -p tsconfig.json --watch",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --experimental-strip-types tests/color.test.ts tests/palettes.test.ts tests/render.test.ts tests/grid.test.ts tests/text.test.ts tests/bridge.test.ts tests/server.test.ts tests/rules.test.ts tests/cli.test.ts tests/install.test.ts tests/launcher.test.ts tests/omp.test.ts tests/opencode.test.ts tests/headless.test.ts",
+    "build": "tsc -p tsconfig.json",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "web:dev": "pnpm --filter @pebbly/web run dev",
+    "test:e2e": "node tests/e2e.mjs",
+    "test:pure": "lua tests/pure.test.lua",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "gallery:check": "pnpm --filter @pebbly/gallery run check",
+    "prepublishOnly": "pnpm run clean && pnpm run build",
+    "test:extension": "aseprite -b --script-param root=. --script tests/extension.test.lua"
+  },
+  "_npmUser": {
+    "name": "fedorovvvv",
+    "email": "nikitafedorov7@yandex.ru"
+  },
+  "homepage": "https://github.com/with-pebbly/aseprite-ai-artist#readme",
+  "keywords": [
+    "aseprite",
+    "pixel-art",
+    "mcp",
+    "model-context-protocol",
+    "sprites",
+    "animation",
+    "claude-code",
+    "omp",
+    "oh-my-pi",
+    "codex",
+    "gemini-cli",
+    "cursor",
+    "opencode"
+  ],
+  "repository": {
+    "url": "git+https://github.com/with-pebbly/aseprite-ai-artist.git",
+    "type": "git"
+  },
+  "_npmVersion": "10.9.9",
+  "description": "Agent-native control layer for Aseprite. MCP server (2025-11-25 spec, designed forward to 2026-07-28) + cross-agent skills for Claude Code, omp, Codex, Gemini CLI and Cursor.",
+  "directories": {},
+  "maintainers": [
+    {
+      "name": "fedorovvvv",
+      "email": "nikitafedorov7@yandex.ru"
+    }
+  ],
+  "_nodeVersion": "22.23.3",
+  "dependencies": {
+    "ws": "^8.21.3",
+    "zod": "^3.25.76",
+    "@modelcontextprotocol/sdk": "^1.30.0"
+  },
+  "_hasShrinkwrap": false,
+  "packageManager": "pnpm@11.25.0",
+  "devDependencies": {
+    "turbo": "^2.11.5",
+    "@types/ws": "^8.18.1",
+    "typescript": "^5.9.2",
+    "@types/node": "^24.3.0"
+  },
+  "_npmOperationalInternal": {
+    "tmp": "tmp/aseprite-ai-artist_0.8.2_1791818897736_0.6230364079377331",
+    "host": "s3://npm-registry-packages-npm-production"
+  },
+  "_id": "@pebbly/aseprite-ai-artist@0.8.2",
+  "version": "0.8.2"
+}

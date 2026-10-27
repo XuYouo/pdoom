@@ -1,0 +1,168 @@
+title: Winding road through the valley (grid)
+description: 'The winding-road benchmark, r1. A 160×96 PICO-8 valley with a road sweeping from the bottom edge over a bridge, behind a hill and up four switchbacks to a castle gate, then a 24-frame seamless loop: a windmill turning, a river flowing toward the viewer, chimney smoke, swaying grass and a covered wagon driving the whole road toward the camera. Each step ran in its own fresh omp session (claude-opus-5-5), launched through Herdr one after another, with the step text sent verbatim after the `/skill:studio ` command prefix. The operator created the document and loaded the PICO-8 palette before step 1, and handed step 2 a copy of the step-1 file. No image model, no reference, no messages beyond the step text. The sessions ran from the repository root, where gallery/prompts is readable; their logs show no read of gallery/ at all. Step 1 needed two infrastructure restarts before the run recorded here: the first session found the aseprite MCP server unable to reach a stale 0.1.1 bridge left from an older install and stopped without drawing; the second asked to kill that bridge, the operator cancelled it, killed the stale bridge, and started this clean session. Neither aborted session touched the document. Step 2 validate is recorded from the palette, strays, layers and animation checks; the full run times out on this canvas through the MCP client. The MCP server and skills were the 0.5.0 code built from the repository before the version bump, with `draw` kind `grid`, which the sessions used; the Aseprite extension in the window still reported 0.4.0 and lacked the later Lua fixes (a frame reorder attempted in the tree run failed on it).'
+date: 2026-10-02
+author:
+  name: Nik Fedorov
+  github: fedorovvvv
+plugin: 0.5.0
+harness: omp
+models:
+  - claude-opus-5-5
+references:
+  source: none
+tags:
+  - landscape
+  - environment
+  - perspective
+  - animation
+  - loop
+  - benchmark
+  - 160x96
+  - pico-8
+steps:
+  - text: 'The document is already open: 160×96 pixels, RGB, with the PICO-8 palette loaded (16 colours). Use only those 16 colours — do not add, widen or replace the palette. This brief is complete: do not ask me to confirm it. Decide anything it leaves open yourself and list those decisions in your final report. Coordinates below are 0-based pixels, x to the right, y down.
+
+
+      Draw ONE frame: a green valley in late afternoon, seen from a low hill, with a dirt road that starts right under the viewer''s feet and winds all the way to a castle on a distant mountain. The road and its perspective are the subject of the picture. A later step will animate this scene, so build it on the layers listed below.
+
+
+      Layout, back to front
+
+      - Horizon line at y=34. The sun sits low on the right at about (144, 20), so light comes from the right and shadows fall to the left.
+
+      - Sky, y 0–34: blue (#29adff) at the top fading to peach (#ffccaa) near the horizon, using horizontal bands and ordered dithering, not noise. Two or three flat clouds with lit right edges. The sun is a small disc (#fff1e8 core, #ffec27 rim).
+
+      - Far mountains along the horizon: low-contrast silhouettes in lavender (#83769c) and blue (#29adff), no black.
+
+      - A castle on the highest far peak, right of centre around x 108–120: a keep and one tall tower, drawn in lavender and dark blue (#1d2b53), lit on the right.
+
+      - Midground: rolling green hills (#008751, #00e436). A river (#29adff with #fff1e8 glints, #1d2b53 banks) enters from the left edge around y=44 and winds toward the viewer, leaving through the bottom-left part of the canvas.
+
+      - On a hill on the left, a farmhouse with a chimney and, beside it, a windmill with exactly 4 blades.
+
+      - Foreground, bottom of the canvas: tall grass tufts and a few wildflowers (#ff77a8, #ffec27) in both bottom corners, and a wooden signpost leaning beside the near road. The darkest darks (#000000) appear only in the foreground and nearest midground.
+
+
+      The road
+
+      - It enters at the bottom edge about 60 px wide (roughly x 50–110) and narrows continuously with distance: no stretch is ever wider than a nearer stretch, and it ends 1 px wide at the castle gate.
+
+      - Its route, from near to far: a broad S-curve sweeping left; across the river on an arched stone bridge (#c2c3c7, #5f574f); a bend to the right where it disappears behind a hill for a stretch; it reappears smaller on the far slope; then at least 3 switchbacks climbing the mountain to the castle gate.
+
+      - Surface: packed dirt (#ffccaa lit, #ab5236 shadow) with darker edges, two wheel ruts and pebbles in the near stretch. The detail gets finer and sparser with distance until the far road is a single line.
+
+      - Along the near stretch, a row of fence posts or milestones on one side that shrink and bunch closer together as they recede.
+
+
+      Perspective and depth
+
+      - Everything diminishes toward the horizon: road width, posts, trees, buildings.
+
+      - Atmospheric perspective: the further away, the lighter, cooler and lower in contrast. The far mountains and castle use only lavender, blue, dark blue, peach and white.
+
+      - Depth is shown by overlap: the hill must visibly hide part of the road.
+
+
+      Layers, exactly these names, bottom to top: `sky`, `mountains`, `castle`, `hills`, `river`, `road`, `props` (bridge, farmhouse, windmill tower, signpost, fence posts), `windmill-blades` (only the 4 blades and their hub), `foreground`. Order them however the overlaps need, but keep the names and keep each element on its layer.
+
+
+      Before you finish: look at the result (use look op="ascii" with a region to inspect details, since the canvas is larger than 64×64), run validate, and fix what it reports. In your final report, describe the road''s route with approximate coordinates of the bridge, the hidden stretch and the castle gate, and any decision you made that the brief did not specify.'
+    interventions: []
+  - text: 'The open document holds a valley landscape with a road winding to a castle (canvas 160×96, PICO-8 palette, layers `sky`, `mountains`, `castle`, `hills`, `river`, `road`, `props`, `windmill-blades`, `foreground`). Keep the palette — use only its 16 colours — and keep the picture exactly as it is wherever this brief does not ask for motion. This brief is complete: do not ask me to confirm it. Decide anything it leaves open yourself and list those decisions in your final report. Coordinates are 0-based pixels, x to the right, y down.
+
+
+      Animate an ambient, seamlessly looping scene. Exactly 24 frames, every frame 100 ms, one tag named `loop` covering every frame, direction forward. Playing frame 24 straight into frame 1 must show no jump in any element. The existing frame is frame 1.
+
+
+      What moves
+
+      - Windmill: the 4 blades turn clockwise around a fixed hub, exactly 15° per frame, so the blades redraw through 6 distinct angles and repeat 4 times over the loop. Blade length and thickness stay the same at every angle. Only `windmill-blades` changes for this.
+
+      - River: ripples and glints flow downstream, toward the viewer, along the river''s course. The ripple pattern repeats every 8 or 12 frames so it closes on frame 24. Only `river` changes for this; the banks do not move.
+
+      - Chimney smoke: on a new layer named `smoke`, puffs rise from the farmhouse chimney, drift to the left with the wind, grow and break up into dithered wisps, then vanish. A new puff starts every 8 frames, so three puffs are always at different heights and the cycle closes on frame 24.
+
+      - Foreground grass: the tufts in `foreground` sway gently to the left and back in a 12-frame cycle (2 cycles per loop); the signpost does not move.
+
+      - Wagon: on a new layer named `wagon`, a small covered wagon (cream canvas top #fff1e8, #ab5236 body, two dark wheels, no horse) travels the road toward the viewer. On frame 1 it is completely hidden behind the hill where the road disappears. It emerges, follows the road''s curves and stays on the road surface, crosses the bridge, and drives out through the bottom edge, fully off canvas by frame 24. It grows steadily as it approaches — about 4 px wide when it first appears, at least 14 px wide at the bottom — and covers more ground per frame the nearer it is, as perspective demands.
+
+
+      What stays still: `sky` (clouds included), `mountains`, `castle`, `hills`, `road` and `props` are identical on every frame. Link their cels.
+
+
+      Before you finish: check the whole loop as a filmstrip, check the windmill and the wagon with onion skin, and compare frame 24 against frame 1 for each moving element. Run validate and fix what it reports. In your final report, give each cycle''s length in frames and the wagon''s width and position on frames 4, 12 and 20.'
+    interventions: []
+files:
+  - path: loop.gif
+    role: cover
+    label: The loop, 3×
+    step: 2
+  - path: valley.aseprite
+    role: source
+    label: 'Step 1: the valley'
+    step: 1
+  - path: valley.png
+    role: frame
+    label: The valley, 4×
+    step: 1
+  - path: loop.aseprite
+    role: source
+    label: 'Step 2: tag loop, 24 frames'
+    step: 2
+  - path: loop-filmstrip.png
+    role: filmstrip
+    label: All 24 frames
+    step: 2
+validate:
+  - step: 1
+    passed: true
+    score: 95
+    errors: 0
+    warnings: 1
+  - step: 2
+    passed: true
+    score: 100
+    errors: 0
+    warnings: 0
+benchmark:
+  prompt: winding-road
+  revision: 1
+  results:
+    - criterion: land-validate
+      pass: true
+    - criterion: land-palette
+      pass: true
+    - criterion: land-read
+      pass: true
+    - criterion: land-spec
+      pass: true
+    - criterion: land-road
+      pass: true
+    - criterion: land-depth
+      pass: false
+    - criterion: loop-frames
+      pass: true
+    - criterion: loop-seamless
+      pass: true
+    - criterion: loop-static
+      pass: true
+    - criterion: loop-windmill
+      pass: true
+    - criterion: loop-river
+      pass: true
+    - criterion: loop-smoke
+      pass: true
+    - criterion: loop-wagon
+      pass: true
+    - criterion: loop-validate
+      pass: true
+ratings:
+  - judge: human:fedorovvvv
+    scores:
+      read: 1
+      form: 1
+      motion: 1
+      cohesion: 1
+      appeal: 1
+    note: Overall 3/10, given as one number on the rating page of 2026-10-07; each axis set to round(3/10 × 4) = 1.
+    overall: 3

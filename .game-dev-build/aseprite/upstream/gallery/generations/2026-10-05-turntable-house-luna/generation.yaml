@@ -1,0 +1,176 @@
+title: Turntable cottage
+description: The turntable-house benchmark, r2. A cottage on a round plinth in 128×128 PICO-8, then a 16-frame 360° turntable at 125 ms. Each step ran in its own fresh omp session (openai-codex/gpt-6-luna, thinking high), launched through Herdr, with the step text sent verbatim after the `/skill:studio ` command prefix. The operator created the document and loaded the PICO-8 palette before step 1, restarted Aseprite before the run, and handed step 2 a copy of the step-1 file. Both sessions ended with unsaved edits, which the operator saved unchanged. Step 2 took about 1 h 42 min of wall time. No image model, no reference, no messages beyond the step text. Criteria marked "not verified" are counted as failed.
+date: 2026-10-05
+author:
+  name: Nik Fedorov
+  github: fedorovvvv
+plugin: 0.5.0
+harness: omp
+models:
+  - gpt-6-luna
+steps:
+  - text: |-
+      The document is already open: 128×128 pixels, RGB, with the PICO-8 palette loaded (16 colours). Use only those 16 colours — do not add, widen or replace the palette. This brief is complete: do not ask me to confirm it. Decide anything it leaves open yourself and list those decisions in your final report. Coordinates below are 0-based pixels, x to the right, y down.
+
+      Draw ONE frame: a detailed timber-framed cottage standing on a round grass plinth, seen from above at a three-quarter angle, like a product shot on a turntable. A later step will spin it a full 360° around its vertical axis, so it must be a solid, consistent 3D object, not a flat picture — every side must exist.
+
+      The camera
+      - Fixed, looking down at about 30°. Horizontal circles therefore appear as ellipses twice as wide as they are tall; vertical edges stay vertical on screen.
+      - The rotation axis is vertical and passes through the centre of the cottage's footprint, which sits on screen at (64, 90). Call this the pivot.
+
+      The plinth
+      - A round grass plinth centred on the pivot: its top is an ellipse about 112×56 px (#008751 with #00e436 on the lit left rim and a few grass tufts that are rotationally symmetric enough not to matter — or none), and its side is a 4 px dark band (#1d2b53) below the front half of the ellipse. It is perfectly round, so it looks the same from every angle.
+
+      The cottage (sizes in pixels as they would measure face-on)
+      - Main body: a box with a footprint of 40×28 and walls 20 px tall, on a 3 px stone foundation band (#5f574f with #c2c3c7 stones). Cream plaster walls (#ffccaa lit, #ab5236 for the darkest side) crossed by dark timber framing (#ab5236 / #5f574f): corner posts, a beam at mid-height, and diagonal braces.
+      - Roof: gabled, ridge along the 40 px length, rising 14 px above the walls and overhanging every wall by 2 px. Tile rows of red (#ff004d lit, #7e2553 shaded, #000000 only for the darkest edge) with a darker ridge cap.
+      - The four sides are all different, so the turn can be read:
+        - front (a long side): a brown plank door (#ab5236 with a #5f574f frame) in the middle under a small porch — a 14 px wide, 6 px deep lean-to roof on two posts, with one stone step; a shuttered window on each side of the door, the left one with a pink flower box (#ff77a8, #008751);
+        - back (the other long side): three square blue windows (#29adff with a #fff1e8 glint) and a round wooden rain barrel at the right corner;
+        - left gable end: a round attic window under the roof peak and one ground-floor window;
+        - right gable end: no windows, a stacked firewood pile (#ab5236, #ffccaa log ends) against the wall.
+      - A grey brick chimney (#5f574f, #c2c3c7 lit) with a dark cap stands on the back slope of the roof near the right gable, rising 8 px above the ridge.
+      - The porch, barrel, firewood and chimney stick out of the box, so they must turn with it and hide behind it like real objects.
+      - Orientation for this frame: turn the cottage so that the front wall faces the viewer on the left and the right gable faces the viewer on the right, at roughly 45° each — the classic three-quarter view. Call this angle 0°.
+
+      Light and shadow
+      - One light, high up, behind the cottage and to its left. It never moves. Of the faces you can see, the one turned most toward it is the brightest and the one turned most away is the darkest; faces in between are in between. Use at least 3 tones on the walls and 3 on the roof.
+      - The cottage casts a solid shadow (#1d2b53) on the plinth top, falling to the right of the cottage and toward the viewer. The shadow starts at the base of the walls and its outline follows the cottage's footprint and roof outline projected onto the ground. Keep it entirely on the plinth.
+
+      Style
+      - Selective dark outline: #000000 or #1d2b53 on the outer silhouette, coloured lines inside. No anti-aliasing against transparency, no stray pixels. Transparent background outside the plinth.
+      - Parallel edges of the box stay parallel on screen. Verticals are exactly vertical.
+
+      Layers, exactly these names, bottom to top: `ground` (the plinth), `shadow` (only the cast shadow), `house` (the cottage, chimney included). No other layers.
+
+      Before you finish: look at the result, run validate, and fix what it reports. In your final report, give the screen coordinates of the four bottom corners of the main body, the colours used for each face, and any decision you made that the brief did not specify.
+    interventions: []
+  - text: |-
+      The open document holds a cottage on a round grass plinth (canvas 128×128, PICO-8 palette, layers `ground`, `shadow`, `house`) in a three-quarter view at angle 0°, with a fixed light from behind-left. Keep the palette — use only its 16 colours — and keep the cottage on model at every angle: same size, proportions, colours and details. This brief is complete: do not ask me to confirm it. Decide anything it leaves open yourself and list those decisions in your final report. Coordinates are 0-based pixels, x to the right, y down.
+
+      Animate a turntable: the cottage turns one full revolution around the vertical axis through the pivot (64, 90), and the animation loops forever with no hitch. Exactly 16 frames, every frame 125 ms (one full turn every 2 seconds), one tag named `spin` covering every frame, direction forward. The existing frame is frame 1.
+
+      The rotation
+      - Frame k shows the cottage turned (k − 1) × 22.5° from frame 1 — an even step every frame. Frame 16 is at 337.5°, so playing frame 16 into frame 1 is exactly one more step.
+      - It turns counter-clockwise as seen from above: features on the near side slide to the right across the screen.
+      - Every frame is a real view of the same box from a new angle. Each face grows, narrows and disappears as its angle to the camera changes; a face seen edge-on is one line wide or gone. Wall height, ridge height, chimney height and the porch's size stay the same on every frame. Frames 5, 9 and 13 are the other three three-quarter views; frames 3, 7, 11 and 15 each show one side face-on, with the ridge running across the screen or straight toward the viewer.
+      - Never produce a frame by flipping, mirroring or stretching another frame: the cottage's four sides are different, so a mirrored frame shows the wrong details.
+      - The footprint's centre stays on the pivot on every frame — the cottage does not wander.
+      - Occlusion is correct on every frame: near faces cover far ones, the door, porch, windows, barrel and firewood are only visible while their side faces the viewer (or stick out past the silhouette), and when the chimney is on the far side of the ridge, its base is hidden behind the roof.
+
+      The light stays put
+      - The light does not turn with the cottage. On every frame, re-shade each wall and roof plane by its current angle to the light: the face turned toward behind-left is the brightest, and a face that turns away from the light gets darker frame by frame.
+      - The shadow is recomputed on every frame, not rotated as a picture: it always falls to the right of the cottage and toward the viewer, it stays attached to the base of the walls, and its outline changes with the footprint — longest when a long wall is broadside to the light, shortest when the cottage points into it. Only `shadow` carries it, and it stays on the plinth.
+
+      What stays still: `ground` is identical on every frame. Link its cels.
+
+      Before you finish: check the whole turn as a filmstrip, check the house and the shadow with onion skin, compare frame 16 against frame 1, and confirm that frame 9 is not a mirror of frame 1. Run validate and fix what it reports. In your final report, list for each frame which faces are visible, and give the brightest and darkest wall colour on frames 1, 5, 9 and 13.
+    interventions: []
+references:
+  source: none
+tags:
+  - object
+  - 3d
+  - rotation
+  - animation
+  - loop
+  - benchmark
+  - 128x128
+  - pico-8
+files:
+  - path: anim.gif
+    role: cover
+    label: The turntable, 4×
+    step: 2
+  - path: step1.aseprite
+    role: source
+    label: Step 1
+    step: 1
+  - path: step1.png
+    role: frame
+    label: Step 1, 4×
+    step: 1
+  - path: step2.aseprite
+    role: source
+    label: "Step 2: 16 frames"
+    step: 2
+  - path: filmstrip.png
+    role: filmstrip
+    label: All 16 frames, 2×
+    step: 2
+metrics:
+  - step: 1
+    minutes: 16.1
+    toolCalls: 70
+    outputTokens: 27246
+    costUsd: 0.09
+  - step: 2
+    minutes: 102.5
+    toolCalls: 209
+    outputTokens: 98145
+    costUsd: 0.34
+ratings:
+  - judge: human:fedorovvvv
+    scores:
+      read: 0
+      form: 0
+      motion: 0
+      cohesion: 0
+      appeal: 0
+    note: Overall 1/10, given as one number on the rating page of 2026-10-07; each axis set to round(1/10 × 4) = 0.
+    overall: 1
+benchmark:
+  prompt: turntable-house
+  revision: 2
+  results:
+    - criterion: house-validate
+      pass: false
+      note: "Not verified: validate was not run on the saved file."
+    - criterion: house-palette
+      pass: true
+      note: 16 PICO-8 entries.
+    - criterion: house-read
+      pass: false
+      note: No porch, rain barrel or firewood are distinguishable; walls read as dark planks.
+    - criterion: house-spec
+      pass: false
+      note: Walls are dark grey/brown instead of cream with timber framing; the chimney sits on the ridge, not on the back slope near the right gable.
+    - criterion: house-geometry
+      pass: true
+      note: Verticals vertical; box edges parallel.
+    - criterion: house-light
+      pass: false
+      note: The dark front wall does not follow a behind-left light.
+    - criterion: spin-tagged
+      pass: true
+      note: 16 frames × 125 ms, forward tag spin 1–16.
+    - criterion: spin-ground
+      pass: true
+      note: Plinth unchanged by eye.
+    - criterion: spin-pivot
+      pass: true
+      note: Centred on the plinth by eye.
+    - criterion: spin-even
+      pass: true
+      note: Face-on at 3, 7, 11, 15; three-quarter at 1, 5, 9, 13.
+    - criterion: spin-volume
+      pass: false
+      note: End-on frames 7 and 15 are narrower and taller than the rest.
+    - criterion: spin-solid
+      pass: false
+      note: Not verified.
+    - criterion: spin-occlusion
+      pass: false
+      note: The chimney stays fully visible from every side.
+    - criterion: spin-light
+      pass: false
+      note: Not verified.
+    - criterion: spin-shadow
+      pass: true
+      note: Shadow stays right and toward the viewer and changes with the footprint.
+    - criterion: spin-seamless
+      pass: false
+      note: Frame 1 differs from the step-1 export in about 2200 pixels.
+    - criterion: spin-validate
+      pass: false
+      note: "Not verified: validate was not run on the saved file."

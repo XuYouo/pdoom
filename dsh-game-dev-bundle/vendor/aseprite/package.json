@@ -1,0 +1,85 @@
+{
+  "name": "@pebbly/aseprite-ai-artist",
+  "version": "0.8.2",
+  "description": "Agent-native control layer for Aseprite. MCP server (2025-11-25 spec, designed forward to 2026-07-28) + cross-agent skills for Claude Code, omp, Codex, Gemini CLI and Cursor.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "packageManager": "pnpm@11.25.0",
+  "bin": {
+    "aseprite-ai-artist": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "extension",
+    "headless",
+    "skills",
+    "rules",
+    "agents",
+    "hooks",
+    "omp",
+    "opencode",
+    "knowledge",
+    "templates",
+    "examples",
+    "bin",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/with-pebbly/aseprite-ai-artist.git"
+  },
+  "homepage": "https://github.com/with-pebbly/aseprite-ai-artist#readme",
+  "bugs": "https://github.com/with-pebbly/aseprite-ai-artist/issues",
+  "keywords": [
+    "aseprite",
+    "pixel-art",
+    "mcp",
+    "model-context-protocol",
+    "sprites",
+    "animation",
+    "claude-code",
+    "omp",
+    "oh-my-pi",
+    "codex",
+    "gemini-cli",
+    "cursor",
+    "opencode"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --experimental-strip-types tests/color.test.ts tests/palettes.test.ts tests/render.test.ts tests/grid.test.ts tests/text.test.ts tests/bridge.test.ts tests/server.test.ts tests/rules.test.ts tests/cli.test.ts tests/install.test.ts tests/launcher.test.ts tests/omp.test.ts tests/opencode.test.ts tests/headless.test.ts",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "pnpm run clean && pnpm run build",
+    "test:extension": "aseprite -b --script-param root=. --script tests/extension.test.lua",
+    "test:e2e": "node tests/e2e.mjs",
+    "test:pure": "lua tests/pure.test.lua",
+    "gallery:check": "pnpm --filter @pebbly/gallery run check",
+    "web:dev": "pnpm --filter @pebbly/web run dev"
+  },
+  "omp": {
+    "extensions": [
+      "./omp/aseprite-ai-artist.mjs"
+    ]
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.0",
+    "ws": "^8.21.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/ws": "^8.18.1",
+    "turbo": "^2.11.5",
+    "typescript": "^5.9.2"
+  }
+}

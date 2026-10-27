@@ -1,0 +1,139 @@
+title: Rainy bookshop, the 3D cut
+description: >-
+  The README hero remade in depth: the same shop, night and story as the
+  2026-09-28 hero, redrawn in two-point perspective as a 16-second multiplane
+  shot at 24 fps (384 frames, 24 layers). A slow camera sway moves every depth
+  plane at its own rate; rain falls at three depths and every drop splashes on
+  whatever it hits; the maple sways and sheds leaves; puddle reflections move
+  against the facade; lightning throws long shadows; the utility pole passes
+  through the maple's crown. Inside, a girl in a big
+  knit sweater reads and sips cocoa while a raccoon pulls a can from the
+  vending machine. An omp orchestrator wrote the briefs and launched a second
+  omp agent in a herdr pane, which drew everything in the live Aseprite with
+  the studio workflow and pixel-critic reviews. The pixels were computed by
+  the agent's own Python model of the scene and pushed through the plugin's
+  `draw` tool; the GIF was rendered with `aseprite -b` from the saved document,
+  because the plugin's GIF export dropped layer opacity. The prompts were sent
+  in Russian; `text` is the English rendering and `original` the message as sent.
+date: 2026-10-07
+author: { name: Nik Fedorov, github: fedorovvvv }
+plugin: 0.8.0
+harness: omp
+models: [claude-opus-5-5]
+tags: [scene, animation, environment, rain, night, japan, parallax, 3d, 500x400]
+references:
+  source: supplied
+  kinds: [screenshot]
+steps:
+  - text: |-
+      Let's update the animation in the hero [Image #1, 1568x1209]
+      I want it to be more 3D, but keep the setting and the story.
+      Come up with a prompt and implement it via hercr + omp + studio + opus 5.5.
+      Duration about 16 seconds. 60 frames.
+
+      It should be really WOW.
+    original: |-
+      Давай в hero обновим анимацию [Image #1, 1568x1209]
+      Хочу чтобы она была более 3д, но сеттинг и история сохранялась
+      Придумай промпт и через hercr + omp + studio + opus 5.5 реализуй
+      Длительность около 16 секунд. 60 кадров
+
+      Должно быть прям ВАУ
+    interventions:
+      - "The image was a screenshot of the previous hero (reference-previous-hero.png)."
+      - "Q: Aseprite is not attached — open it live, work headless, or wait? A: I opened Aseprite."
+      - >-
+        The orchestrator wrote the brief (two-point perspective, depth layers
+        with multiplane parallax, light shafts, rain at three depths, the beat
+        timeline) and sent it to the drawing agent. The first build scored 5/10
+        from pixel-critic; the orchestrator then sent two more briefs of its own
+        — move the camera closer and enlarge the characters, then rebuild the
+        raccoon — before showing the result to the user.
+  - text: |-
+      The fps is awful. It feels like 10 frames per second.
+      It needs to be 24 frames per second.
+    original: |-
+      Чет фпс пиздец. Будто 10 кадров в секунду
+      Надо кадра 24 в секунду
+    interventions:
+      - "The 60 frames of step 1 were rebuilt as 384 frames at 24 fps over the same 16 seconds."
+  - text: |-
+      [Image #1, 556x548] this piece of the roof is really crooked (there's no wall, etc.)
+      [Image #2, 772x992] the foliage isn't great and doesn't move + no leaves are flying (there should be more
+      [Image #3, 290x292] the character needs to be better
+
+      Otherwise great
+    original: |-
+      [Image #1, 556x548] тут очень кривой кусок крыши (нет стены и тд)
+      [Image #2, 772x992] ливства какая-то не очень и не шевелится + не летают листья (надо больше
+      [Image #3, 290x292] персонажа надо лучше сделать
+
+      В остальном супер
+    interventions:
+      - "The images were crops of the current frame: the left roof corner, the maple, and the reader."
+  - text: |-
+      And I somehow don't like the light from the street lamp.
+    original: |-
+      И свет от фонаря мне не нравится как-то
+    interventions:
+      - "Sent while step 3 was being drawn; folded into the same pass."
+  - text: |-
+      Make every drawn raindrop break against the ground / houses / objects etc., instead of just falling and vanishing.
+    original: |-
+      Надо сделать так, чтобы каждая нарисованная капля разбивалась об землю / дома / предметы  и тд, а не просто падала и исчезала.
+    interventions:
+      - "Sent while step 3 was being drawn; folded into the same pass."
+  - text: |-
+      [Image #1, 920x542] the wall + roof are still made strangely
+
+      And let's change the character to something cuter. And the character should be a girl.
+      And it should be really cute.
+    original: |-
+      [Image #1, 920x542] все равно странна стане + крыша сделаны
+
+      И давай персонажа на что-то более милое поменяем. И персонаж должен быть девушкой
+      И прям мило должно быть
+    interventions:
+      - "The image was a crop of the left wall and roof corner."
+  - text: |-
+      [Image #1, 264x304] the reflection by the pole looks strange
+    original: |-
+      [Image #1, 264x304] отражение у столба странно выглядит
+    interventions:
+      - "Sent while step 6 was being drawn; folded into the same pass. The image was a crop of the utility pole's foot and its reflection."
+  - text: |-
+      Why is the character so huge??? She's the size of the house and the vending machine.
+    original: |-
+      А че персонаж такой огромный??? Она размером с дом и автомат
+    interventions:
+      - "The girl was redrawn at the scale the scene's projection gives her depth: about 28 px above the desk against the vending machine's 92 px."
+  - text: |-
+      Fix the roof!!! [Image #1, 480x700]
+      Once it's fixed, we'll need to update the generation we uploaded and the hero.
+
+      Right now it looks as if it's transparent.
+
+      And in general the layers sometimes go wrong.
+      For example, the tree's shadow is over the pole, but it should be under it (by z-index).
+    original: |-
+      Крышу поправь!!! [Image #1, 480x700]
+      Когда поправим - надо будет обновить генерацию которую загрузили и hero
+
+      Она сейчас прозрачная будто
+
+      И в целом в слоях иногда беды
+      К примеру тень от дерева поверх столба, а должна быть под (по z-index)
+    interventions:
+      - "The image was a crop of the roof's left gable end, the street lamp and the side wall."
+  - text: |-
+      The pole should also pass through the tree's foliage (to give a sense of perspective and depth).
+    original: |-
+      Надо еще чтобы столб проходил сквозь листву дерева (чтобы было ощущение перспективы и глубины)
+    interventions:
+      - "Sent while step 9 was being drawn; folded into the same pass."
+files:
+  - { path: rainy-bookshop-3d.gif, role: cover, label: "The README hero from 0.8.0, 384 frames at 24 fps", step: 10 }
+  - { path: rainy-bookshop-3d.aseprite, role: source, label: "Source document, 24 layers", step: 10 }
+  - { path: rainy-bookshop-3d-f218.png, role: frame, label: "Frame 218: the sip", step: 10 }
+  - { path: rainy-bookshop-3d-contact.png, role: sheet, label: "Every 24th frame", step: 10 }
+  - { path: reference-previous-hero.png, role: reference, label: "The previous hero, as the user sent it", step: 1 }

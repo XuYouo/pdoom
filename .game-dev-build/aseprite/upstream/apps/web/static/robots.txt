@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /files/
+
+Sitemap: https://pixeli.pebbly.space/sitemap.xml

@@ -1,0 +1,10 @@
+{
+  "name": "opencode-aseprite-ai-artist",
+  "version": "0.8.2",
+  "type": "module",
+  "description": "OpenCode plugin for aseprite-ai-artist: /aseprite:* commands, skills and the two hooks.",
+  "exports": { ".": "./index.mjs" },
+  "dependencies": {
+    "@pebbly/aseprite-ai-artist": "^0.8.1"
+  }
+}

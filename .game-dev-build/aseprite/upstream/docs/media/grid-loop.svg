@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+<rect width="1000" height="300" fill="#0f0e15"/>
+<text x="20" y="36" font-size="13" font-weight="700"><tspan fill="#ffa300">1</tspan><tspan fill="#e6e1f0" dx="8">Agent writes the frame</tspan></text>
+<path d="M28 58h174v4h4v4h4v194h-4v4h-4v4h-174v-4h-4v-4h-4v-194h4v-4h4z" fill="#16141f" stroke="#6a6080" stroke-width="3" shape-rendering="crispEdges"/>
+<text x="300" y="36" font-size="13" font-weight="700"><tspan fill="#ffa300">2</tspan><tspan fill="#e6e1f0" dx="8">Aseprite draws it</tspan></text>
+<path d="M308 58h144v4h4v4h4v194h-4v4h-4v4h-144v-4h-4v-4h-4v-194h4v-4h4z" fill="#16141f" stroke="#6a6080" stroke-width="3" shape-rendering="crispEdges"/>
+<text x="550" y="36" font-size="13" font-weight="700"><tspan fill="#ffa300">3</tspan><tspan fill="#e6e1f0" dx="8">Reads it back, edits</tspan></text>
+<path d="M558 58h174v4h4v4h4v194h-4v4h-4v4h-174v-4h-4v-4h-4v-194h4v-4h4z" fill="#16141f" stroke="#6a6080" stroke-width="3" shape-rendering="crispEdges"/>
+<text x="830" y="36" font-size="13" font-weight="700"><tspan fill="#ffa300">4</tspan><tspan fill="#e6e1f0" dx="8">Draws again</tspan></text>
+<path d="M838 58h134v4h4v4h4v194h-4v4h-4v4h-134v-4h-4v-4h-4v-194h4v-4h4z" fill="#16141f" stroke="#6a6080" stroke-width="3" shape-rendering="crispEdges"/>
+<rect x="36" y="78" width="11" height="11" fill="#1d2b53" stroke="#6a6080" stroke-width="1"/><text x="51" y="88" fill="#9a92ad" font-size="12">O</text>
+<rect x="67" y="78" width="11" height="11" fill="#c2c3c7" stroke="#6a6080" stroke-width="1"/><text x="82" y="88" fill="#9a92ad" font-size="12">w</text>
+<rect x="98" y="78" width="11" height="11" fill="#fff1e8" stroke="#6a6080" stroke-width="1"/><text x="113" y="88" fill="#9a92ad" font-size="12">h</text>
+<rect x="129" y="78" width="11" height="11" fill="#000000" stroke="#6a6080" stroke-width="1"/><text x="144" y="88" fill="#9a92ad" font-size="12">e</text>
+<rect x="160" y="78" width="11" height="11" fill="#ff77a8" stroke="#6a6080" stroke-width="1"/><text x="175" y="88" fill="#9a92ad" font-size="12">p</text>
+<text x="36" y="112" fill="#e6e1f0" font-size="16" xml:space="preserve">....OOOO....</text>
+<text x="36" y="129" fill="#e6e1f0" font-size="16" xml:space="preserve">..OOwwwwOO..</text>
+<text x="36" y="146" fill="#e6e1f0" font-size="16" xml:space="preserve">.OwhwwwwwwO.</text>
+<text x="36" y="163" fill="#e6e1f0" font-size="16" xml:space="preserve">OwwwwwwwwwwO</text>
+<text x="36" y="180" fill="#e6e1f0" font-size="16" xml:space="preserve">OwwewwwwewwO</text>
+<text x="36" y="197" fill="#e6e1f0" font-size="16" xml:space="preserve">OwpwwwwwwpwO</text>
+<text x="36" y="214" fill="#e6e1f0" font-size="16" xml:space="preserve">OwwwwwwwwwwO</text>
+<text x="36" y="231" fill="#e6e1f0" font-size="16" xml:space="preserve">.OwwwwwwwwO.</text>
+<text x="36" y="248" fill="#e6e1f0" font-size="16" xml:space="preserve">..OOOOOOOO..</text>
+<rect x="358" y="113" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="369" y="113" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="380" y="113" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="391" y="113" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="336" y="124" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="347" y="124" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="358" y="124" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="369" y="124" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="380" y="124" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="391" y="124" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="402" y="124" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="413" y="124" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="325" y="135" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="336" y="135" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="347" y="135" width="11" height="11" fill="#fff1e8" shape-rendering="crispEdges"/>
+<rect x="358" y="135" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="369" y="135" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="380" y="135" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="391" y="135" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="402" y="135" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="413" y="135" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="424" y="135" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="314" y="146" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="325" y="146" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="336" y="146" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="347" y="146" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="358" y="146" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="369" y="146" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="380" y="146" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="391" y="146" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="402" y="146" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="413" y="146" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="424" y="146" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="435" y="146" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="314" y="157" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="325" y="157" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="336" y="157" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="347" y="157" width="11" height="11" fill="#000000" shape-rendering="crispEdges"/>
+<rect x="358" y="157" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="369" y="157" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="380" y="157" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="391" y="157" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="402" y="157" width="11" height="11" fill="#000000" shape-rendering="crispEdges"/>
+<rect x="413" y="157" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="424" y="157" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="435" y="157" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="314" y="168" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="325" y="168" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="336" y="168" width="11" height="11" fill="#ff77a8" shape-rendering="crispEdges"/>
+<rect x="347" y="168" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="358" y="168" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="369" y="168" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="380" y="168" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="391" y="168" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="402" y="168" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="413" y="168" width="11" height="11" fill="#ff77a8" shape-rendering="crispEdges"/>
+<rect x="424" y="168" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="435" y="168" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="314" y="179" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="325" y="179" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="336" y="179" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="347" y="179" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="358" y="179" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="369" y="179" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="380" y="179" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="391" y="179" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="402" y="179" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="413" y="179" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="424" y="179" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="435" y="179" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="325" y="190" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="336" y="190" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="347" y="190" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="358" y="190" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="369" y="190" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="380" y="190" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="391" y="190" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="402" y="190" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="413" y="190" width="11" height="11" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="424" y="190" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="336" y="201" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="347" y="201" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="358" y="201" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="369" y="201" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="380" y="201" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="391" y="201" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="402" y="201" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="413" y="201" width="11" height="11" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="566" y="78" width="11" height="11" fill="#1d2b53" stroke="#6a6080" stroke-width="1"/><text x="581" y="88" fill="#9a92ad" font-size="12">O</text>
+<rect x="597" y="78" width="11" height="11" fill="#c2c3c7" stroke="#6a6080" stroke-width="1"/><text x="612" y="88" fill="#9a92ad" font-size="12">w</text>
+<rect x="628" y="78" width="11" height="11" fill="#fff1e8" stroke="#6a6080" stroke-width="1"/><text x="643" y="88" fill="#9a92ad" font-size="12">h</text>
+<rect x="659" y="78" width="11" height="11" fill="#000000" stroke="#6a6080" stroke-width="1"/><text x="674" y="88" fill="#9a92ad" font-size="12">e</text>
+<rect x="690" y="78" width="11" height="11" fill="#ff77a8" stroke="#6a6080" stroke-width="1"/><text x="705" y="88" fill="#9a92ad" font-size="12">p</text>
+<text x="566" y="112" fill="#e6e1f0" font-size="16" xml:space="preserve">....OOOO....</text>
+<text x="566" y="129" fill="#e6e1f0" font-size="16" xml:space="preserve">..OOwwwwOO..</text>
+<text x="566" y="146" fill="#e6e1f0" font-size="16" xml:space="preserve">.OwhwwwwwwO.</text>
+<text x="566" y="163" fill="#e6e1f0" font-size="16" xml:space="preserve">OwwwwwwwwwwO</text>
+<rect x="651.9" y="167" width="10.6" height="16" fill="#ffa300" opacity="0.45"/>
+<rect x="632.7" y="167" width="10.6" height="16" fill="#ffa300" opacity="0.45"/>
+<text x="566" y="180" fill="#e6e1f0" font-size="16" xml:space="preserve">OwwewwweeewO</text>
+<text x="566" y="197" fill="#e6e1f0" font-size="16" xml:space="preserve">OwpwwwwwwpwO</text>
+<text x="566" y="214" fill="#e6e1f0" font-size="16" xml:space="preserve">OwwwwwwwwwwO</text>
+<text x="566" y="231" fill="#e6e1f0" font-size="16" xml:space="preserve">.OwwwwwwwwO.</text>
+<text x="566" y="248" fill="#e6e1f0" font-size="16" xml:space="preserve">..OOOOOOOO..</text>
+<rect x="885" y="113" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="895" y="113" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="905" y="113" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="915" y="113" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="865" y="123" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="875" y="123" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="885" y="123" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="895" y="123" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="905" y="123" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="915" y="123" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="925" y="123" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="935" y="123" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="855" y="133" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="865" y="133" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="875" y="133" width="10" height="10" fill="#fff1e8" shape-rendering="crispEdges"/>
+<rect x="885" y="133" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="895" y="133" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="905" y="133" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="915" y="133" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="925" y="133" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="935" y="133" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="945" y="133" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="845" y="143" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="855" y="143" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="865" y="143" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="875" y="143" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="885" y="143" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="895" y="143" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="905" y="143" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="915" y="143" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="925" y="143" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="935" y="143" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="945" y="143" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="955" y="143" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="845" y="153" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="855" y="153" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="865" y="153" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="875" y="153" width="10" height="10" fill="#000000" shape-rendering="crispEdges"/>
+<rect x="885" y="153" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="895" y="153" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="905" y="153" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="915" y="153" width="10" height="10" fill="#000000" shape-rendering="crispEdges"/>
+<rect x="925" y="153" width="10" height="10" fill="#000000" shape-rendering="crispEdges"/>
+<rect x="935" y="153" width="10" height="10" fill="#000000" shape-rendering="crispEdges"/>
+<rect x="945" y="153" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="955" y="153" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="845" y="163" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="855" y="163" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="865" y="163" width="10" height="10" fill="#ff77a8" shape-rendering="crispEdges"/>
+<rect x="875" y="163" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="885" y="163" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="895" y="163" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="905" y="163" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="915" y="163" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="925" y="163" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="935" y="163" width="10" height="10" fill="#ff77a8" shape-rendering="crispEdges"/>
+<rect x="945" y="163" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="955" y="163" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="845" y="173" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="855" y="173" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="865" y="173" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="875" y="173" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="885" y="173" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="895" y="173" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="905" y="173" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="915" y="173" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="925" y="173" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="935" y="173" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="945" y="173" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="955" y="173" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="855" y="183" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="865" y="183" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="875" y="183" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="885" y="183" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="895" y="183" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="905" y="183" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="915" y="183" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="925" y="183" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="935" y="183" width="10" height="10" fill="#c2c3c7" shape-rendering="crispEdges"/>
+<rect x="945" y="183" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="865" y="193" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="875" y="193" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="885" y="193" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="895" y="193" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="905" y="193" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="915" y="193" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="925" y="193" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<rect x="935" y="193" width="10" height="10" fill="#1d2b53" shape-rendering="crispEdges"/>
+<line x1="218" y1="163.0" x2="284" y2="163.0" stroke="#6a6080" stroke-width="3"/><path d="M282 156.0l10 7l-10 7z" fill="#6a6080"/>
+<text x="251.0" y="151.0" fill="#e6e1f0" font-size="12" text-anchor="middle">draw</text><text x="251.0" y="185.0" fill="#9a92ad" font-size="11" text-anchor="middle">kind="grid"</text>
+<line x1="468" y1="163.0" x2="534" y2="163.0" stroke="#6a6080" stroke-width="3"/><path d="M532 156.0l10 7l-10 7z" fill="#6a6080"/>
+<text x="501.0" y="151.0" fill="#e6e1f0" font-size="12" text-anchor="middle">look</text><text x="501.0" y="185.0" fill="#9a92ad" font-size="11" text-anchor="middle">op="ascii"</text>
+<line x1="748" y1="163.0" x2="814" y2="163.0" stroke="#6a6080" stroke-width="3"/><path d="M812 156.0l10 7l-10 7z" fill="#6a6080"/>
+<text x="781.0" y="151.0" fill="#e6e1f0" font-size="12" text-anchor="middle">draw</text><text x="781.0" y="185.0" fill="#9a92ad" font-size="11" text-anchor="middle">same rows</text>
+<text x="500.0" y="286" fill="#9a92ad" font-size="12" text-anchor="middle">One character per pixel. The wink is two edited characters, not a new set of shapes.</text></svg>

@@ -1,0 +1,10 @@
+title: "Turntable cottage — a 3D object turning in 2D pixels"
+description: Runs of the turntable-house prompt, one card per run — benchmark rows and the experiment runs beside them.
+generations:
+  - 2026-10-07-turntable-house-opus-critic3
+  - 2026-10-06-turntable-house-opus-critic2
+  - 2026-10-06-turntable-house-opus-briefing
+  - 2026-10-06-turntable-house-opus
+  - 2026-10-05-turntable-house-sonnet
+  - 2026-10-05-turntable-house-opus-r2
+  - 2026-10-05-turntable-house-luna

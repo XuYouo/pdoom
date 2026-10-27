@@ -1,0 +1,23 @@
+{
+  "name": "@pebbly/gallery",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Every generation made with the plugin — its files, prompts, models and plugin version — and the benchmark derived from them.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "check": "node --experimental-strip-types --no-warnings=ExperimentalWarning src/check.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings=ExperimentalWarning --test tests/*.test.ts"
+  },
+  "dependencies": {
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "typescript": "^7.0.2"
+  }
+}

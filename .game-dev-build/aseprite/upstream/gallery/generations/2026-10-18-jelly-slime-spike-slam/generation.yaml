@@ -1,0 +1,29 @@
+title: Jelly slime spike slam
+description: A 64×64 jelly slime enemy whose 18-frame attack jumps, slams down and spreads into a puddle, grows goo spikes, then wobbles back into its dome.
+date: 2026-10-18
+author: { name: Nik Fedorov, github: fedorovvvv }
+plugin: 0.8.0
+harness: omp
+models: [claude-opus-5-5]
+tags: [character, monster, slime, animation, 64x64]
+references:
+  source: none
+steps:
+  - text: |-
+      Character - slime
+      Animation: attack type. It jumps up, hits the ground and flattens, after which spikes grow upward out of it. Then it turns back
+    original: |-
+      Персонаж - слайм
+      Анимация: тип атака. Подпрыгивает вверх, ударяется об землю и расплющивается, после чего из него вырастают шипы вверх. Потом превращается обратно
+    interventions:
+      - "Asked to confirm the brief (48×48, Resurrect 64, side view, ~13-frame attack) and whether to generate reference images; answered: «Надо чуть больше сетку сделать. Без референсов продолжаем» (make the grid a bit bigger; continue without references) — canvas became 64×64."
+  - text: Make it more jelly-like, and let it spread out more after the jump
+    original: Надо сделать его более желеобразным и пусть после прыжка он больше растекается
+    interventions: []
+files:
+  - { path: jelly-slime-spike-slam.gif, role: cover, label: "The attack, 4×", step: 2 }
+  - { path: jelly-slime-spike-slam-strip.png, role: filmstrip, label: "All 18 frames, 4×", step: 2 }
+  - { path: jelly-slime-spike-slam.aseprite, role: source, label: Source document, step: 2 }
+validate:
+  - { step: 1, passed: true, score: 20, errors: 0, warnings: 16 }
+  - { step: 2, passed: true, score: 5, errors: 0, warnings: 19 }

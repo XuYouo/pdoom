@@ -1,0 +1,161 @@
+title: Boombox mage and his sound blast
+description: The boombox-mage benchmark, r1. A street-mage with a magic boombox in a 128×64 PICO-8 frame, then a 15-frame sound-blast attack. Aseprite stopped answering once during step 1; the model waited it out and finished in the same session. Each step ran in its own fresh omp session (openai-codex/gpt-6.1-sol, thinking high), launched through Herdr one after another, with the step text sent verbatim after the `/skill:studio ` command prefix. The operator created the document and loaded the PICO-8 palette before step 1, and handed step 2 a copy of the step-1 file. No image model, no reference, no messages beyond the step text. Criteria marked "not verified" could not be confirmed from the exports and are counted as failed.
+date: 2026-10-05
+author:
+  name: Nik Fedorov
+  github: fedorovvvv
+plugin: 0.5.0
+harness: omp
+models:
+  - gpt-6.1-sol
+steps:
+  - text: |-
+      The document is already open: 128×64 pixels, RGB, with the PICO-8 palette loaded (16 colours). Use only those 16 colours — do not add, widen or replace the palette. This brief is complete: do not ask me to confirm it. Decide anything it leaves open yourself and list those decisions in your final report. Coordinates below are 0-based pixels, x to the right, y down.
+
+      Draw ONE frame: a street-mage holding a magic boombox, standing in his idle battle stance. A later step will animate him attacking to the right, so keep the right two-thirds of the canvas empty.
+
+      Placement and view
+      - Side view, facing right. Feet resting on y=59. The whole character, boombox included, stays inside x 4–44.
+      - 40 to 46 px tall from the soles to the top of the head. Anime proportions, roughly 5 heads tall.
+      - Transparent background. The only thing drawn under him is a flat 1–2 px dark contact shadow beneath the feet.
+
+      Character design (colours are PICO-8 hex values)
+      - Young mage with spiky orange hair (#ffa300), hood DOWN, visible eye and a confident smirk.
+      - Oversized hooded coat in dark blue (#1d2b53) reaching the knees, light-blue (#29adff) trim on the hem and cuffs.
+      - Red scarf (#ff004d) around the neck; both ends trail behind him to the left.
+      - Dark-grey headphones (#5f574f) around his neck, dark-grey trousers, white sneakers (#fff1e8).
+      - The boombox: a retro cassette boombox about 18×10 px, dark grey body, two round speakers and a cassette deck between them, a carry handle on top. Idle pose: he carries it by the handle resting on his back shoulder, front face (both speakers) turned toward the viewer.
+      - Magic: the speaker cones glow pink (#ff77a8) and one small pink music note floats just above the boombox.
+
+      Style
+      - Light from the upper left, consistent on every material.
+      - At least 3 tones each on the coat, the skin and the boombox.
+      - Selective dark outline: black (#000000) on the outer silhouette, coloured lines allowed inside. No anti-aliasing against transparency, no stray pixels.
+
+      Layers, exactly these names, bottom to top: `shadow`, `mage` (everything of the character except the boombox, scarf included), `boombox` (the boombox and the floating note). No other layers.
+
+      Before you finish: look at the result, run validate, and fix what it reports. In your final report, list the palette indices you used per material and any decision you made that the brief did not specify.
+    interventions: []
+  - text: |-
+      The open document holds the street-mage with his magic boombox (canvas 128×64, PICO-8 palette, layers `shadow`, `mage`, `boombox`). Keep the palette — use only its 16 colours — and keep his design on model on every frame: same proportions, outfit and colours. This brief is complete: do not ask me to confirm it. Decide anything it leaves open yourself and list those decisions in your final report. Coordinates are 0-based pixels, x to the right, y down.
+
+      Animate an anime-style special attack: he blasts a sound wave out of the boombox at an enemy off-screen to the right. 12 to 16 frames in total, one tag named `attack` covering every frame, direction forward. It must read like a special move in a fighting anime — big anticipation, an instant release, an overblown impact, a slower recovery. The existing frame is the first frame of the attack.
+
+      Beats, in this order
+      1. Anticipation, 3–4 frames: he swings the boombox off his shoulder and points it forward with both hands, speakers now angled toward the target (three-quarter view of the boombox). He braces: front foot forward, knees bent, body leaning back. The scarf whips backward. The speaker cones swell, and pink energy specks and music notes are pulled INWARD toward the speakers from all around.
+      2. Charge hold, 1–2 frames: the held, tense pose. A bright ring of light around each speaker and tiny sparks crackling off the boombox.
+      3. Impact frame, exactly 1 frame: the classic anime impact frame. The mage and boombox become a flat silhouette in a single dark colour (#000000 or #1d2b53) against a bright yellow-white flash (#ffec27 / #fff1e8) that fills the whole canvas, with radial streaks bursting out from the speakers.
+      4. Blast, 4–5 frames: a cone of concentric sound-wave arcs (ring segments opening to the right) leaves the speakers and travels to the right edge of the canvas. On every blast frame the arcs are larger and further right than on the previous one, and a new arc is born at the speakers. Horizontal speed lines run along the blast; music notes and sparks fly out with it. The recoil pushes the mage back 2–4 px over these frames, his coat and scarf blow back, and dust kicks up at his feet.
+      5. Dissipate and recover, 3–4 frames: the arcs break up into dots and dithered fragments and fade out through darker palette colours (no layer-opacity tricks). He settles back into a stance, a thin wisp of smoke rising from the speakers. The last frame does not have to match the first.
+
+      Timing (milliseconds per frame)
+      - Anticipation 80–120, charge hold at least 200, impact frame at most 60, blast 50–70, dissipate and recover 90–150, and the final frame at least 300.
+
+      Layers
+      - Keep `shadow`, `mage` and `boombox`. On the impact frame their cels are the flat dark silhouette.
+      - Add exactly these effect layers above them: `fx-charge` (inward specks, speaker rings and sparks — anticipation and charge hold only), `fx-flash` (the impact frame's full-canvas flash and streaks — the impact frame only), `fx-wave` (the sound-wave arcs — blast and dissipate only), `fx-particles` (notes, speed lines, dust and smoke from the blast onward).
+      - An effect layer holds ink only on the frames of its beats and is empty everywhere else.
+
+      Before you finish: check the whole cycle as a filmstrip, check at least one blast frame with onion skin, and run validate with an `expect` contract whose `layerFrames` match your frame plan for `fx-charge`, `fx-flash` and `fx-wave`. Fix what it reports. In your final report, give the frame plan: frame number, beat and duration for every frame.
+    interventions: []
+references:
+  source: none
+tags:
+  - character
+  - animation
+  - vfx
+  - benchmark
+  - 128x64
+  - pico-8
+files:
+  - path: attack.gif
+    role: cover
+    label: The attack, 4×
+    step: 2
+  - path: mage.aseprite
+    role: source
+    label: "Step 1: the mage"
+    step: 1
+  - path: mage.png
+    role: frame
+    label: The mage, 4×
+    step: 1
+  - path: attack.aseprite
+    role: source
+    label: "Step 2: tag attack, 15 frames"
+    step: 2
+validate:
+  - step: 1
+    passed: true
+    score: 100
+    errors: 0
+    warnings: 0
+metrics:
+  - step: 1
+    minutes: 16.4
+    toolCalls: 67
+    outputTokens: 14565
+    costUsd: 0.85
+  - step: 2
+    minutes: 19.6
+    toolCalls: 71
+    outputTokens: 17688
+    costUsd: 0.86
+ratings:
+  - judge: human:fedorovvvv
+    scores:
+      read: 1
+      form: 1
+      motion: 1
+      cohesion: 1
+      appeal: 1
+    note: Overall 2/10, given as one number on the rating page of 2026-10-07; each axis set to round(2/10 × 4) = 1.
+    overall: 2
+benchmark:
+  prompt: boombox-mage
+  revision: 1
+  results:
+    - criterion: mage-validate
+      pass: true
+      note: validate clean.
+    - criterion: mage-palette
+      pass: true
+      note: 16 PICO-8 entries.
+    - criterion: mage-read
+      pass: true
+    - criterion: mage-spec
+      pass: true
+      note: Layers shadow/mage/boombox; facing right, scarf trailing left, boombox on the shoulder with two speakers; coordinates judged from the 4× export.
+    - criterion: mage-shading
+      pass: true
+      note: Coat in dark blue with purple shadow and lilac light; skin and boombox in three tones.
+    - criterion: attack-tagged
+      pass: true
+      note: 15 frames, tag attack 1–15.
+    - criterion: attack-layers
+      pass: false
+      note: Layer names match; the layerFrames contract was not verified.
+    - criterion: attack-anticipation
+      pass: false
+      note: The boombox swings forward into a lean, but converging specks are not visible frame to frame.
+    - criterion: attack-impact
+      pass: true
+      note: "Frame 7, 40 ms: dark-blue silhouette on a cream/yellow flash with radial streaks."
+    - criterion: attack-wave
+      pass: true
+      note: Arcs grow and travel right over frames 9–12 with new arcs at the speakers.
+    - criterion: attack-recoil
+      pass: false
+      note: Dust appears at the feet; the 2–4 px push-back was not verified.
+    - criterion: attack-dissipate
+      pass: true
+      note: Arcs break into dashes and fade red → plum → dark blue over frames 13–15.
+    - criterion: attack-timing
+      pass: true
+      note: 110/100/90/100, hold 220/240, impact 40, blast 50/55/60/65/70, recovery 100/140, last 350.
+    - criterion: attack-on-model
+      pass: false
+      note: Frame 1 keeps the step-1 design; from frame 2 the coat, legs and proportions are redrawn differently.
+    - criterion: attack-validate
+      pass: true
+      note: Clean with outline warnings on the boombox; palette still 16 entries.

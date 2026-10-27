@@ -1,0 +1,71 @@
+title: Rainy bookshop
+description: >-
+  The first README hero: a 500×400, 72-frame rainy night in Japan, drawn end to
+  end by Claude Opus 5.5 through the plugin as a test of the new model. A flat
+  front elevation of an old used-book shop (古書) in cold street light; inside,
+  someone in a hoodie reads and sips coffee in warm lamplight, while wind blows
+  maple leaves past, lightning flashes over the rooftops and a raccoon pulls a
+  can from a vending machine. 20 layers, 80 ms per frame. The prompts were sent
+  in Russian; `text` is the English rendering and `original` the message as sent.
+date: 2026-09-28
+author: { name: Nik Fedorov, github: fedorovvvv }
+plugin: 0.2.0
+harness: omp
+models: [claude-opus-5-5]
+tags: [scene, animation, environment, rain, night, japan, 500x400]
+references:
+  source: none
+steps:
+  - text: |-
+      Create a big 500/400-pixel scene with animations.
+      Story: Japan, rain (cold light out on the street), a bookshop, and inside someone reading a book in warm light. The wind blows — leaves scatter.
+
+      Don't limit yourself on length.
+      Use ONLY Opus 5.5 for the task.
+
+      This should be a test of the new model for the repository.
+    original: |-
+      Создай большую сцену 500/400 пикселей с анимациями
+      Сюжет: япония, дождь, (на улице холодный свет) книжная лавка и внутри кто-то читает книгу при теплом свете. Дует ветер - разлетаются листья
+
+      Не ограничивайся по длине.
+      Используй ТОЛЬКО opus 5.5 для задачи
+
+      Это должна быть проверка новой модели для репозитория
+    interventions: []
+  - text: |-
+      Have the character inside sit at a little table with coffee, drinking it and leafing through the book.
+
+      + Everything needs to loop.
+    original: |-
+      Пусть персонаж внутри сидит за столиком с кофе, пьет его и листает книгу
+
+      + Надо зациклить все
+    interventions: []
+  - text: |-
+      The arm looks kind of weird. She should be sitting in a hoodie, so the arm isn't just a stick.
+    original: |-
+      Чет рука страмная. Она должна в худи сидеть. Чтобы рука не была просто палкой
+    interventions: []
+  - text: |-
+      The character's arm moves like a robot's — the parts just get longer.
+      It needs proper anatomy.
+    original: |-
+      Да у персонажа рука как у робота двигается. Просто части удлинняются
+      Надо нормальную анатомию сделать
+    interventions: []
+  - text: |-
+      Great!
+      Let's also add:
+      1) Lightning in the background
+      2) A raccoon pulling a cola out of a vending machine
+    original: |-
+      Супер!
+      Давай еще добавим:
+      1) Молния на фоне
+      2) Енот, который вытаскивает колу из автомата
+    interventions: []
+files:
+  - { path: rainy-bookshop.gif, role: cover, label: "The README hero until 0.8.0, 72 frames", step: 5 }
+  - { path: rainy-bookshop.aseprite, role: source, label: "Source document, 20 layers", step: 5 }
+  - { path: rainy-bookshop-sheet.png, role: sheet, label: "All 72 frames", step: 5 }

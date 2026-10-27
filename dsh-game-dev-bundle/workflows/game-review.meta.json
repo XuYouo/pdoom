@@ -1,0 +1,5 @@
+{
+  "name": "game-review",
+  "description": "Read-only multi-angle review of game code; no publishing or shared asset writes.",
+  "phases": [{ "title": "Independent review" }, { "title": "Consolidation" }]
+}

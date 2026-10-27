@@ -1,0 +1,550 @@
+[
+  {
+    "path": "skills/actions-and-utilities",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "bb3771d7915858b44e733bacf03d3a646f151e48",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/bb3771d7915858b44e733bacf03d3a646f151e48"
+  },
+  {
+    "path": "skills/actions-and-utilities/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "d92b239100644eef9d4970c635988a5ef6f89d66",
+    "size": 16789,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/d92b239100644eef9d4970c635988a5ef6f89d66"
+  },
+  {
+    "path": "skills/animations",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "88740ff6a11b25d8f06ae740f75f09247c004118",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/88740ff6a11b25d8f06ae740f75f09247c004118"
+  },
+  {
+    "path": "skills/animations/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "3492b04b751fa1bc15b774e7f90d63136422ae58",
+    "size": 17889,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/3492b04b751fa1bc15b774e7f90d63136422ae58"
+  },
+  {
+    "path": "skills/audio-and-sound",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "95400c93ee72e190208a4ad8e8cf2482fccc3c4c",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/95400c93ee72e190208a4ad8e8cf2482fccc3c4c"
+  },
+  {
+    "path": "skills/audio-and-sound/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "9e5b6ba34e08b7b9552c839ff53093d63785fa6d",
+    "size": 19469,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/9e5b6ba34e08b7b9552c839ff53093d63785fa6d"
+  },
+  {
+    "path": "skills/cameras",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "19ba2b3cafdd05246822ca5e5ac749460d217cba",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/19ba2b3cafdd05246822ca5e5ac749460d217cba"
+  },
+  {
+    "path": "skills/cameras/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "d9cd9c567cf56d4ab50f2e7e69078bfeaa8ff81f",
+    "size": 15893,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/d9cd9c567cf56d4ab50f2e7e69078bfeaa8ff81f"
+  },
+  {
+    "path": "skills/cameras/references",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "484340c980a447544fbc24443149f65705ee3686",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/484340c980a447544fbc24443149f65705ee3686"
+  },
+  {
+    "path": "skills/cameras/references/REFERENCE.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "9d6a8689c2415378d1c2b734567cadd6ebb6fd37",
+    "size": 7264,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/9d6a8689c2415378d1c2b734567cadd6ebb6fd37"
+  },
+  {
+    "path": "skills/curves-and-paths",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "c1ad20a811e93d3fc3b6fee23abb1510008542e6",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/c1ad20a811e93d3fc3b6fee23abb1510008542e6"
+  },
+  {
+    "path": "skills/curves-and-paths/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "fc30828baa690e2f48cce7b94743f3e0c4def832",
+    "size": 16806,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/fc30828baa690e2f48cce7b94743f3e0c4def832"
+  },
+  {
+    "path": "skills/data-manager",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "105c1d1c97b5853a95587db4acf8bbb3f80fa3d1",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/105c1d1c97b5853a95587db4acf8bbb3f80fa3d1"
+  },
+  {
+    "path": "skills/data-manager/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "1727de64c3d83ed0f07fc9a84c0d9a2e230f7aa4",
+    "size": 16859,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/1727de64c3d83ed0f07fc9a84c0d9a2e230f7aa4"
+  },
+  {
+    "path": "skills/events-system",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "9787ef242940fdc97310dee15163e07dc0bf3efb",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/9787ef242940fdc97310dee15163e07dc0bf3efb"
+  },
+  {
+    "path": "skills/events-system/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "5c315b84a08aa93ba4068df6d9c696852ba8838f",
+    "size": 22082,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/5c315b84a08aa93ba4068df6d9c696852ba8838f"
+  },
+  {
+    "path": "skills/filters-and-postfx",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "477aa16e7999d64d85e6c3278b271231071d9846",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/477aa16e7999d64d85e6c3278b271231071d9846"
+  },
+  {
+    "path": "skills/filters-and-postfx/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "970fd8c800082849ea00ef3dc0ce9e2e5fff62e6",
+    "size": 20077,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/970fd8c800082849ea00ef3dc0ce9e2e5fff62e6"
+  },
+  {
+    "path": "skills/game-object-components",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "f73f954701177411c52e08c652776f3b28bccd95",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/f73f954701177411c52e08c652776f3b28bccd95"
+  },
+  {
+    "path": "skills/game-object-components/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "daa5a649cdf6e3841e653c8d7963f2ad507332bd",
+    "size": 23055,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/daa5a649cdf6e3841e653c8d7963f2ad507332bd"
+  },
+  {
+    "path": "skills/game-object-components/references",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "27272aa50ed7ba307d78edf9fba3ae35f8c101d9",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/27272aa50ed7ba307d78edf9fba3ae35f8c101d9"
+  },
+  {
+    "path": "skills/game-object-components/references/REFERENCE.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "be17d6974fb9f307df5510c512be0e57816f352d",
+    "size": 3854,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/be17d6974fb9f307df5510c512be0e57816f352d"
+  },
+  {
+    "path": "skills/game-setup-and-config",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "370728f47003d65201eefb194193b5d796813ce6",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/370728f47003d65201eefb194193b5d796813ce6"
+  },
+  {
+    "path": "skills/game-setup-and-config/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "03cce487e45be7aeba2b173e9c386e3c94590c02",
+    "size": 19616,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/03cce487e45be7aeba2b173e9c386e3c94590c02"
+  },
+  {
+    "path": "skills/geometry-and-math",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "8370490297a3de0395611c24648efdf5ec4b93ec",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/8370490297a3de0395611c24648efdf5ec4b93ec"
+  },
+  {
+    "path": "skills/geometry-and-math/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "f3ee24248464ed87c5fc5cecaa5bcc6a9d972e1e",
+    "size": 23603,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/f3ee24248464ed87c5fc5cecaa5bcc6a9d972e1e"
+  },
+  {
+    "path": "skills/graphics-and-shapes",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "8b1898fd54ca1ea1e9ab612b0b65b8b3204befec",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/8b1898fd54ca1ea1e9ab612b0b65b8b3204befec"
+  },
+  {
+    "path": "skills/graphics-and-shapes/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "aeea9534610ebd720ec94be354df61f219d56e88",
+    "size": 19801,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/aeea9534610ebd720ec94be354df61f219d56e88"
+  },
+  {
+    "path": "skills/groups-and-containers",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "730f71903217b197415602414caa0fd98523cfe3",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/730f71903217b197415602414caa0fd98523cfe3"
+  },
+  {
+    "path": "skills/groups-and-containers/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0add88c0c056ef3cf59db12d54eda1e109066f89",
+    "size": 17456,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/0add88c0c056ef3cf59db12d54eda1e109066f89"
+  },
+  {
+    "path": "skills/input-keyboard-mouse-touch",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "801342957e423b403a14269490c2e692777d9c95",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/801342957e423b403a14269490c2e692777d9c95"
+  },
+  {
+    "path": "skills/input-keyboard-mouse-touch/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "95753c489ca48ed53b7e1d7d5f04b9b0e2f44e1a",
+    "size": 18362,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/95753c489ca48ed53b7e1d7d5f04b9b0e2f44e1a"
+  },
+  {
+    "path": "skills/input-keyboard-mouse-touch/references",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "b944438f6d14054fe8a3677c688380cacf9e1fc8",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/b944438f6d14054fe8a3677c688380cacf9e1fc8"
+  },
+  {
+    "path": "skills/input-keyboard-mouse-touch/references/REFERENCE.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0be3f1d1bfb93a4962197569df3db660bdb5fa79",
+    "size": 17074,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/0be3f1d1bfb93a4962197569df3db660bdb5fa79"
+  },
+  {
+    "path": "skills/loading-assets",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "0fc7fcc2d7eb250dfa63a8ce917513bde9132f0a",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/0fc7fcc2d7eb250dfa63a8ce917513bde9132f0a"
+  },
+  {
+    "path": "skills/loading-assets/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "ed152b3009d29a7082679e94b57a5b128e75534c",
+    "size": 16174,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/ed152b3009d29a7082679e94b57a5b128e75534c"
+  },
+  {
+    "path": "skills/loading-assets/references",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "3a0f5b82374326824edc38c47a1bfba5b2ac37e5",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/3a0f5b82374326824edc38c47a1bfba5b2ac37e5"
+  },
+  {
+    "path": "skills/loading-assets/references/REFERENCE.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4596e4f506f75b2879df15907454aa0ae268f958",
+    "size": 9751,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/4596e4f506f75b2879df15907454aa0ae268f958"
+  },
+  {
+    "path": "skills/particles",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "7b3a863a2c480bf127d107b896cb9dad37174a29",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/7b3a863a2c480bf127d107b896cb9dad37174a29"
+  },
+  {
+    "path": "skills/particles/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0df5c3fb30944855170ed0b3badebe0b6052f82a",
+    "size": 20770,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/0df5c3fb30944855170ed0b3badebe0b6052f82a"
+  },
+  {
+    "path": "skills/particles/references",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "811cc0aea24fb8198d540d5e0f9ec67c9b6b33bf",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/811cc0aea24fb8198d540d5e0f9ec67c9b6b33bf"
+  },
+  {
+    "path": "skills/particles/references/REFERENCE.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "0dcfc10076d6e225a79fab98c30be1d5b715d159",
+    "size": 1023,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/0dcfc10076d6e225a79fab98c30be1d5b715d159"
+  },
+  {
+    "path": "skills/physics-arcade",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "259b88e06e635bed085ccf8586c5514e981cf2b5",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/259b88e06e635bed085ccf8586c5514e981cf2b5"
+  },
+  {
+    "path": "skills/physics-arcade/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "dee84cf6ad78a68ed66a7b58702dcb933bded8e8",
+    "size": 23230,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/dee84cf6ad78a68ed66a7b58702dcb933bded8e8"
+  },
+  {
+    "path": "skills/physics-matter",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "11fe776175277bf3ccddd13b9762bcc89dd0c346",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/11fe776175277bf3ccddd13b9762bcc89dd0c346"
+  },
+  {
+    "path": "skills/physics-matter/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "66c821f56f396497e244842ccf43bd566fc74599",
+    "size": 23771,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/66c821f56f396497e244842ccf43bd566fc74599"
+  },
+  {
+    "path": "skills/render-textures",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "90fcc7c8be444bdbaa7a986d2cbca441cce48726",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/90fcc7c8be444bdbaa7a986d2cbca441cce48726"
+  },
+  {
+    "path": "skills/render-textures/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "df1450d569390dc3c775440e6c8abdae0ad1e4d4",
+    "size": 17268,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/df1450d569390dc3c775440e6c8abdae0ad1e4d4"
+  },
+  {
+    "path": "skills/scale-and-responsive",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "f99fb58f53abda39d29f91af56ed468c797303d4",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/f99fb58f53abda39d29f91af56ed468c797303d4"
+  },
+  {
+    "path": "skills/scale-and-responsive/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c52f9e3fd2eec1c1aec68dca7cabbd9bb6e78479",
+    "size": 18570,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/c52f9e3fd2eec1c1aec68dca7cabbd9bb6e78479"
+  },
+  {
+    "path": "skills/scenes",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "9d246e64e1a450565c936bd90376df6e1021e22c",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/9d246e64e1a450565c936bd90376df6e1021e22c"
+  },
+  {
+    "path": "skills/scenes/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c90c5e8b26993e6cd726ab8c4f36e4129cbf277d",
+    "size": 18712,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/c90c5e8b26993e6cd726ab8c4f36e4129cbf277d"
+  },
+  {
+    "path": "skills/scenes/references",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "6dbb793b8432a939e17c06e0a4153f11f5fb8e64",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/6dbb793b8432a939e17c06e0a4153f11f5fb8e64"
+  },
+  {
+    "path": "skills/scenes/references/REFERENCE.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "4c75186dbeef2b294624b1572fc562d569602b33",
+    "size": 4236,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/4c75186dbeef2b294624b1572fc562d569602b33"
+  },
+  {
+    "path": "skills/sprites-and-images",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "636c5cc1be866d8dde1be1a6e9f3c73d37c15223",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/636c5cc1be866d8dde1be1a6e9f3c73d37c15223"
+  },
+  {
+    "path": "skills/sprites-and-images/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "9c06c463def21c4eca9be57b0b493dda05ae3671",
+    "size": 14942,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/9c06c463def21c4eca9be57b0b493dda05ae3671"
+  },
+  {
+    "path": "skills/sprites-and-images/references",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "e29e03539294fa41be3cd6a0525cc432a1569c71",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/e29e03539294fa41be3cd6a0525cc432a1569c71"
+  },
+  {
+    "path": "skills/sprites-and-images/references/REFERENCE.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "fa898f790277166e7e8bbd06e35c8e0cbd856ed9",
+    "size": 8770,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/fa898f790277166e7e8bbd06e35c8e0cbd856ed9"
+  },
+  {
+    "path": "skills/text-and-bitmaptext",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "1c9af096600b31e3adb742b64eecd0a28bccb430",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/1c9af096600b31e3adb742b64eecd0a28bccb430"
+  },
+  {
+    "path": "skills/text-and-bitmaptext/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "cbd640562e569349c632c6fc46d4e3457cc90412",
+    "size": 20048,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/cbd640562e569349c632c6fc46d4e3457cc90412"
+  },
+  {
+    "path": "skills/tilemaps",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "e0e476afd1af02a2cd8c4f28948d21da6c2c79d1",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/e0e476afd1af02a2cd8c4f28948d21da6c2c79d1"
+  },
+  {
+    "path": "skills/tilemaps/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "c86b9c89ce15211c4f4035fa7cecac48be3d036b",
+    "size": 19529,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/c86b9c89ce15211c4f4035fa7cecac48be3d036b"
+  },
+  {
+    "path": "skills/time-and-timers",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "c04e5bb258c73b14b4a4f8959735a15429eea276",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/c04e5bb258c73b14b4a4f8959735a15429eea276"
+  },
+  {
+    "path": "skills/time-and-timers/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "1e14edf23d269ef41b54badae93293171844c508",
+    "size": 18579,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/1e14edf23d269ef41b54badae93293171844c508"
+  },
+  {
+    "path": "skills/tweens",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "fd169460898e317ee037b090d759d16f235482d9",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/fd169460898e317ee037b090d759d16f235482d9"
+  },
+  {
+    "path": "skills/tweens/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "ea3d092edb3f266f1bc0fa80a6b2c57973aeb670",
+    "size": 18411,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/ea3d092edb3f266f1bc0fa80a6b2c57973aeb670"
+  },
+  {
+    "path": "skills/v3-to-v4-migration",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "cd9156bde91f52ca74c08270da63134c35768893",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/cd9156bde91f52ca74c08270da63134c35768893"
+  },
+  {
+    "path": "skills/v3-to-v4-migration/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "aecfd05c3c5f6c4860ddc84fada6787251e289c6",
+    "size": 19702,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/aecfd05c3c5f6c4860ddc84fada6787251e289c6"
+  },
+  {
+    "path": "skills/v4-new-features",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "d3ae526affdad5310e6a135e5c7bfeb5b6d3761b",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/d3ae526affdad5310e6a135e5c7bfeb5b6d3761b"
+  },
+  {
+    "path": "skills/v4-new-features/SKILL.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "e06a1828337d32cfa78cd9c00b4c89c77a023b07",
+    "size": 15024,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/e06a1828337d32cfa78cd9c00b4c89c77a023b07"
+  },
+  {
+    "path": "skills/v4-new-features/references",
+    "mode": "040000",
+    "type": "tree",
+    "sha": "be227558f94e103285f37237ad18a69b3b9a3c54",
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/be227558f94e103285f37237ad18a69b3b9a3c54"
+  },
+  {
+    "path": "skills/v4-new-features/references/REFERENCE.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "bd936658a630ecb184b03f3032c73f3785667ff6",
+    "size": 2980,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/bd936658a630ecb184b03f3032c73f3785667ff6"
+  },
+  {
+    "path": "LICENSE.md",
+    "mode": "100644",
+    "type": "blob",
+    "sha": "33aa21b2adf01a08ca6acb55ddaf8fd2dc4b3368",
+    "size": 1100,
+    "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/33aa21b2adf01a08ca6acb55ddaf8fd2dc4b3368"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "//": "OpenCode — ~/.config/opencode/opencode.json for user scope, .opencode/opencode.json for a project. Add the /aseprite:* commands and skills with the plugin (see docs/INSTALL.md).",
+  "mcp": {
+    "servers": {
+      "aseprite-ai-artist": {
+        "type": "local",
+        "command": ["npx", "-y", "@pebbly/aseprite-ai-artist@latest", "serve"],
+        "environment": { "ASEPRITE_AI_PROMPTS": "0" }
+      }
+    }
+  }
+}

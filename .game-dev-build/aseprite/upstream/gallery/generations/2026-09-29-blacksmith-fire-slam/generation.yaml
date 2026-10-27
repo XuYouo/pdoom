@@ -1,0 +1,62 @@
+title: Blacksmith fire slam
+description: >-
+  A 64×64 blacksmith in 3/4 view performing an 8-frame hammer-slam attack skill
+  with fire and ember particles. Drawn from an image-model concept sheet and
+  storyboard supplied by the user. The prompt was sent in Russian; `text` is the
+  English rendering and `original` the message as sent.
+date: 2026-09-29
+author: { name: Nik Fedorov, github: fedorovvvv }
+plugin: 0.4.0
+harness: omp
+models: [claude-opus-5-5]
+tags: [character, animation, fire, 64x64]
+steps:
+  - text: |-
+      Draw a character: a blacksmith with a hammer
+      Animation: a strike as an attack skill, with fire and particle effects from the hammer
+      Pose: 3/4 toward the camera, so there is volume
+
+      Size: 64 x 64
+    original: |-
+      Нарисуй персонажа: кузнец с молотом
+      Анимацция: удар как скилл атаки  и эффекты огня с частицами от молота
+      Поза: 3/4 к камере, чтобы был объем
+
+      Размер: 64 x 64
+    interventions:
+      - "Q: Draw into a new file or rework the existing blacksmith.aseprite? A: New file."
+      - "Q: Generate references from the provided image-model prompts, or continue without? A: I'll generate and send them."
+      - "User supplied a concept sheet and an 8-panel storyboard generated with ChatGPT."
+      - "Q: Run pixel-critic before publishing? A: Yes. Two review rounds; hammer readability and the frame-3 head were fixed."
+references:
+  source: generated
+  imageModels: [ChatGPT image generation]
+  kinds: [concept-sheet, storyboard]
+  prompt: |-
+    Pixel art character concept sheet of a burly village blacksmith with a heavy two-handed forging hammer: gruff, broad-shouldered, short dark beard, bald crown, rolled-up linen sleeves, thick leather apron, dark blue work trousers, heavy brown boots.
+    Three-quarter view, body turned toward the right and toward the camera so both shoulders and the depth of the torso read, light from the upper-left. Low-resolution pixel art look: the character is about 44px tall on a 64x64 sprite, hard pixel edges, no anti-aliasing, no gradients, selective dark outline.
+    Palette — use only these colours: outline #1a1220; skin #5a2e2a #9c5a3c #d08a5c #f0c090; leather apron and boots #3a2418 #6b4028 #9a6438; linen shirt #a88c6a #d8c4a0; trousers #1f2a3c #34465e #56708a; hammer steel #2e3440 #5a6474 #9aa4b4 #e0e8f0; fire #7a1a1a #d8401c #f88c1c #ffd23c #fff6c8.
+    Layout: 3 panels in a single horizontal row, equal width, evenly spaced, the same character at the same scale in every panel, feet on the same ground line: panel 1: three-quarter front-right idle holding the hammer across the body | panel 2: side view facing right | panel 3: three-quarter back-left.
+    Flat plain #808080 background, no scenery, no text, no labels, no borders, no watermark.
+
+    Pixel art animation storyboard of a burly blacksmith performing a fiery hammer-slam attack skill.
+    Three-quarter view, body turned toward the right and toward the camera, camera locked, light from the upper-left. Low-resolution pixel art look: the character is about 44px tall on a 64x64 sprite, hard pixel edges, no anti-aliasing, selective dark outline.
+    Palette — use only these colours: outline #1a1220; skin #5a2e2a #9c5a3c #d08a5c #f0c090; leather #3a2418 #6b4028 #9a6438; linen #a88c6a #d8c4a0; trousers #1f2a3c #34465e #56708a; steel #2e3440 #5a6474 #9aa4b4 #e0e8f0; fire #7a1a1a #d8401c #f88c1c #ffd23c #fff6c8.
+    Layout: exactly 8 panels in a single horizontal row, equal width, evenly spaced, identical character size and ground line in every panel — each panel is one frame, left to right:
+    1. ready stance, knees bent, hammer held diagonally across the body
+    2. anticipation: crouches lower, twists torso away, hammer swung back low behind the hip
+    3. wind-up: rises onto toes, hammer raised high overhead, hammer head starts glowing orange
+    4. strike: hammer swings down in front, a single bright yellow-orange smear arc behind the head
+    5. impact: hammer head hits the ground in front of the right foot, body fully compressed, burst of flame at the contact point
+    6. eruption: flames rise waist-high around the hammer head, embers and sparks spray up and outward
+    7. dissipation: flames shrink to low tongues, scattered sparks fade to dark red
+    8. recovery: straightens back toward the ready stance, a few dying embers in the air
+    Flat plain #808080 background, no motion lines except the smear in panel 4, no text, no numbers, no borders, no watermark.
+files:
+  - { path: blacksmith-fire-slam.gif, role: cover, label: Attack animation, step: 1 }
+  - { path: blacksmith-fire-slam-strip.png, role: filmstrip, label: All 8 frames, step: 1 }
+  - { path: blacksmith-fire-slam.aseprite, role: source, label: Source document, step: 1 }
+  - { path: concept-sheet.png, role: reference, label: Image-model concept sheet }
+  - { path: storyboard.png, role: reference, label: Image-model storyboard }
+validate:
+  - { step: 1, passed: true, score: 85, errors: 0, warnings: 0 }

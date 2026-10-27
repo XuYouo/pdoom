@@ -1,0 +1,197 @@
+{
+  "sha": "6d36c90fe18bd4f21561060dbaabe71fe8a7337b",
+  "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/6d36c90fe18bd4f21561060dbaabe71fe8a7337b",
+  "tree": [
+    {
+      "path": ".editorconfig",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2536d66bf13ad4746fcd0fda2e4fafcfa333be74",
+      "size": 197,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/2536d66bf13ad4746fcd0fda2e4fafcfa333be74"
+    },
+    {
+      "path": ".eslintignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "074e996605dc6e14e2a1a45f5cf61d243eda2521",
+      "size": 474,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/074e996605dc6e14e2a1a45f5cf61d243eda2521"
+    },
+    {
+      "path": ".eslintrc.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c0c33cfeab1f8b92b8013b6606ce1899e8b8dc4b",
+      "size": 4001,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/c0c33cfeab1f8b92b8013b6606ce1899e8b8dc4b"
+    },
+    {
+      "path": ".gitattributes",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2261d739aa564fb7ffead12ffc7b9bbe4b3094b5",
+      "size": 391,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/2261d739aa564fb7ffead12ffc7b9bbe4b3094b5"
+    },
+    {
+      "path": ".github",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "40115a9f157534ca8560047cded4b881bf288cba",
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/40115a9f157534ca8560047cded4b881bf288cba"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c821167e44919d6e2e59f92019d6e17a26ac0de",
+      "size": 273,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/7c821167e44919d6e2e59f92019d6e17a26ac0de"
+    },
+    {
+      "path": ".npmignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc22a199ecf52f44caaae11cbae1642250620d79",
+      "size": 43,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/bc22a199ecf52f44caaae11cbae1642250620d79"
+    },
+    {
+      "path": ".nvmrc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b40402760432e1e60ce87646a294814866bfe195",
+      "size": 7,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/b40402760432e1e60ce87646a294814866bfe195"
+    },
+    {
+      "path": ".travis.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9899608b5ca43486888e44f1f767be655889690a",
+      "size": 172,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/9899608b5ca43486888e44f1f767be655889690a"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e15e1514ccd99803a55b4a2fe232578266448919",
+      "size": 5311,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/e15e1514ccd99803a55b4a2fe232578266448919"
+    },
+    {
+      "path": "CITATION.cff",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06ca9d3ae6d37bda427b7833c638850d57b30b38",
+      "size": 1207,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/06ca9d3ae6d37bda427b7833c638850d57b30b38"
+    },
+    {
+      "path": "LICENSE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "33aa21b2adf01a08ca6acb55ddaf8fd2dc4b3368",
+      "size": 1100,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/33aa21b2adf01a08ca6acb55ddaf8fd2dc4b3368"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "15fb582058a775acce50d390dbabef4b2b5e19af",
+      "size": 15891,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/15fb582058a775acce50d390dbabef4b2b5e19af"
+    },
+    {
+      "path": "changelog",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ba469130032c015fb14649a86c5d8c5945066b53",
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/ba469130032c015fb14649a86c5d8c5945066b53"
+    },
+    {
+      "path": "config",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "fec7d4aabb9e39bc0080fbbd7484295b786d1517",
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/fec7d4aabb9e39bc0080fbbd7484295b786d1517"
+    },
+    {
+      "path": "dist",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "542dbd528507aaecd2a98ace01fb8f9b86854220",
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/542dbd528507aaecd2a98ace01fb8f9b86854220"
+    },
+    {
+      "path": "docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b643e852ee05d6820c44e0461830e8f69b948422",
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/b643e852ee05d6820c44e0461830e8f69b948422"
+    },
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "65649a91b9d98fe01454cff22fb68d0bbced2780",
+      "size": 191591,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/65649a91b9d98fe01454cff22fb68d0bbced2780"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2fed4e05a0afbcdfc23e349a34115bbda069003b",
+      "size": 2850,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/2fed4e05a0afbcdfc23e349a34115bbda069003b"
+    },
+    {
+      "path": "scripts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "79e5570b6840c542327df2ef2cfb16c9b4297402",
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/79e5570b6840c542327df2ef2cfb16c9b4297402"
+    },
+    {
+      "path": "skills",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e33a36cec0cc2348ce4db5362457c51e6a1d7aff",
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/e33a36cec0cc2348ce4db5362457c51e6a1d7aff"
+    },
+    {
+      "path": "src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "227ac6ff3c2f4600918fa268923d383c8040d23c",
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/227ac6ff3c2f4600918fa268923d383c8040d23c"
+    },
+    {
+      "path": "tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2e435f2830a9c501efc402ca54b3fd3c4f6e76ff",
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/2e435f2830a9c501efc402ca54b3fd3c4f6e76ff"
+    },
+    {
+      "path": "types",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "486c1d2f36b5561daa1f40c70ad9ac58f8152f3f",
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/trees/486c1d2f36b5561daa1f40c70ad9ac58f8152f3f"
+    },
+    {
+      "path": "vitest.config.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "89f929314f8b200b32bc86749226dbbb7283dc21",
+      "size": 262,
+      "url": "https://api.github.com/repos/phaserjs/phaser/git/blobs/89f929314f8b200b32bc86749226dbbb7283dc21"
+    }
+  ],
+  "truncated": false
+}

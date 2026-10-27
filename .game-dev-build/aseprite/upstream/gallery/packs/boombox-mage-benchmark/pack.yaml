@@ -1,0 +1,12 @@
+title: "Boombox mage — character and anime sound-blast attack"
+description: Runs of the boombox-mage prompt, one card per run — benchmark rows and the experiment runs beside them.
+generations:
+  - 2026-10-07-boombox-mage-opus-critic3
+  - 2026-10-06-boombox-mage-opus-critic1
+  - 2026-10-06-boombox-mage-opus-briefing
+  - 2026-10-06-boombox-mage-opus
+  - 2026-10-05-boombox-mage-sonnet
+  - 2026-10-05-boombox-mage-sol
+  - 2026-10-05-boombox-mage-luna
+  - 2026-10-02-boombox-mage-grid
+  - 2026-10-01-boombox-mage-opus

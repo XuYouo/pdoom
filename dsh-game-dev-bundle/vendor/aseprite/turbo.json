@@ -1,0 +1,43 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "//#build": {
+      "inputs": ["src/**", "tsconfig.json", "package.json"],
+      "outputs": ["dist/**"]
+    },
+    "//#typecheck": {
+      "inputs": ["src/**", "tsconfig.json", "package.json"]
+    },
+    "//#test": {
+      "dependsOn": ["//#build"],
+      "inputs": ["src/**", "tests/**", "extension/**", "skills/**", "rules/**", "hooks/**", "omp/**", "knowledge/**"]
+    },
+    "check": {
+      "inputs": ["src/**", "prompts/**", "generations/**", "package.json", "$TURBO_ROOT$/CHANGELOG.md"]
+    },
+    "@pebbly/web#check": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/gallery/src/**"]
+    },
+    "@pebbly/web#build": {
+      "dependsOn": ["@pebbly/gallery#check"],
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/gallery/**", "$TURBO_ROOT$/CHANGELOG.md", "$TURBO_ROOT$/skills/*/SKILL.md", "$TURBO_ROOT$/agents/*.md", "$TURBO_ROOT$/README.md", "$TURBO_ROOT$/docs/INSTALL.md"],
+      "outputs": [".svelte-kit/**", ".vercel/output/**"],
+      "env": ["GALLERY_ROOT", "GALLERY_FILES", "GALLERY_FILES_REF", "VERCEL_GIT_COMMIT_SHA"],
+      "passThroughEnv": ["VERCEL", "VERCEL_*", "GITHUB_TOKEN"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".svelte-kit/**", "build/**", ".vercel/output/**", "dist/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

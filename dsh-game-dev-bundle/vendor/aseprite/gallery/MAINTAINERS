@@ -1,0 +1,5 @@
+# GitHub logins allowed to submit benchmark runs and change benchmark prompts.
+# One per line. The gallery checker refuses a `benchmark:` block whose
+# `author.github` is not listed here, and CI checks the pull request author
+# against the same list. Changing this file needs a code-owner review.
+fedorovvvv

@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/phaserjs/phaser",
+  "requestedRef": "master",
+  "commit": "02d8931b626d9764c133cbb3fbf99966c03c757c",
+  "auditedAt": "2026-10-27",
+  "scope": "Complete skills subtree plus root LICENSE.md; root package.json was read only in temporary audit cache, not vendored.",
+  "method": "Static YAML parsing, duplicate-key detection, Markdown/resource path checks, command-pattern review, and full-file SHA-256 plus Git blob SHA-1 verification. No upstream code executed.",
+  "counts": {
+    "upstreamFiles": 37,
+    "upstreamBytes": 588539,
+    "skills": 28,
+    "referenceFiles": 8,
+    "metadataFiles": 2,
+    "totalVendoredFiles": 39
+  },
+  "validation": {
+    "integrityErrors": 0,
+    "unsafeArchiveEntriesAccepted": 0,
+    "frontmatterErrors": 0,
+    "duplicateNamesWithinSource": 0,
+    "duplicateNamesAcrossPhaserAndGamedev": 0,
+    "nameConstraints": "All names are 1-64 lowercase ASCII alphanumeric/hyphen characters, without leading/trailing/repeated hyphens, and match their containing directory.",
+    "descriptions": "All parsed descriptions are nonempty strings of at most 1024 characters.",
+    "markdownLocalLinkOccurrencesChecked": 12,
+    "brokenMarkdownLinkOccurrences": 4,
+    "inlineResourceAndRelatedSkillOccurrencesChecked": 79,
+    "additionalBrokenBareRelatedSkillOccurrences": 4,
+    "missingUpstreamFiles": 0,
+    "suspiciousInstructionPatternCandidates": 0,
+    "upstreamContentModified": false,
+    "scriptsExecuted": false,
+    "packagesInstalled": false,
+    "runtimeTestsExecuted": false
+  },
+  "version": {
+    "upstreamRootPackageVersion": "4.2.1",
+    "guidance": "Detect the target project's actual Phaser version from its manifest and lockfile. Do not infer target compatibility from upstream authoring baselines, and do not upgrade an existing project without a migration request. Source-map paths under src/ and docs/ refer to the upstream Phaser repository, which is intentionally not included beyond skills/."
+  },
+  "license": {
+    "identifier": "MIT",
+    "files": ["LICENSE.md"],
+    "copyright": "2026 Richard Davey, Phaser Studio Inc.",
+    "note": "Retain the copyright and license notice in redistribution. GitHub reported the pinned commit unsigned; hashes verify consistency with GitHub's pinned source, not independent authorship."
+  },
+  "knownPathCorrections": [
+    {
+      "file": "skills/cameras/SKILL.md",
+      "line": 497,
+      "upstreamReference": "references/REFERENCE..//SKILL.md",
+      "correctRelativeReference": "references/REFERENCE.md",
+      "resolvedVendorPath": "skills/cameras/references/REFERENCE.md"
+    },
+    {
+      "file": "skills/sprites-and-images/SKILL.md",
+      "line": 417,
+      "upstreamReference": "references/REFERENCE..//SKILL.md",
+      "correctRelativeReference": "references/REFERENCE.md",
+      "resolvedVendorPath": "skills/sprites-and-images/references/REFERENCE.md"
+    },
+    {
+      "file": "skills/game-object-components/references/REFERENCE.md",
+      "line": 76,
+      "upstreamReference": "../filters-and-postfx/SKILL.md",
+      "correctRelativeReference": "../../filters-and-postfx/SKILL.md",
+      "resolvedVendorPath": "skills/filters-and-postfx/SKILL.md"
+    },
+    {
+      "file": "skills/v4-new-features/references/REFERENCE.md",
+      "line": 38,
+      "upstreamReference": "../v3-to-v4-migration/SKILL.md",
+      "correctRelativeReference": "../../v3-to-v4-migration/SKILL.md",
+      "resolvedVendorPath": "skills/v3-to-v4-migration/SKILL.md"
+    },
+    {
+      "file": "skills/v4-new-features/references/REFERENCE.md",
+      "line": 69,
+      "upstreamReference": "../filters-and-postfx/SKILL.md",
+      "correctRelativeReference": "../../filters-and-postfx/SKILL.md",
+      "resolvedVendorPath": "skills/filters-and-postfx/SKILL.md"
+    },
+    {
+      "file": "skills/v4-new-features/references/REFERENCE.md",
+      "line": 69,
+      "upstreamReference": "../game-object-components/SKILL.md",
+      "correctRelativeReference": "../../game-object-components/SKILL.md",
+      "resolvedVendorPath": "skills/game-object-components/SKILL.md"
+    },
+    {
+      "file": "skills/v4-new-features/references/REFERENCE.md",
+      "line": 69,
+      "upstreamReference": "../tilemaps/SKILL.md",
+      "correctRelativeReference": "../../tilemaps/SKILL.md",
+      "resolvedVendorPath": "skills/tilemaps/SKILL.md"
+    },
+    {
+      "file": "skills/v4-new-features/references/REFERENCE.md",
+      "line": 69,
+      "upstreamReference": "../v3-to-v4-migration/SKILL.md",
+      "correctRelativeReference": "../../v3-to-v4-migration/SKILL.md",
+      "resolvedVendorPath": "skills/v3-to-v4-migration/SKILL.md"
+    }
+  ],
+  "scriptReview": {
+    "vendoredExecutableOrHelperScripts": 0,
+    "installationExample": {
+      "file": "skills/v3-to-v4-migration/SKILL.md",
+      "line": 405,
+      "command": "npm install phaser@4",
+      "action": "Instructional migration checklist only; not executed and not permission to install or upgrade."
+    },
+    "auditOnlyRootPackage": {
+      "version": "4.2.1",
+      "installLifecycleScripts": [],
+      "externalPublishScript": "npm publish --tag beta",
+      "otherScriptPurposes": ["webpack builds/watch", "eslint/lintfix", "shader bundling", "declaration generation", "vitest"],
+      "action": "Not included in vendored runtime; no scripts were run."
+    }
+  },
+  "limitations": [
+    "Static audit and targeted manual review are not an exhaustive semantic or security proof.",
+    "No engine builds, dependency installation, upstream tests, or external publication were performed.",
+    "External URLs and engine-version API accuracy were not exhaustively validated.",
+    "Known upstream path errors are recorded additively; original source bytes remain unchanged."
+  ]
+}

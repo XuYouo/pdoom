@@ -1,0 +1,13 @@
+title: "Cherry tree — from seed to full bloom"
+description: Runs of the tree-growth prompt, one card per run — benchmark rows and the experiment runs beside them.
+generations:
+  - 2026-10-07-tree-growth-opus-critic4
+  - 2026-10-07-tree-growth-opus-critic3
+  - 2026-10-06-tree-growth-opus-critic2
+  - 2026-10-06-tree-growth-opus-briefing
+  - 2026-10-06-tree-growth-opus
+  - 2026-10-05-tree-growth-sonnet
+  - 2026-10-05-tree-growth-sol
+  - 2026-10-05-tree-growth-luna
+  - 2026-10-02-tree-growth-grid
+  - 2026-10-01-tree-growth-opus

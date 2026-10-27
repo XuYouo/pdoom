@@ -1,0 +1,8 @@
+# What decides who may rank on the benchmark, and the checks that enforce it.
+# Pair with branch protection "Require review from Code Owners" on main — a
+# pull request can edit its own workflow, so CI alone is not the gate.
+/gallery/MAINTAINERS  @fedorovvvv
+/gallery/prompts/     @fedorovvvv
+/gallery/packs/       @fedorovvvv
+/gallery/src/         @fedorovvvv
+/.github/             @fedorovvvv

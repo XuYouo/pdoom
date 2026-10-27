@@ -1,0 +1,604 @@
+/*
+ * "Pebble & Moss" — lavender pebble #83769c (primary), PICO-8 moss #008751 (secondary) and PICO-8
+ * orange #ffa300 (accent) on calm purple-tinted neutrals; the same three in light and dark.
+ * Radius 0 and the pixel-border rule are 8bitcn/ui's (MIT, see src/shared/ui/8bit/LICENSE):
+ * borders draw in --foreground (light) and --ring (dark); --ring is the tinted border colour
+ * here, not the focus colour — focus uses the accent. Foreground/background pairs pass WCAG AA
+ * (4.5:1): primary on #111016 4.5, secondary on white 4.6, accent on #111016 9.5, body text 16+.
+ */
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import '@fontsource-variable/pixelify-sans';
+@import '@fontsource/press-start-2p';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+	--radius: 0rem;
+	--background: #f8f6fa;
+	--foreground: #1b1824;
+	--card: #ffffff;
+	--card-foreground: #1b1824;
+	--popover: #ffffff;
+	--popover-foreground: #1b1824;
+	/* Light fill under the dark pixel ink, as light-theme 8-bit UI draws it: the brand lavender
+	   itself sat within a step of the border, so buttons read as dark on dark. */
+	--primary: #d9d0e9;
+	--primary-foreground: #1b1824;
+	/* The brand lavender as text on a light background; the pale fill above is unreadable there. */
+	--primary-ink: #6b5f86;
+	--secondary: #008751;
+	--secondary-foreground: #ffffff;
+	--muted: #eeeaf2;
+	--muted-foreground: #5f5870;
+	--accent: #ffa300;
+	--accent-foreground: #1b1824;
+	/* The accent as text or icon on a light background; plain orange is under 3:1 there. */
+	--accent-ink: #9a5c00;
+	--destructive: #c8003c;
+	--border: #ddd6e6;
+	--input: #d3cbdd;
+	--ring: #3d3452;
+	--chart-1: #83769c;
+	--chart-2: #008751;
+	--chart-3: #ffa300;
+	--chart-4: #ff77a8;
+	--chart-5: #29adff;
+
+	--pico-black: #000000;
+	--pico-navy: #1d2b53;
+	--pico-plum: #7e2553;
+	--pico-forest: #008751;
+	--pico-brown: #ab5236;
+	--pico-slate: #5f574f;
+	--pico-silver: #c2c3c7;
+	--pico-white: #fff1e8;
+	--pico-red: #ff004d;
+	--pico-orange: #ffa300;
+	--pico-yellow: #ffec27;
+	--pico-green: #00e436;
+	--pico-blue: #29adff;
+	--pico-lavender: #83769c;
+	--pico-pink: #ff77a8;
+	--pico-peach: #ffccaa;
+
+	--canvas-a: #f1edf5;
+	--canvas-b: #e7e1ee;
+	--grid-dot: rgb(27 24 36 / 0.12);
+	/* Pixel borders in a deep lavender ink, not near-black: full-strength foreground made every
+	   frame, button and divider read as a heavy charcoal outline on the light ground. */
+	--pixel: #574c70;
+
+	/* The light the page sits in (.atmosphere): one faint lavender wash from the top. */
+	--glow-1: rgb(131 118 156 / 0.16);
+	/* Hard pixel shadow under display headings (.title-depth). */
+	--title-depth: #d9d0e9;
+	--scanline: transparent;
+}
+
+.dark {
+	--background: #111016;
+	--foreground: #f1edf6;
+	--card: #1a1822;
+	--card-foreground: #f1edf6;
+	--popover: #1a1822;
+	--popover-foreground: #f1edf6;
+	--primary: #83769c;
+	--primary-foreground: #0e0d12;
+	--primary-ink: #a99cc4;
+	--secondary: #008751;
+	--secondary-foreground: #ffffff;
+	--muted: #221f2c;
+	--muted-foreground: #aaa3b9;
+	--accent: #ffa300;
+	--accent-foreground: #111016;
+	--accent-ink: #ffa300;
+	--destructive: #ff4d7a;
+	--border: #2e2a3b;
+	--input: #3a3449;
+	--ring: #6a6080;
+	--chart-1: #83769c;
+	/* Moss #008751 disappears on the dark card as a 3px line; the PICO-8 bright green does not. */
+	--chart-2: #00e436;
+	--chart-3: #ffa300;
+	--chart-4: #ff77a8;
+	--chart-5: #29adff;
+
+	--canvas-a: #1d1a26;
+	--canvas-b: #16141d;
+	--grid-dot: rgb(241 237 246 / 0.07);
+	--pixel: var(--ring);
+
+	--glow-1: rgb(131 118 156 / 0.2);
+	--title-depth: #3b2f5c;
+	/* One dark line every third pixel, faint: a CRT's grain, felt more than seen. */
+	--scanline: rgb(0 0 0 / 0.18);
+}
+
+@theme inline {
+	/* Pixelify Sans for all running text: pixel-built like the art, yet readable at body
+	   sizes, which Press Start 2P (kept for display headings, `.retro`) is not. */
+	--font-sans: 'Pixelify Sans Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-retro: 'Press Start 2P', system-ui, sans-serif;
+	--color-ring: var(--ring);
+	--color-input: var(--input);
+	--color-border: var(--border);
+	--color-destructive: var(--destructive);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-accent-ink: var(--accent-ink);
+	--color-primary-ink: var(--primary-ink);
+	--color-accent: var(--accent);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-muted: var(--muted);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary: var(--secondary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-primary: var(--primary);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-popover: var(--popover);
+	--color-card-foreground: var(--card-foreground);
+	--color-card: var(--card);
+	--color-foreground: var(--foreground);
+	--color-background: var(--background);
+	--color-pixel: var(--pixel);
+	--color-pico-red: var(--pico-red);
+	--color-pico-orange: var(--pico-orange);
+	--color-pico-yellow: var(--pico-yellow);
+	--color-pico-green: var(--pico-green);
+	--color-pico-blue: var(--pico-blue);
+	--color-pico-navy: var(--pico-navy);
+	--color-pico-white: var(--pico-white);
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.2);
+	--radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	html {
+		@apply font-sans;
+		color-scheme: light;
+	}
+	html.dark {
+		color-scheme: dark;
+	}
+	body {
+		@apply bg-background text-foreground antialiased;
+		line-height: 1.6;
+	}
+	html {
+		scrollbar-color: var(--pixel) transparent;
+	}
+	::selection {
+		background: var(--accent);
+		color: var(--accent-foreground);
+	}
+	h1,
+	h2,
+	h3,
+	h4 {
+		@apply retro;
+		font-weight: 400;
+		text-wrap: balance;
+	}
+	:focus-visible {
+		outline: 3px solid var(--accent);
+		outline-offset: 3px;
+	}
+}
+
+/* 8bitcn/ui components/ui/8bit/styles/retro.css, with the font self-hosted instead of Google Fonts. */
+@utility retro {
+	font-family: var(--font-retro);
+	line-height: 1.5;
+	letter-spacing: 0.5px;
+}
+
+/*
+ * Holographic accent, for the few things that must pull the eye (the Plugin link, the GitHub
+ * count). A pastel iridescent gradient clipped to the glyphs, drifting in steps, not smoothly,
+ * like a palette cycle. The 3D edge is two stacked one-pixel drop-shadows: text-shadow would
+ * paint over a background-clipped fill, drop-shadow is drawn from the rendered result.
+ * Icons inside take the same colours through the SVG gradient in shared/ui/holo
+ * (`#holo-fill`), because currentColor cannot carry a gradient.
+ */
+:root {
+	/* The dark theme's pastels, a shade deeper so they hold on the light ground; a soft lavender
+	   edge separates them — the dark theme's indigo reads as a heavy shadow on white. */
+	--holo-1: #8fe0a8;
+	--holo-2: #7cc4f5;
+	--holo-3: #b7a0f5;
+	--holo-4: #f59cd0;
+	--holo-5: #f5c27c;
+	--holo-depth: #a294dc;
+	--holo-glow: transparent;
+}
+.dark {
+	--holo-1: #c4f7d2;
+	--holo-2: #a9dbff;
+	--holo-3: #d8c6ff;
+	--holo-4: #ffc4e8;
+	--holo-5: #ffe4b8;
+	--holo-depth: #4b3bc4;
+	--holo-glow: rgb(214 196 255 / 0.45);
+}
+@utility text-holo {
+	background-image: linear-gradient(
+		100deg,
+		var(--holo-1),
+		var(--holo-2),
+		var(--holo-3),
+		var(--holo-4),
+		var(--holo-5),
+		var(--holo-2),
+		var(--holo-1)
+	);
+	/* 200%, not wider: a short word ("109", "Plugin") still crosses several hues at any moment. */
+	background-size: 200% 100%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	-webkit-text-fill-color: transparent;
+	filter: drop-shadow(1px 1px 0 var(--holo-depth)) drop-shadow(1px 1px 0 var(--holo-depth))
+		drop-shadow(0 0 6px var(--holo-glow));
+	animation: holo-drift 6s steps(24, end) infinite alternate;
+
+	& svg [fill='currentColor'] {
+		fill: url(#holo-fill);
+	}
+
+	/* The global reduced-motion rule shortens durations, which on an infinite loop is a flicker. */
+	@media (prefers-reduced-motion: reduce) {
+		animation: none;
+	}
+}
+@keyframes holo-drift {
+	from {
+		background-position: 0% 50%;
+	}
+	to {
+		background-position: 100% 50%;
+	}
+}
+
+@layer components {
+	.pixelated {
+		image-rendering: pixelated;
+		image-rendering: crisp-edges;
+	}
+	/*
+	 * pixelarticons are drawn on a 24px grid; any other size resamples the pixels. The
+	 * `!important` beats shadcn's `[&_svg]:size-4` defaults inside buttons, selects and toasts.
+	 */
+	[data-pixel-icon] {
+		width: 24px !important;
+		height: 24px !important;
+		flex-shrink: 0;
+		shape-rendering: crispEdges;
+	}
+	/* Aseprite's transparency checkerboard, so transparent art reads as a canvas. */
+	.canvas-checker {
+		background: repeating-conic-gradient(var(--canvas-a) 0 25%, var(--canvas-b) 0 50%) 0 0 / 16px
+			16px;
+	}
+	.grid-dots {
+		background-image: radial-gradient(circle, var(--grid-dot) 1px, transparent 1.5px);
+		background-size: 16px 16px;
+	}
+
+	/*
+	 * The light the whole site sits in, fixed behind everything (app/layout): one faint lavender
+	 * wash from the top, under faint scanlines in the dark theme. Kept to one colour and low on
+	 * purpose — more pools of light competed with the art.
+	 */
+	.atmosphere {
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+		background:
+			repeating-linear-gradient(0deg, var(--scanline) 0 1px, transparent 1px 3px),
+			radial-gradient(80rem 36rem at 30% -12%, var(--glow-1), transparent 70%);
+	}
+
+	/*
+	 * The top of a page — eyebrow, title, lead: the dot grid fades in behind it from the top,
+	 * centred on --hero-x (30% for a left-aligned header, 50% for a centred one).
+	 */
+	.page-hero {
+		--hero-x: 30%;
+		position: relative;
+		isolation: isolate;
+	}
+	.page-hero::before {
+		content: '';
+		position: absolute;
+		inset: -3rem 0 -2rem;
+		z-index: -1;
+		pointer-events: none;
+		background-image: radial-gradient(circle, var(--grid-dot) 1px, transparent 1.5px);
+		background-size: 16px 16px;
+		mask: radial-gradient(ellipse 75% 100% at var(--hero-x) 0%, #000 20%, transparent 80%);
+	}
+
+	/* A small label above a title: an accent pixel, then the words in spaced capitals. */
+	.eyebrow {
+		/* Block-level, so it starts its own line even after an inline back link. */
+		display: flex;
+		width: fit-content;
+		align-items: center;
+		gap: 0.75rem;
+		font-family: var(--font-retro);
+		font-size: 0.625rem;
+		line-height: 1.5;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--accent-ink);
+	}
+	.eyebrow::before {
+		content: '';
+		flex-shrink: 0;
+		width: 8px;
+		height: 8px;
+		background: var(--accent);
+	}
+
+	/* Press Start 2P draws on an 8px grid, so 0.125em is one of its pixels: the drop shadow is
+	   one font pixel down and right, hard, the way an arcade title is set. */
+	.title-depth {
+		text-shadow: 0.125em 0.125em 0 var(--title-depth);
+	}
+
+	/* A section's h2: two accent pixels stepping down in front of it, like a cursor. */
+	.section-title {
+		display: flex;
+		align-items: baseline;
+		gap: 1em;
+	}
+	/* A heading with its own icon ("Score over time", the knowledge base's Skills and Agents)
+	   uses the icon as its marker, in the stair's colour: one mark in front, never two. */
+	.section-title:has(svg)::before {
+		content: none;
+	}
+	.section-title svg {
+		color: var(--accent-ink);
+	}
+	.section-title::before {
+		content: '';
+		flex-shrink: 0;
+		width: 0.5em;
+		height: 0.5em;
+		translate: 0 -0.5em;
+		background: var(--accent);
+		box-shadow: 0.5em 0.5em 0 color-mix(in oklab, var(--accent) 45%, transparent);
+	}
+
+	.lead {
+		max-width: 62ch;
+		font-size: 1.125rem;
+		line-height: 1.7;
+		color: var(--muted-foreground);
+		text-wrap: pretty;
+	}
+
+	/* A dashed divider in the frame colour, at the art's own step. */
+	.pixel-rule {
+		height: 4px;
+		background: repeating-linear-gradient(90deg, var(--pixel) 0 8px, transparent 8px 16px);
+	}
+}
+
+/*
+ * Pixel corners. Rounding a pixel-art site with border-radius gives smooth anti-aliased arcs,
+ * which is exactly what the art never has; these step instead, one art pixel at a time.
+ *
+ * Border widths step down with nesting: 6px for a top-level box (cards, the art viewers,
+ * inputs), 4px for a panel inside one (plates, the art window, dividers), 2px for small
+ * marks (gems, chips, notches).
+ *
+ * .pixel-frame — the card frame, `--frame` wide (6px; 4px when nested): a nine-slice SVG draws the stepped border (border-image
+ * replaces the border, so border colour classes do nothing on it) and clip-path cuts the
+ * background to the same staircase, so nothing shows outside the steps.
+ * .pixel-notch — small or dashed things (buttons, chips, empty states): the corners are cut
+ * square by --notch, the border width, which is how 8-bit UI rounds a box that size.
+ */
+:root {
+	--pixel-frame-color: #574c70;
+	--pixel-frame-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42' viewBox='0 0 42 42'%3E%3Cpath fill='%23574c70' fill-opacity='1' d='M12 0h18v6H12zM6 6h6v6H6zM30 6h6v6h-6zM0 12h6v18H0zM36 12h6v18h-6zM6 30h6v6H6zM30 30h6v6h-6zM12 36h18v6H12z'/%3E%3C/svg%3E");
+}
+.dark {
+	--pixel-frame-color: #6a6080;
+	--pixel-frame-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42' viewBox='0 0 42 42'%3E%3Cpath fill='%236a6080' fill-opacity='1' d='M12 0h18v6H12zM6 6h6v6H6zM30 6h6v6h-6zM0 12h6v18H0zM36 12h6v18h-6zM6 30h6v6H6zM30 30h6v6h-6zM12 36h18v6H12z'/%3E%3C/svg%3E");
+}
+@layer components {
+	.pixel-frame {
+		--frame: 6px;
+		--step: calc(var(--frame) * 2);
+		border: var(--frame) solid transparent;
+		border-image: var(--pixel-frame-image) 18 / calc(var(--frame) * 3) / 0 stretch;
+		clip-path: polygon(
+			var(--step) 0,
+			calc(100% - var(--step)) 0,
+			calc(100% - var(--step)) var(--frame),
+			calc(100% - var(--frame)) var(--frame),
+			calc(100% - var(--frame)) var(--step),
+			100% var(--step),
+			100% calc(100% - var(--step)),
+			calc(100% - var(--frame)) calc(100% - var(--step)),
+			calc(100% - var(--frame)) calc(100% - var(--frame)),
+			calc(100% - var(--step)) calc(100% - var(--frame)),
+			calc(100% - var(--step)) 100%,
+			var(--step) 100%,
+			var(--step) calc(100% - var(--frame)),
+			var(--frame) calc(100% - var(--frame)),
+			var(--frame) calc(100% - var(--step)),
+			0 calc(100% - var(--step)),
+			0 var(--step),
+			var(--frame) var(--step),
+			var(--frame) var(--frame),
+			var(--step) var(--frame)
+		);
+	}
+	/* The frame's inner corner steps, drawn again above the content: full-bleed art or a glow
+	   inside the frame would otherwise paint over them, since children paint above their
+	   parent's border. Colour must match the SVG's. */
+	.pixel-frame::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		pointer-events: none;
+		background: var(--pixel-frame-color);
+		--corner: linear-gradient(#000 0 0);
+		mask:
+			var(--corner) top left / var(--frame) var(--frame) no-repeat,
+			var(--corner) top right / var(--frame) var(--frame) no-repeat,
+			var(--corner) bottom left / var(--frame) var(--frame) no-repeat,
+			var(--corner) bottom right / var(--frame) var(--frame) no-repeat;
+	}
+	/* A raised panel on a card, as game cards draw their name and text boxes: dark fill, a dark
+	   rim, a one-pixel light bevel on top and left, a shadow on the bottom and right, square-cut
+	   corners. Translucent, so the card's glow shows through. */
+	.plate {
+		--notch: 4px;
+		background: color-mix(in oklab, var(--background) 72%, transparent);
+		border: 4px solid color-mix(in oklab, var(--foreground) 35%, transparent);
+		box-shadow:
+			inset 2px 2px 0 rgb(255 255 255 / 0.1),
+			inset -2px -2px 0 rgb(0 0 0 / 0.3);
+		backdrop-filter: blur(16px) saturate(1.4);
+	}
+	/* The cost gem on a name plate: accent fill, the same bevel, brighter. */
+	.gem {
+		--notch: 2px;
+		background: var(--accent);
+		color: var(--accent-foreground);
+		border: 2px solid color-mix(in oklab, black 55%, var(--accent));
+		box-shadow:
+			inset 2px 2px 0 rgb(255 255 255 / 0.35),
+			inset -2px -2px 0 rgb(0 0 0 / 0.25);
+	}
+	.pixel-notch {
+		--notch: 2px;
+	}
+	/* The corner pixel inside each cut, as the 8-bit components draw it: without it the edges
+	   just stop short of each other and the box reads as broken, not rounded. A ring in the
+	   parent's own border colour, masked down to its four corners; `border-color: inherit`
+	   keeps it in step with whatever colour class the box uses, and `solid` keeps it whole on
+	   dashed boxes. */
+	.plate::before,
+	.gem::before,
+	.pixel-notch::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		pointer-events: none;
+		border: var(--notch) solid;
+		border-color: inherit;
+		--corner: linear-gradient(#000 0 0);
+		mask:
+			var(--corner) top left / var(--notch) var(--notch) no-repeat,
+			var(--corner) top right / var(--notch) var(--notch) no-repeat,
+			var(--corner) bottom left / var(--notch) var(--notch) no-repeat,
+			var(--corner) bottom right / var(--notch) var(--notch) no-repeat;
+	}
+	/* The corner pixels position against the box; boxes Tailwind already positions keep theirs. */
+	:is(.pixel-frame, .plate, .gem, .pixel-notch):not(.absolute, .fixed, .sticky) {
+		position: relative;
+	}
+	.plate,
+	.gem,
+	.pixel-notch {
+		clip-path: polygon(
+			var(--notch) 0,
+			calc(100% - var(--notch)) 0,
+			calc(100% - var(--notch)) var(--notch),
+			100% var(--notch),
+			100% calc(100% - var(--notch)),
+			calc(100% - var(--notch)) calc(100% - var(--notch)),
+			calc(100% - var(--notch)) 100%,
+			var(--notch) 100%,
+			var(--notch) calc(100% - var(--notch)),
+			0 calc(100% - var(--notch)),
+			0 var(--notch),
+			var(--notch) var(--notch)
+		);
+	}
+}
+
+/*
+ * A holo word inside a .title-depth heading. Its glyphs are transparent over a clipped
+ * gradient, so the heading's inherited text-shadow shows through the letters and muddies them;
+ * it takes the same one-font-pixel step as a drop-shadow instead, drawn behind the rendered
+ * gradient. Unlayered on purpose: `text-holo` is a utility and would win over a components rule.
+ */
+.title-depth .text-holo {
+	text-shadow: none;
+	filter: drop-shadow(0.125em 0.125em 0 var(--holo-depth)) drop-shadow(0 0 6px var(--holo-glow));
+}
+
+/*
+ * View transitions between pages. The header and footer have names of their own, so they
+ * hold still while the page between them changes. The cross-fade is stepped rather than
+ * smooth: a pixel-art site that dissolves through 60 blended frames looks out of character.
+ * A generation's art carries `view-transition-name` on both the card and the detail page,
+ * so it moves between the two instead of fading.
+ */
+.site-header {
+	view-transition-name: site-header;
+}
+.site-footer {
+	view-transition-name: site-footer;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 180ms;
+	animation-timing-function: steps(4, end);
+}
+::view-transition-group(*) {
+	animation-duration: 240ms;
+	animation-timing-function: steps(6, end);
+}
+::view-transition-old(*),
+::view-transition-new(*) {
+	image-rendering: pixelated;
+}
+/*
+ * A pack flies from the wall to its page (and back, while it is still sealed): smooth and a
+ * little longer than the stepped page fade, because a jerky 240ms hop across half the screen
+ * reads as a glitch, not a move. The wall tile's caption plate fades out on the way while the
+ * page's captionless pack fades in. The pack page waits this long (plus a beat) before it
+ * starts the opening; keep the two in step (pages/pack/ui/PackOpening, `--arrive`).
+ */
+::view-transition-group(*.pack) {
+	z-index: 50;
+	animation-duration: 480ms;
+	/* Lifts off gently and lands soft, so the middle of the flight is actually seen. */
+	animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1);
+}
+::view-transition-old(*.pack),
+::view-transition-new(*.pack) {
+	animation-duration: 320ms;
+	animation-timing-function: ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+	}
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+}

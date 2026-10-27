@@ -1,0 +1,13 @@
+# The repository root is itself a workspace package — the published plugin
+# (@pebbly/aseprite-ai-artist). It stays at the root because the Claude Code
+# marketplace installs it from "./" and every user's plugin path points there.
+packages:
+  - apps/*
+  - gallery
+# pnpm 11 refuses dependency build scripts unless listed. esbuild's postinstall
+# only verifies its platform binary, which the optional dependency already ships.
+allowBuilds:
+  esbuild: true
+  # sharp (favicon generator, dev-only) ships prebuilt binaries as @img/sharp-*
+  # optional dependencies; its install script only compiles from source as a fallback.
+  sharp: false

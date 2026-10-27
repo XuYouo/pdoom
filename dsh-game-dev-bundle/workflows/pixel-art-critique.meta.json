@@ -1,0 +1,5 @@
+{
+  "name": "pixel-art-critique",
+  "description": "Fresh-agent cold recognition followed by separate brief-aware, read-only pixel-art critique.",
+  "phases": [{ "title": "Cold read" }, { "title": "Brief-aware critique" }]
+}

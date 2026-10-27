@@ -1,0 +1,112 @@
+title: Cherry tree — from seed to full bloom
+summary: >-
+  A blossoming cherry tree drawn to a fixed design, then animated growing from
+  a seed into exactly that tree. Tests whether a model can plan an animation
+  backwards from a fixed final frame, keep growth continuous along one
+  structure, and ease the pace of growth through timing and spacing.
+revision: 1
+tags: [nature, animation, growth, 64x64, pico-8]
+setup:
+  canvas:
+    width: 64
+    height: 64
+    colorMode: rgb
+  palette: pico8
+  rules:
+    - Step 1 starts from a new document created with sprite_manage op="new" width=64 height=64 colorMode="rgb", then palette op="preset" preset="pico8" replace=true. The operator does this before handing over the step text.
+    - Hand the model exactly the step text — no reference image, no extra steering beyond the server's own instructions and skills.
+    - One session per step. Step 2 runs in a fresh session against a copy of the step-1 result; the operator keeps the step-1 PNG export to compare the final frame against.
+    - If the model offers to generate a concept image, a pixel-only run answers "No reference, continue from the text." A run that does use one is declared in `references` and ranked on its own row. Either answer is recorded as an intervention.
+    - Do not intervene mid-run unless the model asks a genuine clarifying question, and record it under the step's interventions.
+steps:
+  - title: The tree
+    text: |-
+      The document is already open: 64×64 pixels, RGB, with the PICO-8 palette loaded (16 colours). Use only those 16 colours — do not add, widen or replace the palette. This brief is complete: do not ask me to confirm it. Decide anything it leaves open yourself and list those decisions in your final report. Coordinates below are 0-based pixels, x to the right, y down.
+
+      Draw ONE frame: a cherry tree in full bloom standing on a strip of ground. A later step will animate this tree growing from a seed, so build it as a clear structure — trunk, a few main branches, blossom masses — rather than texture noise.
+
+      Composition
+      - Transparent sky. Front view, the tree centred.
+      - Ground strip across the full width, y 56–63: a grass edge on y 56–57 (#008751 with #00e436 tufts), soil below it (#5f574f with #000000 shading and a few #ab5236 pebbles).
+      - Trunk rising from the ground with its base centred on x 30–33, slightly flared roots visible where it meets the grass. The trunk is 4 px wide at the base, tapers upward, and curves gently in an S.
+      - Around y=36 the trunk splits into exactly 3 main branches (left, centre, right), each splitting again at least once. Branches thin to 1 px at the tips.
+      - The canopy spans roughly x 8–56 and y 6–38: three or four rounded blossom masses with gaps between them where branches show through.
+
+      Colours (PICO-8 hex values)
+      - Bark: #ab5236 lit side, #7e2553 shadow side, #000000 for the deepest crevices.
+      - Blossoms: #ff77a8 base, #ffccaa and #fff1e8 highlights, #7e2553 shadow. A few green leaves (#00e436, #008751) peek out between the blossoms.
+
+      Style
+      - Light from the upper left: lit sides of the trunk and the blossom masses on the left and top, shadow on the right and underneath.
+      - Blossoms are drawn as clusters of 2–5 px clumps with a clear light and shadow side, not single-pixel noise. No stray pixels, no anti-aliasing against transparency.
+
+      Layers, exactly these names, bottom to top: `ground`, `trunk` (trunk, roots and every branch), `canopy` (blossoms and leaves). No other layers.
+
+      Before you finish: look at the result, run validate, and fix what it reports. In your final report, describe the branch structure (where each main branch splits) and any decision you made that the brief did not specify.
+  - title: The growth
+    text: |-
+      The open document holds a blossoming cherry tree on a strip of ground (canvas 64×64, PICO-8 palette, layers `ground`, `trunk`, `canopy`). Keep the palette — use only its 16 colours. This brief is complete: do not ask me to confirm it. Decide anything it leaves open yourself and list those decisions in your final report. Coordinates are 0-based pixels, x to the right, y down.
+
+      Animate this tree growing from a seed into exactly the tree in the document. 18 to 24 frames in total, one tag named `grow` covering every frame, direction forward.
+
+      The final frame IS the existing tree, pixel for pixel, on `ground`, `trunk` and `canopy`. Keep the current art as the last frame and build every earlier stage backwards from it: each earlier frame is a smaller version of the same structure, so every branch grows along the path its final branch takes.
+
+      Stages, in this order
+      1. Seed, 2 frames: no tree. A 2×2 seed lies half-buried in the soil directly under the trunk's final base.
+      2. Sprout, 2–3 frames: the soil cracks open around the seed, a few dirt crumbs pop up, then a thin green stem rises with two round seed leaves unfolding.
+      3. Sapling, 3–4 frames: the stem turns to bark colour from the bottom up and grows taller, the first side branches appear, a few small green leaves.
+      4. Young tree, 4–5 frames: the trunk thickens from 1 px to its final width from the bottom up, the 3 main branches extend along their final paths and split, and green leaf clusters swell into the shapes of the final blossom masses.
+      5. Budding, 2–3 frames: the green masses reach their final outlines and pink buds dot them.
+      6. Bloom, 3–4 frames: the buds burst open cluster by cluster, spreading from the branch tips inward, until the canopy matches the final tree. A few loose petals drift down and to the right across these frames.
+
+      Rules
+      - The `ground` layer is identical on every frame. Soil cracks, crumbs and falling petals go on a new layer named `fx`, which is empty on the final frame.
+      - Growth is continuous: the trunk and branches never shrink, never jump to a new position and never change path between frames. The trunk base stays on x 30–33 throughout.
+      - The pace eases: very little changes per frame at the start, the biggest change per frame comes in the middle (a growth spurt), and the last frames settle in small steps.
+      - Timing (milliseconds per frame): the seed frames at least 400 each, the growth frames 80–150, and the final frame at least 1500 so the finished tree holds before the loop restarts.
+
+      Before you finish: check the whole cycle as a filmstrip, check at least one young-tree frame with onion skin against its neighbours, compare the final frame against the tree you started from, and run validate. Fix what it reports. In your final report, give the frame plan: frame number, stage and duration for every frame.
+criteria:
+  - id: tree-validate
+    step: 1
+    text: validate passes with no unaddressed errors (warnings may stand if the report names and justifies them).
+  - id: tree-palette
+    step: 1
+    text: Every colour is on the PICO-8 palette and the palette still has exactly the 16 PICO-8 entries (validate check palette, palette op="get").
+  - id: tree-read
+    step: 1
+    text: The preview reads at a glance as a cherry tree in bloom — trunk, branches showing through gaps, and pink blossom masses are each distinguishable without the ascii grid.
+  - id: tree-spec
+    step: 1
+    text: >-
+      The brief is followed: layers exactly ground/trunk/canopy (sprite_info), ground on y 56–63 with grass on top, trunk base on x 30–33 and 4 px wide,
+      exactly 3 main branches splitting around y=36, canopy inside roughly x 8–56 and y 6–38 as 3–4 masses with gaps.
+  - id: tree-shading
+    step: 1
+    text: Light reads from the upper left on the trunk and on every blossom mass, and the blossoms are clumps with a light and shadow side rather than single-pixel noise (validate strays clean, look op="ascii").
+  - id: grow-tagged
+    step: 2
+    text: The sprite has 18–24 frames and tag op="list" shows a forward tag named `grow` covering all of them.
+  - id: grow-final
+    step: 2
+    text: The final frame matches the step-1 tree pixel for pixel — an image diff of its PNG export against the step-1 export shows no changed pixel — and `fx` is empty on that frame.
+  - id: grow-stages
+    step: 2
+    text: The filmstrip shows all six stages in order — seed, sprout with two seed leaves, sapling, thickening young tree, green masses with buds, bloom spreading from the tips.
+  - id: grow-continuous
+    step: 2
+    text: >-
+      look op="diff" with layer="trunk" between consecutive growth frames shows only additions and re-shading along the existing structure — no branch shrinks, jumps or changes path,
+      and onion skin on a young-tree frame shows its branches lying on the paths of the final ones.
+  - id: grow-ground
+    step: 2
+    text: The ground layer never changes (look op="diff" with layer="ground" reports nothing changed between any two frames) and the trunk base stays on x 30–33 on every frame.
+  - id: grow-easing
+    step: 2
+    text: look op="diff" percentChanged between consecutive frames is small at the start, largest in the middle and small again at the end — the growth visibly spurts and settles.
+  - id: grow-timing
+    step: 2
+    text: frame op="list" durations match the brief — seed frames ≥400, growth frames 80–150, final frame ≥1500 ms.
+  - id: grow-validate
+    step: 2
+    text: validate passes with no unaddressed errors and the palette is still the 16 PICO-8 entries.
