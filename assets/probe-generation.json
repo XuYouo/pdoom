@@ -1,0 +1,314 @@
+{
+  "status": "Probe-only admitted after static, native and full regression; chapter-two environment/Sydney still blockout",
+  "round": 14,
+  "engine": "Phaser4.0.0",
+  "scope": "Von Neumann probe only; factory environment/Sydney still blockout",
+  "palette": [
+    "00000000",
+    "2c2330",
+    "d97757",
+    "eaa083",
+    "b55a4a",
+    "783f4a",
+    "f5e8c8",
+    "cbb696",
+    "34354f",
+    "575c79",
+    "858eb0",
+    "9dded1",
+    "d9ffea",
+    "0f191b",
+    "24423b",
+    "426b50",
+    "8fa86b",
+    "b9905d",
+    "e5c386",
+    "723f68"
+  ],
+  "requests": [
+    {
+      "prompt": "Pixel-art animation reference storyboard for a tiny autonomous industrial Von Neumann harvesting probe in a dark paperclip factory, consistent with a restrained retro 2D platform game. One compact cold-steel octagonal chassis, a single horizontal scanning aperture (not a pair of eyes or a cute face), two short side guide rails and a pair of angular lower harvesting pincers. It is a functional floating machine, not an animal, skull, ball with wings, human robot or spaceship. Front-facing flat orthographic sprite in the side-scrolling gameplay plane; no perspective rotation. The chassis is rigid and identical in every panel. Imagine a32x32 sprite with pivot16,16: the entire silhouette must fit x3..28,y5..26; central housing about16x14, lower pincers clearly separated from the housing, short rail tips about26px total width. Light from upper left, selective1px dark-plum outline, cool reflective metal in3 hard bands, sparse grouped details, hard pixel edges, no anti-aliasing, smooth gradients, blur, bloom, texture noise or oversized antenna. Use this limited colour vocabulary: outline #2c2330; deep metal #34354f; metal shadows #575c79; metal mid #858eb0; restrained warm reflection #cbb696; highlight #d9ffea; scan indicator #9dded1; warning #e5c386; dark aperture #0f191b. Never use hero orange #d97757. Exactly4 equal-width panels in a single horizontal row, same scale and chassis centre line, fully separated by generous plain margins. Panel1: search state, pincers resting below the body, scan indicator on the left of the same narrow aperture. Panel2: same search pose, body and pincers unchanged, scan indicator on the right. Panel3: target-lock warning, same housing, two pincers open outward into a clearly wider fork; only the scan indicator turns pale amber. Panel4: consume pose, same housing, pincers close inward into a narrow V beneath the chassis; no debris or platform fragment. No extra clone or birth effect: real gameplay creates separate whole probes. Flat plain #808080 background across all panels; no scenery, ground, cast shadow, text, labels, numbers, arrows, panel borders or watermark. This is only a design reference; final exact32px native sprites will be manually redrawn later.",
+      "requestedSize": "1536x1024",
+      "requestedQuality": "high",
+      "referenceImages": [],
+      "result": "No image returned: tool rejected explicit empty reference_images; not a successful generation"
+    },
+    {
+      "prompt": "Pixel-art animation reference storyboard for a tiny autonomous industrial Von Neumann harvesting probe in a dark paperclip factory, consistent with a restrained retro 2D platform game. One compact cold-steel octagonal chassis, a single horizontal scanning aperture (not a pair of eyes or a cute face), two short side guide rails and a pair of angular lower harvesting pincers. It is a functional floating machine, not an animal, skull, ball with wings, human robot or spaceship. Front-facing flat orthographic sprite in the side-scrolling gameplay plane; no perspective rotation. The chassis is rigid and identical in every panel. Imagine a32x32 sprite with pivot16,16: the entire silhouette must fit x3..28,y5..26; central housing about16x14, lower pincers clearly separated from the housing, short rail tips about26px total width. Light from upper left, selective1px dark-plum outline, cool reflective metal in3 hard bands, sparse grouped details, hard pixel edges, no anti-aliasing, smooth gradients, blur, bloom, texture noise or oversized antenna. Use this limited colour vocabulary: outline #2c2330; deep metal #34354f; metal shadows #575c79; metal mid #858eb0; restrained warm reflection #cbb696; highlight #d9ffea; scan indicator #9dded1; warning #e5c386; dark aperture #0f191b. Never use hero orange #d97757. Exactly4 equal-width panels in a single horizontal row, same scale and chassis centre line, fully separated by generous plain margins. Panel1: search state, pincers resting below the body, scan indicator on the left of the same narrow aperture. Panel2: same search pose, body and pincers unchanged, scan indicator on the right. Panel3: target-lock warning, same housing, two pincers open outward into a clearly wider fork; only the scan indicator turns pale amber. Panel4: consume pose, same housing, pincers close inward into a narrow V beneath the chassis; no debris or platform fragment. No extra clone or birth effect: real gameplay creates separate whole probes. Flat plain #808080 background across all panels; no scenery, ground, cast shadow, text, labels, numbers, arrows, panel borders or watermark. This is only a design reference; final exact32px native sprites will be manually redrawn later. Use the attached native repeater spritesheet ONLY for the restrained metal-pixel treatment and palette, not its design: do not copy its tape reels, handle, speaker, face, silhouette or poses. Output only the new industrial probe storyboard described above.",
+      "requestedSize": "1536x1024",
+      "requestedQuality": "high",
+      "referenceImages": [
+        "public/game/repeater.png"
+      ],
+      "referenceSha256": "1397ee12a2a91037e4e51e591ab91ee6c82f187aafa2a9cc86b5c978432fdd78",
+      "result": "generated",
+      "toolReportedModel": "gpt-image-2.5",
+      "actualSize": [
+        2172,
+        724
+      ],
+      "actualQuality": null,
+      "output": "generated-images/image-20261029-150700-852388.png",
+      "sha256": "8b56b65b0aa6cac1f868a2bd3e2f75d94995ff859db363f405935a0df343bfde",
+      "actuallyViewed": true,
+      "deviations": [
+        "Unrequested top carry handle copied from style reference: omit in native",
+        "Side pads too tall: reduce to short guide rails",
+        "Soft shaded edges/bands: rebuild hard pixel clusters",
+        "Rigid chassis retained; no exact palette compliance claimed for reference"
+      ],
+      "referenceCrops": [
+        {
+          "frame": 1,
+          "x": 70,
+          "y": 154,
+          "width": 400,
+          "height": 524,
+          "fit": "stretch",
+          "target": [
+            0,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "frame": 2,
+          "x": 613,
+          "y": 154,
+          "width": 400,
+          "height": 524,
+          "fit": "stretch",
+          "target": [
+            0,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "frame": 3,
+          "x": 1156,
+          "y": 154,
+          "width": 400,
+          "height": 524,
+          "fit": "stretch",
+          "target": [
+            0,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "frame": 4,
+          "x": 1699,
+          "y": 154,
+          "width": 400,
+          "height": 524,
+          "fit": "stretch",
+          "target": [
+            0,
+            0,
+            32,
+            32
+          ]
+        }
+      ]
+    }
+  ],
+  "productionReady": true,
+  "fullGddComplete": false,
+  "processIncident": "Initial read-only bash fingerprint call incorrectly included forbidden sandbox_permissions; no writes or elevation prompt, but instruction violation acknowledged. Stopped that interface; subsequent work uses no escalation parameters.",
+  "nativeDraftA": {
+    "asepriteSprite": "#5015",
+    "sourceMode": "live",
+    "layers": [
+      "gripper-right",
+      "gripper-left",
+      "chassis",
+      "scanner"
+    ],
+    "frames": 4,
+    "durationsMs": [
+      240,
+      240,
+      1800,
+      500
+    ],
+    "tags": [
+      "seek",
+      "tell",
+      "consume"
+    ],
+    "sheetSize": [
+      128,
+      32
+    ],
+    "frameSize": [
+      32,
+      32
+    ],
+    "bboxesInclusive": [
+      [
+        3,
+        5,
+        28,
+        26
+      ],
+      [
+        3,
+        5,
+        28,
+        26
+      ],
+      [
+        3,
+        5,
+        28,
+        26
+      ],
+      [
+        3,
+        5,
+        28,
+        26
+      ]
+    ],
+    "opaqueColors": 9,
+    "hardAlpha": true,
+    "heroOrangePixels": 0,
+    "rigidChassisTopExceptScannerRGBAEqual": true,
+    "referenceLayersRemoved": true,
+    "validateSummary": "Clean (7 style note(s)).",
+    "validateWarnings": 7,
+    "additionalBandingNotes": 4,
+    "retainedWarnings": "Selective steel/rail rim and joints; straight sensor/hard reflection bands, not diffuse shading. No errors.",
+    "critic": {
+      "member": "pixel-critic-r11",
+      "freshContext": false,
+      "coldRead": "Gray-purple rounded robot shell, dark visor with one lit square, two thin bent appendages; legs vs hanging machine arms ambiguous; third opens and fourth closes; frozen before brief",
+      "score": 7,
+      "blocking": 0,
+      "necessaryFixes": 0,
+      "fixRounds": 0,
+      "scope": "8x nearest-neighbour static sheet only, not1x/timing/collision",
+      "retainedAmbiguity": "In isolated first two frames, grippers can read as thin legs. Open/closed comparison clarifies; function is not proven by static art."
+    },
+    "reviewImage": "artifacts/asset-review-r14/review/a.png",
+    "reviewImageSha256": "6c844c59c135cf3dd658b1b9637ac847feb4ae52d73a52af6de78fd939407b9a",
+    "leadActuallyViewedNative128x32": true,
+    "nativeSceneReview": {
+      "member": "pixel-critic-r11",
+      "freshContext": false,
+      "actualImages": 3,
+      "blocking": 0,
+      "necessaryFixes": 0,
+      "retainedLimit": "Thin grippers are less clear at native size than enlarged; body/scan window/warnings remain readable. Canvas-only, not DOM overlay audit.",
+      "mechanismNotInferredFromImages": true
+    }
+  },
+  "productionArtifacts": [
+    {
+      "path": "assets/source/von-neumann-probe.aseprite",
+      "sha256": "9ccd8929d9f163755df091cc5215d5f10d33f3c12ba8b73ff04b5bb03b1a698a",
+      "bytes": 1823
+    },
+    {
+      "path": "public/game/von-neumann-probe.png",
+      "sha256": "cb4d22499e6edd8ced177e47775d38a72851ec12269e39274a07de0c8b2affc5",
+      "bytes": 639
+    },
+    {
+      "path": "public/game/von-neumann-probe.json",
+      "sha256": "56c4fe9e6ae07db9d5f49471544ec73ca09b779af4f1dc76d432def166c4ad02",
+      "bytes": 1915
+    }
+  ],
+  "toolObservations": [
+    "Repeated reference import with identical name created ambiguous layers; only own references were removed/renamed and reimported uniquely; native art preserved",
+    "Explicit empty layer in look selected the active reference rather than a composite; full four-pose evidence uses MCP export of the four named native layers plus read_image",
+    "Reference contained transparency and soft alpha instead of requested solid gray; native alpha is only0/255"
+  ],
+  "runtimeAcceptanceR14": {
+    "unit": 1002,
+    "unitFiles": 45,
+    "addedAdapterTests": 92,
+    "addedStaticFileTests": 19,
+    "nativeScope": {
+      "passed": 4,
+      "total": 4,
+      "seconds": 50.7,
+      "log": "artifacts/verification/r14-native-probe-01.log"
+    },
+    "firstFullGate": {
+      "passed": 72,
+      "total": 73,
+      "exit": 1,
+      "log": "artifacts/verification/r14-final-gate-01.log",
+      "failure": "Existing Gato reflected-shot observation; retained, not admitted"
+    },
+    "gatoTimingRepeat": {
+      "passed": 3,
+      "total": 3,
+      "seconds": 49.7,
+      "log": "artifacts/verification/r14-gato-timing-02.log"
+    },
+    "finalGate": {
+      "unit": 1002,
+      "browser": 73,
+      "backendEnabled": true,
+      "skipped": 0,
+      "browserMinutes": 7.7,
+      "exit": 0,
+      "log": "artifacts/verification/r14-final-gate-02.log"
+    },
+    "backend": {
+      "passed": 23,
+      "total": 23,
+      "java": "17.0.17",
+      "postgres": "16.14",
+      "cluster": "backend/.local/pg-test.XMgbCb",
+      "log": "artifacts/verification/r14-backend-tests.log"
+    }
+  },
+  "runtimeBinding": {
+    "key": "von-neumann-probe",
+    "frames": {
+      "seek-a": "von-neumann-probe 0.aseprite",
+      "seek-b": "von-neumann-probe 1.aseprite",
+      "tell": "von-neumann-probe 2.aseprite",
+      "consume": "von-neumann-probe 3.aseprite"
+    },
+    "origin": [
+      16,
+      16
+    ],
+    "size": [
+      32,
+      32
+    ],
+    "nearestEnum": 1,
+    "bodyDepth": 2,
+    "realWarningDepth": 3,
+    "physicsRadiusUnchanged": 11,
+    "seekFrameMs": 240,
+    "phasePriority": "actual probe.phase, never phaseUntil inference",
+    "replication": "only actual positive-hp factory.probes ids; no synthetic birth or clone timer"
+  },
+  "gatoObservationFix": "Native reader at true clear-to-gold onset; prepare public HP-anchor aim while paused; normal mouse hold through two real rAF callbacks;24 raw frames saved before decoding.6px/64HP/gold/nonempty checks unchanged; emitted shot count not measured.",
+  "additionalMethodHistory": [
+    "TTY multiline triple-quoted QA draft was interrupted with a SyntaxError before any file was created; rewritten through short escaped-string REPL input",
+    "Delegate patch delivery used only scoped exclusive-create Python; stalled pty14 was closed before any create, replacement pty15 readback SHA matched",
+    "Factory/scene wiring briefly preceded missing delegated module, so it was restored until exact patch bytes existed, then reapplied",
+    "FullGate01 failure retained; no production rules changed to accommodate the Gato observation case"
+  ],
+  "staticCodeReview": {
+    "member": "gameplay-engineer",
+    "blocking": 0,
+    "scope": "Actual probe adapter/factory/binding/scene and world integration/cleanup, current Core/v1/Phaser constants and Gato observation test; not full historical diff or native gate claim",
+    "fileWrites": false,
+    "commandOrTestExecution": false
+  },
+  "cleanup": "artifacts/verification/r14-service-cleanup.json"
+}

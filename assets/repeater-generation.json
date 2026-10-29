@@ -1,0 +1,34 @@
+{
+  "asset": "repeater",
+  "status": "reviewed, integrated and full-regression-verified (526 unit / 48 browser / 23 backend)",
+  "reference": {
+    "tool": "functions.image_generate",
+    "reportedModel": "gpt-image-2.5",
+    "mode": "image-to-image",
+    "input": "assets/reviews/r8-b-large.png",
+    "output": "generated-images/image-20261028-200511-4e0804.png",
+    "requestedSize": "1536x1024",
+    "actualSize": [2170, 725],
+    "quality": "high",
+    "prompt": "Create a NEW character design reference for a compact blue-grey walking reel-to-reel tape recorder enemy, not a bird. Use the attached tiny sprite sheet ONLY for restrained pixel-cluster style and scale; do not copy its animal anatomy. The machine has exactly TWO prominent round cream tape reels in its upper front, a wide horizontal dark speaker grille underneath, a squared carrying handle, a blue-grey metal case and exactly two short mechanical feet. No humanoid head or arms, no screen-face, no text, no lettering, no extra knobs clutter. Left-facing slight three-quarter view, locked camera, light from upper left, hard pixel edges, selective dark outline, no gradients or soft antialiasing. Intended later manual sprite interpretation: 48x48 canvas, 24x24 main collision body, feet fixed at source y44. Palette roles: deep ink #0f191b #2c2330; metal #34354f #575c79 #858eb0; reel faces #cbb696 #f5e8c8; copper #b9905d #e5c386; tiny indicator #9dded1 #d9ffea. Never use #d97757. Exactly FOUR equal-width panels in one horizontal row, same scale and ground line: 1 idle with resting reel spokes, 2 idle with rotated reel spokes, 3 anticipation with the front-left speaker section opening forward slightly and bright tiny indicator, 4 recovery with speaker retracted and dim indicator. No shots, waves or motion lines. Plain neutral grey background, generous margins, no labels, borders, scenery or watermark. Reference only, not a finished game texture."
+  },
+  "production": {
+    "mode": "live Aseprite MCP hand-authored pixels; no resized concept used as production art",
+    "asepriteVersion": "1.3.18.6-dev",
+    "source": "assets/source/repeater.aseprite",
+    "image": "public/game/repeater.png",
+    "atlas": "public/game/repeater.json",
+    "size": [48, 48],
+    "frames": 4,
+    "layers": ["feet", "case", "reels", "speaker", "spokes", "lights"],
+    "paletteEntries": 20,
+    "opaqueColors": 12,
+    "referenceImport": "Source region (0,80,2168,600), four equal 542px panels; imported only as a locked comparison layer and removed after comparisons. External original retained.",
+    "changes": "One targeted correction after review: replace large connected pupil-like reel centers with 1px axles and three separated holes; add the exposed speaker recess and a trailing panel edge. Case footprint, feet, 3px tell extension, timing and all simulation rules unchanged."
+  },
+  "reviews": [
+    {"version": "r9-a", "cold": "At native size, mechanical double eyes/face; recorder association only after enlargement. Cold result frozen before the brief.", "briefAwareScore": 6.5, "blocking": "Reel-to-reel identity obscured by pupil-like connected dark reel marks."},
+    {"version": "r9-b", "kind": "brief-aware targeted re-review, not a new blind review", "score": 7.5, "blocking": [], "remaining": "Short mechanical feet and subdued lower metal on black remain minor; no further static polish recommended. Actual background/FSM/pause not yet covered by this static review."}
+  ],
+  "validation": {"errors": 0, "toolSummary": "Clean (12 style note(s))", "retainedReasons": "Single-pixel axles are intentional marks on solid reel faces, not stray canvas debris; selective light rims and long hard metal edges are intentional. No dithering added to disguise a straight manufactured edge."}
+}

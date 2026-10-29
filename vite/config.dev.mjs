@@ -1,13 +1,15 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-    base: './',
-    plugins: [
-        react(),
-    ],
-    server: {
-        port: 8080
-    }
-})
+  base: './',
+  plugins: [react(), tailwindcss()],
+  server: {
+    host: '127.0.0.1',
+    port: 8080,
+    strictPort: true,
+    watch: { ignored: ['**/backend/**', '**/docs/**', '**/tests/**', '**/artifacts/**', '**/test-results/**', '**/dsh-game-dev-bundle/**', '**/.game-dev-build/**'] },
+    proxy: { '/api': 'http://127.0.0.1:8081', '/health': 'http://127.0.0.1:8081' },
+  },
+});

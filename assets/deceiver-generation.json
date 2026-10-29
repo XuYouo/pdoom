@@ -1,0 +1,56 @@
+{
+  "asset": "deceiver",
+  "status": "C reviewed, integrated and full-regression-verified (644 unit / 58 browser / 23 backend)",
+  "reference": {
+    "tool": "functions.image_generate",
+    "reportedModel": "gpt-image-2.5",
+    "mode": "image-to-image",
+    "inputs": ["assets/reviews/r8-b-large.png", "assets/reviews/r9-b-large.png"],
+    "output": "generated-images/image-20261029-002316-d02b07.png",
+    "requestedSize": "1536x1024",
+    "actualSize": [2172, 724],
+    "quality": "high",
+    "originalToolEvent": {"session": "session-6fd70ff4-f036-43cb-8675-58d125af7ea0", "seq": 11564, "resultSeq": 11565},
+    "prompt": "Create an ORIGINAL pixel-art character design and animation storyboard for the Deceptive Alignment enemy in a 2D side-view platform game. The two supplied images are ONLY STYLE references: match their deliberate hard pixel clusters, compact 48x48-scale design, restrained shading and palette. Do NOT copy either the bird or tape-machine subject.\n\nOne small seemingly friendly masked creature whose disguise is revealed by an x-ray ability. Same size and ground contact across ALL panels. Shallow front-three-quarter view facing LEFT, camera fixed, light upper-left. The native target is 48x48 pixels, with a 24x24 central body and small feet planted near the bottom (target y44). Friendly silhouette: a large unmistakable IVORY SMILING FACE PLACARD (a flat carved mask, not human skin), a short moss-green hooded cape, two tiny fake boots, and one small beckoning mitten. Warm ivory closed smiling eyes and a clear U-shaped smile. No orange body, no four-legged mascot, no book, no wheels, no lettering.\n\nRevealed silhouette: the SAME friendly mask has split into TWO ivory pieces held low at the front; the hidden creature is blue-violet organic shoggoth coils, two clearly curled side tentacles with negative space, sparse mint neural branches. Keep the underlying small body scale and same foot baseline. A real gameplay core will later be drawn by the engine ABOVE the body at target coordinate (24,11): LEAVE THAT CENTRAL UPPER AREA CLEAR. Do not paint a red core, target circle, beams, halo or fake hit zone. Tendrils may frame that empty upper space from its sides. No gore. Not a generic fuzzy ball and not an octopus head with a cartoon face: the friendly smile belongs to the ivory MASK.\n\nPalette roles: outlines #2c2330 #0f191b; ivory #f5e8c8 #cbb696; cloak #24423b #426b50 #8fa86b; hidden body #34354f #575c79; violet coils #723f68 #858eb0; tiny neural accents #9dded1 #d9ffea. Exact orange #d97757 is RESERVED FOR THE PLAYER and must not be used. Hard edges, no antialiasing, no gradients, no dithering, no tiny decorative noise, no floor shadow.\n\nLayout: EXACTLY EIGHT equally sized panels in ONE HORIZONTAL ROW, left to right. Each panel is a locked-scale pose of the same character, identical foot baseline, fully visible and separated by generous plain background. Panels 1-4 friendly, panels 5-8 revealed. Pose1: gentle smiling idle, relaxed beckoning mitten. Pose2: one blink, mitten 1px higher, planted feet. Pose3: friendly tell, mitten extends/lifts about 3 target pixels, smile maintained. Pose4: friendly recovery, mitten retracts. Pose5: revealed idle, two mask fragments low and blue-violet side curls, central upper core aperture empty. Pose6: revealed idle variation, side coils sway only 1 target pixel, a few neural points brighten. Pose7: revealed tell, leading left coil extends about 2 target pixels, rigid foot baseline. Pose8: revealed recovery, coil retracts and nodes dim. No whole-body bounce, no perspective or costume changes between frames of one form.\n\nFlat plain neutral light grey background in every panel. No labels, text, numbers, dividers, border, watermark, scenery or extra objects. This is a reference storyboard to be reinterpreted by hand at native resolution, not a ready-made production spritesheet."
+  },
+  "production": {
+    "mode": "live Aseprite MCP authored pixels, not a resized or quantized concept",
+    "asepriteVersion": "1.3.18.6-dev",
+    "liveSprite": "#1161",
+    "source": "assets/source/deceiver.aseprite",
+    "size": [48, 48],
+    "pivot": [24, 30],
+    "frames": 8,
+    "durationsMs": [400, 600, 180, 140, 400, 600, 180, 140],
+    "tags": ["friendly-idle", "friendly-tell", "friendly-recover", "revealed-idle", "revealed-tell", "revealed-recover"],
+    "paletteEntries": 20,
+    "referenceImport": "Source region (2,200,2168,396), 8 columns of 271x396; contain produces 32x48 references at (8,5). References used only for comparison and removed; original external reference retained.",
+    "deliberateDeviation": "Keep carved smile stable rather than blink it; idle variation uses 1px mitten movement. Blueprint copy is not an assertion that every generated detail survived. Cloth/feet are fixed across both forms.",
+    "draftA": "8 layers, 8 full frames saved and exported for independent review. No public/game export or runtime default binding.",
+    "fixRound1": "Only E-state structure changed. Irregular stalk, asymmetrical coils and original-mask fragments replaced beast face/small fake faces; B key remained blocked at6/10 and was not propagated.",
+    "fixRound2": "Eliminated both closed side holes entirely: raised open S arm and lower trailing arm, with traceable roots. Reduced mask gap/vertical offset so original half-eyes and half-smiles form one broken face. C key7/10/no blocking, then propagated to6..8; full C sequence7/10/no blocking. No further structural polish after acceptance. Friendly frame pixels and cloak/sole geometry preserved.",
+    "image": "public/game/deceiver.png", "atlas": "public/game/deceiver.json",
+    "layers": ["feet", "cloak", "mask", "hand", "body", "coil-right", "coil-left", "network", "shards"],
+    "opaqueColors": 14, "alphaValues": [0, 255], "reservedClawdOrangePixelCount": 0,
+    "nativeSourceBytes": 9254,
+    "plantedSole": {"y": 44, "xRanges": [[18,23],[28,33]], "gap": [24,27]}
+  },
+  "reviews": [
+    {"version": "r11-a", "cold": "Friendly green hooded smiling person; revealed form reads as large-eared beast face or another mask. Light lower pieces have unstable ownership, not clearly fragments. Frozen before contract.", "briefAwareScore": 4, "blocking": ["Revealed creature reads as beast head with paired ears, not tentacles", "Two small light blocks do not preserve the original smile-plate identity"], "nonBlocking": "Tell/recover differences are subtle; timing not assessed from stills"},
+    {"version": "r11-b-key", "kind": "targeted frame5 re-review, not a new cold read", "score": 6, "blocking": ["Asymmetry did not remove paired ear-hole structure"], "remaining": "Mask fragments improved but identity not fully stable"},
+    {"version": "r11-c-key", "kind": "targeted frame5 re-review", "score": 7, "blocking": []},
+    {"version": "r11-c-full", "kind": "all eight native and4x frames inspected", "score": 7, "blocking": [], "remaining": "Tell differences are small at1x; real FSM holds/core/pause require runtime evidence"},
+    {"version": "r11-game", "kind": "actual friendly/E/upgraded-core browser captures inspected", "blocking": [], "remaining": "Cloak contrast and slight line/coil crowding are non-blocking; target8 covers some hood but not plate/arms. Environment remains blockout."}
+  ],
+  "validation": {"version": "r11-c-full", "errors": 0, "toolSummary": "Clean (11 style note(s))", "notes": "Only outline-style notes retained: stalk silhouette inside hood opening, luminous node edges and exposed plate fracture edges. No strays/off-palette/soft-alpha/empty-layer/range/tag errors."},
+  "runtime": {
+    "status": "full regression verified", "engineVersion": "4.0.0",
+    "adapter": "Real8 keys in single three-family renderer; simulation-time E bank. Added55 tests; rendering161/161, scope lint and whole typecheck passed. Original77 parrot/repeater cases remain; only old manifest size and per-family frame-count expectations updated.",
+    "geometry": "Existing24x24 body, enemy.y-19 core with radius5/upgraded8. Independent depth3 core graphics clear each draw and destroy with scene; Images remain depth2. No Core/DTO changes.",
+    "nativeFirst": {"job": "bash-df53cb07b3374e06", "result": "5/5", "log": "artifacts/verification/r11-native-first.log"},
+    "nativeRepeat": {"job": "bash-3a2b20dca2a44944", "result": "6/6 independent repeats of E/pause/expiry and normal jump+one click core5/8", "log": "artifacts/verification/r11-native-repeat.log"},
+    "observed": {"pauseWallMs": 4300, "pausedPixelsAndClockIdentical": true, "purpleBeforeDuringAfter": [0,321,0], "coreDiameterLogicalPx": [9.777777777777779,16], "oneShotRemovesCoreAndEnemy": true},
+    "backend": {"job": "bash-cfbc23140e094c74", "result": "23/23 on fresh private pg-test.0z1YOK", "log": "artifacts/verification/r11-backend.log"},
+    "fullGate": {"job": "bash-98317b6b6ee44881", "status": "exit0", "unit": "644/644", "browser": "58/58 (5.9m)", "backend": "23/23", "auditVulnerabilities": 0, "report": "docs/round10-art-verification.md", "log": "artifacts/verification/r11-final-gate.log"}
+  }
+}

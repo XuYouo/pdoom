@@ -1,0 +1,11 @@
+target/
+project/target/
+project/project/
+.tools/
+.cache/
+.local-test/
+.local/
+.bsp/
+.metals/
+*.log
+.env

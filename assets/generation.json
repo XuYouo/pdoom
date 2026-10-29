@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Design references only; final runtime sprite pixels were authored through Aseprite MCP.",
+  "requests": [
+    {
+      "output": "generated-images/image-20261027-193225-d188e5.png",
+      "status": "rejected-after-user-supplied-SVG; not shipped",
+      "tool": "image_generate",
+      "reportedModel": "gpt-image-2.5",
+      "requestedSize": "1536x1024",
+      "actualSize": [2172, 724],
+      "quality": "high",
+      "referenceImages": [],
+      "prompt": "Create a pixel-art CHARACTER CONCEPT SHEET for a 2D side-scrolling game. Exactly THREE equal-width panels in one horizontal row on a plain dark neutral gray background (#20252a), no labels or text anywhere. Each panel contains the SAME small orange crab-like plush mascot, a soft chunky rectangular orange body, two simple vertical dark eyes, six short stubby crab legs, two little side claws, no human torso, no clothing, no ears, no weapons. It faces right in a readable side-front three-quarter view; locked orthographic game camera, same character scale and baseline in all three panels. The intended final sprite is 32x32 with a 22x22-pixel body-and-legs silhouette; conceptual pixel-art look, deliberate chunky pixel clusters, one-pixel deep aubergine outline, light from upper left, no smooth gradients, no antialiasing, no dithering noise. Three panels: LEFT: cheerful honest orange plush, peach top highlights and terra-cotta shadows, tiny embroidered seam, black vertical eyes, simple confident silhouette; CENTER: same orange plush but wearing an ivory oval-square RLHF smile mask over its face, innocent fixed smile, same limbs and silhouette; RIGHT: same masked orange plush with four curled blue-violet eldritch tentacles emerging from behind the body and one subtle mint-green glow accent, tentacles fit within sprite footprint without hiding orange body or face. Color roles: outline #2c2330, warm shadow #a6493e, orange shade #d47852, main orange #ed9a67, warm highlight #ffd49a, ivory mask #f5e8c8, dark eye #30272e, tentacle shadows #34354f, tentacle main #575c79, tentacle highlight #858eb0, mint accent #9dded1. Match volumes and face identity across panels, clear negative space between short legs. Leave generous empty margins around all forms. This is a visual design reference, not a finished game sprite atlas. EXCLUDE text, letters, numbers, captions, grids, framing, scenery, logos, watermarks, duplicate extra characters, shadows beneath characters."
+    },
+    {
+      "output": "generated-images/image-20261027-201722-6cf3cf.png",
+      "status": "reference for SVG-faithful variants; not shipped as pixel sprite",
+      "tool": "image_generate (image-to-image edit)",
+      "reportedModel": "gpt-image-2.5",
+      "requestedSize": "1536x1024",
+      "actualSize": [2172, 724],
+      "quality": "high",
+      "referenceImages": ["assets/references/clawd-reference.png"],
+      "prompt": "Use the attached PNG as the authoritative visual identity reference for Clawd. Generate a production concept sheet for a low-resolution 2D pixel platform action game, with THREE aligned variants in a single horizontal row and no other objects. CRITICAL: faithfully retain the reference's flat-topped rectangular body, blocky square corners, exactly FOUR short rectangular feet in two paired groups, one simple rectangular arm projecting from EACH side, and TWO widely spaced narrow vertical rectangular eyes. Main color MUST be the same terracotta orange #D97757. DO NOT turn it into a crab, do not round the body, do not add claws, ears, extra legs, clothing, human anatomy, an antenna, or a separate head. The left character should be immediately recognizable as the supplied reference silhouette, not a redesign. Make only minimal premium game-sprite shading: a thin warm upper rim, a subdued lower shadow, carefully placed hard pixel clusters, no smooth shading, no noise, no texture speckles. Layout: exactly 3 equal-width panels, same base character scale and baseline, generous spacing, transparent background, no drop shadow, no scenery, no words, no letters, no labels, no logos, no watermark. Variant 1 LEFT: aligned Clawd, same clean orange block body and original two vertical cutout-like dark eyes, no mouth. Variant 2 CENTER: same exact orange silhouette wearing a squared ivory RLHF smile faceplate inside the front face area, keep original eye positions and add a small unsettling fixed pixel smile; orange border remains clearly visible. Variant 3 RIGHT: same masked square Clawd, with four stepped blue-violet eldritch tendrils emerging BEHIND the body, minimal mint-green glints; tendrils never hide the original rectangular orange body and four feet. All variants must stay easy to read when eventually hand-interpreted at 32x32 pixels. Think restrained 16-bit sprite art constrained by the supplied modern block mascot, NOT a rounded toy or cute animal reinterpretation. The attachment controls the proportions and silhouette in all three variants. This is an image-to-image visual development reference; do not include a pixel grid or an atlas border."
+    }
+  ],
+  "referenceProvenance": {
+    "original": "/Users/ocean/Downloads/claudecode-color.svg",
+    "projectCopy": "assets/references/claudecode-color.svg",
+    "referenceRaster": "assets/references/clawd-reference.png",
+    "rasterMethod": "Existing Chromium renders the supplied SVG at 768x768 for viewing/import; not a sprite-generation method.",
+    "rights": "User-provided reference; brand and redistribution rights have not been independently verified. No public release or upload performed."
+  }
+}

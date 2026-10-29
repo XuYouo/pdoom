@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Reference only. Runtime pixels were manually authored in a new live Aseprite document, never resized or quantized from the concept.",
+  "approvedDirection": "assets/chapter-one-art-spec.md",
+  "reference": {
+    "output": "generated-images/image-20261028-171208-d2988d.png",
+    "tool": "image_generate (image-to-image edit)",
+    "reportedModel": "gpt-image-2.5",
+    "requestedSize": "1536x1024",
+    "actualSize": [2172, 724],
+    "quality": "high",
+    "referenceImages": ["assets/references/clawd-reference.png"],
+    "prompt": "Create a pixel-art design reference of a small jade-green stochastic parrot holding a closed paper dictionary under its wing. Side view facing left, golden hooked beak, short angular tail, exactly two bird feet, upper-left light, selective dark outline. A warm retro Chinese clockwork library game character, not a humanoid. Four equal panels in one horizontal row, no visible dividers: idle; a tiny breathing bob with planted feet; anticipation lifting the same book; recovery lowering it. Same character scale and baseline in every panel. Target for later manual Aseprite interpretation: 48x48 canvas, about 28px tall subject. Palette for subject: #0f191b #2c2330 #24423b #426b50 #8fa86b #b9905d #e5c386 #f5e8c8 #cbb696 #9dded1. Plain neutral grey background. Hard chunky pixel clusters. No gradients, text, book lettering, labels, numbers, scenery, motion lines, watermark or cropped body parts. Never use the protagonist orange #D97757. This output is reference only, not a production sprite sheet.",
+    "status": "Imported panel-by-panel as a guide; not shipped as a runtime texture. Original Clawd reference unchanged."
+  },
+  "processNotes": [
+    "Two requests with an empty reference_images array were rejected by parameter validation; no resulting file was claimed.",
+    "A session-history lookup with an empty target was refused as outside the workspace. It was not retried or used to recover private data.",
+    "Initial cold review scored 6/10: the bird read, but its required closed book did not. The first review exports remain unchanged.",
+    "One targeted correction pass established a rectangular closed cover, narrow paper block, green breast separation and wing-over-book overlap. Brief-aware re-review scored 8/10 with no visual BLOCKING. It was not called a second blind review.",
+    "Hidden reference colours were removed with the reference layer after comparisons; no reference raster was snapped into the sprite palette."
+  ],
+  "source": "assets/source/parrot.aseprite",
+  "authoringMode": "live",
+  "asepriteReportedVersion": "1.3.18.6-dev",
+  "sourcePaletteEntriesIncludingTransparent": 20,
+  "opaqueColorsUsed": 11,
+  "rightsStatus": "New game character authored for this nonofficial project. The user-provided Clawd style input retains the separate reference/brand-rights caveat; rights were not independently verified. No public release or gallery submission performed."
+}

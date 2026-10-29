@@ -11,6 +11,19 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.*
+!.env.example
+backend/target/
+backend/project/target/
+backend/project/project/
+backend/.tools/
+backend/.local/
+.tools/
+test-results/
+playwright-report/
+artifacts/
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*

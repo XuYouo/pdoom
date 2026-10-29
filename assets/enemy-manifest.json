@@ -1,0 +1,456 @@
+{
+  "schemaVersion": 1,
+  "engine": "Phaser 4.0.0",
+  "nativeViewport": [
+    640,
+    360
+  ],
+  "direction": "assets/chapter-one-art-spec.md",
+  "families": [
+    {
+      "id": "parrot",
+      "status": "reviewed, integrated and full-regression-verified",
+      "source": "assets/source/parrot.aseprite",
+      "reference": "generated-images/image-20261028-171208-d2988d.png",
+      "generationRecord": "assets/parrot-generation.json",
+      "pixelSpec": "assets/parrot-pixelspec.md",
+      "png": "public/game/parrot.png",
+      "atlas": "public/game/parrot.json",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "frameSize": [
+        48,
+        48
+      ],
+      "frameCount": 4,
+      "sheetSize": [
+        192,
+        48
+      ],
+      "frameNames": [
+        "parrot 0.aseprite",
+        "parrot 1.aseprite",
+        "parrot 2.aseprite",
+        "parrot 3.aseprite"
+      ],
+      "pivot": [
+        24,
+        30
+      ],
+      "pivotStorage": "Explicit view descriptor; the Aseprite atlas has no slice/pivot metadata.",
+      "collisionSizeUnchanged": [
+        24,
+        24
+      ],
+      "facing": "left",
+      "filter": "nearest",
+      "padding": 0,
+      "trimmed": false,
+      "tags": {
+        "idle": [
+          0,
+          1
+        ],
+        "tell": [
+          2,
+          2
+        ],
+        "recover": [
+          3,
+          3
+        ]
+      },
+      "durationsMs": [
+        400,
+        600,
+        180,
+        140
+      ],
+      "playback": "Idle consumes simulation time; tell/recover hold until the real enemy FSM changes. No wall-clock AnimationManager or physics mutation.",
+      "layers": [
+        "tail",
+        "feet",
+        "body",
+        "head",
+        "book",
+        "wing"
+      ],
+      "paletteEntriesIncludingTransparent": 20,
+      "opaqueColors": 11,
+      "alphaValues": [
+        0,
+        255
+      ],
+      "reservedClawdOrangePixelCount": 0,
+      "validation": {
+        "errors": 0,
+        "styleWarnings": 16,
+        "acceptedStyleReasons": [
+          "Selective top-lit tail/beak edges",
+          "Breast/head overlap and folded-wing light break a uniform per-layer outline without soft alpha"
+        ],
+        "layerContract": "All six art layers contain ink on frames 1..4; head/feet and book/feet do not overlap.",
+        "independentReview": {
+          "coldScore": 6,
+          "initialBlocking": "Closed book did not read",
+          "targetedFixPasses": 1,
+          "briefAwareReviewScore": 8,
+          "remainingVisualBlocking": 0
+        },
+        "nativePixelInspection": "192x48; hard alpha; exact palette; planted feet y44 and transparent x24 gap; one eye glint per frame; opaque areas 529/539/552/517.",
+        "adapterTests": 41,
+        "nativeScopeTests": "6/6 across two independent repeats: actual eye-relative raised book, identical paused pixels, missing PNG and missing frame recovery with exact saved-data preservation.",
+        "finalGate": {
+          "unit": "490/490",
+          "browser": "45/45",
+          "backend": "23/23",
+          "job": "bash-da55171bafec44cd",
+          "report": "docs/round7-art-verification.md"
+        }
+      }
+    },
+    {
+      "id": "repeater",
+      "status": "reviewed, integrated and full-regression-verified (526 unit / 48 browser / 23 backend)",
+      "source": "assets/source/repeater.aseprite",
+      "reference": "generated-images/image-20261028-200511-4e0804.png",
+      "generationRecord": "assets/repeater-generation.json",
+      "pixelSpec": "assets/repeater-pixelspec.md",
+      "png": "public/game/repeater.png",
+      "atlas": "public/game/repeater.json",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "frameSize": [
+        48,
+        48
+      ],
+      "frameCount": 4,
+      "sheetSize": [
+        192,
+        48
+      ],
+      "frameNames": [
+        "repeater 0.aseprite",
+        "repeater 1.aseprite",
+        "repeater 2.aseprite",
+        "repeater 3.aseprite"
+      ],
+      "pivot": [
+        24,
+        30
+      ],
+      "pivotStorage": "Explicit view descriptor; no atlas slice metadata.",
+      "collisionSizeUnchanged": [
+        24,
+        24
+      ],
+      "facing": "left",
+      "filter": "nearest",
+      "padding": 0,
+      "trimmed": false,
+      "tags": {
+        "idle": [
+          0,
+          1
+        ],
+        "tell": [
+          2,
+          2
+        ],
+        "recover": [
+          3,
+          3
+        ]
+      },
+      "durationsMs": [
+        400,
+        600,
+        180,
+        140
+      ],
+      "playback": "Simulation-clock reel keys; real FSM holds tell/recover. Speaker advances 3px without shifting the rigid shell or feet.",
+      "layers": [
+        "feet",
+        "case",
+        "reels",
+        "speaker",
+        "spokes",
+        "lights"
+      ],
+      "paletteEntriesIncludingTransparent": 20,
+      "opaqueColors": 12,
+      "alphaValues": [
+        0,
+        255
+      ],
+      "reservedClawdOrangePixelCount": 0,
+      "validation": {
+        "errors": 0,
+        "toolSummary": "Clean (12 style note(s))",
+        "acceptedStyleReasons": [
+          "Detached 1px axles on filled reel faces",
+          "Selective hard metal light rims and straight manufactured edges"
+        ],
+        "independentReview": {
+          "initialBriefAwareScore": 6.5,
+          "initialBlocking": "Connected reel marks read as pupils",
+          "targetedFixPasses": 1,
+          "briefAwareReviewScore": 7.5,
+          "remainingVisualBlocking": 0
+        },
+        "nativePixelInspection": "12 opaque colors; areas649/649/665/649; feet x17..23 and27..33 at y44, gap24..26; same feet and rigid shell alpha.",
+        "adapterTestsAdded": 36,
+        "nativeScopeTests": "6/6 in two repeats. Handle-relative grille extension10.8679245 to13.8867925px; paused screenshot identical; missing PNG/frame errors preserve exact checkpoint through retry."
+      }
+    },
+    {
+      "id": "deceiver",
+      "status": "C reviewed, integrated and full-regression-verified (644 unit / 58 browser / 23 backend)",
+      "source": "assets/source/deceiver.aseprite",
+      "reference": "generated-images/image-20261029-002316-d02b07.png",
+      "generationRecord": "assets/deceiver-generation.json",
+      "pixelSpec": "assets/deceiver-pixelspec.md",
+      "png": "public/game/deceiver.png",
+      "atlas": "public/game/deceiver.json",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "frameSize": [
+        48,
+        48
+      ],
+      "frameCount": 8,
+      "sheetSize": [
+        384,
+        48
+      ],
+      "frameNames": [
+        "deceiver 0.aseprite",
+        "deceiver 1.aseprite",
+        "deceiver 2.aseprite",
+        "deceiver 3.aseprite",
+        "deceiver 4.aseprite",
+        "deceiver 5.aseprite",
+        "deceiver 6.aseprite",
+        "deceiver 7.aseprite"
+      ],
+      "pivot": [
+        24,
+        30
+      ],
+      "pivotStorage": "Explicit view descriptor; no atlas slice metadata.",
+      "collisionSizeUnchanged": [
+        24,
+        24
+      ],
+      "facing": "left",
+      "filter": "nearest",
+      "padding": 0,
+      "trimmed": false,
+      "tags": {
+        "friendly-idle": [
+          0,
+          1
+        ],
+        "friendly-tell": [
+          2,
+          2
+        ],
+        "friendly-recover": [
+          3,
+          3
+        ],
+        "revealed-idle": [
+          4,
+          5
+        ],
+        "revealed-tell": [
+          6,
+          6
+        ],
+        "revealed-recover": [
+          7,
+          7
+        ]
+      },
+      "durationsMs": [
+        400,
+        600,
+        180,
+        140,
+        400,
+        600,
+        180,
+        140
+      ],
+      "playback": "Finite simulation elapsedMs < real player.insightUntil selects the revealed bank; exact expiry restores friendly. FSM holds tell/recover. Core at enemy.y-19 with real radius5/8 is independently drawn above Images, never baked into pixels.",
+      "layers": [
+        "feet",
+        "cloak",
+        "mask",
+        "hand",
+        "body",
+        "coil-right",
+        "coil-left",
+        "network",
+        "shards"
+      ],
+      "paletteEntriesIncludingTransparent": 20,
+      "opaqueColors": 14,
+      "alphaValues": [
+        0,
+        255
+      ],
+      "reservedClawdOrangePixelCount": 0,
+      "validation": {
+        "errors": 0,
+        "toolSummary": "Clean (11 style note(s))",
+        "acceptedStyleReasons": [
+          "Selective cool stalk edge inside the hood opening",
+          "Unoutlined luminous neural nodes",
+          "Light exposed plate fracture edges"
+        ],
+        "layerContract": "feet/cloak1..8, mask/hand1..4, body/coils/shards/network5..8; no reference layer in source/export.",
+        "independentReview": {
+          "initialBriefAwareScore": 4,
+          "initialBlocking": "Revealed state read as beast head/ears; plate fragments read as hands or new faces",
+          "targetedFixPasses": 2,
+          "intermediateKeyScore": 6,
+          "finalKeyAndFullStaticScore": 7,
+          "remainingVisualBlocking": 0,
+          "actualBackground": "Friendly, E and upgraded-core screenshots also inspected; no visual blocking. Environment remains blockout."
+        },
+        "nativePixelInspection": "14 opaque colors, 8 unique frames, source9254 bytes/32bit/9 layers; planted y44 with x18..23 and28..33, transparent gap24..27. Only sole geometry is locked, not every RGB in the bottom three rows.",
+        "adapterTestsAdded": 55,
+        "nativeScopeTests": "5/5 first native scope plus independent repeat6/6: real E, 4.3s paused pixels/clock/remaining E, exact expiry, one normal jump and one click actually kill radius5/8 nodes, missing PNG or eighth revealed frame preserve exact save through retry.",
+        "observedCoreDiameter": [
+          9.777777777777779,
+          16
+        ],
+        "finalGate": {
+          "unit": "644/644",
+          "browser": "58/58",
+          "backend": "23/23",
+          "job": "bash-98317b6b6ee44881",
+          "report": "docs/round10-art-verification.md"
+        }
+      }
+    },
+    {
+      "id": "von-neumann-probe",
+      "chapter": 2,
+      "sourceActorDomain": "WorldState.factory.probes",
+      "status": "reviewed, integrated and full-regression-verified",
+      "source": "assets/source/von-neumann-probe.aseprite",
+      "png": "public/game/von-neumann-probe.png",
+      "atlas": "public/game/von-neumann-probe.json",
+      "reference": "generated-images/image-20261029-150700-852388.png",
+      "generationRecord": "assets/probe-generation.json",
+      "pixelSpec": "assets/probe-pixelspec.md",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "frameSize": [
+        32,
+        32
+      ],
+      "frameCount": 4,
+      "sheetSize": [
+        128,
+        32
+      ],
+      "frameNames": [
+        "von-neumann-probe 0.aseprite",
+        "von-neumann-probe 1.aseprite",
+        "von-neumann-probe 2.aseprite",
+        "von-neumann-probe 3.aseprite"
+      ],
+      "pivot": [
+        16,
+        16
+      ],
+      "pivotStorage": "Explicit view descriptor; no atlas slice/pivot.",
+      "collisionRadiusUnchanged": 11,
+      "filter": "nearest",
+      "padding": 0,
+      "trimmed": false,
+      "tags": {
+        "seek": [
+          0,
+          1
+        ],
+        "tell": [
+          2,
+          2
+        ],
+        "consume": [
+          3,
+          3
+        ]
+      },
+      "durationsMs": [
+        240,
+        240,
+        1800,
+        500
+      ],
+      "playback": "Actual phase wins; seek reads existing simulation elapsedMs. No birth/copy/deadline inference. Real target/ring cues remain separate above the body.",
+      "layers": [
+        "gripper-right",
+        "gripper-left",
+        "chassis",
+        "scanner"
+      ],
+      "paletteEntriesIncludingTransparent": 20,
+      "opaqueColors": 9,
+      "alphaValues": [
+        0,
+        255
+      ],
+      "reservedClawdOrangePixelCount": 0,
+      "validation": {
+        "errors": 0,
+        "styleWarnings": 7,
+        "additionalBandingNotes": 4,
+        "acceptedStyleReasons": [
+          "Selective steel/tool/rail edges",
+          "Straight hard-metal and scan-window boundaries"
+        ],
+        "independentReview": {
+          "member": "pixel-critic-r11",
+          "freshContext": false,
+          "coldRead": "Gray-purple rounded robot shell, dark visor with one lit square, two thin bent appendages; legs vs hanging machine arms ambiguous; third opens and fourth closes; frozen before brief",
+          "score": 7,
+          "blocking": 0,
+          "necessaryFixes": 0,
+          "fixRounds": 0,
+          "scope": "8x nearest-neighbour static sheet only, not1x/timing/collision",
+          "retainedAmbiguity": "In isolated first two frames, grippers can read as thin legs. Open/closed comparison clarifies; function is not proven by static art."
+        },
+        "nativeSceneReview": {
+          "member": "pixel-critic-r11",
+          "freshContext": false,
+          "actualImages": 3,
+          "blocking": 0,
+          "necessaryFixes": 0,
+          "retainedLimit": "Thin grippers are less clear at native size than enlarged; body/scan window/warnings remain readable. Canvas-only, not DOM overlay audit.",
+          "mechanismNotInferredFromImages": true
+        },
+        "adapterTestsAdded": 92,
+        "staticFileTestsAdded": 19,
+        "nativeScopeTests": "4/4 standalone and repeated within full73 gate",
+        "finalGate": {
+          "unit": "1002/1002",
+          "browser": "73/73",
+          "backend": "23/23",
+          "report": "docs/round14-probe-verification.md"
+        }
+      }
+    }
+  ],
+  "plannedNotProduced": [
+    "remaining first-chapter NPC/item/attack/endings assets",
+    "chapter-two Sydney/factory environment and later-chapter enemy/boss/environment families"
+  ],
+  "releaseStatus": "Not externally published. Four reviewed enemy/probe families do not complete the full asset set.",
+  "bossManifest": "assets/boss-manifest.json",
+  "environmentManifest": "assets/environment-manifest.json"
+}

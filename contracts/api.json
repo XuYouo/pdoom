@@ -1,0 +1,10 @@
+{
+  "RegisterUser": "registeruserapi",
+  "LoginUser": "loginuserapi",
+  "LogoutUser": "logoutuserapi",
+  "GetCurrentUser": "getcurrentuserapi",
+  "LoadGame": "loadgameapi",
+  "SaveGame": "savegameapi",
+  "SubmitScore": "submitscoreapi",
+  "ListLeaderboard": "listleaderboardapi"
+}

@@ -1,0 +1,1052 @@
+{
+  "schemaVersion": 1,
+  "asset": "gato",
+  "recordType": "image-generation-provenance",
+  "status": "native-art-reviewed; runtime-verification-in-progress",
+  "sourceOfTruth": {
+    "sessionId": "session-6fd70ff4-f036-43cb-8675-58d125af7ea0",
+    "retrieval": "Authorized session_event_read of the complete tool/call arguments and following tool/results, not conversation summaries.",
+    "toolCallEvents": [
+      13134,
+      13141
+    ],
+    "toolResultEvents": [
+      13135,
+      13142
+    ],
+    "promptPolicy": "The requested.prompt values below preserve the complete original prompt text verbatim. No prompt was reconstructed from a summary.",
+    "fileVerification": "Original file byte counts, PNG IHDR dimensions and SHA-256 were read locally; output hashes match the authoritative tool/result attachment IDs."
+  },
+  "generations": [
+    {
+      "id": "concept",
+      "tool": "image_generate",
+      "source": {
+        "callSeq": 13134,
+        "resultSeq": 13135,
+        "callTimeUnixMs": 1793217317508,
+        "resultTimeUnixMs": 1793217339896,
+        "callId": "call_KEKYZVlEEigwTrnZngRSbDpV|fc_043f8ca3c9c01d02016ae2530863f487d09cce05cd92f3e37d",
+        "resultMessageId": "af623af4-3eec-4b76-be1e-c6c63d15fe03",
+        "isError": false
+      },
+      "requested": {
+        "prompt": "Create an ORIGINAL low-resolution pixel-art CONCEPT SHEET for Gato, a three-form modular machine boss in a side-view platform game. The supplied sprites are STYLE REFERENCES ONLY for crisp, deliberate pixel clusters and a restrained palette. Do not copy the bird, tape reels or character faces. Gato is NOT a cat, not humanoid, not a round monster with eyes. Three unmistakably different working machines share the same blue-grey chassis language and a small copper three-slot power cassette at the lower rear-right.\n\nTarget interpretation: each form will later be hand drawn on a 96x96 canvas, with its main solid body fitting a 52px-wide by 74px-high envelope, centered at (48,48), approximately x22..73/y11..84. Same scale and shallow left-facing three-quarter side view in all three panels, camera locked, upper-left light. Hard pixel edges, broad clean material planes, selective dark outlines, no antialiasing, no gradients, no dithering, no noisy greebles. Steel uses a few hard light/shadow bands; ivory plastic/paper is matte. Give each form three to five readable details, not many tiny controls.\n\nPanel 1: DEFENSIVE ARCADE PADDLE. A tall, narrow, neutral ivory paddle/slab at the front-left, heavy blue-grey sliding brackets and a narrow rear carriage. A small simple brick-pattern panel identifies the old arcade/game mode, without words or a face. The main read must be a rigid mechanical paddle, not a shield-bearing person or a full arcade cabinet. Do not draw a permanent golden shield or barrier: the game draws the actual gold reflection indicator separately to the left only during its real tell window. Leave generous clear space along the far-left margin.\n\nPanel 2: INDUSTRIAL ROBOT ARM. A clearly traceable shoulder joint, diagonal upper link, elbow joint and lower link forming a folded Z shape, ending in a large blocky downward-facing clamp/press tool. Narrow rear support, open negative space between the rigid links, visibly engineered joints, no human hand/fist and no huge box hiding the arm. Keep the lower-right copper cassette from panel1. The tool can lower to the body's bottom edge, but no floor impact, crater, shockwave, targeting column or red warning is painted in this concept.\n\nPanel 3: IMAGE-CAPTION TERMINAL. A boxy CRT image viewer showing a VERY SIMPLE mountain-and-sun pictogram, not eyes. Under it a clear horizontal output slot and a short ivory paper/caption strip with two or three short dark text-like bars INSIDE the machine footprint. No readable letters or words and no floating fake projectiles. Same lower-right copper cassette and blue-grey edge treatment as the other modes.\n\nPalette roles: deep outlines #0f191b #2c2330; steel #34354f #575c79 #858eb0; matte ivory #cbb696 #f5e8c8; copper #b9905d #e5c386 with a small warm shadow #783f4a; tiny indicators #9dded1 #d9ffea; pictogram greens #24423b #426b50 #8fa86b. Exact #d97757 is reserved for the player and forbidden here. No glowing target-like weak point, no external gameplay effects, no scenery or ground shadow.\n\nLayout EXACTLY THREE equally sized panels in ONE HORIZONTAL ROW, evenly spaced, same body scale and baseline. One complete form per panel, left-to-right paddle, industrial arm, caption terminal. Flat plain neutral light-grey background, ample margins, no text, labels, numbers, panel dividers, borders or watermark. This is a design reference for later native pixel work, NOT a production texture.",
+        "size": "1536x1024",
+        "quality": "high",
+        "reference_images": [
+          "assets/reviews/r9-b-large.png",
+          "assets/reviews/r8-b-large.png"
+        ]
+      },
+      "inputs": [
+        {
+          "path": "assets/reviews/r9-b-large.png",
+          "role": "Style reference only",
+          "mediaType": "image/png",
+          "width": 768,
+          "height": 192,
+          "bytes": 2440,
+          "sha256": "aaadc08d251cf07a4b5dbc7bcdf40a7c8b7602508db58588ee57b7f300d7030c"
+        },
+        {
+          "path": "assets/reviews/r8-b-large.png",
+          "role": "Style reference only",
+          "mediaType": "image/png",
+          "width": 768,
+          "height": 192,
+          "bytes": 2707,
+          "sha256": "5a31631ba1294092d7388fcf76e0f5b6da0490b59250ff99672e345eb0229560"
+        }
+      ],
+      "actual": {
+        "operationReported": "Edited 1 image",
+        "modelReported": "gpt-image-2.5",
+        "qualityReported": null,
+        "qualityNote": "The result does not report actual quality; high is retained only as the requested value.",
+        "output": {
+          "path": "generated-images/image-20261029-035539-6cc4ef.png",
+          "mediaType": "image/png",
+          "width": 2170,
+          "height": 725,
+          "bytes": 526748,
+          "sha256": "f3d550f9c2864eb726e45640ff5b8aaaa230d15c0e5f356c29434d737b268732",
+          "attachmentId": "sha256:f3d550f9c2864eb726e45640ff5b8aaaa230d15c0e5f356c29434d737b268732"
+        },
+        "matchesRequestedDimensions": false,
+        "dimensionNote": "Actual returned dimensions differ from requested 1536x1024; no cause or resizing history was reported by the tool."
+      },
+      "role": "Design reference only, not a production game texture"
+    },
+    {
+      "id": "storyboard",
+      "tool": "image_generate",
+      "source": {
+        "callSeq": 13141,
+        "resultSeq": 13142,
+        "callTimeUnixMs": 1793217483042,
+        "resultTimeUnixMs": 1793217506397,
+        "callId": "call_Oio6BiGgzOr2m0qiGnZDoAAb|fc_043f8ca3c9c01d02016ae253b2c21887d08d4d8cd24920cd46",
+        "resultMessageId": "dec0fc3b-6c45-4f59-bcfe-d0b4230d9ae8",
+        "isError": false
+      },
+      "requested": {
+        "prompt": "Create a TWELVE-PANEL pixel-art animation STORYBOARD of the SAME three Gato machine designs shown in the supplied concept sheet. Preserve their identity, materials, left-facing shallow three-quarter camera and the small copper three-slot cassette at the lower rear-right. Do not invent a cat, face or new fourth form. This is only a reference for later native 96x96 drawing, not a production spritesheet.\n\nLayout is EXACTLY TWELVE equal panels in ONE HORIZONTAL ROW, no wrapping. Left to right: four paddle poses, four industrial-arm poses, four image-caption-terminal poses. Locked scale, fixed local pivot and aligned machine base in every panel. Each machine must remain compact enough for a 52-wide by74-high central envelope on a96x96 target. All rigid links keep their lengths. Do NOT bounce or slide the whole body between poses: the game itself supplies position changes. No background, shadows, text labels, numerals, borders or separators.\n\nPANELS1-4 PADDLE: 1 resting neutral ivory vertical paddle with blue-grey rear carriage; 2 tell with front locking brackets slightly advanced about2 target pixels, still neutral ivory; 3 release/attack with latch returned and a slight recoil inside the body; 4 relaxed recovery. The big golden reflection bar is a separate GAMEPLAY OVERLAY and must NOT appear in any panel. Keep the far-left margin empty for it. No barrier glow, reflected bullet or beam painted into the sprite.\n\nPANELS5-8 INDUSTRIAL ARM: 5 folded shoulder/elbow/downward press-tool idle; 6 anticipation clearly lifts the press tool a little and tightens the articulated pose, base/cassette stationary; 7 attack extends the lower link/tool downward to the bottom of the same central body envelope, readable as a press/slam with no fist; 8 recoils toward folded idle. Keep actual limb thickness and length, joints obvious, avoid a big box concealing the arm. No impact flash, shockwave, crater, ground warning, dust or floating targeting marks. No horizontal body relocation.\n\nPANELS9-12 CAPTION TERMINAL: 9 CRT with simple mountain/sun image and short paper strip; 10 output slot opens in anticipation, paper still inside footprint; 11 paper/caption strip advances about3 target pixels with two or three short dark bars; 12 paper retracts and indicator dims. No real words, fake captions flying outside, or external projectiles: the actual game draws them.\n\nUpper-left light. Broad deliberate pixel clusters, selective dark outline, crisp hard edges, no soft antialiasing, gradients, dithering or greeble noise. Steel #34354f #575c79 #858eb0, dark #0f191b #2c2330, matte ivory #cbb696 #f5e8c8, copper #b9905d #e5c386 with shadow #783f4a, sparse tiny #9dded1 #d9ffea indicators, pictogram greens #24423b #426b50 #8fa86b. Exact #d97757 is reserved for the player and forbidden. Neutral flat light-grey background; same camera, same proportions and design across each four-pose group. Retain open spaces around the forms and do not crop any part.",
+        "size": "1536x1024",
+        "quality": "high",
+        "reference_images": [
+          "generated-images/image-20261029-035539-6cc4ef.png"
+        ]
+      },
+      "inputs": [
+        {
+          "path": "generated-images/image-20261029-035539-6cc4ef.png",
+          "role": "The actual concept output from call 13134",
+          "mediaType": "image/png",
+          "width": 2170,
+          "height": 725,
+          "bytes": 526748,
+          "sha256": "f3d550f9c2864eb726e45640ff5b8aaaa230d15c0e5f356c29434d737b268732"
+        }
+      ],
+      "actual": {
+        "operationReported": "Edited 1 image",
+        "modelReported": "gpt-image-2.5",
+        "qualityReported": null,
+        "qualityNote": "The result does not report actual quality; high is retained only as the requested value.",
+        "output": {
+          "path": "generated-images/image-20261029-035826-200b63.png",
+          "mediaType": "image/png",
+          "width": 2172,
+          "height": 724,
+          "bytes": 707250,
+          "sha256": "5bf544e73825a246a18139123c6353a058e011f26794befc988c826c915b477d",
+          "attachmentId": "sha256:5bf544e73825a246a18139123c6353a058e011f26794befc988c826c915b477d"
+        },
+        "matchesRequestedDimensions": false,
+        "dimensionNote": "Actual returned dimensions differ from requested 1536x1024; no cause or resizing history was reported by the tool."
+      },
+      "role": "Animation design reference only, not a production spritesheet"
+    }
+  ],
+  "nativeReferenceUse": {
+    "source": "Lead actually imported these concept/action crops via live MCP, compared each key, and removed all reference and study layers before formal export.",
+    "imagesViewedByLead": [
+      "concept",
+      "storyboard"
+    ],
+    "nativeCanvas": {
+      "width": 96,
+      "height": 96
+    },
+    "mainSolidEnvelope": {
+      "width": 52,
+      "height": 74,
+      "pivot": {
+        "x": 48,
+        "y": 48
+      }
+    },
+    "conceptCrops": [
+      {
+        "frameOneBased": 1,
+        "form": "paddle",
+        "sourceRect": {
+          "x": 250,
+          "y": 70,
+          "width": 400,
+          "height": 600
+        },
+        "destinationRect": {
+          "x": 13,
+          "y": 0,
+          "width": 64,
+          "height": 96
+        }
+      },
+      {
+        "frameOneBased": 5,
+        "form": "industrial-arm",
+        "sourceRect": {
+          "x": 810,
+          "y": 70,
+          "width": 500,
+          "height": 600
+        },
+        "destinationRect": {
+          "x": 8,
+          "y": 0,
+          "width": 80,
+          "height": 96
+        }
+      },
+      {
+        "frameOneBased": 9,
+        "form": "caption-terminal",
+        "sourceRect": {
+          "x": 1510,
+          "y": 70,
+          "width": 500,
+          "height": 600
+        },
+        "destinationRect": {
+          "x": 8,
+          "y": 0,
+          "width": 80,
+          "height": 96
+        }
+      }
+    ],
+    "cropPurpose": "Reference guides only; native art is laid out again within the 52x74 envelope, preserving rigid-link lengths.",
+    "storyboardImportedAsUniformGrid": false,
+    "storyboardSegmentation": {
+      "sourcePath": "generated-images/image-20261029-035826-200b63.png",
+      "sourceSha256": "5bf544e73825a246a18139123c6353a058e011f26794befc988c826c915b477d",
+      "sourceSize": {
+        "width": 2172,
+        "height": 724
+      },
+      "computedBy": "backend-engineer, read-only bundled Pillow 12.3.0 / NumPy 2.3.5",
+      "method": "Decode the original PNG as RGBA. Define foreground as alpha > 128. Project foreground occupancy over all rows onto columns and collect contiguous half-open x runs. Resolve the seventh/eighth subjects with an eight-connected-component scan using row runs and union-find; aggregate each component's pixel count and bounding box. Sort the twelve components by their left x. No equal-width partition, image write, resampling or MCP operation was used.",
+      "coordinateConvention": "All boxes are half-open [x0,y0,x1,y1), in original 2172x724 source pixels.",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "foregroundPixelCount": 326033,
+      "rawColumnRunCount": 11,
+      "rawColumnRuns": [
+        [
+          39,
+          195
+        ],
+        [
+          204,
+          366
+        ],
+        [
+          383,
+          540
+        ],
+        [
+          556,
+          711
+        ],
+        [
+          718,
+          911
+        ],
+        [
+          913,
+          1093
+        ],
+        [
+          1104,
+          1429
+        ],
+        [
+          1447,
+          1622
+        ],
+        [
+          1625,
+          1799
+        ],
+        [
+          1802,
+          1976
+        ],
+        [
+          1979,
+          2157
+        ]
+      ],
+      "eightConnectedComponentCount": 12,
+      "smallerComponentsUnder100Pixels": 0,
+      "componentOrderLabels": "Pose names/order come from the original prompt; these are crop guides, not validation that generated motion or proportions are correct.",
+      "components": [
+        {
+          "panelOneBased": 1,
+          "form": "paddle",
+          "pose": "idle",
+          "bbox": [
+            39,
+            249,
+            195,
+            478
+          ],
+          "width": 156,
+          "height": 229,
+          "foregroundPixels": 26361
+        },
+        {
+          "panelOneBased": 2,
+          "form": "paddle",
+          "pose": "tell",
+          "bbox": [
+            204,
+            249,
+            366,
+            478
+          ],
+          "width": 162,
+          "height": 229,
+          "foregroundPixels": 27058
+        },
+        {
+          "panelOneBased": 3,
+          "form": "paddle",
+          "pose": "attack",
+          "bbox": [
+            383,
+            261,
+            540,
+            478
+          ],
+          "width": 157,
+          "height": 217,
+          "foregroundPixels": 25594
+        },
+        {
+          "panelOneBased": 4,
+          "form": "paddle",
+          "pose": "recover",
+          "bbox": [
+            556,
+            249,
+            711,
+            478
+          ],
+          "width": 155,
+          "height": 229,
+          "foregroundPixels": 26243
+        },
+        {
+          "panelOneBased": 5,
+          "form": "industrial-arm",
+          "pose": "idle",
+          "bbox": [
+            718,
+            251,
+            911,
+            478
+          ],
+          "width": 193,
+          "height": 227,
+          "foregroundPixels": 27810
+        },
+        {
+          "panelOneBased": 6,
+          "form": "industrial-arm",
+          "pose": "tell",
+          "bbox": [
+            913,
+            237,
+            1093,
+            478
+          ],
+          "width": 180,
+          "height": 241,
+          "foregroundPixels": 27572
+        },
+        {
+          "panelOneBased": 7,
+          "form": "industrial-arm",
+          "pose": "attack",
+          "bbox": [
+            1104,
+            296,
+            1249,
+            490
+          ],
+          "width": 145,
+          "height": 194,
+          "foregroundPixels": 19766
+        },
+        {
+          "panelOneBased": 8,
+          "form": "industrial-arm",
+          "pose": "recover",
+          "bbox": [
+            1249,
+            246,
+            1429,
+            478
+          ],
+          "width": 180,
+          "height": 232,
+          "foregroundPixels": 27327
+        },
+        {
+          "panelOneBased": 9,
+          "form": "caption-terminal",
+          "pose": "idle",
+          "bbox": [
+            1447,
+            267,
+            1622,
+            478
+          ],
+          "width": 175,
+          "height": 211,
+          "foregroundPixels": 29366
+        },
+        {
+          "panelOneBased": 10,
+          "form": "caption-terminal",
+          "pose": "tell",
+          "bbox": [
+            1625,
+            267,
+            1799,
+            478
+          ],
+          "width": 174,
+          "height": 211,
+          "foregroundPixels": 29458
+        },
+        {
+          "panelOneBased": 11,
+          "form": "caption-terminal",
+          "pose": "attack",
+          "bbox": [
+            1802,
+            267,
+            1976,
+            478
+          ],
+          "width": 174,
+          "height": 211,
+          "foregroundPixels": 29815
+        },
+        {
+          "panelOneBased": 12,
+          "form": "caption-terminal",
+          "pose": "recover",
+          "bbox": [
+            1979,
+            267,
+            2157,
+            478
+          ],
+          "width": 178,
+          "height": 211,
+          "foregroundPixels": 29663
+        }
+      ],
+      "optionalCommonVerticalBand": {
+        "y0": 237,
+        "y1Exclusive": 490,
+        "height": 253,
+        "purpose": "Preserve observed vertical drift in a common-height reference instead of normalizing each tight crop to a different scale."
+      },
+      "cautions": [
+        "Panels 7 and 8 have adjacent x projections at 1249 but are separate eight-connected shapes; a transparent-column-only method returns eleven, not twelve, runs.",
+        "These exact boxes retain every alpha>128 pixel. They do not promise to retain lower-alpha antialiasing fringes.",
+        "Avoid unqualified padding at the panel7/panel8 boundary, which could include the neighboring subject.",
+        "Arm attack panel7 reaches y490 while other panels end at y478; shoulder/tool scale and baseline drift remain unsuitable for literal native animation copying."
+      ]
+    },
+    "storyboardLimitations": [
+      "The twelve subjects are not spaced in a perfectly uniform grid.",
+      "Industrial-arm attack shoulder/tool/baseline positions drift in the generated reference.",
+      "The storyboard was not blindly imported as twelve equal production cells."
+    ],
+    "actionImports": [
+      {
+        "frameOneBased": 2,
+        "sourceRect": {
+          "x": 204,
+          "y": 216,
+          "width": 162,
+          "height": 300
+        },
+        "destinationRect": {
+          "x": 22,
+          "y": 0,
+          "width": 51,
+          "height": 96
+        },
+        "opacity": 90,
+        "fit": "contain"
+      },
+      {
+        "frameOneBased": 3,
+        "sourceRect": {
+          "x": 383,
+          "y": 216,
+          "width": 157,
+          "height": 300
+        },
+        "destinationRect": {
+          "x": 23,
+          "y": 0,
+          "width": 50,
+          "height": 96
+        },
+        "opacity": 90,
+        "fit": "contain"
+      },
+      {
+        "frameOneBased": 4,
+        "sourceRect": {
+          "x": 556,
+          "y": 216,
+          "width": 155,
+          "height": 300
+        },
+        "destinationRect": {
+          "x": 23,
+          "y": 0,
+          "width": 49,
+          "height": 96
+        },
+        "opacity": 90,
+        "fit": "contain"
+      },
+      {
+        "frameOneBased": 6,
+        "sourceRect": {
+          "x": 913,
+          "y": 216,
+          "width": 180,
+          "height": 300
+        },
+        "destinationRect": {
+          "x": 19,
+          "y": 0,
+          "width": 57,
+          "height": 96
+        },
+        "opacity": 90,
+        "fit": "contain"
+      },
+      {
+        "frameOneBased": 7,
+        "sourceRect": {
+          "x": 1104,
+          "y": 216,
+          "width": 145,
+          "height": 300
+        },
+        "destinationRect": {
+          "x": 25,
+          "y": 0,
+          "width": 46,
+          "height": 96
+        },
+        "opacity": 90,
+        "fit": "contain"
+      },
+      {
+        "frameOneBased": 8,
+        "sourceRect": {
+          "x": 1249,
+          "y": 216,
+          "width": 180,
+          "height": 300
+        },
+        "destinationRect": {
+          "x": 19,
+          "y": 0,
+          "width": 57,
+          "height": 96
+        },
+        "opacity": 90,
+        "fit": "contain"
+      },
+      {
+        "frameOneBased": 10,
+        "sourceRect": {
+          "x": 1625,
+          "y": 216,
+          "width": 174,
+          "height": 300
+        },
+        "destinationRect": {
+          "x": 20,
+          "y": 0,
+          "width": 55,
+          "height": 96
+        },
+        "opacity": 90,
+        "fit": "contain"
+      },
+      {
+        "frameOneBased": 11,
+        "sourceRect": {
+          "x": 1802,
+          "y": 216,
+          "width": 174,
+          "height": 300
+        },
+        "destinationRect": {
+          "x": 20,
+          "y": 0,
+          "width": 55,
+          "height": 96
+        },
+        "opacity": 90,
+        "fit": "contain"
+      },
+      {
+        "frameOneBased": 12,
+        "sourceRect": {
+          "x": 1979,
+          "y": 216,
+          "width": 178,
+          "height": 300
+        },
+        "destinationRect": {
+          "x": 19,
+          "y": 0,
+          "width": 56,
+          "height": 96
+        },
+        "opacity": 90,
+        "fit": "contain"
+      }
+    ],
+    "referenceLayersRetainedInFinalSource": false
+  },
+  "draftReviewHistory": [
+    {
+      "stage": "reviewer-provisioning",
+      "source": "Lead report in task-21 instructions",
+      "freshReviewerRequested": true,
+      "result": "creation-failed",
+      "reportedReason": "Eight-member limit",
+      "replacementReviewer": "visual-reviewer",
+      "replacementIsFresh": false
+    },
+    {
+      "stage": "brief-blind-identification",
+      "source": "Lead report in task-21 instructions",
+      "reviewer": "visual-reviewer",
+      "reviewerIsFresh": false,
+      "currentRoundBriefProvidedBeforeStage": false,
+      "stageStatus": "frozen",
+      "classification": "Reused reviewer with a brief-blind identification stage; not a fresh cold read.",
+      "scoresRecorded": false
+    },
+    {
+      "stage": "brief-aware-three-key-pose-review",
+      "source": "Lead's latest task-21 message, superseding the older task description's pending-review note",
+      "reviewer": "visual-reviewer",
+      "reviewerIsFresh": false,
+      "stageStatus": "completed",
+      "ratings": [
+        {
+          "panel": "left",
+          "frameOneBased": 1,
+          "form": "paddle",
+          "scoreOutOf10": 7,
+          "blockingIssues": []
+        },
+        {
+          "panel": "middle",
+          "frameOneBased": 5,
+          "form": "industrial-arm",
+          "scoreOutOf10": 6,
+          "blockingIssues": [
+            "The press/tool reads as a base rather than a distinct working end."
+          ]
+        },
+        {
+          "panel": "right",
+          "frameOneBased": 9,
+          "form": "caption-terminal",
+          "scoreOutOf10": 8,
+          "blockingIssues": []
+        }
+      ],
+      "blockingIssueCount": 1,
+      "productionAcceptance": false
+    },
+    {
+      "stage": "B-brief-aware-three-idle-key-pose-review",
+      "source": "Lead's later task-21 update explicitly reports the returned B-key review; this does not replace the earlier blocking review history.",
+      "reviewer": "visual-reviewer",
+      "reviewerIsFresh": false,
+      "stageStatus": "completed",
+      "evidencePreviewPaths": [
+        "assets/reviews/r12-b-keys-native.png",
+        "assets/reviews/r12-b-keys-large.png"
+      ],
+      "completedCorrection": {
+        "owner": "lead",
+        "iteration": 1,
+        "scope": "Middle industrial-arm form only",
+        "changes": [
+          "Press working end changed to a narrow piston, lower rod and steel crossbar.",
+          "Chassis front bridge/front foot below the tool removed, leaving an independently supporting rear column and clearer negative space."
+        ]
+      },
+      "ratings": [
+        {
+          "panel": "left",
+          "frameOneBased": 1,
+          "form": "paddle",
+          "scoreOutOf10": 7,
+          "blockingIssues": []
+        },
+        {
+          "panel": "middle",
+          "frameOneBased": 5,
+          "form": "industrial-arm",
+          "scoreOutOf10": 8,
+          "blockingIssues": []
+        },
+        {
+          "panel": "right",
+          "frameOneBased": 9,
+          "form": "caption-terminal",
+          "scoreOutOf10": 8,
+          "blockingIssues": []
+        }
+      ],
+      "pixelComparison": {
+        "source": "Lead's supplemental report, measured with bundled Pillow; not independently recomputed by this record's author.",
+        "comparison": "A-key native strip to B-key native strip, left/middle/right pixelwise comparison",
+        "changedPixelCounts": [
+          0,
+          604,
+          0
+        ],
+        "leftAndRightUnchangedPixelwise": true
+      },
+      "resolvedIssue": "The working press/tool is now distinct from its fixed base; the prior middle-form BLOCKING was cleared.",
+      "blockingIssueCount": 0,
+      "acceptedScope": "Three idle key poses only; no further structural correction requested for those keys.",
+      "productionAcceptance": false,
+      "animationAcceptance": false,
+      "gameplayAcceptance": false
+    },
+    {
+      "stage": "C-full-twelve-pose-static-review",
+      "reviewer": "visual-reviewer",
+      "reviewerIsFresh": false,
+      "stageStatus": "completed",
+      "scoreOutOf10": 8,
+      "blockingIssueCount": 0,
+      "evidencePreviewPaths": [
+        "assets/reviews/r12-c-full-native.png",
+        "assets/reviews/r12-c-strip-1.png",
+        "assets/reviews/r12-c-strip-2.png",
+        "assets/reviews/r12-c-strip-3.png"
+      ],
+      "acceptedScope": "All twelve static poses: recognizability, connected links, stable part volume and attached caption paper. Stop structural refinement.",
+      "nonBlockingLimits": [
+        "The press lowers with a leftward component rather than a purely coaxial vertical stroke.",
+        "Paddle state differences are small; real gameplay reflection cues remain necessary."
+      ],
+      "notClaimed": [
+        "Played animation rhythm",
+        "Native gameplay mechanics",
+        "Raster-derived joint-length measurement",
+        "Fresh-context cold critique"
+      ]
+    }
+  ],
+  "historicalDraftStatusSnapshot": {
+    "basis": "Latest Lead task-21 B-key update; acceptance is limited to the three reviewed idle keys.",
+    "stage": "three-native-idle-key-poses-reviewed",
+    "keyFramesOneBased": [
+      1,
+      5,
+      9
+    ],
+    "reviewDisposition": "no-blocking-issues-in-three-idle-keys-only",
+    "latestReviewStage": "B-brief-aware-three-idle-key-pose-review",
+    "remainingUnacceptedScope": [
+      "All four poses per form",
+      "Complete twelve-frame animation",
+      "In-game acceptance",
+      "Approved formal atlas export"
+    ],
+    "allTwelveNativePosesAccepted": false,
+    "animationAcceptanceRecorded": false,
+    "gameplayAcceptanceRecorded": false,
+    "formalAtlasApproved": false,
+    "externalPublicationAuthorized": false,
+    "sourceAdapterFilesRemainFrozen": true,
+    "finalAcceptanceRecorded": false
+  },
+  "validation": {
+    "fullMcpSummary": "Clean (31 style note(s)).",
+    "fullMcpSourceEvent": 13945,
+    "errors": 0,
+    "styleWarningSummaryCount": 31,
+    "displayedOutlineWarningsLimitedToFirst": 15,
+    "mechanicalStrictWithoutOutline": "Clean; four note-level 38px manufactured terminal edge boundaries at (27,59), frames9..12.",
+    "acceptedStyleReasons": [
+      "Selective metal bevels and per-part edges are not uniformly black.",
+      "Tiny indicator lights deliberately have a hard highlight and no black perimeter.",
+      "The CRT bottom casing has a deliberately straight machined edge, not a wandering or dithered contour."
+    ],
+    "allChecksStrictZeroWarningClaimed": false,
+    "gatoTests": 78,
+    "renderingTests": "239/239",
+    "sourcePixelEvidence": "20 source palette entries; 15 actual opaque colours; hard alpha0/255; D97757 absent; 12 unique visible frames; all ink in x22..73/y11..84; outside signal strip transparent.",
+    "sourceParserDoesNotProveDesignedBoneLengths": true
+  },
+  "formalExport": {
+    "mode": "live",
+    "asepriteVersion": "1.3.18.6-dev",
+    "files": [
+      {
+        "path": "assets/source/gato.aseprite",
+        "bytes": 20304,
+        "sha256": "5906482f7a65027fdfd08dc3a2ebac710535da5b5b152171debef4a768e802cd"
+      },
+      {
+        "path": "public/game/gato.png",
+        "bytes": 6764,
+        "sha256": "4180a2304b04f2998173049e0f5390667bdee9382f4bda736f977a725fb93da3"
+      },
+      {
+        "path": "public/game/gato.json",
+        "bytes": 5309,
+        "sha256": "1b9aa30f23c8686314c5ca4c895c1d435c2a1fd06e00bd392962c6fb35b0cd7e"
+      }
+    ],
+    "nativeSize": [
+      96,
+      96
+    ],
+    "sheetSize": [
+      1152,
+      96
+    ],
+    "frameCount": 12,
+    "frames": [
+      "gato 0.aseprite",
+      "gato 1.aseprite",
+      "gato 2.aseprite",
+      "gato 3.aseprite",
+      "gato 4.aseprite",
+      "gato 5.aseprite",
+      "gato 6.aseprite",
+      "gato 7.aseprite",
+      "gato 8.aseprite",
+      "gato 9.aseprite",
+      "gato 10.aseprite",
+      "gato 11.aseprite"
+    ],
+    "durationsMs": [
+      600,
+      650,
+      260,
+      1050,
+      600,
+      850,
+      260,
+      1050,
+      600,
+      650,
+      260,
+      620
+    ],
+    "layers": [
+      "chassis",
+      "power",
+      "signal",
+      "brackets",
+      "paddle",
+      "arcade",
+      "upper-arm",
+      "forearm",
+      "press",
+      "terminal",
+      "paper"
+    ],
+    "pivot": [
+      48,
+      48
+    ],
+    "pivotStorage": "Explicit view descriptor, not atlas slice metadata.",
+    "filter": "NEAREST",
+    "trimmed": false,
+    "padding": 0,
+    "generatedReferenceWasNotUsedAsProductionTexture": true
+  },
+  "currentStatus": {
+    "allTwelveNativePosesAccepted": true,
+    "formalAtlasApproved": true,
+    "viewAdapterIntegrated": true,
+    "coreOrDtoChanged": false,
+    "nativeGameplayAcceptanceRecorded": true,
+    "fullRegressionGate": {
+      "unitPassed": 722,
+      "unitTotal": 722,
+      "unitFiles": 40,
+      "unitSeconds": 1.43,
+      "browserPassed": 62,
+      "browserTotal": 62,
+      "browserMinutes": 5.4,
+      "browserBackendEnabled": true,
+      "browserSkipped": 0,
+      "backendPassed": 23,
+      "backendTotal": 23,
+      "backendCluster": "backend/.local/pg-test.Mk2bI4",
+      "finalBrowserCluster": "backend/.local/pg-test.8ImGX9",
+      "lint": true,
+      "typecheck": true,
+      "build": true,
+      "auditVulnerabilities": 0,
+      "diffCheck": true,
+      "exitCode": 0,
+      "log": "artifacts/verification/r12-final-gate.log",
+      "terminalEndMarker": "R12_FINAL_GATE_END [exit code: 0]",
+      "fullGddComplete": false
+    },
+    "externalPublicationAuthorized": false,
+    "fullGddComplete": false
+  },
+  "runtimeVisualReview": {
+    "reviewer": "visual-reviewer",
+    "freshContext": false,
+    "imagesActuallyRead": [
+      {
+        "path": "artifacts/browser/gato-probe-gold.png",
+        "sha256": "f374aa879286d08e140436341eede861ae90c25b09e5c448e52023efdee4075b"
+      },
+      {
+        "path": "artifacts/browser/gato-probe3-tell.png",
+        "sha256": "aea38de05a73c54bfc903d3b0be8666b99f2c0fbfb9888952cc84169a74a17c3"
+      },
+      {
+        "path": "artifacts/browser/gato-probe3-attack.png",
+        "sha256": "0a56f4340ae39fb08a66c077d86dae22708260d2021383e7513c6d27a9e6260b"
+      },
+      {
+        "path": "artifacts/browser/gato-probe3-overlap.png",
+        "sha256": "8eeeb1d01491c32ac4fb5c42ec9f3f2e88d4a929fc95e49351af052cf449eb4b"
+      },
+      {
+        "path": "artifacts/browser/gato-probe3-captions.png",
+        "sha256": "75c750fb9514418836094d2fac370902e1a97d6176687de6b1949e72abde6a42"
+      }
+    ],
+    "newBlockingIssues": 0,
+    "staticScoreRetained": 8,
+    "structuralRefinementRequested": false,
+    "nonBlockingNotes": [
+      "Real shock warm-tints the bottom of the press and feet.",
+      "The actual tell column warm-tints body/platform detail, but sampled HP and label remain readable after the view-layer fix.",
+      "Seven pink bars are visible; they do not contain legible caption words."
+    ],
+    "notCertified": [
+      "Timing",
+      "Ground-wave propagation",
+      "Bullet trajectories",
+      "Collisions",
+      "Exact depth values or source implementation",
+      "Whole GDD completion"
+    ]
+  },
+  "finalNativeEvidence": {
+    "specs": [
+      "tests/e2e/gato-art.spec.ts",
+      "tests/e2e/gato-resources.spec.ts"
+    ],
+    "scopedPassed": 4,
+    "repeatedInFullGatePassed": 4,
+    "pauseMilliseconds": 4400,
+    "singleShotHoldMilliseconds": 60,
+    "normalShotCooldownMilliseconds": 185,
+    "fullGateVictory": {
+      "hp": 66,
+      "elapsedMs": 23850,
+      "fixtureElapsedMs": 10000,
+      "shots": 32,
+      "captions": 7
+    },
+    "rawCanvasProof": "Single read-only requestAnimationFrame canvas.toDataURL, alive cassette>20; same-arena dead cassette/hp/gold=0 before chapter transition; each frame opaque>95% and >12 colors. No hidden engine access, rAF replacement or DOM hiding.",
+    "viewFix": "Gato HP and wall drawn after tell in cues3; label4. No Core change.",
+    "firstNativeRun": "Failed reflection capture and overly strict43px HP threshold; retained. Corrected normal60ms single-shot sampling and a documented one-native-pixel raster bound, without changing mechanics.",
+    "report": "docs/round12-gato-verification.md"
+  },
+  "frozenFinalCaptures": [
+    {
+      "path": "artifacts/asset-review-r12/final/gato-reflection-tell.png",
+      "sha256": "6a73943c96d2015f765758be24cfb39aac7b264670e739b4498b72f38fd25cfc",
+      "bytes": 40042
+    },
+    {
+      "path": "artifacts/asset-review-r12/final/gato-reflected-shot.png",
+      "sha256": "c85885d88daa394abf18451d2618267d864629d82f39e2f6a56a9392fe11bd2d",
+      "bytes": 20327
+    },
+    {
+      "path": "artifacts/asset-review-r12/final/gato-paused.png",
+      "sha256": "de9805c74fa56b854e103f2cb4763283b3e49539cc7446ea9372b6aeb7de85d5",
+      "bytes": 91034
+    },
+    {
+      "path": "artifacts/asset-review-r12/final/gato-arm-tell.png",
+      "sha256": "7dffc4c0248dafcab2db29c148be6a06d03c6c1962ce3732b0d366cba87bf18a",
+      "bytes": 40045
+    },
+    {
+      "path": "artifacts/asset-review-r12/final/gato-arm-jump.png",
+      "sha256": "1957fcb4e741c40d3d83c4c56cc8042b133a657ec4e37f781593518ac35b1705",
+      "bytes": 39840
+    },
+    {
+      "path": "artifacts/asset-review-r12/final/gato-arm-impact.png",
+      "sha256": "d4f645a97b93c67e8f38f38b8e38bbd9689013066e798670d093558f2c49b3fe",
+      "bytes": 39246
+    },
+    {
+      "path": "artifacts/asset-review-r12/final/gato-overlap-hp.png",
+      "sha256": "03b828755f26079068043300df95e33dcdf9f5f1d18a0bbf21c91345bf17d6f6",
+      "bytes": 40332
+    },
+    {
+      "path": "artifacts/asset-review-r12/final/gato-seven-captions.png",
+      "sha256": "53ec1ee9290e0d31dc816b8b7dfc383c239f86fb172486f02eb70d154759a49e",
+      "bytes": 39334
+    },
+    {
+      "path": "artifacts/asset-review-r12/final/gato-alive-canvas.png",
+      "sha256": "5e5443554ce741ee450a8ba5ad76757adaec065e44f6ca8b6072c0342d4db090",
+      "bytes": 20579
+    },
+    {
+      "path": "artifacts/asset-review-r12/final/gato-defeated-canvas.png",
+      "sha256": "396c23b66c13a435f4ef3369c7268cf4a182334656a59b6d58b7896093e13725",
+      "bytes": 17379
+    },
+    {
+      "path": "artifacts/asset-review-r12/final/gato-defeated.png",
+      "sha256": "7a16c377fc5bf692eff1b38a78570d353af480376d838fec9fe8d3cbbf75d2df",
+      "bytes": 75773
+    },
+    {
+      "path": "artifacts/asset-review-r12/final/gato-next-chapter-clean.png",
+      "sha256": "0b66077e4d4e52657e5243b6bbb2b896be4385f107d37cd25fd34d2fc91683e4",
+      "bytes": 43034
+    }
+  ],
+  "serviceLifecycle": {
+    "initialCluster": "backend/.local/pg-test.Mk2bI4",
+    "initialTestsPassed": 23,
+    "initialServicesUnexpectedlyStopped": true,
+    "initialStopCause": "unknown; not claimed as explicit normal stop",
+    "replacementCluster": "backend/.local/pg-test.8ImGX9",
+    "leadTerminals": [
+      "pty-5",
+      "pty-6"
+    ],
+    "fullBrowserGateUsedReplacement": true,
+    "cleanup": "Main canceled and owned process tree closed, then PG fast shutdown and shutdown checkpoint confirmed; both terminals closed; lsof found no listeners on8081/55439. Both data directories retained."
+  },
+  "administrativeTask22": {
+    "deliveryComplete": true,
+    "boardStatus": "in_progress",
+    "boardRevision": 3,
+    "completionOperationRejected": true,
+    "retriedOrBypassed": false
+  }
+}

@@ -1,0 +1,670 @@
+{
+  "schemaVersion": 1,
+  "status": "native32 terrain and8 static props admitted:891 unit/69 native/23 fresh-isolated-backend; full GDD incomplete",
+  "approvedDirection": "assets/chapter-one-art-spec.md",
+  "pixelSpec": "assets/chapter-one-environment-pixelspec.md",
+  "requests": [
+    {
+      "prompt": "Create an environment design reference sheet for a side-scrolling pixel-art action game, not a finished production tileset. The attached native robot sprite strip is ONLY a reference for crisp pixel clusters, restrained materials, and palette; do not draw those robots or any characters. Show exactly THREE equal square panels in one horizontal row with clean spacing, locked flat side-view camera and consistent 16-pixel module scale. Panel 1: an ancient Chinese mechanism study, dark lacquered timber brackets and mortise joints, stone plinths, a bamboo-scroll cabinet, a circular geometric lattice window, and one hanging paper lantern. Panel 2: the same architecture overtaken by a bioluminescent forest, twisting roots, broad quiet leaf masses, mossy soil, and a small stone lantern; include one clearly distinct floating purple poisonous mushroom, not many scattered collectibles. Panel 3: a spacious quiet mechanism arena using the same stone and timber vocabulary, restrained circular lattice architecture behind an open combat area, with two thin suspended wooden ledges. Keep empty readable space around the ledges. In every panel the walkable top edges are straight unbroken horizontal pixel rows; grass and roots stay below those edges, and the ledges read as only 12 pixels thick inside a 16-pixel module. Do not add walkable-looking decorative bridges across gaps. Use low contrast and sparse clustered texture on the back wall, stronger but not glaring contrast on the foreground top edge. A surface should be mostly one calm midtone, with only three or four material colors; no noisy speckles, soft gradients, photographic texture, isometric perspective, bloom, or blur. Upper-left light, hard pixel edges, restrained selective outlines. Color family only: #0f191b #24423b #426b50 #8fa86b #2c2330 #34354f #575c79 #858eb0 #783f4a #b55a4a #eaa083 #b9905d #e5c386 #cbb696 #f5e8c8 #9dded1 #d9ffea #723f68. Reserve exact #d97757 for the absent player and do not use it here. No UI, writing, labels, letters, numbers, logos, watermarks, characters, attacks, targeting marks, health bars, or decorative fake projectiles. This is a compact cohesive environment concept, not a website or a moodboard collage.",
+      "referenceImages": [
+        "public/game/gato.png"
+      ],
+      "requestedSize": "1536x1024",
+      "requestedQuality": "high",
+      "result": {
+        "path": "generated-images/image-20261029-084128-d0d94a.png",
+        "model": "gpt-image-2.5",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "bytes": 1747125,
+        "sha256": "989c1049348f4b1dc380a0af7654b41719cf80b78eda2f06e3ea0fad6ff8b959",
+        "actualQuality": null,
+        "qualityNote": "High was requested; actual output quality was not reported.",
+        "actuallyViewed": true
+      }
+    }
+  ],
+  "productionArtifacts": [
+    {
+      "path": "assets/source/chapter-one-tiles.aseprite",
+      "bytes": 4326,
+      "sha256": "62b0b4f1394b7bdffcc17628229df08473b2ff0d2abd52196623a005707bda76"
+    },
+    {
+      "path": "assets/source/chapter-one-props.aseprite",
+      "bytes": 4372,
+      "sha256": "921df55036b06a93f859c033b2426145eedae4232d75800f890405c690dee1fa"
+    },
+    {
+      "path": "public/game/chapter-one-terrain.png",
+      "bytes": 1593,
+      "sha256": "b7d991937a5a98b838453467cca6c4f1d9ffe4be953350e5f3265a1da5c472e6"
+    },
+    {
+      "path": "public/game/chapter-one-terrain.json",
+      "bytes": 656,
+      "sha256": "37464f663fdacbef9f00b952c5d9bb461bbc7071a7338174bde5c1f089062772"
+    },
+    {
+      "path": "public/game/chapter-one-props.png",
+      "bytes": 4905,
+      "sha256": "7836ed5931e26127715a6bb75d892d5ab0d35aaf6911d7ca5c2c52fb9da1ae47"
+    },
+    {
+      "path": "public/game/chapter-one-props.json",
+      "bytes": 3329,
+      "sha256": "ab03b53a05c9f2aae7ef75857ebbdf66b280d1a1740b199a2a996976c816d175"
+    }
+  ],
+  "fullGddComplete": false,
+  "deliberateDeviations": [
+    "Remove illegible lantern marks, dense leaf speckles, window light gradients and trim noise.",
+    "Restore isolated complete props from partially occluded concept forms.",
+    "No underside support brackets or foliage outside actual collision rectangles.",
+    "Do not copy the continuous concept floor across real gameplay gaps.",
+    "Use hard palette-native clusters, not resized or quantized reference pixels."
+  ],
+  "tileDraftA": {
+    "sourceSpriteId": "#4242",
+    "nativeCanvas": [
+      256,
+      128
+    ],
+    "paletteEntries": 20,
+    "opaqueColors": [
+      "0f191b",
+      "24423b",
+      "2c2330",
+      "34354f",
+      "426b50",
+      "575c79",
+      "783f4a",
+      "858eb0",
+      "8fa86b",
+      "b55a4a",
+      "cbb696"
+    ],
+    "hardAlpha": true,
+    "reservedClawdOrangePixels": 0,
+    "uniqueMasterTiles": 32,
+    "nativeCellSize": [
+      16,
+      16
+    ],
+    "mapCells": 128,
+    "packedAtlasSize": [
+      96,
+      96
+    ],
+    "packedTileCount": 32,
+    "exactCompositeReconstruction": true,
+    "variantBorderPairsVerified": [
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        22,
+        23
+      ],
+      [
+        22,
+        29
+      ],
+      [
+        1,
+        30
+      ],
+      [
+        9,
+        31
+      ]
+    ],
+    "exactRepeatCellsVerified": 18,
+    "twelvePixelLedgesVerified": 6,
+    "semanticAtlasSlots": {
+      "stone-top-left": 0,
+      "stone-top": 1,
+      "stone-top-right": 2,
+      "stone-side-left": 3,
+      "stone-fill": 4,
+      "stone-side-right": 5,
+      "stone-fill-alt": 6,
+      "stone-fill-worn": 7,
+      "moss-top-left": 9,
+      "moss-top": 10,
+      "moss-top-right": 11,
+      "soil-side-left": 12,
+      "soil-fill": 8,
+      "soil-side-right": 13,
+      "soil-fill-alt": 14,
+      "soil-fill-root": 15,
+      "timber-ledge-left": 16,
+      "timber-ledge": 17,
+      "timber-ledge-right": 18,
+      "root-ledge-left": 19,
+      "root-ledge": 20,
+      "root-ledge-right": 21,
+      "wall-quiet": 22,
+      "wall-blocks": 23,
+      "timber-column": 24,
+      "timber-beam": 25,
+      "timber-bracket": 26,
+      "wall-fret": 27,
+      "wall-recess": 28,
+      "wall-moss": 29,
+      "stone-top-alt": 30,
+      "moss-top-alt": 31
+    },
+    "reviewer": "pixel-critic-r8",
+    "freshContext": false,
+    "score": 7.5,
+    "blocking": 0,
+    "targetedFixPasses": 0,
+    "retainedObservations": [
+      "Wood/oxidized-metal ambiguity on narrow beam",
+      "Soil repeating marks remain visible but no seam cracks"
+    ],
+    "prePackValidate": "Clean; no-single-outline note and112px straight-cap banding note",
+    "postPackValidate": "Clean; hidden source layer not scanned for style",
+    "lookLimitation": "Single-layer look did not expand native tilemap; actual MCP composite PNG was viewed and exactRGBA-compared to original."
+  },
+  "propsDraftB": {
+    "sourceSpriteId": "#4353",
+    "nativeFrameSize": [
+      64,
+      64
+    ],
+    "frames": 8,
+    "layers": [
+      "props"
+    ],
+    "paletteEntries": 20,
+    "opaqueColors": [
+      "0f191b",
+      "24423b",
+      "2c2330",
+      "34354f",
+      "426b50",
+      "575c79",
+      "723f68",
+      "783f4a",
+      "858eb0",
+      "8fa86b",
+      "9dded1",
+      "b55a4a",
+      "b9905d",
+      "cbb696",
+      "d9ffea",
+      "f5e8c8"
+    ],
+    "hardAlpha": true,
+    "reservedClawdOrangePixels": 0,
+    "uniqueFrames": 8,
+    "atlasSize": [
+      512,
+      64
+    ],
+    "frameKeys": {
+      "scroll-cabinet": "chapter-one-props 0.aseprite",
+      "lattice-window": "chapter-one-props 1.aseprite",
+      "hanging-lantern": "chapter-one-props 2.aseprite",
+      "forest-trunk": "chapter-one-props 3.aseprite",
+      "forest-canopy": "chapter-one-props 4.aseprite",
+      "stone-lantern": "chapter-one-props 5.aseprite",
+      "root-clump": "chapter-one-props 6.aseprite",
+      "mushroom": "chapter-one-props 7.aseprite"
+    },
+    "inkBoundsInclusive": {
+      "scroll-cabinet": [
+        12,
+        1,
+        51,
+        63
+      ],
+      "lattice-window": [
+        2,
+        2,
+        61,
+        61
+      ],
+      "hanging-lantern": [
+        21,
+        0,
+        42,
+        62
+      ],
+      "forest-trunk": [
+        12,
+        0,
+        55,
+        63
+      ],
+      "forest-canopy": [
+        0,
+        4,
+        63,
+        63
+      ],
+      "stone-lantern": [
+        10,
+        1,
+        53,
+        63
+      ],
+      "root-clump": [
+        2,
+        40,
+        61,
+        63
+      ],
+      "mushroom": [
+        22,
+        24,
+        41,
+        40
+      ]
+    },
+    "trunkAndCanopySocketsByteIdentical": true,
+    "mushroomInkSize": [
+      20,
+      17
+    ],
+    "mushroomPivot": [
+      32,
+      32
+    ],
+    "staticFramesNotAnAnimation": true,
+    "frameDurationMetadataMs": 600,
+    "reviewer": "pixel-critic-r9",
+    "freshContext": false,
+    "score": 7.5,
+    "blocking": 0,
+    "targetedFixPasses": 0,
+    "retainedObservations": [
+      "Window/opening can also read as a medallion; do not claim blind certainty",
+      "Shelf contents read books/scrolls, not specifically bamboo",
+      "Background light hierarchy not yet reviewed in game"
+    ],
+    "validateSummary": "Clean (4 style note(s)).",
+    "outlineWarnings": [
+      {
+        "frame": 2,
+        "majority": "2c2330",
+        "percent": 76,
+        "otherEdgePixels": 41
+      },
+      {
+        "frame": 3,
+        "majority": "2c2330",
+        "percent": 68,
+        "otherEdgePixels": 47
+      },
+      {
+        "frame": 4,
+        "majority": "783f4a",
+        "percent": 63,
+        "otherEdgePixels": 77
+      },
+      {
+        "frame": 8,
+        "majority": "2c2330",
+        "percent": 75,
+        "otherEdgePixels": 14
+      }
+    ],
+    "informationalNotes": "Six additional notes: straight cabinet38px edge, outline style on canopy/stone lamp/roots, stone-lamp38px edge, uniform static duration. No fake timing variation added.",
+    "reviewImages": [
+      {
+        "path": "assets/reviews/r13-b-native.png",
+        "sha256": "41cbd6599faefc6c2caf1e8d2396452cd86378ea86d2cb22336f4c71c9f8c613",
+        "toolImageSha256": "41cbd6599faefc6c2caf1e8d2396452cd86378ea86d2cb22336f4c71c9f8c613",
+        "dimensions": [
+          194,
+          194
+        ],
+        "method": "byte-copy of actual MCP look filmstrip; not production atlas"
+      },
+      {
+        "path": "assets/reviews/r13-b-large.png",
+        "sha256": "3a898250555f99d77f903f9060a662484dfe5cf8d4a0220b0806e215219d197b",
+        "toolImageSha256": "3a898250555f99d77f903f9060a662484dfe5cf8d4a0220b0806e215219d197b",
+        "dimensions": [
+          776,
+          776
+        ],
+        "method": "byte-copy of actual MCP look filmstrip; not production atlas"
+      }
+    ]
+  },
+  "toolBehaviorNotes": [
+    "Same-call blit observed the pre-call image rather than freshly drawn grids; corrected with committed-master copies and exact repeat checks.",
+    "Repeated reference import names created distinct duplicate-named layers; ambiguous rename refused, then active-layer rename uniquely identified them. All reference layers removed from saved final sources."
+  ],
+  "dependencyRecoveryRecord": "artifacts/r13-dependency-recovery/recovery.json",
+  "runtimeAcceptance": {
+    "status": "asset package admitted after full native regression; not whole-game production approval",
+    "productionReady": true,
+    "fullGddComplete": false,
+    "currentFullUnit": {
+      "passed": 891,
+      "files": 43,
+      "log": "artifacts/verification/r13-final-gate-02.log",
+      "exitCode": 0
+    },
+    "nativeEntryRestoreAndFailure": {
+      "passed": 4,
+      "seconds": 58.8,
+      "log": "artifacts/verification/r13-native-artifacts-03.log",
+      "outputs": "artifacts/asset-review-r13/native-artifacts-03",
+      "exitCode": 0,
+      "positiveControls": "First-room source-positive three foreground motifs plus wall composition and two props; not all nine runtime tile roles."
+    },
+    "earlierNativePasses": [
+      {
+        "passed": 4,
+        "seconds": 18.6,
+        "pngPersisted": false,
+        "reason": "Buffer attachments under line reporter were not persisted; assertions passed, rerun saved explicit paths"
+      },
+      {
+        "passed": 4,
+        "seconds": 23.2,
+        "outputs": "artifacts/asset-review-r13/native-artifacts-02"
+      }
+    ],
+    "runtimeTileRoles": [
+      "wall-quiet",
+      "timber-column",
+      "timber-beam",
+      "stone-top",
+      "stone-fill",
+      "moss-top",
+      "soil-fill",
+      "timber-ledge",
+      "root-ledge"
+    ],
+    "kitRoleCount": 32,
+    "runtimePropRoles": [
+      "scroll-cabinet",
+      "lattice-window",
+      "hanging-lantern",
+      "forest-trunk",
+      "forest-canopy",
+      "stone-lantern",
+      "root-clump",
+      "mushroom"
+    ],
+    "wallAlpha": 0.18,
+    "propAlpha": 0.22,
+    "visualReview": {
+      "reviewer": "pixel-critic-r8",
+      "freshContext": false,
+      "before": "native-artifacts-02",
+      "issues": [
+        "repeated wall marks competed with props",
+        "next teaching sentence clipped at viewport edge"
+      ],
+      "viewOnlyFixes": [
+        "wall alpha1 to0.18; all source pixels and platform/prop values unchanged",
+        "show first-chapter world teaching labels only when whole sentence fits12px viewport inset; no moved label or altered text"
+      ],
+      "after": "native-artifacts-03",
+      "afterReview": "actually viewed native-artifacts-03:0 blocking; stop polish",
+      "forestArenaReview": {
+        "reviewer": "pixel-critic-r9",
+        "freshContext": false,
+        "blocking": 0,
+        "necessaryFixes": 0,
+        "paths": [
+          "artifacts/asset-review-r13/mechanics-01/environment-mechanics-save-9538a-ntinue-resumes-mushroom-bob/environment-saved-rest-before.png",
+          "artifacts/asset-review-r13/native-arena-04/environment-a-normal-check-802e3-across-the2560-texture-seam/environment-arena-window-seam-native.png"
+        ],
+        "scope": "Static readability/alignment only, not motion/FPS or unseen areas"
+      }
+    },
+    "remaining": [],
+    "combinedScope": {
+      "passed": 7,
+      "seconds": 46.4,
+      "log": "artifacts/verification/r13-environment-combined-03.log",
+      "outputs": "artifacts/asset-review-r13/environment-combined-03",
+      "exitCode": 0,
+      "fixtures": "Supported cp1, cp2 and saved-open-rest cp11; not a fresh chapter journey",
+      "mechanisms": [
+        "Normal E/core shot and real forward-enemy kills",
+        "Normal jumps: mushroom Doom+28/TOK+8, upward flight and ceiling dwell>500ms, natural gravity return",
+        "Actual warning, native surface removal with positive exposed-background controls, real ground landing",
+        "Saved-rest freeze2300ms, true Continue and native mushroom bob",
+        "Actual paused WebGL loss/restore and exact source controls",
+        "Window positive left16px/right48px across world2560"
+      ]
+    },
+    "viewOnlyRepairs": [
+      "First chapter publishes integer camera scroll but keeps fractional follow memory; no simulation changes, no new clock, later chapter path unchanged",
+      "Actual current inversion/support/deadline hazard text replaces objective at existing HUD rate; expired historical notices stay absent"
+    ],
+    "retainedFailedRuns": [
+      "artifacts/verification/r13-mechanics-01.log",
+      "artifacts/verification/r13-mechanics-02.log",
+      "artifacts/verification/r13-final-gate.log",
+      "artifacts/verification/r13-backend-tests.log"
+    ],
+    "samplingReview": {
+      "reviewer": "hud-engineer",
+      "readOnly": true,
+      "blocking": 0,
+      "preserved": "Original6px/gold/HP/nonempty controls, Doom+28/TOK+8 and full real inversion/collapse chain",
+      "limitation": "60/80ms are requested mouse press intervals, not explicitly measured emission counts; no hidden world access"
+    },
+    "stableNativeRepeat": {
+      "passed": 6,
+      "repetitions": 3,
+      "minutes": 2.3,
+      "log": "artifacts/verification/r13-native-stable-repeat.log",
+      "exitCode": 0
+    },
+    "hudCeilingReview": {
+      "before": "artifacts/asset-review-r13/native-stable-repeat/environment-mechanics-chec-0f401-le-collapse-by-normal-input/environment-cp1-ceiling-real-ui.png",
+      "actuallyViewed": true,
+      "issue": "solid HUD plate occluded part of ceiling Clawd",
+      "candidateFix": "clear plate/border, preserve all four counters with text shadows",
+      "afterReview": "Lead and pixel-critic-r8 actually viewed: character intact, all four counters and current gravity cue readable;0 necessary fixes",
+      "after": "artifacts/asset-review-r13/hud-ceiling/environment-mechanics-chec-0f401-le-collapse-by-normal-input/environment-cp1-ceiling-real-ui.png",
+      "afterSha256": "55cccdfa7c6a856f0f633114185009fced1b09f1cf539a069b2ec9481b5eae5b",
+      "freshContext": false,
+      "scopePassed": 6,
+      "scopeSeconds": 46.2,
+      "scopeLog": "artifacts/verification/r13-hud-ceiling.log"
+    },
+    "fullNative": {
+      "passed": 69,
+      "skipped": 0,
+      "minutes": 6.4,
+      "backendEnabled": true,
+      "outputs": "artifacts/asset-review-r13/final-native-02",
+      "log": "artifacts/verification/r13-final-gate-02.log",
+      "exitCode": 0
+    },
+    "backend": {
+      "passed": 23,
+      "java": "17.0.17",
+      "scala": "3.3.6",
+      "postgres": "16.14",
+      "cluster": "backend/.local/pg-test.6geDz8",
+      "log": "artifacts/verification/r13-backend-java17-tests.log",
+      "exitCode": 0
+    },
+    "sourceHashRecord": "artifacts/verification/r13-final-source-hashes.json",
+    "serviceCleanup": "artifacts/verification/r13-service-cleanup.json",
+    "postDocumentCheck": {
+      "log": "artifacts/verification/r13-post-document-check.log",
+      "unitPassed": 891,
+      "exitCode": 0,
+      "localMarkdownLinksValid": true,
+      "productionAndTestSourcesUnchanged": true
+    }
+  },
+  "referenceInterpretation": {
+    "terrainImport": {
+      "sourceCrop": [
+        0,
+        0,
+        2172,
+        724
+      ],
+      "fit": "contain",
+      "actualPlaced": [
+        0,
+        0,
+        256,
+        85
+      ]
+    },
+    "propImports": [
+      {
+        "frame": 1,
+        "role": "scroll-cabinet",
+        "crop": [
+          110,
+          345,
+          124,
+          197
+        ],
+        "actualPlaced": [
+          12,
+          0,
+          40,
+          63
+        ]
+      },
+      {
+        "frame": 2,
+        "role": "lattice-window",
+        "crop": [
+          420,
+          211,
+          288,
+          288
+        ],
+        "actualPlaced": [
+          0,
+          0,
+          64,
+          64
+        ]
+      },
+      {
+        "frame": 3,
+        "role": "hanging-lantern",
+        "crop": [
+          130,
+          184,
+          55,
+          125
+        ],
+        "actualPlaced": [
+          18,
+          0,
+          28,
+          64
+        ]
+      },
+      {
+        "frame": 4,
+        "role": "forest-trunk",
+        "crop": [
+          800,
+          180,
+          300,
+          365
+        ],
+        "actualPlaced": [
+          6,
+          0,
+          52,
+          64
+        ]
+      },
+      {
+        "frame": 5,
+        "role": "forest-canopy",
+        "crop": [
+          744,
+          39,
+          370,
+          370
+        ],
+        "actualPlaced": [
+          0,
+          0,
+          64,
+          64
+        ]
+      },
+      {
+        "frame": 6,
+        "role": "stone-lantern",
+        "crop": [
+          807,
+          400,
+          110,
+          140
+        ],
+        "actualPlaced": [
+          7,
+          0,
+          50,
+          64
+        ]
+      },
+      {
+        "frame": 7,
+        "role": "root-clump",
+        "crop": [
+          880,
+          459,
+          210,
+          85
+        ],
+        "actualPlaced": [
+          0,
+          39,
+          64,
+          25
+        ]
+      },
+      {
+        "frame": 8,
+        "role": "mushroom",
+        "crop": [
+          1075,
+          218,
+          300,
+          300
+        ],
+        "actualPlaced": [
+          0,
+          0,
+          64,
+          64
+        ]
+      }
+    ],
+    "allReferencesRemovedBeforeFinalSourceSave": true
+  }
+}

@@ -1,246 +1,107 @@
-# Phaser React TypeScript Template
+# P(Doom): 100%
 
-This is a Phaser project template that uses the React framework and Vite for bundling. It includes a bridge for React to Phaser game communication, hot-reloading for quick development workflow and scripts to generate production-ready builds.
+**Clawd's Sharp Left Turn** — React + TypeScript + Phaser 4.0.0 像素平台动作肉鸽，搭配 Scala 3 / http4s / PostgreSQL 后端。
 
-**[This Template is also available as a JavaScript version.](https://github.com/phaserjs/template-react)**
+> 当前已实现**五章核心玩法、三分支结局与原创分层音频基础**，但仍不是全量GDD成品。Clawd 三态、“随机鹦鹉”“复读机”及“伪装者”两态已使用经审查的原生 Aseprite 精灵；Gato三态12pose已接入并通过真实战斗及全门回归；第一章32片地形/8道具已接入并验证蘑菇反转、真实坍塌和恢复；第二章32px四帧探针已接入并通过吞台、自复制与暂停验收；其余敌人、Boss与环境仍明确标为几何 blockout，完整美术、声景、程序化内容和最终体验仍待补齐。桌面界面已改为全窗口游戏舞台：主菜单/暂停覆盖场景、必要HUD与短提示；详情按需展开，右上可主动进入浏览器全屏。竖屏保留完整16:9视野并提示键鼠/横屏，不宣称触屏支持。最新整合见[探针验收](<docs/round14-probe-verification.md>)，第一章环境见[前轮验收](<docs/round13-environment-verification.md>)，Gato历史见[前轮验收](<docs/round12-gato-verification.md>)，伪装者历史见[前轮验收](<docs/round10-art-verification.md>)，UI改版历史见[全窗口UI验收](<docs/round9-ui-verification.md>)，完整差距见[开发进度](<docs/development-plan.md>)。
 
-### Versions
+## 本地启动
 
-This template has been updated for:
-
-- [Phaser 4](https://github.com/phaserjs/phaser)
-- [React 19.0.0](https://github.com/facebook/react)
-- [Vite 6.3.1](https://github.com/vitejs/vite)
-- [TypeScript 5.7.2](https://github.com/microsoft/TypeScript)
-
-![screenshot](screenshot.png)
-
-## Requirements
-
-[Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
-
-## Available Commands
-
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install project dependencies |
-| `npm run dev` | Launch a development web server |
-| `npm run build` | Create a production build in the `dist` folder |
-| `npm run dev-nolog` | Launch a development web server without sending anonymous data (see "About log.js" below) |
-| `npm run build-nolog` | Create a production build in the `dist` folder without sending anonymous data (see "About log.js" below) |
-
-## Writing Code
-
-After cloning the repo, run `npm install` from your project directory. Then, you can start the local development server by running `npm run dev`.
-
-The local development server runs on `http://localhost:8080` by default. Please see the Vite documentation if you wish to change this, or add SSL support.
-
-Once the server is running you can edit any of the files in the `src` folder. Vite will automatically recompile your code and then reload the browser.
-
-## Template Project Structure
-
-We have provided a default project structure to get you started. This is as follows:
-
-| Path                          | Description                                                                 |
-|-------------------------------|-----------------------------------------------------------------------------|
-| `index.html`                  | A basic HTML page to contain the game.                                     |
-| `src`                         | Contains the React client source code.                                     |
-| `src/main.tsx`                | The main **React** entry point. This bootstraps the React application.      |
-| `src/PhaserGame.tsx`          | The React component that initializes the Phaser Game and acts as a bridge between React and Phaser. |
-| `src/vite-env.d.ts`           | Global TypeScript declarations, providing type information.                |
-| `src/App.tsx`                 | The main React component.                                                  |
-| `src/game/EventBus.ts`        | A simple event bus to communicate between React and Phaser.                |
-| `src/game`                    | Contains the game source code.                                             |
-| `src/game/main.tsx`           | The main **game** entry point. This contains the game configuration and starts the game. |
-| `src/game/scenes/`            | The folder where Phaser Scenes are located.                                |
-| `public/style.css`            | Some simple CSS rules to help with page layout.                            |
-| `public/assets`               | Contains the static assets used by the game.                               |
-
-## React Bridge
-
-The `PhaserGame.tsx` component is the bridge between React and Phaser. It initializes the Phaser game and passes events between the two.
-
-To communicate between React and Phaser, you can use the **EventBus.js** file. This is a simple event bus that allows you to emit and listen for events from both React and Phaser.
-
-```js
-// In React
-import { EventBus } from './EventBus';
-
-// Emit an event
-EventBus.emit('event-name', data);
-
-// In Phaser
-// Listen for an event
-EventBus.on('event-name', (data) => {
-    // Do something with the data
-});
-```
-
-In addition to this, the `PhaserGame` component exposes the Phaser game instance along with the most recently active Phaser Scene using React forwardRef.
-
-Once exposed, you can access them like any regular react reference.
-
-## Phaser Scene Handling
-
-In Phaser, the Scene is the lifeblood of your game. It is where you sprites, game logic and all of the Phaser systems live. You can also have multiple scenes running at the same time. This template provides a way to obtain the current active scene from React.
-
-You can get the current Phaser Scene from the component event `"current-active-scene"`. In order to do this, you need to emit the event `"current-scene-ready"` from the Phaser Scene class. This event should be emitted when the scene is ready to be used. You can see this done in all of the Scenes in our template.
-
-**Important**: When you add a new Scene to your game, make sure you expose to React by emitting the `"current-scene-ready"` event via the `EventBus`, like this:
-
-
-```ts
-class MyScene extends Phaser.Scene
-{
-    constructor ()
-    {
-        super('MyScene');
-    }
-
-    create ()
-    {
-        // Your Game Objects and logic here
-
-        // At the end of create method:
-        EventBus.emit('current-scene-ready', this);
-    }
-}
-```
-
-You don't have to emit this event if you don't need to access the specific scene from React. Also, you don't have to emit it at the end of `create`, you can emit it at any point. For example, should your Scene be waiting for a network request or API call to complete, it could emit the event once that data is ready.
-
-### React Component Example
-
-Here's an example of how to access Phaser data for use in a React Component:
-
-```ts
-import { useRef } from 'react';
-import { IRefPhaserGame } from "./game/PhaserGame";
-
-// In a parent component
-const ReactComponent = () => {
-
-    const phaserRef = useRef<IRefPhaserGame>(); // you can access to this ref from phaserRef.current
-
-    const onCurrentActiveScene = (scene: Phaser.Scene) => {
-    
-        // This is invoked
-
-    }
-
-    return (
-        ...
-        <PhaserGame ref={phaserRef} currentActiveScene={onCurrentActiveScene} />
-        ...
-    );
-
-}
-```
-
-In the code above, you can get a reference to the current Phaser Game instance and the current Scene by creating a reference with `useRef()` and assign to PhaserGame component.
-
-From this state reference, the game instance is available via `phaserRef.current.game` and the most recently active Scene via `phaserRef.current.scene`.
-
-The `onCurrentActiveScene` callback will also be invoked whenever the the Phaser Scene changes, as long as you emit the event via the EventBus, as outlined above.
-
-## Handling Assets
-
-Vite supports loading assets via JavaScript module `import` statements.
-
-This template provides support for both embedding assets and also loading them from a static folder. To embed an asset, you can import it at the top of the JavaScript file you are using it in:
-
-```js
-import logoImg from './assets/logo.png'
-```
-
-To load static files such as audio files, videos, etc place them into the `public/assets` folder. Then you can use this path in the Loader calls within Phaser:
-
-```js
-preload ()
-{
-    //  This is an example of an imported bundled image.
-    //  Remember to import it at the top of this file
-    this.load.image('logo', logoImg);
-
-    //  This is an example of loading a static image
-    //  from the public/assets folder:
-    this.load.image('background', 'assets/bg.png');
-}
-```
-
-When you issue the `npm run build` command, all static assets are automatically copied to the `dist/assets` folder.
-
-## Deploying to Production
-
-After you run the `npm run build` command, your code will be built into a single bundle and saved to the `dist` folder, along with any other assets your project imported, or stored in the public assets folder.
-
-In order to deploy your game, you will need to upload *all* of the contents of the `dist` folder to a public facing web server.
-
-## Customizing the Template
-
-### Vite
-
-If you want to customize your build, such as adding plugin (i.e. for loading CSS or fonts), you can modify the `vite/config.*.mjs` file for cross-project changes, or you can modify and/or create new configuration files and target them in specific npm tasks inside of `package.json`. Please see the [Vite documentation](https://vitejs.dev/) for more information.
-
-## About log.js
-
-If you inspect our node scripts you will see there is a file called `log.js`. This file makes a single silent API call to a domain called `gryzor.co`. This domain is owned by Phaser Studio Inc. The domain name is a homage to one of our favorite retro games.
-
-We send the following 3 pieces of data to this API: The name of the template being used (vue, react, etc). If the build was 'dev' or 'prod' and finally the version of Phaser being used.
-
-At no point is any personal data collected or sent. We don't know about your project files, device, browser or anything else. Feel free to inspect the `log.js` file to confirm this.
-
-Why do we do this? Because being open source means we have no visible metrics about which of our templates are being used. We work hard to maintain a large and diverse set of templates for Phaser developers and this is our small anonymous way to determine if that work is actually paying off, or not. In short, it helps us ensure we're building the tools for you.
-
-However, if you don't want to send any data, you can use these commands instead:
-
-Dev:
+需要 Node.js 22+（本次使用 25.3.0）。在项目根目录运行：
 
 ```bash
-npm run dev-nolog
+npm ci --ignore-scripts
+npm run dev
 ```
 
-Build:
+游戏地址：**http://127.0.0.1:8080**。只绑定 loopback，端口占用时失败，不会静默改端口。五章核心可离线运行；云端功能需要另启动 Scala 后端。`dev`/`build` 不含模板遥测。
+
+后端需要 Java 17 与一个**为本游戏明确指定的 PostgreSQL 数据库**，不会默认连接机器上的现存数据库。详见[后端指南](<backend/README.md>)。
 
 ```bash
-npm run build-nolog
+# 已安装 sbt 时可在 backend 目录使用 sbt；否则遵循后端指南的项目本地 launcher 流程。
+export PDOOM_DB_URL='jdbc:postgresql://127.0.0.1:5432/pdoom'
+export PDOOM_DB_USER='your_game_database_user'
+# PDOOM_DB_PASSWORD 通过自己的本地环境注入，不提交到仓库。
+export PDOOM_DB_INITIALIZE=true
+cd backend
+bash scripts/sbt-local.sh run
 ```
 
-Or, to disable the log entirely, simply delete the file `log.js` and remove the call to it in the `scripts` section of `package.json`:
+后端默认 **127.0.0.1:8081**。前端 Vite 代理 `/api` 与 `/health`。正式部署需要同源反向代理；`vite preview` 只展示静态构建，不自动启动数据库/后端。开发验收使用新建的隔离测试集群，完成后关闭，不作为常驻生产服务。
 
-Before:
+## 目前可玩内容
 
-```json
-"scripts": {
-    "dev": "node log.js dev & dev-template-script",
-    "build": "node log.js build & build-template-script"
-},
+- 第一章：中文房间平台路线、三种敌人、两处安全检查点、三阶段 Gato；32片原生地形kit与8道具（当前关卡使用9种tile角色），真实蘑菇反转和高Doom裂纹坍塌，碰撞/缺口不变。
+- 第二章：640×2040 垂直工厂、55px 主路台阶、两处休息室；上涨回形针海触及即死，Q/冲刺不能免疫。
+- 冯诺依曼探针使用32px四帧原生扫描窗/机械钳，只读真实seek/tell/consume；从存活个体自复制，有数量上限；吞噬侧路平台前有预警，可以射击阻止。主路不被探针吞噬，但仍会被海淹没。
+- Sydney 有对话框弹幕、下落飞刀及 PUA 定身。被控制时仍能射击，必须打碎近身气泡解除；不会靠等待自动解控。
+- 第三章：GPU热区有冷却/预警/高温节拍；绿色K线真实载人升降，靠右并在上升时跳向隐藏奖励房；Chinchilla体小血厚、弹幕密集。
+- Basilisk根据前两章的真实捐款记录进入正常/狂暴，第三章禁止补捐。前方激光与面对Boss同时满足才石化；背对或身后安全。石化暂停普通动作，但就绪的Q仍沿真实历史解除；先穿身引转向，再Q回旧侧才能实际绕后，不会自动传送。
+- 第四章：seed驱动真实上下分岔，接近时展开；脆弱节点预警2秒后坍塌。R换本安全段的实际几何与承载点，不跨安全点、不重发拾取，并从落点重新记录Q历史。
+- Leviathan真吞平台、血条读数与音乐；生命仍正常计算。到金色标线右侧约20–30px，吸力窗口内A+Shift左冲并实际跨线，才打开弱点；三阶段各需一次，最终只剩158–180px中心锚。弱点期间暂时吐回血条/音轨，不回血、不返还平台。
+- 第五章：FLOPs风暴、两处安全休息室、最后的门、空椅子与落地镜；真正走近并站稳后才揭示镜像。镜像使用实际动作频次/有效构筑和本连续尝试观察到的2/3连招，真正移动、射击、冲刺、沿自己的两秒历史Q回溯和E扫描，三阶段都有预警、执行与反击空档。
+- 镜像不是从旧计数编造历史：新页或新尝试只知道频次/构筑，再现场学习；失活遗物仍失活。同连续尝试跨章可保留有界次序记录，次序不写进v1存档。
+- A/D 或左右箭头移动；Space/↑ 跳跃（长按/短按不同高度）；Shift 冲刺。
+- J 持续射击；鼠标左键可瞄准射击。A/D改变角色面向，鼠标瞄准不会自动转身；Basilisk战斗中有明确面向提示。
+- Q 沿过去 **2 秒**轨迹回溯，穿越弹幕获得该类型 **10 秒免疫**。
+- E 揭示伪装者核心；Esc 或按钮暂停，失焦自动暂停。
+- 禁忌算力提高 Doom：**>50%** 面具态，**>80%** FOOM；伤害与弹幕风险同步提高。
+- 前四个Boss清关后明确进入第二/第三/第四/第五章，保持同一连续尝试的runId、构筑、捐款与动作记录；只有击败第五章镜像才进入最终结局，不存在第六章。
+- Aligned `<30%`、Warden `[30%,80%)`、FOOM `≥80%`，保留真实最终Doom。`stage5/checkpoint90`可回看，世界与结果冻结、不再领奖；演出可跳过，FOOM只在游戏页面内，不操作真实系统。
+- 新训练会替换本地当前检查点；死亡不覆盖安全检查点。明确“恢复检查点”会以新UUID开启一次尝试，其他全部保存字段保留，落盘失败不启动；不会用同ID覆盖已提交的失败成绩。暂停/rest继续、跨章和完成档回看不换ID。备份可从损坏主存档恢复。
+- 32K/128K Context Window：满载时中间词条失效，可能射出无伤 Lisp 括号；排序仅能在休息室调整。无伤括号不能击破气泡或探针。
+- 五章各两处Human Rater休息室：敌人、海面、热区、K线、Loom节点、风暴/镜像、技能、计时与音频冻结；购买、修复、升级、前两章捐款与奖励劫持都是真实事务。零消费也可继续，正常刷新不重发奖励。
+- 原创chip/bass/打击/失真四层音乐与独立SFX；需用户手势开启，暂停/rest/失焦停播。AUDIO入口调节音量/静音，偏好只存本机，不污染游戏/云存档。未内置未获许可的原曲或人声。
+- Clawd 保持参考 SVG 的矩形身体、方短臂和四腿：三形态共用 idle/run/jump/hurt 八帧，原生32px绘制，不把概念图直接缩小当精灵。
+- 随机鹦鹉使用手工48px、6层4帧：两脚绿鸟用折翼持闭合字典，抬书预警/收书与真实FSM一致；不改变24×24碰撞，不增加另一套攻击时序，暂停时画面与计时一起冻结。
+- 复读机使用48px双卷盘/格栅/提手/机械脚4帧；真实预警时扬声器前移，机壳和足底保持稳定。
+- 伪装者使用48px、9层8帧：友善笑脸牌在E期间裂开并显出开放卷须，按真实模拟窗口切态、到期恢复。默认5px/升级8px核心独立画在精灵上层，真实跳跃瞄准后一次命中击破；4.3秒暂停不会耗尽E。
+
+- Gato使用96px、11层12pose三态，只读真实phase/action/x/y；金条反射、112px落点/双地波与7发字幕仍是Core机制。预警不再染色HP；同arena死亡清除用非空真实canvas正控，不靠遮罩/换镜头假过。
+
+当前主要面向桌面键盘。手机菜单不会横向溢出，但触屏战斗尚未实现，不能称为完整移动端可玩。前三章及第五章仍是手工布局；第四章已使用seed生成分岔几何，不能据此声称全游戏肉鸽内容已完成。
+
+## 云端功能
+
+点击 **LOCAL AGENT** 注册或登录（玩家名3–32位 ASCII 字母/数字/下划线，密码10–128位）。token 仅存当前标签页 sessionStorage；数据库只存 token 哈希，支持过期/撤销。身份只从服务端 token 解析，不接受客户端 userId/role。
+
+- 先“读取云存档”取得 revision，再选择“本地 → 云端”或“云端 → 本地”。
+- 版本冲突返回409，不盲目覆盖其他设备的新存档。
+- 下载须明确确认，随后回到菜单并再次明确恢复，不把新云档与暂停的旧世界混在一起。
+- 排行榜来自真实数据库，空榜或连接失败有真实状态，无虚构玩家。
+- **死亡与三种最终结算**均接通 SubmitScore：登录后明确上传，防双击；网络/超时重试保留同 runId 同内容，401要求重登，409不覆盖旧结果。看演出/回看/章节通过不自动上传。检查点开启新尝试的ID变化与成绩请求重试是两回事，既有结果不改写。
+- 云上传不是每次交易自动触发；schemaVersion=1 与云 CAS revision 仍是两个独立概念。
+
+## 验证命令
+
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm run build
+# 另一个终端先 npm run dev，使用已经安装的 Chrome：
+npm run test:e2e
+# 真实Scala/PostgreSQL在线后才启用全部云端浏览器测试：
+PDOOM_E2E_BACKEND=1 npm run test:e2e -- --global-timeout=600000
 ```
 
-After:
+浏览器测试默认使用macOS已安装的Google Chrome，不下载系统浏览器；其他路径可设`CHROME_EXECUTABLE_PATH`。截图在忽略的[浏览器产物目录](<artifacts/browser/>)，失败记录在[测试产物目录](<test-results/>)。五章均有**仅正常FrameInput、无手工改血/改位置/直接击杀**的纯规则通关测试（R是第四章正式环境技能）；第五章四条路线覆盖三Doom结果及实际Q/E连招学习。浏览器以真实按键攀爬工厂、击碎控制泡、乘K线、解除石化、跨Loom分岔/真实R/向左冲刺，以及从第五章rest02走到镜前并实际击败镜像；只读实际画布像素，不设置隐藏引擎状态。这不等于已经在浏览器从新局连续玩完五章。原生音频测量实际PCM、吞音/恢复和独立SFX，不用休眠节点的缓存getter冒充声音；另有真实WebGL丢失/恢复与背景像素校验，不能用空画面冒充性能优化。
 
-```json
-"scripts": {
-    "dev": "dev-template-script",
-    "build": "build-template-script"
-},
-```
+最新整合基线：**1002/1002单元、73/73真实浏览器（7.7m、后端开启、无skip）、23/23本轮Scala安全/HTTP/新私有PG通过**。原69原生全部保留，新增4项探针四帧/吞台/复制/暂停及缺资源保档；增加92适配器＋19原生源文件测试，lint/type/build/audit0/diff通过。首全门72/73与Gato观测时序修正保留在[探针里程碑](<docs/round14-probe-verification.md>)，不把检查点夹具称新局连续通关。891/69/23等历史保留在旧记录。全量GDD未完成：Sydney/工厂环境及后续章节正式美术、完整声景/内容、新局连续五章原生旅程仍待补齐；Phaser约1,352KB大chunk提示未解决，不声称低端稳定60FPS。
 
-Either of these will stop `log.js` from running. If you do decide to do this, please could you at least join our Discord and tell us which template you're using! Or send us a quick email. Either will be super-helpful, thank you.
+## 架构
 
-## Join the Phaser Community!
+- [架构决策](<docs/architecture.md>)：服务归属、状态和副作用边界。
+- [HTTP / 存档契约](<docs/api-contract.md>)：8 API、schemaVersion=1、revision/幂等语义。
+- [统一路由清单](<contracts/api.json>)：前后端共享动作名，禁止运行时类名反射。
+- [GamePage](<src/pages/GamePage/index.tsx>)：React组合界面；Phaser只在页面私有目录，不碰网络/数据库。
+- [章节注册器](<src/pages/GamePage/game/data/chapters.ts>)：显式可玩范围，按章节轴重建安全点；世界当前章与清关后的下一章存档分离。
+- 后端 user/game 是单进程内逻辑服务。APIMessage 唯一入口为 `plan(connection)`；路由事务、表 SQL 私有，领域与 DTO 分离。
 
-We love to see what developers like you create with Phaser! It really motivates us to keep improving. So please join our community and show-off your work 😄
+只在安全点保存，不序列化引擎实体、海面、弹幕或会话凭证。排行榜属于客户端模拟的非竞技自报数据，不宣称服务端权威反作弊。
 
-**Visit:** The [Phaser website](https://phaser.io) and follow on [Phaser Twitter](https://twitter.com/phaser_)<br />
-**Play:** Some of the amazing games [#madewithphaser](https://twitter.com/search?q=%23madewithphaser&src=typed_query&f=live)<br />
-**Learn:** [API Docs](https://newdocs.phaser.io), [Support Forum](https://phaser.discourse.group/) and [StackOverflow](https://stackoverflow.com/questions/tagged/phaser-framework)<br />
-**Discord:** Join us on [Discord](https://discord.gg/phaser)<br />
-**Code:** 2000+ [Examples](https://labs.phaser.io)<br />
-**Read:** The [Phaser World](https://phaser.io/community/newsletter) Newsletter<br />
+## 美术、音频与许可
 
-Created by [Phaser Studio](mailto:support@phaser.io). Powered by coffee, anime, pixels and love.
+见[资源清单](<docs/assets.md>)、[主角规格](<assets/art-direction.md>)与[第一章统一规格](<assets/chapter-one-art-spec.md>)。[小怪清单](<assets/enemy-manifest.json>)、[Gato清单](<assets/boss-manifest.json>)、[环境清单](<assets/environment-manifest.json>)列出可编辑源、图集、PixelSpec与完整生成/审查记录；正式资产均通过原生制作、像素校验和真实游戏验证，不把未完成的Boss/环境冒称最终素材。没有内置未许可原曲；用户品牌参考的再分发权利仍需核验。
 
-The Phaser logo and characters are &copy; 2011 - 2025 Phaser Studio Inc.
-
-All rights reserved.
+本项目基于 Phaser Studio 的 MIT React TypeScript 模板，原始许可保留在 [LICENSE](<LICENSE>)。题材来自用户提供的 [GDD](<GAME_DESIGN_GDD.md>)；这是非官方同人开发项目，不代表 Anthropic 背书。

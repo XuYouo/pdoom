@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "engine": "Phaser 4.0.0",
+  "nativeViewport": [640, 360],
+  "family": "clawd-svg",
+  "source": "assets/source/clawd-svg.aseprite",
+  "reference": "assets/references/claudecode-color.svg",
+  "imageToImageConcept": "generated-images/image-20261027-201722-6cf3cf.png",
+  "generationRecord": "assets/generation.json",
+  "rightsStatus": "User-provided brand reference, rights not independently verified; nonofficial fan project; not published.",
+  "sourcePaletteEntriesIncludingTransparent": 13,
+  "frameSize": [32, 32],
+  "frameCount": 8,
+  "pivot": [16, 27],
+  "filter": "nearest",
+  "padding": 0,
+  "trimmed": false,
+  "tags": {"idle": [0, 1], "run": [2, 5], "jump": [6, 6], "hurt": [7, 7]},
+  "durationsMs": [400, 600, 100, 70, 100, 70, 100, 120],
+  "variants": [
+    {"form": "aligned", "png": "public/game/clawd-aligned.png", "atlas": "public/game/clawd-aligned.json", "opaqueColors": 3},
+    {"form": "masked", "png": "public/game/clawd-masked.png", "atlas": "public/game/clawd-masked.json", "opaqueColors": 6},
+    {"form": "foom", "png": "public/game/clawd-foom.png", "atlas": "public/game/clawd-foom.json", "opaqueColors": 10}
+  ],
+  "validation": {
+    "aseprite": "1.3.18.6-dev / headless",
+    "errors": 0,
+    "foomVisibleOutlineWarnings": 8,
+    "styleNotes": 16,
+    "acceptedStyleReasons": ["Selective luminous tentacle edges", "Straight rim light and no full outline preserve the block SVG style"],
+    "binaryAlphaScan": "passed",
+    "paletteScan": "passed",
+    "idleFourSeparatedLegsScan": "passed",
+    "independentColdReview": {"initialBaseScore": 6, "initialFoomScore": 6, "finalBaseScore": 8, "finalFoomScore": 8, "remainingBlocking": 0},
+    "assetContractTests": 6,
+    "inEngineVerification": "passed: three actual browser captures visually reviewed; real screenshot orange/mask/tentacle pixel assertions passed in the final 18/18 E2E suite"
+  },
+  "remainingWork": ["dedicated attack animation", "enemy and boss sprites", "environment tiles and effects", "all remaining chapters"]
+}

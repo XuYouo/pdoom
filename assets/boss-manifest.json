@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "engine": "Phaser 4.0.0",
+  "nativeViewport": [
+    640,
+    360
+  ],
+  "direction": "assets/chapter-one-art-spec.md",
+  "families": [
+    {
+      "id": "gato",
+      "status": "approved native art, integrated and regression-verified",
+      "source": "assets/source/gato.aseprite",
+      "references": [
+        "generated-images/image-20261029-035539-6cc4ef.png",
+        "generated-images/image-20261029-035826-200b63.png"
+      ],
+      "generationRecord": "assets/gato-generation.json",
+      "pixelSpec": "assets/gato-pixelspec.md",
+      "png": "public/game/gato.png",
+      "atlas": "public/game/gato.json",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "frameSize": [
+        96,
+        96
+      ],
+      "frameCount": 12,
+      "sheetSize": [
+        1152,
+        96
+      ],
+      "frameNames": [
+        "gato 0.aseprite",
+        "gato 1.aseprite",
+        "gato 2.aseprite",
+        "gato 3.aseprite",
+        "gato 4.aseprite",
+        "gato 5.aseprite",
+        "gato 6.aseprite",
+        "gato 7.aseprite",
+        "gato 8.aseprite",
+        "gato 9.aseprite",
+        "gato 10.aseprite",
+        "gato 11.aseprite"
+      ],
+      "pivot": [
+        48,
+        48
+      ],
+      "pivotStorage": "Explicit view descriptor; no atlas slice metadata.",
+      "collisionSizeUnchanged": [
+        52,
+        74
+      ],
+      "opaqueEnvelopeInclusive": [
+        22,
+        11,
+        73,
+        84
+      ],
+      "facing": "left; never flipped toward player",
+      "filter": "nearest",
+      "padding": 0,
+      "trimmed": false,
+      "tags": {
+        "paddle-idle": [
+          0,
+          0
+        ],
+        "paddle-tell": [
+          1,
+          1
+        ],
+        "paddle-attack": [
+          2,
+          2
+        ],
+        "paddle-recover": [
+          3,
+          3
+        ],
+        "arm-idle": [
+          4,
+          4
+        ],
+        "arm-tell": [
+          5,
+          5
+        ],
+        "arm-attack": [
+          6,
+          6
+        ],
+        "arm-recover": [
+          7,
+          7
+        ],
+        "caption-idle": [
+          8,
+          8
+        ],
+        "caption-tell": [
+          9,
+          9
+        ],
+        "caption-attack": [
+          10,
+          10
+        ],
+        "caption-recover": [
+          11,
+          11
+        ]
+      },
+      "durationsMs": [
+        600,
+        650,
+        260,
+        1050,
+        600,
+        850,
+        260,
+        1050,
+        600,
+        650,
+        260,
+        620
+      ],
+      "playback": "One frame per actual phase/action; no animation clock. Initial1200ms/phase-change850ms recover and normal FSM durations remain entirely Core-owned. Actual x/y only; no targetX prediction.",
+      "layers": [
+        "chassis",
+        "power",
+        "signal",
+        "brackets",
+        "paddle",
+        "arcade",
+        "upper-arm",
+        "forearm",
+        "press",
+        "terminal",
+        "paper"
+      ],
+      "paletteEntriesIncludingTransparent": 20,
+      "opaqueColors": 15,
+      "alphaValues": [
+        0,
+        255
+      ],
+      "reservedClawdOrangePixelCount": 0,
+      "overlays": "Real reflector,112px tell,280ms shock and actual Gato-combat projectiles remain independent above depth2 art. Gato HP/wall follow tell in cues3; label4; original other-boss layers unchanged.",
+      "validation": {
+        "errors": 0,
+        "fullMcpSummary": "Clean (31 style note(s)).",
+        "strictMechanicalWithoutOutline": "Clean with4 informational straight-edge banding notes.",
+        "independentReview": {
+          "freshReviewerAvailable": false,
+          "reviewer": "visual-reviewer",
+          "briefBlindStageFrozen": true,
+          "initialKeyScores": [
+            7,
+            6,
+            8
+          ],
+          "initialBlocking": "Press read as fixed base",
+          "targetedFixPasses": 1,
+          "acceptedKeyScores": [
+            7,
+            8,
+            8
+          ],
+          "fullStaticScore": 8,
+          "remainingVisualBlocking": 0
+        },
+        "adapterAndPixelTestsAdded": 78,
+        "renderingScope": "239/239",
+        "nativeScopeTests": "4/4:2 combat+2 resource; repeated4/4 within62/62 full browser gate",
+        "finalGate": {
+          "unitPassed": 722,
+          "unitTotal": 722,
+          "unitFiles": 40,
+          "unitSeconds": 1.43,
+          "browserPassed": 62,
+          "browserTotal": 62,
+          "browserMinutes": 5.4,
+          "browserBackendEnabled": true,
+          "browserSkipped": 0,
+          "backendPassed": 23,
+          "backendTotal": 23,
+          "backendCluster": "backend/.local/pg-test.Mk2bI4",
+          "finalBrowserCluster": "backend/.local/pg-test.8ImGX9",
+          "lint": true,
+          "typecheck": true,
+          "build": true,
+          "auditVulnerabilities": 0,
+          "diffCheck": true,
+          "exitCode": 0,
+          "log": "artifacts/verification/r12-final-gate.log",
+          "terminalEndMarker": "R12_FINAL_GATE_END [exit code: 0]",
+          "fullGddComplete": false
+        },
+        "runtimeScreenshotReview": "Five actual probe images read; no new visual blocking. Not fresh; static score8 retained, not a gameplay score."
+      }
+    }
+  ],
+  "releaseStatus": "Not externally published. One formal boss does not complete the GDD or other chapter/environment art."
+}

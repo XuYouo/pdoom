@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "engine": "Phaser 4.0.0",
+  "nativeViewport": [
+    640,
+    360
+  ],
+  "direction": "assets/chapter-one-art-spec.md",
+  "families": [
+    {
+      "status": "approved native art, integrated and full-regression verified",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "filter": "nearest",
+      "trimmed": false,
+      "padding": 0,
+      "pixelSpec": "assets/chapter-one-environment-pixelspec.md",
+      "generationRecord": "assets/chapter-one-environment-generation.json",
+      "id": "chapter-one-terrain",
+      "source": "assets/source/chapter-one-tiles.aseprite",
+      "png": "public/game/chapter-one-terrain.png",
+      "map": "public/game/chapter-one-terrain.json",
+      "key": "environment-chapter-one-terrain",
+      "frameSize": [
+        16,
+        16
+      ],
+      "frameCount": 32,
+      "sheetSize": [
+        96,
+        96
+      ],
+      "columns": 6,
+      "unusedTrailingSlots": 4,
+      "frameRoles": {
+        "stone-top-left": "0",
+        "stone-top": "1",
+        "stone-top-right": "2",
+        "stone-side-left": "3",
+        "stone-fill": "4",
+        "stone-side-right": "5",
+        "stone-fill-alt": "6",
+        "stone-fill-worn": "7",
+        "moss-top-left": "9",
+        "moss-top": "10",
+        "moss-top-right": "11",
+        "soil-side-left": "12",
+        "soil-fill": "8",
+        "soil-side-right": "13",
+        "soil-fill-alt": "14",
+        "soil-fill-root": "15",
+        "timber-ledge-left": "16",
+        "timber-ledge": "17",
+        "timber-ledge-right": "18",
+        "root-ledge-left": "19",
+        "root-ledge": "20",
+        "root-ledge-right": "21",
+        "wall-quiet": "22",
+        "wall-blocks": "23",
+        "timber-column": "24",
+        "timber-beam": "25",
+        "timber-bracket": "26",
+        "wall-fret": "27",
+        "wall-recess": "28",
+        "wall-moss": "29",
+        "stone-top-alt": "30",
+        "moss-top-alt": "31"
+      },
+      "runtimeRoles": [
+        "wall-quiet",
+        "timber-column",
+        "timber-beam",
+        "stone-top",
+        "stone-fill",
+        "moss-top",
+        "soil-fill",
+        "timber-ledge",
+        "root-ledge"
+      ],
+      "exportedMapIsCollision": false
+    },
+    {
+      "status": "approved native art, integrated and full-regression verified",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "filter": "nearest",
+      "trimmed": false,
+      "padding": 0,
+      "pixelSpec": "assets/chapter-one-environment-pixelspec.md",
+      "generationRecord": "assets/chapter-one-environment-generation.json",
+      "id": "chapter-one-props",
+      "source": "assets/source/chapter-one-props.aseprite",
+      "png": "public/game/chapter-one-props.png",
+      "atlas": "public/game/chapter-one-props.json",
+      "key": "environment-chapter-one-props",
+      "frameSize": [
+        64,
+        64
+      ],
+      "frameCount": 8,
+      "sheetSize": [
+        512,
+        64
+      ],
+      "staticFramesNotAnAnimation": true,
+      "frameRoles": {
+        "scroll-cabinet": "chapter-one-props 0.aseprite",
+        "lattice-window": "chapter-one-props 1.aseprite",
+        "hanging-lantern": "chapter-one-props 2.aseprite",
+        "forest-trunk": "chapter-one-props 3.aseprite",
+        "forest-canopy": "chapter-one-props 4.aseprite",
+        "stone-lantern": "chapter-one-props 5.aseprite",
+        "root-clump": "chapter-one-props 6.aseprite",
+        "mushroom": "chapter-one-props 7.aseprite"
+      },
+      "runtimeRoles": [
+        "scroll-cabinet",
+        "lattice-window",
+        "hanging-lantern",
+        "forest-trunk",
+        "forest-canopy",
+        "stone-lantern",
+        "root-clump",
+        "mushroom"
+      ],
+      "mushroomPivot": [
+        32,
+        32
+      ],
+      "mushroomOpaqueSize": [
+        20,
+        17
+      ],
+      "backgroundAlpha": 0.22
+    }
+  ],
+  "checks": {
+    "sharedPaletteEntries": 20,
+    "terrainOpaqueColors": 11,
+    "propOpaqueColors": 16,
+    "hardAlpha": true,
+    "reservedHeroColorCount": 0,
+    "sourceExportRGBAEqual": true,
+    "all32TilesAppearInLevel": false
+  },
+  "sourceArtifacts": [
+    {
+      "path": "assets/source/chapter-one-tiles.aseprite",
+      "bytes": 4326,
+      "sha256": "62b0b4f1394b7bdffcc17628229df08473b2ff0d2abd52196623a005707bda76"
+    },
+    {
+      "path": "assets/source/chapter-one-props.aseprite",
+      "bytes": 4372,
+      "sha256": "921df55036b06a93f859c033b2426145eedae4232d75800f890405c690dee1fa"
+    },
+    {
+      "path": "public/game/chapter-one-terrain.png",
+      "bytes": 1593,
+      "sha256": "b7d991937a5a98b838453467cca6c4f1d9ffe4be953350e5f3265a1da5c472e6"
+    },
+    {
+      "path": "public/game/chapter-one-terrain.json",
+      "bytes": 656,
+      "sha256": "37464f663fdacbef9f00b952c5d9bb461bbc7071a7338174bde5c1f089062772"
+    },
+    {
+      "path": "public/game/chapter-one-props.png",
+      "bytes": 4905,
+      "sha256": "7836ed5931e26127715a6bb75d892d5ab0d35aaf6911d7ca5c2c52fb9da1ae47"
+    },
+    {
+      "path": "public/game/chapter-one-props.json",
+      "bytes": 3329,
+      "sha256": "ab03b53a05c9f2aae7ef75857ebbdf66b280d1a1740b199a2a996976c816d175"
+    }
+  ],
+  "allChapterOneArtComplete": false,
+  "fullGddComplete": false,
+  "verification": {
+    "report": "docs/round13-environment-verification.md",
+    "unit": 891,
+    "native": 69,
+    "backend": 23,
+    "nativeMinutes": 6.4,
+    "nativeSkipped": 0,
+    "log": "artifacts/verification/r13-final-gate-02.log"
+  }
+}
