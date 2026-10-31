@@ -30,7 +30,7 @@ Native active skin alpha1/inactive.55; fixed center, no flip or floor snapping. 
 
 ## Pipeline and acceptance
 
-Generate a design reference using the available image tool, then import only as a locked reference. Generated geometry/colours are not authority; redraw native art in live Aseprite. Never ship a downscaled reference as the sprite.
+No new image-generation output was obtained or imported. Proceed from the explicit written GDD/mechanical design; an unverified image is not a reference. Generated geometry/colours are not authority; redraw native art in live Aseprite. Never ship a downscaled reference as the sprite.
 
 Independent anonymous cold read before brief-aware review, at most3 necessary corrections;7/10 with0blocking is enough to freeze. Source proof needs8 unique frames/consistentpivot/palette/alpha/realcel reconstruction. Actual native browser proof must preserve existing Loom/audio/collision controls and later add source pose registration,realweak andphase/death/cleanup coverage. Current CP2 browser route doesnotshoot and doesnot certify all phases.
 
