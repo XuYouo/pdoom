@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Isolated game-development preset with Phaser, multi-engine skills, workflows and Aseprite MCP.",
   "license": "MIT",
-  "engines": { "dsh": "0.2.1-rc.3", "node": ">=22.6.0" },
+  "engines": { "dsh": ">=0.2.1-rc.3", "node": ">=22.6.0" },
   "exports": {
     ".": "./index.js",
     "./package.json": "./package.json",

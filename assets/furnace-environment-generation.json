@@ -1,0 +1,406 @@
+{
+  "schema": 1,
+  "family": "furnace-environment",
+  "status": "native-source and local functional regression admitted; project security gate open",
+  "sourceComplete": true,
+  "runtimeIntegrated": true,
+  "productionReady": false,
+  "fullGddComplete": false,
+  "authoring": {
+    "method": "Native pixel drawing through live Aseprite MCP only",
+    "model": "gpt-6-astra",
+    "aseprite": "1.3.18.6-dev",
+    "engine": "Phaser 4.0.0",
+    "imageGeneration": {
+      "invocationClaimed": false,
+      "outputVerified": false,
+      "referenceImported": false,
+      "model": null,
+      "prompt": null
+    },
+    "referenceBoundary": "No new generated reference was obtained or imported. Repeated directory queries were stopped after user feedback. The written PixelSpec, approved shared palette and actually viewed existing native scene guided the drawing; no imagined tool output is provenance.",
+    "pixelSpec": "assets/furnace-environment-pixelspec.md"
+  },
+  "palette": {
+    "sharedColors": 20,
+    "terrainOpaqueColors": 8,
+    "propOpaqueColorsByFrame": [
+      9,
+      8,
+      8,
+      7,
+      7,
+      7
+    ],
+    "sourceAlphaValues": [
+      0,
+      255
+    ],
+    "reservedHeroOrange": "d97757",
+    "reservedHeroOrangePixels": 0
+  },
+  "terrain": {
+    "sourceCanvas": [
+      256,
+      128
+    ],
+    "tileSize": [
+      16,
+      16
+    ],
+    "distinctTiles": 32,
+    "embeddedTilesIncludingEmpty": 33,
+    "mapCells": 128,
+    "nonemptyMapCells": 100,
+    "packedImage": [
+      96,
+      96
+    ],
+    "columns": 6,
+    "hiddenRaster": "mockup",
+    "visibleTilemap": "terrain",
+    "layout": "grid",
+    "collisionMap": false,
+    "indexing": "Map0 is empty; mapN is packed slotN-1. Packed slot8 is bulkhead-a; ledge-right is9.",
+    "rasterAndTilemapEqualRGBA": true,
+    "validation": "Clean. Raster has intentional selective-edge and straight machined-edge notes; packed validation notes the hidden source layer was not rescanned.",
+    "independentTest": {
+      "path": "tests/rendering/furnaceTerrainAssets.test.ts",
+      "passed": 125,
+      "failed": 0,
+      "log": "artifacts/verification/r19-terrain-tests.log",
+      "scope": "Native ASE raster/tilemap/tileset and PNG/JSON reconstruction, CRC/filter, native geometry, allowed directional seams, masks and palette; not runtime admission."
+    }
+  },
+  "props": {
+    "canvas": [
+      64,
+      64
+    ],
+    "frames": 6,
+    "layers": [
+      "housing",
+      "mechanism",
+      "details"
+    ],
+    "celCount": 18,
+    "celType": "compressed RGBA raster",
+    "staticFrameDurationMs": 100,
+    "tags": [
+      "gpu-rack",
+      "coolant-manifold",
+      "power-bus",
+      "floor-exhaust",
+      "ceiling-aperture",
+      "lunar-porthole"
+    ],
+    "tagRangesZeroBased": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "opaquePixelsByFrame": [
+      3100,
+      2019,
+      2062,
+      1344,
+      712,
+      1264
+    ],
+    "boundsExclusive": [
+      [
+        4,
+        3,
+        60,
+        64
+      ],
+      [
+        6,
+        5,
+        58,
+        64
+      ],
+      [
+        5,
+        5,
+        59,
+        64
+      ],
+      [
+        4,
+        40,
+        60,
+        64
+      ],
+      [
+        0,
+        4,
+        64,
+        22
+      ],
+      [
+        12,
+        6,
+        52,
+        46
+      ]
+    ],
+    "floorExhaustAnchorY": 40,
+    "placementRestrictions": [
+      "Exhaust ink starts at world floor320, not above it as a fake platform.",
+      "Ceiling aperture is overhead, away from walkable surfaces.",
+      "The moon is distant decoration, not an interactive target."
+    ],
+    "gpuPixelsUnchangedAfterFamilyExpansion": true,
+    "validation": "Clean (5 style notes), with explicit selective-outline warnings on GPU exposed rims, the exhaust grille brace and one lunar rim highlight. Straight metal-edge notes are intentional; this is not a zero-warning claim.",
+    "independentTest": {
+      "path": "tests/rendering/furnacePropAssets.test.ts",
+      "passed": 78,
+      "failed": 0,
+      "log": "artifacts/verification/r19-props-tests.log",
+      "scope": "Independent ASE cel synthesis and PNG/atlas proof;78 tests and file ESLint EXIT0; full workspace tsc EXIT0 after modules completed. Not itself runtime evidence."
+    }
+  },
+  "reviews": [
+    {
+      "scope": "terrain static material kit",
+      "reviewer": "pixel-critic-r11",
+      "context": "reused, not fresh",
+      "score": 7.5,
+      "blocking": 0,
+      "necessary": 0,
+      "task": "task-62"
+    },
+    {
+      "scope": "initial GPU rack",
+      "reviewer": "pixel-critic-r8",
+      "context": "reused, not fresh",
+      "score": 5.5,
+      "blocking": 1,
+      "finding": "Read as audio/tape equipment; enclosed panels, button-like contacts and ambiguous reels.",
+      "retainedPreview": "artifacts/asset-review-r19/b-native.png"
+    },
+    {
+      "scope": "GPU after one necessary shape pass",
+      "reviewer": "pixel-critic-r8",
+      "context": "reused, not fresh",
+      "score": 8,
+      "blocking": 0,
+      "necessary": 0,
+      "task": "task-63",
+      "preview": "artifacts/asset-review-r19/b2-native.png"
+    },
+    {
+      "scope": "complete six-prop static family",
+      "reviewer": "pixel-critic-r8",
+      "context": "reused, not fresh",
+      "score": 7.5,
+      "blocking": 0,
+      "necessary": 0,
+      "task": "task-65",
+      "preview": "artifacts/asset-review-r19/c-native.png"
+    },
+    {
+      "scope": "actual browser scene before text deduplication",
+      "reviewer": "visual-reviewer",
+      "context": "reused, not fresh; visible text",
+      "score": 7,
+      "blockingArt": 0,
+      "necessary": 2,
+      "task": "task-72",
+      "findings": [
+        "Repeated route instruction paragraphs",
+        "Clipped world-sign sentences"
+      ]
+    },
+    {
+      "scope": "actual browser scene after one bounded text pass",
+      "reviewer": "visual-reviewer",
+      "context": "reused, not fresh; visible text",
+      "score": 8,
+      "necessary": 0,
+      "task": "task-74",
+      "preview": "artifacts/verification/r19-native-review-02/furnace-environment-native-196ea-ve-paused-WebGL-restoration/furnace-real-playing-ui.png"
+    }
+  ],
+  "retainedToolFindings": [
+    "Same-batch blits used pre-batch source images; variants and assemblies were rebuilt in separate committed batches, then independently reconstructed.",
+    "An empty layer argument selected the active empty layer; layer-scoped tilemap preview was also black. Actual full-layer exports were opened and reviewed instead of treating those black previews as evidence.",
+    "Adding five frames expanded the existing GPU tag to0..5. It was corrected via live MCP.",
+    "Passing newName empty in tag.update renamed that tag to an empty string. Independent QA caught it; live MCP explicitly restored gpu-rack, saved and re-exported. All six names and single-frame ranges were subsequently asserted; pixel bytes stayed unchanged."
+  ],
+  "sourceFiles": {
+    "assets/source/furnace-tiles.aseprite": {
+      "bytes": 3698,
+      "sha256": "a7db703f6260314ef42947fae09d74748703909887f09414da1abd7c7e9e5473"
+    },
+    "public/game/furnace-terrain.png": {
+      "bytes": 1237,
+      "sha256": "9fb00c932de39c9a11dadb8f943b0d3050ab1e68cd1146b7c4865a43e122ec4d"
+    },
+    "public/game/furnace-terrain.json": {
+      "bytes": 650,
+      "sha256": "f6726ebc43d0d83ff155a9072a7187429682445fd871c7f6f8680c0554dc480f"
+    },
+    "assets/source/furnace-props.aseprite": {
+      "bytes": 4528,
+      "sha256": "8e6cd21b7d334d28b063063e20f61ecd891d7da78b4e03e9a4f05c8b1e8396b5"
+    },
+    "public/game/furnace-props.png": {
+      "bytes": 2966,
+      "sha256": "ca2ca3760f6281acecf935ef8ccdc6692ebde0f2f46c8706e830246ad8242a55"
+    },
+    "public/game/furnace-props.json": {
+      "bytes": 2686,
+      "sha256": "4a2266b954de7ae45caf9ed7f3969215fb85cef0ae558605cdc819db6a5e13e1"
+    }
+  },
+  "processNotes": "artifacts/verification/r19-process-notes.md",
+  "runtimeVerification": {
+    "environmentCases": {
+      "passed": 5,
+      "failed": 0,
+      "log": "artifacts/verification/r19-native-04.log",
+      "scope": "Post final mechanism-label edge fix; legal checkpoint slices, source floor/lift/GPU, three actual heat phases, paused GL restore and unused-resource preservation."
+    },
+    "actorAndMechanicsCases": {
+      "passed": 16,
+      "failed": 0,
+      "log": "artifacts/verification/r19-native-gameplay-01.log",
+      "scope": "Before final text-only pass: original native Basilisk/Chinchilla, actual K-line ride/hidden rewards, donation/stone/Q/defeat/cleanup. Not fresh full journey."
+    },
+    "unitSnapshot": {
+      "passed": 3278,
+      "files": 56,
+      "log": "artifacts/verification/r19-current-gates-02.log",
+      "scope": "Current complete unit suite after final view-label fix and adapter tests; type/lint also EXIT0."
+    },
+    "postTextTypeAndLint": "artifacts/verification/r19-post-text-type-lint.log",
+    "pending": [
+      "Development-tool security remediation remains open independently",
+      "Full GDD and fresh continuous five-chapter experience remain unfinished"
+    ],
+    "adapterUnit": {
+      "passed": 881,
+      "failed": 0,
+      "log": "artifacts/verification/r19-environment-unit.log",
+      "scope": "Independent literals and actual Core CP0/1/2; strict38-frame matrix, geometry, cache, failures, restore and disposal; not gameplay proof."
+    },
+    "buildDiff": "artifacts/verification/r19-build-diff-02.log",
+    "backend": {
+      "passed": 23,
+      "failed": 0,
+      "log": "artifacts/verification/r19-backend-tests.log",
+      "scope": "Actual new private PG integration; original browser-service handoff failed separately."
+    },
+    "usedRoles": {
+      "terrainCount": 14,
+      "terrain": [
+        "bulkhead-a",
+        "floor-body-a",
+        "floor-body-b",
+        "floor-foot",
+        "floor-top-a",
+        "floor-top-b",
+        "grate-body",
+        "grate-top",
+        "ledge-left",
+        "ledge-mid",
+        "ledge-right",
+        "lift-left",
+        "lift-mid",
+        "lift-right"
+      ],
+      "propsCount": 6,
+      "props": [
+        "ceiling-aperture",
+        "coolant-manifold",
+        "floor-exhaust",
+        "gpu-rack",
+        "lunar-porthole",
+        "power-bus"
+      ],
+      "scope": "Actual complete CP0 Plan; not all32 kit roles and not a claim of all6 props individually pixel-matched at runtime."
+    },
+    "cloudRetry": {
+      "passed": 2,
+      "log": "artifacts/verification/r19-cloud-02.log",
+      "serviceState": "artifacts/verification/r19-lead-service-state.json"
+    },
+    "interruptedFirstFullRun": {
+      "declaredSuite": 96,
+      "recordedCases": 74,
+      "recordedPassed": 67,
+      "recordedFailed": 7,
+      "failedTitles": [
+        "tests/e2e/cloud.spec.ts:6:5 › real Scala account and cloud checkpoint survive a page reload (7.1s)",
+        "tests/e2e/cloud.spec.ts:44:5 › real Scala cloud restores the complete schema-v1 Loom rest after a different local run (10.2s)",
+        "tests/e2e/context.spec.ts:186:5 › real cloud restore exits the old rest world to the menu and loads the selected snapshot only on confirmation (8.5s)",
+        "tests/e2e/ending-score.spec.ts:10:7 › real aligned score and terminal cloud save remain identical after another local run and replay (7.9s)",
+        "tests/e2e/ending-score.spec.ts:10:7 › real warden score and terminal cloud save remain identical after another local run and replay (11.0s)",
+        "tests/e2e/ending-score.spec.ts:10:7 › real foom score and terminal cloud save remain identical after another local run and replay (11.5s)",
+        "tests/e2e/omega-combat.spec.ts:20:5 › normal keys leave the final rest, reveal the mirror, teach a real combo and win the actual duel (7.9s)"
+      ],
+      "exit": 1,
+      "scope": "Interrupted after service disappearance; no complete gate. Six cloud-related recorded failures; Omega also marked failed around termination, not independently diagnosed."
+    },
+    "completeBrowser": {
+      "passed": 96,
+      "failed": 0,
+      "skipped": 0,
+      "minutes": 15.5,
+      "exit": 0,
+      "log": "artifacts/verification/r19-browser-02.log",
+      "scope": "Actual unmodified-source full suite with sustained Lead-owned real backend; legal fixtures are not a fresh continuous five-chapter journey."
+    },
+    "metrics": "artifacts/verification/r19-native-metrics.json",
+    "cleanup": "artifacts/verification/r19-lead-service-cleanup.json"
+  },
+  "securityAudit": {
+    "full": {
+      "exit": 1,
+      "moderate": 12,
+      "high": 0,
+      "critical": 0,
+      "path": "artifacts/verification/r19-audit.json"
+    },
+    "productionOnly": {
+      "exit": 0,
+      "counts": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "path": "artifacts/verification/r19-audit-production.json"
+    },
+    "advisory": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+    "dependencyChanges": false,
+    "projectSecurityGate": "open; compatible development-tool-chain remediation pending"
+  },
+  "runtimeAdmitted": true,
+  "finalSourceSnapshot": "artifacts/verification/r19-final-source-hashes.json"
+}

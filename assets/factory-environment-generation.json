@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "subject": "Paperclip Factory native environment",
+  "engine": "Phaser4.0.0",
+  "sourceMode": "live",
+  "sourceComplete": true,
+  "productionReady": true,
+  "fullGddComplete": false,
+  "palette": [
+    "00000000",
+    "2c2330",
+    "d97757",
+    "eaa083",
+    "b55a4a",
+    "783f4a",
+    "f5e8c8",
+    "cbb696",
+    "34354f",
+    "575c79",
+    "858eb0",
+    "9dded1",
+    "d9ffea",
+    "0f191b",
+    "24423b",
+    "426b50",
+    "8fa86b",
+    "b9905d",
+    "e5c386",
+    "723f68"
+  ],
+  "requests": [
+    {
+      "prompt": "Design-reference sheet for an original 2D pixel-art platformer environment: an oppressive PAPERCLIP FACTORY vertical escape shaft. Match the restrained chunky pixel language and cool palette of the references, but replace their geometric factory placeholders with intentional industrial design. Environment ONLY: remove all characters, ghost bride, probes, HUD, interface panels, labels and text from the references. These references establish scale and palette, not pixels to copy.\nThree equal panels in ONE horizontal row, same pixel scale and side-on orthographic camera, plain dark background, no captions, no border, no watermark. Hard pixel clusters, no gradients, no smooth painting, no bloom, no isometric view.\nLEFT: a gameplay-scale industrial shaft vignette with a quiet dark central lane, thin horizontal metal landing ledges staggered between two sides, green protected top strips and muted brass optional service ledges. Machinery and conduits hug the outer walls. Low down, an ascending mass of metallic PAPERCLIPS has a crisp level top boundary. Individual open hooked double-wire paperclips must read clearly; it is NOT blue water, foam, molten lava or a wall of closed rectangles. No decorative ledges crossing the play lane.\nCENTER: an organized small material study showing 16x16 steel bulkheads, muted rails/conduits, quiet wall variants, 12px-thick ledge end caps and centers, heavy structural floor sections and several seamless open-paperclip pile samples. Distinct foreground edges, subtle rear walls, no random single-pixel noise.\nRIGHT: six modular static rear-machinery designs arranged evenly in a2x3 grid, each fitting a64x64 sprite: wire spool, paperclip-bending C-frame press, clip-storage hopper, service cabinet, vertical conduit junction, inspection grille. They must form a recognisable wire-to-paperclip production line. Do not add moving blades, laser beams, fake hazards or coin-like pickups.\nPalette: near-black0f191b, deep green24423b/426b50, violet shadow2c2330/34354f, steel575c79/858eb0, restrained mint9dded1/d9ffea, muted green8fa86b, brassb9905d/e5c386, pale metalcbb696. Upper-left light and selective dark outlines. Keep most background at least two value steps darker than interactive ledges. No orange hero color, bright pink, red warning effects or white UI graphics. This is a design reference for manually redrawing a16px tile kit and64px props, not final production sprites.",
+      "requestedSize": "1536x1024",
+      "requestedQuality": "high",
+      "referenceImages": [
+        "artifacts/asset-review-r15/runtime-review/phase-1-idle.png",
+        "public/game/chapter-one-terrain.png"
+      ],
+      "status": "success",
+      "model": "gpt-image-2.5",
+      "operation": "reference-image edit",
+      "output": "generated-images/image-20261030-031657-49d81b.png",
+      "actualSize": [
+        2048,
+        768
+      ],
+      "actualMode": "RGB",
+      "bytes": 1984557,
+      "sha256": "1bd716f595f108e7182365b20174709c6de1688a0b258f3a3744c754afc57716",
+      "actualQuality": "not reported"
+    }
+  ],
+  "baseline": {
+    "unit": 1167,
+    "browser": 77,
+    "backend": 23
+  },
+  "referenceReading": {
+    "panelsApprox": [
+      [
+        0,
+        0,
+        640,
+        768
+      ],
+      [
+        664,
+        32,
+        656,
+        704
+      ],
+      [
+        1352,
+        56,
+        680,
+        656
+      ]
+    ],
+    "adopt": [
+      "side machinery and quiet central lane",
+      "green thin structural ledges",
+      "wire spool/C-press/hopper silhouettes",
+      "stacked conduit and bolted cabinet"
+    ],
+    "reject": [
+      "over-dense small cables and rivets",
+      "closed oval/noisy clip pile",
+      "uneven sea top above real boundary",
+      "overhanging support art beyond collision rectangles"
+    ]
+  },
+  "terrainStaticReview": {
+    "reviewer": "pixel-critic-r9",
+    "freshContext": false,
+    "score": 7.5,
+    "blocking": 0,
+    "necessaryFixes": 0,
+    "runtimeSeaCompositionPending": true,
+    "nativeRead": true,
+    "freezeStructure": true,
+    "freshAttempt": "Fresh spawn refused at team limit8; reused reviewer openly.",
+    "coldRead": "Metal panels/ledges; loops read as paperclips/coils/tubes with uncertainty."
+  },
+  "toolNotes": [
+    "Same-call blit read pre-batch source, corrected in next batch.",
+    "Single-layer tilemap look blank; composite correct.",
+    "Overlong PTY line truncated; canceled and closed, notes rehydrated without regeneration.",
+    "Empty layer string in look selected active layer; repeated filmstrip calls showed only details. Stopped and inspected explicit three-layer native exports instead."
+  ],
+  "nativeDraft": {
+    "sprite": "#6519",
+    "motherTiles": 32,
+    "uniqueMotherTiles": 32,
+    "opaqueColors": 12,
+    "opaquePixels": 24192,
+    "hardAlpha": true,
+    "heroOrangePixels": 0,
+    "referenceRemoved": true,
+    "validate": "Clean plus2 notes: no single silhouette outline; intentional128px straight steel boundary."
+  },
+  "terrainExport": {
+    "source": "assets/source/factory-tiles.aseprite",
+    "png": "public/game/factory-terrain.png",
+    "json": "public/game/factory-terrain.json",
+    "mapCells": 128,
+    "tileCount": 32,
+    "imageSize": [
+      96,
+      96
+    ],
+    "columns": 6,
+    "slots": {
+      "protected-left": 0,
+      "protected-middle": 1,
+      "protected-right": 2,
+      "protected-fill": 3,
+      "service-left": 4,
+      "service-middle": 5,
+      "service-right": 6,
+      "service-fill": 7,
+      "floor-left": 10,
+      "floor-middle": 11,
+      "floor-right": 12,
+      "floor-fill-a": 13,
+      "floor-fill-b": 14,
+      "base-left": 15,
+      "base-middle": 16,
+      "base-right": 17,
+      "wall-a": 8,
+      "wall-b": 18,
+      "rail": 19,
+      "rail-joint": 20,
+      "conduit": 21,
+      "conduit-elbow": 22,
+      "vent": 23,
+      "panel": 24,
+      "clip-fill-a": 9,
+      "clip-fill-b": 25,
+      "clip-fill-c": 26,
+      "clip-surface-a": 27,
+      "clip-surface-b": 28,
+      "wall-left": 29,
+      "wall-right": 30,
+      "floor-fill-c": 31
+    },
+    "rasterEqualsPackedRGBA": true,
+    "packedValidate": "Clean plus hidden mockup note"
+  },
+  "propsDraft": {
+    "sprite": "#6880",
+    "source": "assets/source/factory-props.aseprite",
+    "frames": 6,
+    "size": [
+      64,
+      64
+    ],
+    "layers": [
+      "housing",
+      "mechanism",
+      "details"
+    ],
+    "durationsMs": [
+      600,
+      600,
+      600,
+      600,
+      600,
+      600
+    ],
+    "staticPropsNotAnimation": true,
+    "referenceRemoved": true,
+    "preview": "artifacts/asset-review-r16/b.png",
+    "nativePreview": "artifacts/asset-review-r16/b-native.png",
+    "mechanicalFix": "Connected two isolated wire corners using3 pixels, frames3/6; envelopes unchanged.",
+    "validate": "Clean(6 style notes), no strays/errors. Retained3 outline warnings for open conduits/internal mesh,8 straight-material boundary notes and4 nonuniform-outline notes.",
+    "opaqueColors": 11,
+    "hardAlpha": true,
+    "heroOrangePixels": 0,
+    "inclusiveBounds": [
+      [
+        5,
+        9,
+        58,
+        61
+      ],
+      [
+        8,
+        6,
+        59,
+        61
+      ],
+      [
+        8,
+        6,
+        55,
+        61
+      ],
+      [
+        12,
+        5,
+        59,
+        61
+      ],
+      [
+        2,
+        0,
+        61,
+        63
+      ],
+      [
+        8,
+        7,
+        55,
+        61
+      ]
+    ],
+    "conduitTopBottomRGBAEqual": true
+  },
+  "propsStaticReview": {
+    "reviewer": "pixel-critic-r11",
+    "freshContext": false,
+    "score": 7,
+    "blocking": 0,
+    "necessaryFixes": 0,
+    "freezeStructure": true,
+    "runtimeContrastPending": true,
+    "retainedAmbiguity": "Spool may read as cooling unit; inspection grille primarily read as a monitor. Noninteractive rear dressing, not falsely claimed unique identification."
+  },
+  "propsExport": {
+    "png": "public/game/factory-props.png",
+    "json": "public/game/factory-props.json",
+    "imageSize": [
+      384,
+      64
+    ],
+    "frames": [
+      "factory-props 0.aseprite",
+      "factory-props 1.aseprite",
+      "factory-props 2.aseprite",
+      "factory-props 3.aseprite",
+      "factory-props 4.aseprite",
+      "factory-props 5.aseprite"
+    ],
+    "tags": [
+      "wire-spool",
+      "clip-press",
+      "clip-hopper",
+      "service-cabinet",
+      "conduit-junction",
+      "inspection-grille"
+    ]
+  },
+  "integration": {
+    "rendererUnitTests": 149,
+    "sourceFileTests": 58,
+    "allUnitTests": 1385,
+    "unitFiles": 49,
+    "typecheck": true,
+    "lint": true,
+    "aggregateLog": "artifacts/verification/r16-full-gate-04.log",
+    "nativeEnvironmentTests": 3,
+    "nativeEnvironmentLog": "artifacts/verification/r16-native-environment-02.log",
+    "probeMigrationTests": 4,
+    "probeMigrationLog": "artifacts/verification/r16-probe-migration-01.log",
+    "climbSmokeTests": 1,
+    "climbSmokeLog": "artifacts/verification/r16-factory-smoke-01.log",
+    "fullBrowserAndBackendGatePending": false,
+    "nativeEvidence": "All11 first-area ROIs matched100% within2RGB tolerance; floor28px and ledge12px edges, spool, surface and mixed fill. Paused canvas byte-identical after2.8s and real WebGL restore. OrdinaryQ then actual sea death. No camera/Core change.",
+    "resourceFailureCorrection": "First run passed native scene; two negative cases failed only from duplicate visible warning-text locators. Scoped to the actual failure region; all3 then passed without weakening assertions.",
+    "backendTests": 23,
+    "backendLog": "artifacts/verification/r16-backend-tests.log",
+    "report": "docs/round16-factory-environment-verification.md",
+    "fullBrowserAttempts": [
+      {
+        "log": "artifacts/verification/r16-browser-01.log",
+        "passed": 79,
+        "failed": 1,
+        "minutes": 11.1,
+        "failure": "Existing8px single-click kill; failed tick input was not captured."
+      },
+      {
+        "log": "artifacts/verification/r16-browser-02.log",
+        "passed": 80,
+        "failed": 0,
+        "minutes": 11.8,
+        "skipped": 0,
+        "backendEnabled": true,
+        "beforeSecondaryChordReviewFix": true
+      },
+      {
+        "log": "artifacts/verification/r16-browser-03.log",
+        "passed": 80,
+        "failed": 0,
+        "minutes": 11.6,
+        "skipped": 0,
+        "backendEnabled": true,
+        "includesSecondaryChordFix": true
+      }
+    ],
+    "browserTests": 80,
+    "browserMinutes": 11.6,
+    "browserSkipped": 0,
+    "browserLog": "artifacts/verification/r16-browser-03.log",
+    "backendEnabledForBrowser": true,
+    "serviceCleanup": "artifacts/verification/r16-service-cleanup.json",
+    "postDocumentGate": "artifacts/verification/r16-post-document-gate.log",
+    "finalSourceHashes": "artifacts/verification/r16-final-source-hashes.json",
+    "finalClimbPreview": "artifacts/asset-review-r16/final-climb.png"
+  },
+  "runtimeReview": {
+    "reviewer": "pixel-critic-r11",
+    "freshContext": false,
+    "score": 7,
+    "blocking": 0,
+    "necessaryFixes": 0,
+    "freezeStructure": true,
+    "scope": "Two actual640x360 starting-area/sea-death captures only; not all props or full chapter",
+    "retainedLimitation": "Readable individual clip-shaped loops, but the mass retains a regular icon-grid quality, not convincing disorderly metal accumulation.",
+    "additionalLeadViews": [
+      "Native probe before/after actual side-platform collapse, protected neighbour retained",
+      "Sydney cleared arena with24px floor",
+      "Full-window ordinary climb with clip-press in rear dressing"
+    ]
+  },
+  "dependencyIncident": {
+    "initialLog": "artifacts/verification/r16-candidate-unit-01.log",
+    "details": "Bundled pnpm exec unexpectedly auto-installed/rearranged dependencies and failed native loading before tests. Original20 direct package directories restored from its .ignored area;7 declared-bin links recreated; new pnpm files quarantined. No approve-builds, system/security configuration or engine upgrade. Subsequent commands use original hostNode25.3.0 and local CLIs directly.",
+    "recoveryRecord": "artifacts/verification/r16-dependency-recovery/result.json",
+    "packageJsonSha256": "1c504a96ef4b964e8782570508543f869ccdfd4f1881aeb4deb2257d413b5ecc",
+    "packageLockSha256": "3570531c62e666f63de550f391b6194b499a1b5dbb522d19c226841dca794a2e"
+  },
+  "sourceHashes": {
+    "assets/source/factory-tiles.aseprite": "ff8c06a386c5376de0c2385a08b22c5daacf48ebdf5b373bc2ed72d5210ed457",
+    "assets/source/factory-props.aseprite": "b105b0cd91de936aaa3f2c3fb61b44be501e1b66a232367e2a0e611cccb4e2ec",
+    "public/game/factory-terrain.png": "9ec3b9968b1cb23f5e0cbb1ea015085ee6fd5937e705a12fe63045ec09cbea7d",
+    "public/game/factory-terrain.json": "d5cf49c63acc1b50769ef8a006513a2e02fb58c6f0ec754255bf54429d5870c5",
+    "public/game/factory-props.png": "af6548a7ed35d4aeb20e7ec36ee3e94c8a4c5e55e2a1ce2b7af92b1bff22e76e",
+    "public/game/factory-props.json": "f62e6f7c3374b7ab1b8bd11ceca6abd4560122c769eb54d0520d0a9301ee6e2c"
+  },
+  "inputRegression": {
+    "source": "src/pages/GamePage/game/systems/InputSystem.ts",
+    "tests": "tests/game/input.test.ts",
+    "newUnitCases": 11,
+    "initialEvidence": "Deterministic down/up between polls was lost; queued J was repeated across catch-up consume.3 failures before event-edge repair,14/14 after. Existing20ms5px/8px native tests untouched,6/6 repeated. This does not identify the initial failed browser tick.",
+    "reviewer": "gameplay-engineer",
+    "reviewRequiredFix": "Do not treat held primaryDown as identity of a new secondary-button down. Cache only button0.",
+    "reviewFixEvidence": "Both button1/2 chord cases failed before guard,16/16 input cases passed after.",
+    "logs": [
+      "artifacts/verification/r16-pointer-edge-red.log",
+      "artifacts/verification/r16-pointer-edge-green.log",
+      "artifacts/verification/r16-pointer-repeat-01.log",
+      "artifacts/verification/r16-pointer-chord-red.log",
+      "artifacts/verification/r16-pointer-chord-green.log"
+    ]
+  }
+}

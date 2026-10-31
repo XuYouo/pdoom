@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "subject": "Roko Basilisk",
+  "sourceComplete": true,
+  "productionReady": true,
+  "fullGddComplete": false,
+  "sourceMode": "live",
+  "engine": "Phaser4.0.0",
+  "referenceStatus": "No new generated output verified; no reference imported or claimed",
+  "baseline": {
+    "unit": 1518,
+    "browser": 85,
+    "backend": 23
+  },
+  "baselineHashesVerified": 59,
+  "toolingNotes": [
+    "The initial read-only pwd/git status request wrongly included redundant same-mode permission fields. No access expansion or file modification occurred. No further bash/write calls use these fields.",
+    "Repeated identical image-directory scans found no new output and were stopped; no imagined image is accepted as evidence.",
+    "An empty-layer filmstrip showed only active crest, not the composite. Actual full-source reviews used explicit nine-visible-layer exports instead.",
+    "A long terminal metadata line did not complete the last PixelSpec write. The owned terminal was closed; the final spec/report were written with short multiline input. Sprite files were untouched by this recovery.",
+    "Round26 two project-local new-source writes incorrectly repeated redundant same-mode permission fields; no prompt or access expansion occurred. Later changes use ordinary terminal CAS operations without permission fields.",
+    "Adapter specialist first used bundled Node and failed to load existing Rollup native binary due to platform Team ID; no tests collected, no install/signature change. Existing project HostNode25.3.0 then passed602 cases."
+  ],
+  "contractReview": {
+    "member": "gameplay-engineer",
+    "readOnly": true,
+    "task": 50,
+    "status": "completed",
+    "importantCorrections": [
+      "Inactive idle only; enter arena into2400ms recover",
+      "HP transition also forces recover/clears laser",
+      "Do not demand offscreen transparent canvas padding in inactive native matcher",
+      "Migrate old fixed eye RGB oracle, not Core/thresholds"
+    ]
+  },
+  "sourceHashes": {
+    "assets/source/basilisk.aseprite": "bdce378b7881c7be278eb3b54ce4c8c08c0006cdb687b3d8f17f852e51b1ba22",
+    "public/game/basilisk.png": "fa075e70577ec22f858c7c241d70078d17c09833e38f3cbea5b9cd86dfdfa9b4",
+    "public/game/basilisk.json": "e53f3ec04ec4cbe847316f65c2a9ac1c36fb722a6afd592b779abb505b264888",
+    "artifacts/asset-review-r18/a.aseprite": "4af904a816ccda708db3b81c751e6ef1161c1a6cf981fe5da5e8529784f596e0",
+    "artifacts/asset-review-r18/c.png": "969a642f912a74cd59b71e70b0042e5cf79ca0f4321d3263ec717ed48295d92a"
+  },
+  "baseSnapshot": {
+    "source": "artifacts/asset-review-r18/a.aseprite",
+    "spriteId": "#7882",
+    "frameCount": 1,
+    "targetFrameCount": 8,
+    "tag": "normal-idle",
+    "layers": [
+      "tail",
+      "coil-back",
+      "hood",
+      "neck",
+      "head",
+      "jaw",
+      "eye",
+      "coil-front",
+      "crest"
+    ],
+    "hiddenLayer": "sketch",
+    "preview": "artifacts/asset-review-r18/a.png",
+    "native": "artifacts/asset-review-r18/native-draft.png",
+    "metrics": {
+      "size": [
+        96,
+        96
+      ],
+      "boundsExclusive": [
+        15,
+        10,
+        86,
+        88
+      ],
+      "opaquePixels": 2834,
+      "colors": [
+        "24423b",
+        "2c2330",
+        "34354f",
+        "426b50",
+        "8fa86b",
+        "9dded1",
+        "b9905d",
+        "cbb696",
+        "d9ffea",
+        "e5c386",
+        "f5e8c8"
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "heroOrangePixels": 0
+    },
+    "validate": "Clean,4 per-layer selective-outline style notes and1 hidden-sketch note; no remaining errors",
+    "review": "Completed base review7.5/10; this one-frame snapshot predates the approved eight-pose source",
+    "historical": true
+  },
+  "artworkComplete": true,
+  "currentSource": {
+    "path": "assets/source/basilisk.aseprite",
+    "spriteId": "#7882",
+    "frameCount": 8,
+    "canvas": [
+      96,
+      96
+    ],
+    "sheet": [
+      768,
+      96
+    ],
+    "tags": [
+      "normal-idle",
+      "normal-tell",
+      "normal-attack",
+      "normal-recover",
+      "enraged-idle",
+      "enraged-tell",
+      "enraged-attack",
+      "enraged-recover"
+    ],
+    "durationMs": 100,
+    "durationMeaning": "Export metadata only; no runtime animation clock",
+    "linkedVisibleLayers": [
+      "tail",
+      "coil-back",
+      "hood",
+      "neck",
+      "head",
+      "coil-front"
+    ],
+    "rasterCels": 38,
+    "linkedCels": 42,
+    "hiddenSketchCels": 8,
+    "metrics": "artifacts/asset-review-r18/pixel-check.json"
+  },
+  "review": {
+    "member": "pixel-critic-r9",
+    "freshContext": false,
+    "baseScore": 7.5,
+    "eightPoseScore": 7.5,
+    "blocking": 0,
+    "necessary": 0,
+    "viewed": [
+      "artifacts/asset-review-r18/a.png",
+      "artifacts/asset-review-r18/c.png",
+      "artifacts/asset-review-r18/candidate.png"
+    ],
+    "scope": "Black-background static source only, including1x. Not runtime/background/laser/FSM evidence."
+  },
+  "validation": {
+    "status": "Clean",
+    "perLayerSelectiveOutlineNotes": 32,
+    "hiddenSketchNote": true,
+    "reason": "Intentional top-left highlights/eye edges. No errors; do not report these style notes as zero."
+  },
+  "retainedFailure": {
+    "preview": "artifacts/asset-review-r18/b.png",
+    "normalDistinct": 1,
+    "enragedDistinct": 4,
+    "reason": "Timeline duplication inserted idle copies before existing action poses. Full composite and hashes caught it; normal2-4 were restored in the final8-frame timeline. The rejected sheet was never used by the game."
+  },
+  "gates": {
+    "unit": 2194,
+    "unitFiles": 53,
+    "type": 0,
+    "lint": 0,
+    "nativeScope": 8,
+    "nativeLog": "artifacts/verification/r18-current-gates-03.log",
+    "backend": 23,
+    "backendLog": "artifacts/verification/r18-backend-tests.log",
+    "browser": 91,
+    "build": 0,
+    "diffCheck": 0,
+    "fullGddComplete": false,
+    "browserTotal": 91,
+    "browserSkipped": 0,
+    "browserBackendEnabled": true,
+    "browserMinutes": 13.1,
+    "browserLog": "artifacts/verification/r18-browser-01.log",
+    "buildLog": "artifacts/verification/r18-build-diff.log",
+    "auditVulnerabilities": 0,
+    "auditLog": "artifacts/verification/r18-audit.json",
+    "services": "owned Main and new PG stopped; frontend8080 retained",
+    "serviceRecord": "artifacts/verification/r18-service-cleanup.json"
+  },
+  "artworkStageGates": {
+    "unit": 1518,
+    "type": 0,
+    "lint": 0,
+    "diffCheck": 0,
+    "log": "artifacts/verification/r18-source-gate.log",
+    "independentAsePngEquality": "pending task-53",
+    "runtimeIntegration": "not started",
+    "browser": "not rerun; R17 baseline85 remains historical",
+    "backend": "not rerun; R17 baseline23 remains historical"
+  },
+  "runtimeIntegrated": true,
+  "baselineHashesVerifiedScope": "Artwork-only R18 before runtime integration; final protected hash audit is separate",
+  "sourceVerification": {
+    "task": "task-53",
+    "test": "tests/rendering/basiliskAssets.test.ts",
+    "passed": 74,
+    "exactAsePngRgba": true,
+    "signedCelOriginsAppliedOnce": true,
+    "hiddenSketchNegativeControl": true,
+    "crestXYWH": [
+      28,
+      8,
+      53,
+      32
+    ],
+    "minimumCrestDifference": 214,
+    "smallKernelHalfOpen": [
+      28,
+      8,
+      53,
+      32
+    ],
+    "minimumSmallKernelDifference": 96
+  },
+  "adapterVerification": {
+    "task": "task-55",
+    "test": "tests/rendering/basiliskSprites.test.ts",
+    "passed": 602,
+    "mode": "actual furnace.enraged",
+    "action": "actual boss.action",
+    "facing": "locked boss.facing",
+    "timersAdded": 0,
+    "frameRects": 8,
+    "nearest": 1,
+    "pivot": [
+      48,
+      48
+    ],
+    "bodyDepth": 2,
+    "realCueDepth": 3,
+    "titleDepth": 4
+  },
+  "runtimeReview": {
+    "task": "task-57",
+    "member": "gameplay-engineer",
+    "freshContext": false,
+    "blocking": 0,
+    "necessary": 0,
+    "viewed": "native03 right-before-Q, historical-Q-behind, mirrored-active-gaze and same-arena-final plus prior02 idle/gaze stills",
+    "scope": "Code/native stills and source-positive pixel evidence, not fullGDD or human balance"
+  },
+  "nativeEvidence": {
+    "tests": 8,
+    "newCases": 6,
+    "migratedPetrifyQCases": 2,
+    "metrics": "artifacts/verification/r18-native-metrics.json",
+    "poses": 8,
+    "rightFacing": "normal tell/attack/recover; not an all16 mode-facing claim",
+    "matchedFrames": 543,
+    "actualMinRatio": 1,
+    "actualMinSignature": 1,
+    "maxIdleCroppedNormal": 0.07515878616796046,
+    "maxIdleCroppedEnraged": 0.04834156669019052,
+    "grounding": "actual screen floorTop minus1, not fixed world row319 during shake",
+    "sameArenaDefeat": "body absent with independent HP/activeBeam/tellTip/causal counts all0 and live actor/backdrop positive",
+    "fixture": "legal stage3 checkpoint2, not a fresh continuous journey"
+  },
+  "retainedIntegrationFailures": [
+    {
+      "log": "artifacts/verification/r18-native-precheck.log",
+      "finding": "Global tsc read an unfinished teammate test draft; completed files later pass full type/unit gate"
+    },
+    {
+      "log": "artifacts/verification/r18-native-01.log",
+      "result": "5/7",
+      "finding": "Straight movement outran smoothed camera before activation; idle not registered",
+      "fix": "Ordinary short D taps and real settling only; no camera/Core/coverage/ratio change"
+    },
+    {
+      "finding": "Fixed screen foot319 rejected legitimate y231 shake",
+      "fix": "Independent actual floor stripe, exact foot=floorTop-1; all543 matched03 frames confirm"
+    },
+    {
+      "log": "artifacts/verification/r18-flank-01.log",
+      "finding": "Real defeat and stage4 succeeded but expected seeded pre-restore runId",
+      "fix": "Compare to the actual new attempt returned by the existing checkpoint assertion; identity policy unchanged"
+    }
+  ],
+  "runtimeVisualReview": {
+    "task": "task-59",
+    "member": "pixel-critic-r9",
+    "freshContext": false,
+    "briefAware": true,
+    "blocking": 0,
+    "necessary": 0,
+    "scope": "Four actual640x360 static images only; not gameplay/FPS/timing proof",
+    "files": [
+      "artifacts/verification/r18-native-03/basilisk-art-native-Basili-2796f-ve-gaze-over-body-and-pause/pose-0.png",
+      "artifacts/verification/r18-native-03/basilisk-art-native-Basili-10d3d-ve-gaze-over-body-and-pause/gaze-over-native-head.png",
+      "artifacts/verification/r18-native-03/basilisk-art-native-Basili-43dbe-y-cleanup-after-real-defeat/mirrored-active-gaze.png",
+      "artifacts/verification/r18-native-03/basilisk-art-native-Basili-43dbe-y-cleanup-after-real-defeat/same-arena-final.png"
+    ],
+    "retainedDecoration": "Faint large static rack-room circle remains (FurnaceDecor.ts25); no claim all circular decoration/effects vanish"
+  }
+}

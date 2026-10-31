@@ -31,6 +31,11 @@ test('all 120 skills are shallow-discoverable and names are unique', async () =>
   assert.deepEqual(counts, { phaser: 28, gamedev: 77, aseprite: 14, adapter: 1 });
 });
 
+test('DSH compatibility requires only a minimum version, without an upper bound', async () => {
+  const manifest = await json('package.json');
+  assert.equal(manifest.engines.dsh, '>=0.2.1-rc.3');
+});
+
 test('bundle inserts only game-dev, and no dependency install scripts are declared', async () => {
   const manifest = await json('package.json');
   for (const hook of ['preinstall', 'install', 'postinstall', 'prepare']) assert.equal(manifest.scripts[hook], undefined);

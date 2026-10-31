@@ -1,7 +1,8 @@
 import type * as Phaser from 'phaser';
 import { laserRect, type WorldState } from '../entities/model';
+import { worldLabelFits } from './cameraFrame';
 
-/** Third-chapter gameplay visualization, explicitly temporary until the Aseprite environment pass. */
+/** Actual third-chapter mechanism and combat cues; native static dressing is separate. */
 export class FurnaceRenderer {
   private status: Phaser.GameObjects.Text;
   private facing: Phaser.GameObjects.Text;
@@ -19,11 +20,13 @@ export class FurnaceRenderer {
       this.labels.set(id, label);
     }
     label.setPosition(Math.round(x), Math.round(y)).setText(text);
+    // Partial danger geometry remains visible; never leave a clipped state word at a viewport edge.
+    label.setVisible(worldLabelFits(label.x - label.displayWidth / 2, label.displayWidth, this.scene.cameras.main.scrollX));
     // Phaser 4 TextStyle.setColor redraws/uploads even when the color is unchanged.
     if (label.style.color !== color) label.setColor(color);
   }
 
-  drawEnvironment(g: Phaser.GameObjects.Graphics, world: WorldState) {
+  drawEnvironment(g: Phaser.GameObjects.Graphics, world: WorldState, nativeEnvironment = false) {
     const furnace = world.furnace;
     const ids = new Set(furnace ? [...furnace.lifts.map(lift => lift.id), ...furnace.heatZones.map(zone => zone.id)] : []);
     for (const [id, label] of this.labels) {
@@ -46,22 +49,24 @@ export class FurnaceRenderer {
       g.fillStyle(0x3b7047, 0.6).fillRect(lift.x + 18, lift.y + lift.h, lift.w - 36, Math.max(0, lift.maxY - lift.y - lift.h));
       g.lineStyle(2, 0x92d57b).lineBetween(center, lift.y - 12, center, lift.maxY + 8);
       g.lineStyle(1, 0x8dc889, 0.3).lineBetween(center, 26, center, lift.y - 13);
-      g.lineStyle(1, 0xc4d2ae, 0.6).strokeCircle(center, 20, 9);
-      this.label(lift.id, center, lift.y - 16, lift.dy < -0.01 ? 'K线 ↑ / 载人上升' : lift.dy > 0.01 ? 'K线 ↓ / 回落' : 'K线 / 可乘坐', '#b9ed9b');
+      if (!nativeEnvironment) g.lineStyle(1, 0xc4d2ae, 0.6).strokeCircle(center, 20, 9);
+      this.label(lift.id, center, lift.y - 16, lift.dy < -0.01 ? 'K ↑' : lift.dy > 0.01 ? 'K ↓' : 'K —', '#b9ed9b');
     }
   }
 
   drawCombat(g: Phaser.GameObjects.Graphics, world: WorldState) {
     const furnace = world.furnace;
-    this.status.setVisible(!!furnace);
+    this.status.setVisible(false);
     this.facing.setVisible(!!furnace && world.boss.active && world.mode === 'playing');
     if (!furnace) return;
     const now = world.save.elapsedMs;
     const petrified = now < world.player.petrifiedUntil;
-    const ledger = furnace.enraged ? '因果账本：未捐款 / 狂暴' : '因果账本：已捐款 / 狂暴抑制';
-    const statusColor = petrified ? '#d5dddd' : furnace.enraged ? '#e9b288' : '#c3df9d';
-    if (this.status.style.color !== statusColor) this.status.setColor(statusColor);
-    this.status.setText(petrified ? `石化 ${Math.max(0, Math.ceil((world.player.petrifiedUntil - now) / 100) / 10).toFixed(1)}s\nQ就绪时沿真实历史解除` : world.boss.active ? `${ledger}\n背对激光 / 绕后输出` : `${ledger}\n热区按节拍 · K线通向支路`);
+    // Keep the unique countdown, not a second copy of the contextual action/ledger instructions.
+    if (petrified && world.mode === 'playing') {
+      this.status.setVisible(true);
+      if (this.status.style.color !== '#d5dddd') this.status.setColor('#d5dddd');
+      this.status.setText(`石化 ${Math.max(0, Math.ceil((world.player.petrifiedUntil - now) / 100) / 10).toFixed(1)}s`);
+    }
     this.facing.setPosition(Math.round(world.player.x), Math.round(world.player.y - 22))
       .setText(petrified ? '石化 / Q' : world.player.facing === -1 ? '◀ 看向' : '看向 ▶');
     if (furnace.laser) {

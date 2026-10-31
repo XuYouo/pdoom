@@ -15,6 +15,16 @@ export class InputSystem {
   private pending: FrameInput = { ...EMPTY_INPUT };
   private enabled = false;
   private queuedShot = false;
+  private queuedPointerAim: FrameInput['aim'] = null;
+  private heldAim: FrameInput['aim'] = null;
+  private heldFire = false;
+  // primaryDown is held state; a secondary down while left is held is not a primary edge.
+  private pointerDown = (pointer: Phaser.Input.Pointer) => {
+    if (!this.enabled || pointer.button !== 0 || !pointer.primaryDown || isTextEntry(document.activeElement)) return;
+    if (!(pointer.x >= 0 && pointer.y >= 0 && pointer.x <= 640 && pointer.y <= 360)) return;
+    pointer.updateWorldPoint(this.scene.cameras.main);
+    if (Number.isFinite(pointer.worldX) && Number.isFinite(pointer.worldY)) this.queuedPointerAim = { x: pointer.worldX, y: pointer.worldY };
+  };
   private canvas: HTMLCanvasElement;
   private preventScroll = (event: KeyboardEvent) => {
     if (this.enabled && !isTextEntry(event.target) && [32, 37, 38, 39, 40].includes(event.keyCode)) event.preventDefault();
@@ -31,6 +41,9 @@ export class InputSystem {
         // JustDown polling loses a keydown+keyup that arrives before the next render.
         // Queue discrete actions at the actual input event; consume once on a fixed tick.
         key.on('down', (_key: Phaser.Input.Keyboard.Key, event: KeyboardEvent) => {
+          // Phaser drains queued DOM key events later. A dialog-closing key can arrive
+          // after resume has re-enabled us; keep its original UI origin out of gameplay.
+          if (event.target instanceof HTMLElement && event.target.closest('dialog')) { key.reset(); return; }
           if (!this.enabled || event.ctrlKey || event.metaKey || event.altKey || isTextEntry(event.target) || isTextEntry(document.activeElement)) return;
           // Cancel this opening Escape before mounting a native dialog; otherwise the
           // same browser default action immediately cancels the newly opened pause menu.
@@ -46,12 +59,13 @@ export class InputSystem {
       }
     });
     window.addEventListener('keydown', this.preventScroll, { passive: false });
+    scene.input.on('pointerdown', this.pointerDown);
   }
 
   setEnabled(enabled: boolean) {
     this.enabled = enabled;
     this.pending = { ...EMPTY_INPUT };
-    this.queuedShot = false;
+    this.queuedShot = false; this.queuedPointerAim = null; this.heldAim = null; this.heldFire = false;
     Object.values(this.keys).forEach(key => key.reset());
     if (enabled) this.canvas.focus({ preventScroll: true });
   }
@@ -71,21 +85,26 @@ export class InputSystem {
     const pointer = this.scene.input.activePointer;
     const pointerInCanvas = pointer.x >= 0 && pointer.y >= 0 && pointer.x <= 640 && pointer.y <= 360;
     const pointerFire = pointer.primaryDown && pointerInCanvas;
-    this.pending.fire = down('shoot') || pointerFire || this.queuedShot;
+    this.heldFire = down('shoot') || pointerFire;
+    this.heldAim = null;
     if (pointerFire) {
       pointer.updateWorldPoint(this.scene.cameras.main);
-      this.pending.aim = { x: pointer.worldX, y: pointer.worldY };
-    } else this.pending.aim = null;
+      this.heldAim = { x: pointer.worldX, y: pointer.worldY };
+    }
+    this.pending.fire = this.heldFire || this.queuedShot || this.queuedPointerAim !== null;
+    this.pending.aim = this.heldAim ?? this.queuedPointerAim;
   }
 
   consume(): FrameInput {
-    const frame = { ...this.pending };
-    this.queuedShot = false;
-    this.pending = { ...this.pending, jumpPressed: false, dashPressed: false, rewindPressed: false, insightPressed: false, rerollPressed: false };
+    const frame = { ...this.pending, aim: this.pending.aim ? { ...this.pending.aim } : null };
+    this.queuedShot = false; this.queuedPointerAim = null;
+    this.pending = { ...this.pending, fire: this.heldFire, aim: this.heldAim, jumpPressed: false, dashPressed: false, rewindPressed: false, insightPressed: false, rerollPressed: false };
     return frame;
   }
 
   destroy() {
+    this.setEnabled(false);
+    this.scene.input.off('pointerdown', this.pointerDown);
     window.removeEventListener('keydown', this.preventScroll);
     (Object.keys(codes) as ActionKey[]).forEach(action => this.scene.input.keyboard?.removeKey(codes[action], true));
   }

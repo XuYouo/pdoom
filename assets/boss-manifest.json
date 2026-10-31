@@ -201,7 +201,405 @@
         },
         "runtimeScreenshotReview": "Five actual probe images read; no new visual blocking. Not fresh; static score8 retained, not a gameplay score."
       }
+    },
+    {
+      "id": "sydney",
+      "status": "approved native art, integrated and regression-verified",
+      "source": "assets/source/sydney.aseprite",
+      "references": [
+        "generated-images/image-20261029-185639-ea75fe.png",
+        "generated-images/image-20261029-191317-708e20.png"
+      ],
+      "generationRecord": "assets/sydney-generation.json",
+      "pixelSpec": "assets/sydney-pixelspec.md",
+      "png": "public/game/sydney.png",
+      "atlas": "public/game/sydney.json",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "frameSize": [
+        96,
+        96
+      ],
+      "frameCount": 12,
+      "sheetSize": [
+        1152,
+        96
+      ],
+      "pivot": [
+        48,
+        48
+      ],
+      "collisionSizeUnchanged": [
+        52,
+        74
+      ],
+      "frameNames": [
+        "sydney 0.aseprite",
+        "sydney 1.aseprite",
+        "sydney 2.aseprite",
+        "sydney 3.aseprite",
+        "sydney 4.aseprite",
+        "sydney 5.aseprite",
+        "sydney 6.aseprite",
+        "sydney 7.aseprite",
+        "sydney 8.aseprite",
+        "sydney 9.aseprite",
+        "sydney 10.aseprite",
+        "sydney 11.aseprite"
+      ],
+      "durationsMs": [
+        600,
+        1100,
+        300,
+        1500,
+        600,
+        1100,
+        300,
+        1500,
+        600,
+        900,
+        300,
+        1250
+      ],
+      "layers": [
+        "veil-back",
+        "hair-back",
+        "skirt",
+        "torso",
+        "arm-left",
+        "arm-right",
+        "face",
+        "hair-front",
+        "veil-front",
+        "expression",
+        "corruption"
+      ],
+      "cels": 128,
+      "rasterCels": 23,
+      "linkedCels": 105,
+      "facing": "front; no turn toward player",
+      "filter": "nearest",
+      "padding": 0,
+      "trimmed": false,
+      "paletteEntriesIncludingTransparent": 20,
+      "opaqueColors": 10,
+      "alphaValues": [
+        0,
+        255
+      ],
+      "reservedClawdOrangePixelCount": 0,
+      "tags": {
+        "dialogue": [
+          0,
+          3
+        ],
+        "knife": [
+          4,
+          7
+        ],
+        "control": [
+          8,
+          11
+        ]
+      },
+      "reachableFramesZeroBased": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "unusedStaticFrames": [
+        4,
+        8
+      ],
+      "opaqueEnvelopeInclusive": [
+        22,
+        14,
+        73,
+        84
+      ],
+      "playback": "True phase/action/x/y only; no second clock/bob/HP inference. Durations preview-only; entry1200ms/phase-change1000ms recover remain Core-owned.",
+      "overlays": "Opaque bodydepth2 including inactive. Real radius42 tell, HP and all Sydney projectiles remain independently above body atdepth3; label4; control bubble remains actual Core object.",
+      "validation": {
+        "errors": 0,
+        "outlineWarnings": 76,
+        "bandingWarnings": 0,
+        "staticReview": {
+          "score": 8,
+          "freshContext": false,
+          "blocking": 0,
+          "necessaryFixes": 0
+        },
+        "runtimeVisualReview": {
+          "reviewer": "visual-reviewer",
+          "freshContext": false,
+          "scope": "Six selected640x360 still frames only; not timing/mechanics/gameplay proof",
+          "files": [
+            "phase-1-idle.png",
+            "phase-2-attack.png",
+            "phase-3-tell.png",
+            "phase-3-attack.png",
+            "pua-bound.png",
+            "defeated-same-arena.png"
+          ],
+          "blocking": 0,
+          "necessaryFixes": 0,
+          "finding": "Bridal silhouette/three tails and orange four-legged Clawd remain distinct; real HP/tell/projectiles/control bubble readable. Some phase3 attack bullets cover left arm/skirt but not face/main silhouette/HP. No cosmetic pass requested."
+        },
+        "adapterTestsAdded": 112,
+        "sourceTestsAdded": 53,
+        "nativeEvidence": "artifacts/asset-review-r15/runtime-review/evidence.json",
+        "nativeLimitation": "Only10 naturally reachable poses,12 static; cp2 fixture is not a fresh full journey",
+        "finalGate": {
+          "log": "artifacts/verification/r15-full-gate-02.log",
+          "unitPassed": 1167,
+          "unitTotal": 1167,
+          "unitFiles": 47,
+          "unitSeconds": 4.59,
+          "browserPassed": 77,
+          "browserTotal": 77,
+          "browserMinutes": 10.8,
+          "browserBackendEnabled": true,
+          "browserSkipped": 0,
+          "backendPassed": 23,
+          "backendTotal": 23,
+          "backendLog": "artifacts/verification/r15-backend-tests.log",
+          "backendCluster": "backend/.local/pg-test.SXnxKJ",
+          "lint": true,
+          "typecheck": true,
+          "build": true,
+          "auditVulnerabilities": 0,
+          "diffCheck": true,
+          "exit": 0,
+          "fullGddComplete": false
+        },
+        "nativeScopeTests": "4/4 in final77/77; full battle1/1 beforehand; phase1/PUA3/3 repeated"
+      },
+      "hashes": {
+        "assets/source/sydney.aseprite": {
+          "sha256": "696b3b4dde0aad94b46a93090476bdffa50b6d2e551b3daea56d6aacb924c7ee",
+          "bytes": 8575
+        },
+        "public/game/sydney.png": {
+          "sha256": "c573a6c4491c006b147000b68b8006e227e3048ccbd162e15ec0c1d53e43d588",
+          "bytes": 6382
+        },
+        "public/game/sydney.json": {
+          "sha256": "2e4c30e2157cd675bd9f71202ffb2bdbc2ed2006c8363913b58dee41b1c34d20",
+          "bytes": 4468
+        }
+      }
+    },
+    {
+      "id": "basilisk",
+      "status": "approved native art, integrated and regression-verified locally",
+      "source": "assets/source/basilisk.aseprite",
+      "references": [],
+      "generationRecord": "assets/basilisk-generation.json",
+      "pixelSpec": "assets/basilisk-pixelspec.md",
+      "png": "public/game/basilisk.png",
+      "atlas": "public/game/basilisk.json",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "frameSize": [
+        96,
+        96
+      ],
+      "frameCount": 8,
+      "sheetSize": [
+        768,
+        96
+      ],
+      "frameNames": [
+        "basilisk 0.aseprite",
+        "basilisk 1.aseprite",
+        "basilisk 2.aseprite",
+        "basilisk 3.aseprite",
+        "basilisk 4.aseprite",
+        "basilisk 5.aseprite",
+        "basilisk 6.aseprite",
+        "basilisk 7.aseprite"
+      ],
+      "pivot": [
+        48,
+        48
+      ],
+      "pivotStorage": "Explicit view descriptor; no cel-position reapplication",
+      "collisionSizeUnchanged": [
+        52,
+        74
+      ],
+      "hpUnchanged": 540,
+      "opaqueEnvelopeInclusive": [
+        15,
+        9,
+        85,
+        87
+      ],
+      "facing": "LEFT authored; flip only by locked boss.facing, never player.x",
+      "filter": "nearest",
+      "padding": 0,
+      "trimmed": false,
+      "eyeCenterLeft": [
+        28,
+        63
+      ],
+      "eyeCenterRight": [
+        68,
+        63
+      ],
+      "laserSocketLeft": [
+        22,
+        63
+      ],
+      "laserSocketRight": [
+        74,
+        63
+      ],
+      "groundedLastRow": 87,
+      "tags": {
+        "normal-idle": [
+          0,
+          0
+        ],
+        "normal-tell": [
+          1,
+          1
+        ],
+        "normal-attack": [
+          2,
+          2
+        ],
+        "normal-recover": [
+          3,
+          3
+        ],
+        "enraged-idle": [
+          4,
+          4
+        ],
+        "enraged-tell": [
+          5,
+          5
+        ],
+        "enraged-attack": [
+          6,
+          6
+        ],
+        "enraged-recover": [
+          7,
+          7
+        ]
+      },
+      "durationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "playback": "Static actual furnace.enraged + boss.action only. No animation clock or HP phase prediction. Inactive idle only; actual arena entry starts2400ms recovery.",
+      "layers": [
+        "tail",
+        "coil-back",
+        "hood",
+        "neck",
+        "head",
+        "jaw",
+        "eye",
+        "coil-front",
+        "crest"
+      ],
+      "hiddenLayers": [
+        "sketch"
+      ],
+      "cels": 80,
+      "linkedCels": 42,
+      "rasterCels": 38,
+      "paletteEntriesIncludingTransparent": 20,
+      "opaqueColors": 14,
+      "opaqueColorsPerFrame": [
+        11,
+        9,
+        11,
+        10,
+        11,
+        11,
+        11,
+        11
+      ],
+      "alphaValues": [
+        0,
+        255
+      ],
+      "reservedClawdOrangePixelCount": 0,
+      "overlays": "Actual laser/projectiles/HP stay independent on depth3, title4; body2. All original damage,52x74 collision, camera and Core clocks remain unchanged.",
+      "validation": {
+        "status": "Clean",
+        "selectiveOutlineStyleNotes": 32,
+        "hiddenSketchNote": true,
+        "sourceCasesAdded": 74,
+        "adapterCasesAdded": 602,
+        "staticReviewScore": 7.5,
+        "freshReviewer": false,
+        "runtimeReviewTasks": [
+          "task-57",
+          "task-59"
+        ],
+        "blocking": 0,
+        "necessary": 0,
+        "nativeScope": 8,
+        "nativeMetrics": "artifacts/verification/r18-native-metrics.json",
+        "finalGate": {
+          "unit": 2194,
+          "unitFiles": 53,
+          "type": 0,
+          "lint": 0,
+          "nativeScope": 8,
+          "nativeLog": "artifacts/verification/r18-current-gates-03.log",
+          "backend": 23,
+          "backendLog": "artifacts/verification/r18-backend-tests.log",
+          "browser": 91,
+          "build": 0,
+          "diffCheck": 0,
+          "fullGddComplete": false,
+          "browserTotal": 91,
+          "browserSkipped": 0,
+          "browserBackendEnabled": true,
+          "browserMinutes": 13.1,
+          "browserLog": "artifacts/verification/r18-browser-01.log",
+          "buildLog": "artifacts/verification/r18-build-diff.log",
+          "auditVulnerabilities": 0,
+          "auditLog": "artifacts/verification/r18-audit.json",
+          "services": "owned Main and new PG stopped; frontend8080 retained",
+          "serviceRecord": "artifacts/verification/r18-service-cleanup.json"
+        }
+      },
+      "nativeLimitations": "Checkpoint2 slices, not fresh five chapters. Eight LEFT poses and normal RIGHT tell/attack/recover; no claim all16. Actual inactive ink clipping recorded, not altered camera or masked world.",
+      "hashes": {
+        "assets/source/basilisk.aseprite": {
+          "sha256": "bdce378b7881c7be278eb3b54ce4c8c08c0006cdb687b3d8f17f852e51b1ba22",
+          "bytes": 15072
+        },
+        "public/game/basilisk.png": {
+          "sha256": "fa075e70577ec22f858c7c241d70078d17c09833e38f3cbea5b9cd86dfdfa9b4",
+          "bytes": 5756
+        },
+        "public/game/basilisk.json": {
+          "sha256": "e53f3ec04ec4cbe847316f65c2a9ac1c36fb722a6afd592b779abb505b264888",
+          "bytes": 3756
+        }
+      }
     }
   ],
-  "releaseStatus": "Not externally published. One formal boss does not complete the GDD or other chapter/environment art."
+  "releaseStatus": "Not externally published. Three formal bosses do not complete the GDD or remaining chapter/environment art."
 }

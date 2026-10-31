@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "subject": "Chinchilla native sprite",
+  "engine": "Phaser4.0.0",
+  "sourceMode": "live",
+  "sourceComplete": true,
+  "productionReady": true,
+  "fullGddComplete": false,
+  "baseline": {
+    "unit": 1385,
+    "browser": 80,
+    "backend": 23
+  },
+  "requests": [
+    {
+      "prompt": "Create a NEW standalone pixel-art DESIGN REFERENCE storyboard, not an edit of the previous factory pictures. Subject: a tiny CHINCHILLA rodent enemy for a side-view pixel platformer in a green GPU furnace. Cute but unnervingly compact and heavy, an extremely small tanky animal rather than an armored robot.\nUse exactly THREE equal panels in ONE horizontal row, same scale, same side-on three-quarter LEFT-facing view, same ground contact line. The creature is only about16 native pixels tall and18 pixels wide including its tail, centered inside a32x32 sprite. Show intentionally large pixel clusters at an integer enlargement so this tiny design remains readable; do NOT add resolution, fine hair or portrait detail.\nDistinctive anatomy: two large ROUND short ears, broad grey cheeks, a BLUNT short muzzle, tiny dark eye, compact pear-shaped hindquarters, short front paws and a large tucked hind foot. A thick FURRY tail curves low behind the rump, with a small upturned tip. Keep the tail separate from the hind foot. Not rabbit ears, not a long pointed rat nose, not a bare rat tail, not a towering squirrel tail. No clothes, armor, weapons, text or machinery.\nPanel1 idle: alert squat, round ears upright, paws planted. Panel2 tell: subtle bracing, ears angle outward, tiny forepaws tighten; main body and ground anchor stay stable. Panel3 recover: release after a dense burst, cheeks or front paws relax and the tail tip settles1 pixel. This is a three-state pose reference, NOT a walk cycle; no jump and no new attack effect.\nUpper-left light, hard pixel edges, selective dark outline, compact broad fur highlights. Palette roles: outline/nose2c2330; cool fur shadows34354f, mid575c79, highlight858eb0; small warm muzzle/bellycbb696/f5e8c8; subdued plum inner ears723f68. No orange, no glow, no gradients, no anti-aliasing, no checker texture. Limit the design to seven opaque colors. Plain neutral dark background, no ground shadow, scenery, labels, separators, border or watermark. This reference will be redrawn natively; preserve the tiny silhouette rather than embellishing it.",
+      "status": "not submitted; no generated image output exists",
+      "role": "design reference only"
+    }
+  ],
+  "referenceMode": "Direct native design from the precisely bounded PixelSpec; no reference image imported or claimed.",
+  "toolingNotes": [
+    "Two malformed write calls were rejected before body; no files written and no access expansion.",
+    "An unnecessary chat status lookup was made; no conversation was read, created or sent and no asset was uploaded.",
+    "look filmstrip with empty layer string displayed only the active head layer. Full three-pose review instead used explicit-five-layer exported c.png, actually opened with read_image.",
+    "Task47 teammate write requests were auto-review rejected before their bodies; no implementation files or tests were delivered by that teammate. Lead reassigned the task and authored the three files. No sandbox target-path denial or exact rejection cause is inferred.",
+    "Two Lead wrapper writes still erroneously included redundant same-mode permission fields and succeeded. This was an instruction-following mistake, not a necessary access expansion; subsequent edits used normal current-policy operations with no permission fields.",
+    "A later read-only ps diagnostic also wrongly carried redundant same-mode permission fields. It did not modify files or expand access; this remains an instruction-following error."
+  ],
+  "source": "assets/source/chinchilla.aseprite",
+  "export": {
+    "image": "public/game/chinchilla.png",
+    "atlas": "public/game/chinchilla.json",
+    "size": [
+      96,
+      32
+    ],
+    "frames": [
+      "chinchilla 0.aseprite",
+      "chinchilla 1.aseprite",
+      "chinchilla 2.aseprite"
+    ],
+    "staticRoles": [
+      "idle",
+      "tell",
+      "recover"
+    ],
+    "metadataDurationMs": 100,
+    "usesAnimationClock": false
+  },
+  "sourceMetrics": [
+    {
+      "boundsExclusive": [
+        10,
+        6,
+        27,
+        22
+      ],
+      "opaquePixels": 192,
+      "colors": [
+        "2c2330",
+        "34354f",
+        "575c79",
+        "723f68",
+        "858eb0",
+        "cbb696",
+        "f5e8c8"
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "boundsExclusive": [
+        10,
+        6,
+        27,
+        22
+      ],
+      "opaquePixels": 193,
+      "colors": [
+        "2c2330",
+        "34354f",
+        "575c79",
+        "723f68",
+        "858eb0",
+        "cbb696",
+        "f5e8c8"
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "boundsExclusive": [
+        10,
+        6,
+        27,
+        22
+      ],
+      "opaquePixels": 192,
+      "colors": [
+        "2c2330",
+        "34354f",
+        "575c79",
+        "723f68",
+        "858eb0",
+        "cbb696"
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    }
+  ],
+  "corePixelDifferences": {
+    "0-1": 13,
+    "0-2": 9,
+    "1-2": 17
+  },
+  "sourceHashes": {
+    "assets/source/chinchilla.aseprite": "3131402e47000c5ad1ee78e8b96ae94183bef57542588c26704ecc96dfdac7bf",
+    "public/game/chinchilla.png": "2433a716806cb6edcde00ae8a74975d65e4ccfdba22e1e56a4515c924cdc7a00",
+    "public/game/chinchilla.json": "1f2a6259bdce89f1d04d5ca11be88a62ebfdb1ca3d017f2256d012d7c2f98e86"
+  },
+  "review": {
+    "reviewer": "pixel-critic-r8",
+    "freshContext": false,
+    "coldPreview": "artifacts/asset-review-r17/a.png",
+    "coldRead": "Cat/fox-like small upright animal, clear left-facing, feet indistinct.",
+    "initialScore": 6.5,
+    "initialBlocking": 1,
+    "initialNecessary": 2,
+    "fixRounds": 1,
+    "fix": "Round wider ears; compact chest and fuller haunch. No extra tail polish.",
+    "revisedPreview": "artifacts/asset-review-r17/b.png",
+    "revisedScore": 7.5,
+    "finalPreview": "artifacts/asset-review-r17/c.png",
+    "finalScore": 7.5,
+    "blocking": 0,
+    "necessary": 0,
+    "scope": "Complete static three poses only, not native gameplay, collision or FSM timing.",
+    "frozen": true
+  },
+  "validation": {
+    "result": "Clean",
+    "errors": 0,
+    "warnings": 0,
+    "notes": 13,
+    "noteMeaning": "12 per-layer selective-outline style notes plus one hidden-sketch-not-scanned note.",
+    "expectedVisibleLayers": [
+      "tail",
+      "far-limbs",
+      "body",
+      "head",
+      "near-limbs"
+    ],
+    "staticLinkedLayers": [
+      "tail",
+      "far-limbs",
+      "body"
+    ]
+  },
+  "integration": {
+    "adapter": "src/pages/GamePage/game/systems/ChinchillaSpriteRenderer.ts",
+    "binding": "src/pages/GamePage/game/data/chinchillaAssets.ts",
+    "staticPosesOnly": true,
+    "sharedCompleteReadinessGuard": true,
+    "pivot": [
+      16,
+      16
+    ],
+    "scale": 1,
+    "depth": 2,
+    "cue": {
+      "radius": 11,
+      "width": 1,
+      "color": "f1dc8b",
+      "depth": 3
+    },
+    "coreTimingCollisionDamageChanged": false,
+    "legacyThreeFamilyBindingChanged": false,
+    "adapterTests": 102,
+    "independentFileTests": 27
+  },
+  "nativeVerification": {
+    "scope": "Legal stage3/checkpoint1 fixture, ordinary keyboard/pointer input and real rAF canvas pixels; not a fresh five-chapter journey.",
+    "log": "artifacts/verification/r17-native-04.log",
+    "passed": 5,
+    "failed": 0,
+    "pixelRgbTolerance": 2,
+    "minimumSourceRatio": 0.98,
+    "minimumSignatureRatio": 0.98,
+    "sharedOpaqueCorePixels": 133,
+    "actualGpuOverlapPixels": 60,
+    "overlapProof": "artifacts/verification/r17-native-04/chinchilla-art-legal-cp1-n-233dd-pause-and-normal-shot-death/chinchilla-overlap-proof.json",
+    "deathControl": "Actual TOK200 to206 reward plus native body absence and visible-player/opaque-background controls",
+    "pauseMs": 1800,
+    "resourceFailures": [
+      "missing PNG",
+      "missing recover frame",
+      "aliased unused recover rectangle"
+    ],
+    "cameraQuantizationChanged": false,
+    "nineIndividuallyVisibleBulletComponentsClaimed": false
+  },
+  "inputRegression": {
+    "issue": "Native dialog closing key was drained from Phaser keyboard queue after resume; it could reopen pause or leak held/edge actions.",
+    "fix": "Reset and ignore only keys whose original DOM event target belongs to a dialog; do not prevent the browser default or flush unrelated inputs.",
+    "newTests": 4,
+    "redLog": "artifacts/verification/r17-dialog-input-red.log",
+    "greenLog": "artifacts/verification/r17-dialog-input-green.log",
+    "inputPassed": 20,
+    "nativeRed": "artifacts/verification/r17-escape-repeat-01.log",
+    "nativeGreen": "artifacts/verification/r17-escape-repeat-02.log",
+    "repeatedThreeCycleCasePassed": 3
+  },
+  "integrationReview": {
+    "reviewer": "hud-engineer",
+    "freshContext": false,
+    "readOnly": true,
+    "blocking": 0,
+    "necessary": 0,
+    "resolvedFindings": [
+      "Transient body occlusion cannot establish death; actual reward added.",
+      "External fan pixels cannot establish depth; source-registered opaque-core overlap added."
+    ],
+    "scope": "Adapter, readiness, native oracle, integration and dialog-origin input fix; not a full-GDD review."
+  },
+  "gates": {
+    "unit": 1518,
+    "unitFiles": 51,
+    "typecheck": 0,
+    "lint": 0,
+    "build": 0,
+    "auditVulnerabilities": 0,
+    "diffCheck": 0,
+    "backend": 23,
+    "fullBrowser": 85,
+    "codeLog": "artifacts/verification/r17-full-gate-01.log",
+    "backendLog": "artifacts/verification/r17-backend-tests.log",
+    "browserLog": "artifacts/verification/r17-browser-01.log",
+    "fullBrowserSkipped": 0,
+    "fullBrowserMinutes": 12.0,
+    "fullBrowserExit": 0,
+    "cleanup": "artifacts/verification/r17-service-cleanup.json"
+  },
+  "retainedFailures": [
+    "artifacts/verification/r17-native-01.log",
+    "artifacts/verification/r17-native-02.log",
+    "artifacts/verification/r17-escape-repeat-01.log",
+    "artifacts/verification/r17-dialog-input-red.log"
+  ],
+  "runnerNotes": [
+    "The preliminary runner health assertion expected a status field, but the real contract returned HTTP200 with ok:true. The assertion failed and the interactive REPL continued; health was then explicitly checked against the correct contract. The full85 test process actually ran and exited0; its log is retained.",
+    "A long single-line manifest draft stalled in pty11 before any manifest write. The owned terminal was closed, the unchanged four-family file reread, and the manifest was safely written with short multiline input in a new owned terminal."
+  ]
+}

@@ -132,6 +132,265 @@
         17
       ],
       "backgroundAlpha": 0.22
+    },
+    {
+      "status": "approved native art, integrated and full-regression verified",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "filter": "nearest",
+      "trimmed": false,
+      "padding": 0,
+      "pixelSpec": "assets/factory-environment-pixelspec.md",
+      "generationRecord": "assets/factory-environment-generation.json",
+      "id": "factory-terrain",
+      "source": "assets/source/factory-tiles.aseprite",
+      "png": "public/game/factory-terrain.png",
+      "map": "public/game/factory-terrain.json",
+      "key": "environment-factory-terrain",
+      "frameSize": [
+        16,
+        16
+      ],
+      "frameCount": 32,
+      "sheetSize": [
+        96,
+        96
+      ],
+      "columns": 6,
+      "unusedTrailingSlots": 4,
+      "frameRoles": {
+        "protected-left": "0",
+        "protected-middle": "1",
+        "protected-right": "2",
+        "protected-fill": "3",
+        "service-left": "4",
+        "service-middle": "5",
+        "service-right": "6",
+        "service-fill": "7",
+        "floor-left": "10",
+        "floor-middle": "11",
+        "floor-right": "12",
+        "floor-fill-a": "13",
+        "floor-fill-b": "14",
+        "base-left": "15",
+        "base-middle": "16",
+        "base-right": "17",
+        "wall-a": "8",
+        "wall-b": "18",
+        "rail": "19",
+        "rail-joint": "20",
+        "conduit": "21",
+        "conduit-elbow": "22",
+        "vent": "23",
+        "panel": "24",
+        "clip-fill-a": "9",
+        "clip-fill-b": "25",
+        "clip-fill-c": "26",
+        "clip-surface-a": "27",
+        "clip-surface-b": "28",
+        "wall-left": "29",
+        "wall-right": "30",
+        "floor-fill-c": "31"
+      },
+      "exportedMapIsCollision": false,
+      "runtimeRoles": [
+        "wall-a",
+        "wall-b",
+        "wall-left",
+        "wall-right",
+        "rail",
+        "protected-left",
+        "protected-middle",
+        "protected-right",
+        "service-left",
+        "service-middle",
+        "service-right",
+        "floor-left",
+        "floor-middle",
+        "floor-right",
+        "floor-fill-a",
+        "floor-fill-b",
+        "floor-fill-c",
+        "clip-fill-a",
+        "clip-fill-b",
+        "clip-fill-c",
+        "clip-surface-a",
+        "clip-surface-b"
+      ]
+    },
+    {
+      "status": "approved native art, integrated and full-regression verified",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "filter": "nearest",
+      "trimmed": false,
+      "padding": 0,
+      "pixelSpec": "assets/factory-environment-pixelspec.md",
+      "generationRecord": "assets/factory-environment-generation.json",
+      "id": "factory-props",
+      "source": "assets/source/factory-props.aseprite",
+      "png": "public/game/factory-props.png",
+      "atlas": "public/game/factory-props.json",
+      "key": "environment-factory-props",
+      "frameSize": [
+        64,
+        64
+      ],
+      "frameCount": 6,
+      "sheetSize": [
+        384,
+        64
+      ],
+      "staticFramesNotAnAnimation": true,
+      "frameRoles": {
+        "wire-spool": "factory-props 0.aseprite",
+        "clip-press": "factory-props 1.aseprite",
+        "clip-hopper": "factory-props 2.aseprite",
+        "service-cabinet": "factory-props 3.aseprite",
+        "conduit-junction": "factory-props 4.aseprite",
+        "inspection-grille": "factory-props 5.aseprite"
+      },
+      "runtimeRoles": [
+        "wire-spool",
+        "clip-press",
+        "clip-hopper",
+        "service-cabinet",
+        "conduit-junction",
+        "inspection-grille"
+      ],
+      "backgroundAlpha": 0.18,
+      "nativePixelEvidenceRoles": [
+        "wire-spool"
+      ]
+    },
+    {
+      "status": "approved native art, integrated and full local functional regression verified; not a project security certification",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "filter": "nearest",
+      "trimmed": false,
+      "padding": 0,
+      "pixelSpec": "assets/furnace-environment-pixelspec.md",
+      "generationRecord": "assets/furnace-environment-generation.json",
+      "id": "furnace-terrain",
+      "source": "assets/source/furnace-tiles.aseprite",
+      "png": "public/game/furnace-terrain.png",
+      "map": "public/game/furnace-terrain.json",
+      "key": "environment-furnace-terrain",
+      "frameSize": [
+        16,
+        16
+      ],
+      "frameCount": 32,
+      "sheetSize": [
+        96,
+        96
+      ],
+      "columns": 6,
+      "unusedTrailingSlots": 4,
+      "frameRoles": {
+        "floor-top-a": "0",
+        "floor-top-b": "1",
+        "floor-body-a": "2",
+        "floor-body-b": "3",
+        "floor-foot": "4",
+        "rack-header-mid": "5",
+        "ledge-left": "6",
+        "ledge-mid": "7",
+        "bulkhead-a": "8",
+        "ledge-right": "9",
+        "lift-left": "10",
+        "lift-mid": "11",
+        "lift-right": "12",
+        "grate-top": "13",
+        "grate-body": "14",
+        "bulkhead-b": "15",
+        "rack-left": "16",
+        "rack-right": "17",
+        "rack-header-left": "18",
+        "rack-header-right": "19",
+        "rack-foot-left": "20",
+        "rack-foot-right": "21",
+        "conduit-v": "22",
+        "conduit-h": "23",
+        "conduit-elbow": "24",
+        "conduit-tee": "25",
+        "service-panel": "26",
+        "rack-foot-mid": "27",
+        "candle-a": "28",
+        "candle-b": "29",
+        "ceiling-left": "30",
+        "ceiling-right": "31"
+      },
+      "runtimeRoles": [
+        "bulkhead-a",
+        "floor-body-a",
+        "floor-body-b",
+        "floor-foot",
+        "floor-top-a",
+        "floor-top-b",
+        "grate-body",
+        "grate-top",
+        "ledge-left",
+        "ledge-mid",
+        "ledge-right",
+        "lift-left",
+        "lift-mid",
+        "lift-right"
+      ],
+      "authoringMapIsCollision": false,
+      "runtimeGeometry": "Actual Core solids, exact40px floor/12px ledges and120x12 moving lift; no new clock",
+      "backgroundRoleAlpha": {
+        "bulkhead-a": 0.6
+      },
+      "surfaceAlpha": 1
+    },
+    {
+      "status": "approved native art, integrated and full local functional regression verified; not a project security certification",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "filter": "nearest",
+      "trimmed": false,
+      "padding": 0,
+      "pixelSpec": "assets/furnace-environment-pixelspec.md",
+      "generationRecord": "assets/furnace-environment-generation.json",
+      "id": "furnace-props",
+      "source": "assets/source/furnace-props.aseprite",
+      "png": "public/game/furnace-props.png",
+      "atlas": "public/game/furnace-props.json",
+      "key": "environment-furnace-props",
+      "frameSize": [
+        64,
+        64
+      ],
+      "frameCount": 6,
+      "sheetSize": [
+        384,
+        64
+      ],
+      "staticFramesNotAnAnimation": true,
+      "frameRoles": {
+        "gpu-rack": "furnace-props 0.aseprite",
+        "coolant-manifold": "furnace-props 1.aseprite",
+        "power-bus": "furnace-props 2.aseprite",
+        "floor-exhaust": "furnace-props 3.aseprite",
+        "ceiling-aperture": "furnace-props 4.aseprite",
+        "lunar-porthole": "furnace-props 5.aseprite"
+      },
+      "runtimeRoles": [
+        "ceiling-aperture",
+        "coolant-manifold",
+        "floor-exhaust",
+        "gpu-rack",
+        "lunar-porthole",
+        "power-bus"
+      ],
+      "backgroundAlpha": 0.6,
+      "floorExhaustAlpha": 1,
+      "floorExhaustAnchor": "localY40 at actual world floor320, inside40px floor body",
+      "nativePixelEvidenceRoles": [
+        "gpu-rack"
+      ]
     }
   ],
   "checks": {
@@ -173,6 +432,66 @@
       "path": "public/game/chapter-one-props.json",
       "bytes": 3329,
       "sha256": "ab03b53a05c9f2aae7ef75857ebbdf66b280d1a1740b199a2a996976c816d175"
+    },
+    {
+      "path": "assets/source/factory-tiles.aseprite",
+      "bytes": 4574,
+      "sha256": "ff8c06a386c5376de0c2385a08b22c5daacf48ebdf5b373bc2ed72d5210ed457"
+    },
+    {
+      "path": "assets/source/factory-props.aseprite",
+      "bytes": 4852,
+      "sha256": "b105b0cd91de936aaa3f2c3fb61b44be501e1b66a232367e2a0e611cccb4e2ec"
+    },
+    {
+      "path": "public/game/factory-terrain.png",
+      "bytes": 1715,
+      "sha256": "9ec3b9968b1cb23f5e0cbb1ea015085ee6fd5937e705a12fe63045ec09cbea7d"
+    },
+    {
+      "path": "public/game/factory-terrain.json",
+      "bytes": 667,
+      "sha256": "d5cf49c63acc1b50769ef8a006513a2e02fb58c6f0ec754255bf54429d5870c5"
+    },
+    {
+      "path": "public/game/factory-props.png",
+      "bytes": 3244,
+      "sha256": "af6548a7ed35d4aeb20e7ec36ee3e94c8a4c5e55e2a1ce2b7af92b1bff22e76e"
+    },
+    {
+      "path": "public/game/factory-props.json",
+      "bytes": 2689,
+      "sha256": "f62e6f7c3374b7ab1b8bd11ceca6abd4560122c769eb54d0520d0a9301ee6e2c"
+    },
+    {
+      "path": "assets/source/furnace-tiles.aseprite",
+      "bytes": 3698,
+      "sha256": "a7db703f6260314ef42947fae09d74748703909887f09414da1abd7c7e9e5473"
+    },
+    {
+      "path": "public/game/furnace-terrain.png",
+      "bytes": 1237,
+      "sha256": "9fb00c932de39c9a11dadb8f943b0d3050ab1e68cd1146b7c4865a43e122ec4d"
+    },
+    {
+      "path": "public/game/furnace-terrain.json",
+      "bytes": 650,
+      "sha256": "f6726ebc43d0d83ff155a9072a7187429682445fd871c7f6f8680c0554dc480f"
+    },
+    {
+      "path": "assets/source/furnace-props.aseprite",
+      "bytes": 4528,
+      "sha256": "8e6cd21b7d334d28b063063e20f61ecd891d7da78b4e03e9a4f05c8b1e8396b5"
+    },
+    {
+      "path": "public/game/furnace-props.png",
+      "bytes": 2966,
+      "sha256": "ca2ca3760f6281acecf935ef8ccdc6692ebde0f2f46c8706e830246ad8242a55"
+    },
+    {
+      "path": "public/game/furnace-props.json",
+      "bytes": 2686,
+      "sha256": "4a2266b954de7ae45caf9ed7f3969215fb85cef0ae558605cdc819db6a5e13e1"
     }
   ],
   "allChapterOneArtComplete": false,
@@ -185,5 +504,71 @@
     "nativeMinutes": 6.4,
     "nativeSkipped": 0,
     "log": "artifacts/verification/r13-final-gate-02.log"
+  },
+  "checksScope": "Historical chapter-one checks; factory and furnace checks and verification are separate.",
+  "factoryChecks": {
+    "sharedPaletteEntries": 20,
+    "terrainOpaqueColors": 12,
+    "propOpaqueColors": 11,
+    "hardAlpha": true,
+    "reservedHeroColorCount": 0,
+    "sourceExportRGBAEqual": true,
+    "runtimeTerrainRoleCount": 22,
+    "all32TilesAppearInLevel": false,
+    "allSixPropsNativePixelMatched": false
+  },
+  "factoryVerification": {
+    "fullRegressionPending": false,
+    "unit": 1385,
+    "unitFiles": 49,
+    "nativeEnvironment": 3,
+    "probeNative": 4,
+    "backend": 23,
+    "sourceTests": 58,
+    "rendererTests": 149,
+    "logs": [
+      "artifacts/verification/r16-full-gate-02.log",
+      "artifacts/verification/r16-native-environment-02.log",
+      "artifacts/verification/r16-probe-migration-01.log",
+      "artifacts/verification/r16-backend-tests.log"
+    ],
+    "inputEdgeCases": 11,
+    "report": "docs/round16-factory-environment-verification.md",
+    "codeLog": "artifacts/verification/r16-full-gate-04.log",
+    "lastCompleteBrowserLog": "artifacts/verification/r16-browser-03.log",
+    "browser": 80,
+    "browserMinutes": 11.6,
+    "browserSkipped": 0,
+    "serviceCleanup": "artifacts/verification/r16-service-cleanup.json"
+  },
+  "furnaceChecks": {
+    "sharedPaletteEntries": 20,
+    "terrainOpaqueColors": 8,
+    "propOpaqueColors": 12,
+    "hardAlpha": true,
+    "reservedHeroColorCount": 0,
+    "sourceExportRGBAEqual": true,
+    "runtimeTerrainRoleCount": 14,
+    "all32TilesAppearInLevel": false,
+    "runtimePropRoleCount": 6,
+    "allSixPropsNativePixelMatched": false
+  },
+  "furnaceVerification": {
+    "report": "docs/round19-furnace-progress.md",
+    "unit": 3278,
+    "unitFiles": 56,
+    "browser": 96,
+    "browserMinutes": 15.5,
+    "browserSkipped": 0,
+    "backend": 23,
+    "sourceTests": 203,
+    "adapterTests": 881,
+    "browserLog": "artifacts/verification/r19-browser-02.log",
+    "unitLog": "artifacts/verification/r19-current-gates-02.log",
+    "serviceCleanup": "artifacts/verification/r19-lead-service-cleanup.json",
+    "fullAuditModerateEntries": 12,
+    "productionOnlyAuditEntries": 0,
+    "projectSecurityGate": "open; no forced dependency upgrade",
+    "fullGddComplete": false
   }
 }

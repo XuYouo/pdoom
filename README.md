@@ -2,7 +2,10 @@
 
 **Clawd's Sharp Left Turn** — React + TypeScript + Phaser 4.0.0 像素平台动作肉鸽，搭配 Scala 3 / http4s / PostgreSQL 后端。
 
-> 当前已实现**五章核心玩法、三分支结局与原创分层音频基础**，但仍不是全量GDD成品。Clawd 三态、“随机鹦鹉”“复读机”及“伪装者”两态已使用经审查的原生 Aseprite 精灵；Gato三态12pose已接入并通过真实战斗及全门回归；第一章32片地形/8道具已接入并验证蘑菇反转、真实坍塌和恢复；第二章32px四帧探针已接入并通过吞台、自复制与暂停验收；其余敌人、Boss与环境仍明确标为几何 blockout，完整美术、声景、程序化内容和最终体验仍待补齐。桌面界面已改为全窗口游戏舞台：主菜单/暂停覆盖场景、必要HUD与短提示；详情按需展开，右上可主动进入浏览器全屏。竖屏保留完整16:9视野并提示键鼠/横屏，不宣称触屏支持。最新整合见[探针验收](<docs/round14-probe-verification.md>)，第一章环境见[前轮验收](<docs/round13-environment-verification.md>)，Gato历史见[前轮验收](<docs/round12-gato-verification.md>)，伪装者历史见[前轮验收](<docs/round10-art-verification.md>)，UI改版历史见[全窗口UI验收](<docs/round9-ui-verification.md>)，完整差距见[开发进度](<docs/development-plan.md>)。
+> 当前已实现五章核心玩法、三分支结局与原创分层音频基础，**仍不是全量GDD成品**。
+> Clawd、第一章三类小怪、Gato、第二章探针/Sydney、前三章原生环境，以及第三章Chinchilla三静态姿态/Basilisk八态已接入并验证；其余Boss/环境、NPC/物品演出、完整声景与局外成长仍待补。
+> 桌面为全窗口16:9游戏舞台，菜单覆盖场景、必要HUD与短提示，长信息按需展开；可主动进入浏览器全屏。竖屏保留视野并提示键鼠/横屏，不宣称触屏战斗支持。
+> 最新见[GPU炼丹炉原生环境与本地功能验收](<docs/round19-furnace-progress.md>)，历史[Basilisk八态与真实绕后](<docs/round18-basilisk-progress.md>)/[Chinchilla与输入修复](<docs/round17-chinchilla-verification.md>)/[工厂环境](<docs/round16-factory-environment-verification.md>)/[Sydney](<docs/round15-sydney-verification.md>)/[全窗口UI](<docs/round9-ui-verification.md>)及[完整差距](<docs/development-plan.md>)。
 
 ## 本地启动
 
@@ -35,8 +38,8 @@ bash scripts/sbt-local.sh run
 - 第二章：640×2040 垂直工厂、55px 主路台阶、两处休息室；上涨回形针海触及即死，Q/冲刺不能免疫。
 - 冯诺依曼探针使用32px四帧原生扫描窗/机械钳，只读真实seek/tell/consume；从存活个体自复制，有数量上限；吞噬侧路平台前有预警，可以射击阻止。主路不被探针吞噬，但仍会被海淹没。
 - Sydney 有对话框弹幕、下落飞刀及 PUA 定身。被控制时仍能射击，必须打碎近身气泡解除；不会靠等待自动解控。
-- 第三章：GPU热区有冷却/预警/高温节拍；绿色K线真实载人升降，靠右并在上升时跳向隐藏奖励房；Chinchilla体小血厚、弹幕密集。
-- Basilisk根据前两章的真实捐款记录进入正常/狂暴，第三章禁止补捐。前方激光与面对Boss同时满足才石化；背对或身后安全。石化暂停普通动作，但就绪的Q仍沿真实历史解除；先穿身引转向，再Q回旧侧才能实际绕后，不会自动传送。
+- 第三章：GPU热区有冷却/预警/高温节拍；绿色K线真实载人升降，靠右并在上升时跳向隐藏奖励房；Chinchilla体小血厚、弹幕密集，原生32px三静态姿态只读真实FSM，原12×12碰撞不变。
+- Basilisk使用96px九部件八静态pose，仅随真实动作与锁定朝向切换；根据前两章的真实捐款记录进入正常/狂暴，第三章禁止补捐。前方激光与面对Boss同时满足才石化；背对或身后安全。石化暂停普通动作，但就绪的Q仍沿真实历史解除；先穿身引转向，再Q回旧侧才能实际绕后，不会自动传送。
 - 第四章：seed驱动真实上下分岔，接近时展开；脆弱节点预警2秒后坍塌。R换本安全段的实际几何与承载点，不跨安全点、不重发拾取，并从落点重新记录Q历史。
 - Leviathan真吞平台、血条读数与音乐；生命仍正常计算。到金色标线右侧约20–30px，吸力窗口内A+Shift左冲并实际跨线，才打开弱点；三阶段各需一次，最终只剩158–180px中心锚。弱点期间暂时吐回血条/音轨，不回血、不返还平台。
 - 第五章：FLOPs风暴、两处安全休息室、最后的门、空椅子与落地镜；真正走近并站稳后才揭示镜像。镜像使用实际动作频次/有效构筑和本连续尝试观察到的2/3连招，真正移动、射击、冲刺、沿自己的两秒历史Q回溯和E扫描，三阶段都有预警、执行与反击空档。
@@ -82,12 +85,17 @@ npm run build
 # 另一个终端先 npm run dev，使用已经安装的 Chrome：
 npm run test:e2e
 # 真实Scala/PostgreSQL在线后才启用全部云端浏览器测试：
-PDOOM_E2E_BACKEND=1 npm run test:e2e -- --global-timeout=600000
+PDOOM_E2E_BACKEND=1 npm run test:e2e -- --global-timeout=1200000
 ```
 
 浏览器测试默认使用macOS已安装的Google Chrome，不下载系统浏览器；其他路径可设`CHROME_EXECUTABLE_PATH`。截图在忽略的[浏览器产物目录](<artifacts/browser/>)，失败记录在[测试产物目录](<test-results/>)。五章均有**仅正常FrameInput、无手工改血/改位置/直接击杀**的纯规则通关测试（R是第四章正式环境技能）；第五章四条路线覆盖三Doom结果及实际Q/E连招学习。浏览器以真实按键攀爬工厂、击碎控制泡、乘K线、解除石化、跨Loom分岔/真实R/向左冲刺，以及从第五章rest02走到镜前并实际击败镜像；只读实际画布像素，不设置隐藏引擎状态。这不等于已经在浏览器从新局连续玩完五章。原生音频测量实际PCM、吞音/恢复和独立SFX，不用休眠节点的缓存getter冒充声音；另有真实WebGL丢失/恢复与背景像素校验，不能用空画面冒充性能优化。
 
-最新整合基线：**1002/1002单元、73/73真实浏览器（7.7m、后端开启、无skip）、23/23本轮Scala安全/HTTP/新私有PG通过**。原69原生全部保留，新增4项探针四帧/吞台/复制/暂停及缺资源保档；增加92适配器＋19原生源文件测试，lint/type/build/audit0/diff通过。首全门72/73与Gato观测时序修正保留在[探针里程碑](<docs/round14-probe-verification.md>)，不把检查点夹具称新局连续通关。891/69/23等历史保留在旧记录。全量GDD未完成：Sydney/工厂环境及后续章节正式美术、完整声景/内容、新局连续五章原生旅程仍待补齐；Phaser约1,352KB大chunk提示未解决，不声称低端稳定60FPS。
+最新本地功能基线：**3278/3278单元、96/96真实浏览器（15.5m、真实后端开启、0skip）、23/23本轮Scala/HTTP/新隔离PG通过**；lint/type/build/diff通过。**安全门未关闭：完整npm审计12个moderate开发链依赖项，关联同一个[minimatch公告](<https://github.com/advisories/GHSA-g3hv-75wg-m249>)；仅生产依赖审计为0。**未自动跨major修复，不称全项目生产就绪。
+Chinchilla使用32px、五可见层/三静态pose、7色原生素材；保留12×12碰撞、真实r11告警与九发GPU扇形。源像素三姿势、实弹覆盖本体、暂停冻结、真实+6TOK击杀及缺图/末帧/错矩形保档均已验证。
+R17连续Escape曾复现关闭键在恢复后再次进入游戏；新增4单测先红后20输入例全绿，相同三轮暂停用例重复3/3通过，未改原viewport/20ms单击或命中阈值。
+Basilisk源图与八态原生匹配、真实光束覆盖头部、Q历史绕后、同场击杀清理和3种缺资源保档均已验。失败记录、非fresh独立复核与最终全门见[R18历史验收](<docs/round18-basilisk-progress.md>)；[R16工厂与短点击修复](<docs/round16-factory-environment-verification.md>)保留为历史。
+第三章环境已有32片16px kit与6件64px道具（完整CP0 Plan实际使用14种tile/6道具）；真实热区、K线载人、隐藏奖励、两Boss模式及源像素观察仍读Core。场景只留短标识/当前提示，完整入镜才显示，复用上下文实景复核8/10、0必要项。首轮服务交接失效后由Lead持有第三个新PG/API完成96全门；临时服务现已关闭，8080保留。完整证据与失败见[R19记录](<docs/round19-furnace-progress.md>)。
+全量GDD未完成：后续章环境、Leviathan/终局专用资产、NPC/物品与演出、完整声景/内容、局外成长、新局连续五章原生旅程仍待补齐。检查点夹具不是新局通关；Phaser约1,352KB大chunk提示仍在，不声称低端稳定60FPS。
 
 ## 架构
 
@@ -102,6 +110,6 @@ PDOOM_E2E_BACKEND=1 npm run test:e2e -- --global-timeout=600000
 
 ## 美术、音频与许可
 
-见[资源清单](<docs/assets.md>)、[主角规格](<assets/art-direction.md>)与[第一章统一规格](<assets/chapter-one-art-spec.md>)。[小怪清单](<assets/enemy-manifest.json>)、[Gato清单](<assets/boss-manifest.json>)、[环境清单](<assets/environment-manifest.json>)列出可编辑源、图集、PixelSpec与完整生成/审查记录；正式资产均通过原生制作、像素校验和真实游戏验证，不把未完成的Boss/环境冒称最终素材。没有内置未许可原曲；用户品牌参考的再分发权利仍需核验。
+见[资源清单](<docs/assets.md>)、[主角规格](<assets/art-direction.md>)与[第一章统一规格](<assets/chapter-one-art-spec.md>)。[小怪清单](<assets/enemy-manifest.json>)、[Boss清单](<assets/boss-manifest.json>)、[环境清单](<assets/environment-manifest.json>)列出可编辑源、图集、PixelSpec与完整生成/审查记录；正式资产均通过原生制作、像素校验和真实游戏验证，不把未完成的Boss/环境冒称最终素材。没有内置未许可原曲；用户品牌参考的再分发权利仍需核验。
 
 本项目基于 Phaser Studio 的 MIT React TypeScript 模板，原始许可保留在 [LICENSE](<LICENSE>)。题材来自用户提供的 [GDD](<GAME_DESIGN_GDD.md>)；这是非官方同人开发项目，不代表 Anthropic 背书。

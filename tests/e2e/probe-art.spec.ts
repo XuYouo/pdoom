@@ -11,10 +11,11 @@ import { assertCheckpointAttempt } from './checkpoint-attempt';
 const RESOURCES = ['/game/von-neumann-probe.png', '/game/von-neumann-probe.json'];
 const FRAME_NAMES = [0, 1, 2, 3].map(index => `von-neumann-probe ${index}.aseprite`);
 type Rect = { x: number; y: number; w: number; h: number };
-type Source = { image: string; frames: Rect[] };
+type TerrainSource = { image: string; protectedMiddle: Rect; serviceMiddle: Rect; wallA: Rect; wallB: Rect };
+type Source = { image: string; frames: Rect[]; terrain: TerrainSource };
 type Capture = { png: string; at: number };
 type Body = { x: number; y: number; frame: number; ratio: number; signatureRatio: number; ink: number; colors: number; checksum: number };
-type Surface = { top: number; fill: number; exposed: number; backgroundControl: number; protectedControl: number; warning: number; pixels: number };
+type Surface = { top: number; registration: number; fill: number; exposed: number; backgroundControl: number; protectedControl: number; warning: number; pixels: number };
 type View = { capture: Capture; bodies: Body[]; surface: Surface | null; opaque: number; colors: number; hero: { count: number; x: number | null; bottom: number | null } };
 type Tape = { latest: Capture | null; rows: { label: string; at: number; bodies: Body[]; surface: Surface | null; opaque: number; colors: number; hero: View['hero'] }[] };
 const tape = (): Tape => ({ latest: null, rows: [] });
@@ -27,13 +28,29 @@ function watch(page: Page) {
   page.on('response', response => { const path = new URL(response.url()).pathname; if (response.status() === 200 && RESOURCES.includes(path)) loaded.add(path); });
   return { errors, writes, loaded };
 }
+/** Independent native source oracle: masters occupy the left8x4 of a16-column map. */
+async function terrainArt(): Promise<TerrainSource> {
+  const [image, text] = await Promise.all([readFile('public/game/factory-terrain.png'), readFile('public/game/factory-terrain.json', 'utf8')]);
+  const atlas = JSON.parse(text) as { columns: number; rows: number; tileWidth: number; tileHeight: number; tileCount: number; imageWidth: number; imageHeight: number; map: { width: number; height: number; tiles: number[] } };
+  expect(atlas).toMatchObject({ columns: 6, rows: 6, tileWidth: 16, tileHeight: 16, tileCount: 32, imageWidth: 96, imageHeight: 96 });
+  expect(atlas.map).toMatchObject({ width: 16, height: 8 }); expect(atlas.map.tiles).toHaveLength(128);
+  const packed = (x: number, y: number) => {
+    const native = atlas.map.tiles[y * atlas.map.width + x];
+    expect(Number.isInteger(native)).toBe(true); expect(native).toBeGreaterThanOrEqual(1); expect(native).toBeLessThanOrEqual(atlas.tileCount);
+    return native - 1;
+  };
+  const slots = [packed(1, 0), packed(5, 0), packed(0, 2), packed(1, 2)];
+  expect(slots).toEqual([1, 5, 8, 18]);
+  const frame = (slot: number): Rect => ({ x: slot % atlas.columns * 16, y: Math.floor(slot / atlas.columns) * 16, w: 16, h: 16 });
+  return { image: `data:image/png;base64,${image.toString('base64')}`, protectedMiddle: frame(slots[0]), serviceMiddle: frame(slots[1]), wallA: frame(slots[2]), wallB: frame(slots[3]) };
+}
 async function sourceArt(): Promise<Source> {
   const [image, text] = await Promise.all([readFile('public/game/von-neumann-probe.png'), readFile('public/game/von-neumann-probe.json', 'utf8')]);
   const atlas = JSON.parse(text) as { frames: { filename: string; frame: Rect; trimmed: boolean; rotated: boolean }[]; meta: { size: { w: number; h: number }; frameTags: { name: string; from: number; to: number }[] } };
   expect(atlas.meta.size).toEqual({ w: 128, h: 32 }); expect(atlas.frames.map(frame => frame.filename)).toEqual(FRAME_NAMES);
   expect(atlas.meta.frameTags.map(({ name, from, to }) => ({ name, from, to }))).toEqual([{ name: 'seek', from: 0, to: 1 }, { name: 'tell', from: 2, to: 2 }, { name: 'consume', from: 3, to: 3 }]);
   for (const frame of atlas.frames) expect(frame).toMatchObject({ trimmed: false, rotated: false, frame: { w: 32, h: 32 } });
-  return { image: `data:image/png;base64,${image.toString('base64')}`, frames: atlas.frames.map(frame => frame.frame) };
+  return { image: `data:image/png;base64,${image.toString('base64')}`, frames: atlas.frames.map(frame => frame.frame), terrain: await terrainArt() };
 }
 function legalFixture(checkpoint = 0): GameSaveData {
   const value: GameSaveData = { ...createRun(randomUUID(), 42), stage: 2, checkpoint, tokens: 200, elapsedMs: 20000, donated: true };
@@ -90,8 +107,8 @@ async function inspect(page: Page, capture: Capture, source: Source): Promise<Vi
       context.imageSmoothingEnabled = false; context.drawImage(image, 0, 0);
       return { w: canvas.width, h: canvas.height, data: context.getImageData(0, 0, canvas.width, canvas.height).data };
     }
-    const [actual, art] = await Promise.all([decode(capture.png), decode(source.image)]);
-    if (actual.w !== 640 || actual.h !== 360 || art.w !== 128 || art.h !== 32) throw new Error('Unexpected actual/source native size');
+    const [actual, art, terrain] = await Promise.all([decode(capture.png), decode(source.image), decode(source.terrain.image)]);
+    if (actual.w !== 640 || actual.h !== 360 || art.w !== 128 || art.h !== 32 || terrain.w !== 96 || terrain.h !== 96) throw new Error('Unexpected actual/source native size');
     const pixel = (image: typeof actual, x: number, y: number) => { const at = (y * image.w + x) * 4; return [image.data[at], image.data[at + 1], image.data[at + 2], image.data[at + 3]]; };
     const equal = (a: number[], b: number[]) => a[3] === 255 && b[3] === 255 && Math.max(...a.slice(0, 3).map((v, i) => Math.abs(v - b[i]))) <= 2;
     const colorKey = (color: number[]) => color[3] ? color.join(',') : 'transparent';
@@ -139,23 +156,46 @@ async function inspect(page: Page, capture: Capture, source: Source): Promise<Vi
       if (!bodies.some(body => Math.abs(body.x - left) < 4 && Math.abs(body.y - top) < 4)) bodies.push(best);
     }
     bodies.sort((a, b) => a.x - b.x || a.y - b.y);
-    // First side branch: x30..130, world y1620. After the first normal jump the
-    // settled real probe is22px above it. The sampled interior avoids the connector,
-    // the factory rail, and the background's pillar/window marks.
+    // First side branch x30..129 and protected main x310..489 share world y1620.
+    // Confirm the existing visible probe anchor using the actual protected stripe;
+    // no +/-1 best-fit search or engine/World/camera access.
     const leftProbe = bodies.find(body => Math.abs(body.x + 16 - 80) < 2);
     let surface: Surface | null = null;
     if (leftProbe) {
       const top = Math.round(leftProbe.y + 16 + 22), width = 30, height = 6;
-      const count = (xx: number, rgb: number[]) => {
-        let result = 0;
-        for (let y = top + 4; y < top + 4 + height; y++) for (let x = xx; x < xx + width; x++) if (equal(pixel(actual, x, y), [...rgb, 255])) result++;
+      const repeated = (frame: Rect, x: number, y: number) => pixel(terrain, frame.x + ((x % frame.w) + frame.w) % frame.w, frame.y + ((y % frame.h) + frame.h) % frame.h);
+      const blend = (base: number[], color: number[], opacity: number) => {
+        const alpha = color[3] / 255 * opacity;
+        return base.map((value, channel) => channel === 3 ? 255 : Math.round(value * (1 - alpha) + color[channel] * alpha));
+      };
+      const background = (x: number, worldY: number) => {
+        let result = blend([15, 25, 27, 255], repeated(source.terrain.wallA, x, worldY), 0.16);
+        if (x >= 48 && x < 592 && worldY >= 16) {
+          const bandY = 16 + Math.floor((worldY - 16) / 128) * 128;
+          if (worldY < bandY + 96) result = blend(result, repeated(source.terrain.wallB, x - 48, worldY - bandY), 0.12);
+        }
         return result;
       };
+      const count = (xx: number, kind: 'service' | 'protected' | 'background') => {
+        let result = 0;
+        for (let y = top + 4; y < top + 4 + height; y++) for (let x = xx; x < xx + width; x++) {
+          const worldY = 1620 + y - top;
+          let expected = background(x, worldY);
+          if (kind !== 'background') {
+            const frame = kind === 'service' ? source.terrain.serviceMiddle : source.terrain.protectedMiddle;
+            expected = blend(expected, repeated(frame, x - (kind === 'service' ? 46 : 326), worldY - 1620), 1);
+          }
+          if (equal(pixel(actual, x, y), expected)) result++;
+        }
+        return result;
+      };
+      let registered = 0;
+      for (let y = top; y < top + 3; y++) for (let x = 340; x < 340 + width; x++) if (equal(pixel(actual, x, y), [144, 198, 176, 255])) registered++;
       let warning = 0;
       for (let y = top - 2; y <= top + 2; y++) for (let x = 32; x < 128; x++) {
         const color = pixel(actual, x, y); if (color[3] === 255 && color[0] > 130 && color[0] > color[1] * 1.35 && color[0] > color[2] * 1.4) warning++;
       }
-      surface = { top, fill: count(54, [58, 79, 68]), exposed: count(54, [25, 42, 53]), backgroundControl: count(150, [25, 42, 53]), protectedControl: count(340, [58, 79, 68]), warning, pixels: width * height };
+      surface = { top, registration: registered / (width * 3), fill: count(54, 'service'), exposed: count(54, 'background'), backgroundControl: count(150, 'background'), protectedControl: count(340, 'protected'), warning, pixels: width * height };
     }
     return { bodies, surface, opaque: opaque / (640 * 360), colors: colors.size, hero: { count: heroCount, x: heroCount ? (heroLeft + heroRight + 1) / 2 : null, bottom: heroCount ? heroBottom : null } };
   }, { capture, source });
@@ -183,6 +223,7 @@ async function finishEvidence(info: TestInfo, record: Tape) {
 }
 function firstSurface(view: View) {
   positive(view); expect(view.surface).not.toBeNull(); const surface = view.surface!;
+  expect(surface.registration, 'visible probe and protected stripe must agree; report shifts instead of relaxing').toBeGreaterThanOrEqual(0.98);
   expect(surface.backgroundControl / surface.pixels, 'untouched nonempty native factory background control').toBeGreaterThanOrEqual(0.98);
   expect(surface.protectedControl / surface.pixels, 'protected green main route remains solid').toBeGreaterThanOrEqual(0.98);
   return surface;

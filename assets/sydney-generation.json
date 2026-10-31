@@ -1,0 +1,606 @@
+{
+  "schemaVersion": 1,
+  "subject": "Sydney cyber-ghost bride",
+  "scope": "R15 character only, not factory environment",
+  "engine": "Phaser 4.0.0",
+  "sourceMode": "live",
+  "sourceComplete": true,
+  "productionReady": true,
+  "fullGddComplete": false,
+  "palette": [
+    "00000000",
+    "2c2330",
+    "d97757",
+    "eaa083",
+    "b55a4a",
+    "783f4a",
+    "f5e8c8",
+    "cbb696",
+    "34354f",
+    "575c79",
+    "858eb0",
+    "9dded1",
+    "d9ffea",
+    "0f191b",
+    "24423b",
+    "426b50",
+    "8fa86b",
+    "b9905d",
+    "e5c386",
+    "723f68"
+  ],
+  "requests": [
+    {
+      "prompt": "Design reference sheet for SYDNEY, an adult cyber-ghost bride boss in a dark 2D pixel-art platform game. She must read as a haunting bride, not a nun, angel, robot, child or cute mascot. Front view, locked camera, upper-left light, stylized adult proportions about four heads tall. Design for a 74-pixel-tall figure inside a 96x96 sprite: arched bridal veil surrounding dark violet hair masses, a small pale face with narrow unsettling eyes, fitted ivory bodice and an A-line wedding skirt dissolving into three tapered wavy ghost tails with no feet. Two delicate arms with clear negative space beside the body. Controlled cloth folds, selective one-pixel dark cool outline, large coherent hard pixel clusters; no gradients, anti-aliasing, bloom or fuzzy transparency. Palette roles: dark hair/outline #2c2330 #34354f #575c79; cool shadows #858eb0; veil #9dded1 #d9ffea; ivory dress and pale face #f5e8c8 #cbb696; sparse corruption accents #723f68 #eaa083 and tiny #e5c386. Never use #d97757, reserved for the hero. Exactly THREE equal panels in ONE horizontal row, equal spacing, identical character scale, centered pivot and bottom height. All three are the SAME bride in the same neutral floating pose with hands lowered beside the waist. Left: calm but possessive dialogue phase, ivory/mint dress and veil, closed small mouth. Middle: sharper eyes and expression, a few angular cyan seams, still unmistakably the same bridal costume. Right: hostile digital-ghost phase, limited plum and cyan pixel fissures across the face and skirt, slightly fragmented hem, but KEEP the same white wedding dress, veil and body proportions. Do not add props, weapons, projectiles, text bubbles, scenery, shadow circles, halos, crosses, flowers, wings, labels, text, borders or watermarks. Flat plain #808080 background. This is a consistent design sheet, not a finished game asset.",
+      "size": "1536x1024",
+      "quality": "high",
+      "reference_images": [],
+      "result": "Rejected before generation: reference_images must contain1 to4 workspace-relative paths"
+    },
+    {
+      "prompt": "Use the attached native game spritesheet ONLY as a reference for disciplined pixel clusters, limited colors and the same game's art style. Do NOT inherit its mechanical shapes, screen faces, machines, weapons or silhouettes. Design reference sheet for SYDNEY, an adult cyber-ghost bride boss in a dark 2D pixel-art platform game. She must read as a haunting bride, not a nun, angel, robot, child or cute mascot. Front view, locked camera, upper-left light, stylized adult proportions about four heads tall. Design for a 74-pixel-tall figure inside a 96x96 sprite: arched bridal veil surrounding dark violet hair masses, a small pale face with narrow unsettling eyes, fitted ivory bodice and an A-line wedding skirt dissolving into three tapered wavy ghost tails with no feet. Two delicate arms with clear negative space beside the body. Controlled cloth folds, selective one-pixel dark cool outline, large coherent hard pixel clusters; no gradients, anti-aliasing, bloom or fuzzy transparency. Palette roles: dark hair/outline #2c2330 #34354f #575c79; cool shadows #858eb0; veil #9dded1 #d9ffea; ivory dress and pale face #f5e8c8 #cbb696; sparse corruption accents #723f68 #eaa083 and tiny #e5c386. Never use #d97757, reserved for the hero. Exactly THREE equal panels in ONE horizontal row, equal spacing, identical character scale, centered pivot and bottom height. All three are the SAME bride in the same neutral floating pose with hands lowered beside the waist. Left: calm but possessive dialogue phase, ivory/mint dress and veil, closed small mouth. Middle: sharper eyes and expression, a few angular cyan seams, still unmistakably the same bridal costume. Right: hostile digital-ghost phase, limited plum and cyan pixel fissures across the face and skirt, slightly fragmented hem, but KEEP the same white wedding dress, veil and body proportions. Do not add props, weapons, projectiles, text bubbles, scenery, shadow circles, halos, crosses, flowers, wings, labels, text, borders or watermarks. Flat plain #808080 background. This is a consistent design sheet, not a finished game asset.",
+      "size": "1536x1024",
+      "quality": "high",
+      "reference_images": [
+        "public/game/gato.png"
+      ],
+      "actualModel": "gpt-image-2.5",
+      "actualQuality": "not reported",
+      "path": "generated-images/image-20261029-185639-ea75fe.png",
+      "actualSize": [
+        2172,
+        724
+      ],
+      "mode": "RGB",
+      "bytes": 1687183,
+      "sha256": "1392167e92460f931da32a4f0923a85ec4d753aa7282b29e382f04d0ee819af9",
+      "styleInputSha256": "4180a2304b04f2998173049e0f5390667bdee9382f4bda736f977a725fb93da3"
+    },
+    {
+      "prompt": "Create a FOUR-frame pixel-art pose storyboard using ONLY the LEFTMOST bride in the attached design sheet as the character reference. Keep her adult pale face, dark violet hair, arched mint/ivory bridal veil, fitted ivory wedding bodice and three long ghost skirt tails. Remove the small floral/jewel head ornament and simplify decorative lace. No feet, robot parts, wings, halo, cross, weapons, props, text or attack effects. Front-facing camera and upper-left lighting locked. Design for a 74-pixel-high boss inside a 96x96 native sprite, about four heads tall, not a baby/chibi face. Same head, waist, skirt silhouette, scale, center pivot and bottom height in all four panels; only the arms, hands, expression and small sleeve folds change. Exactly FOUR equal-width panels in ONE horizontal row, evenly spaced on plain flat #808080 background. Left to right: 1 idle: both elbows gently bent, open hands lowered beside the hips, narrow closed-mouth stare. 2 tell: elbows out and both open palms lifted beside the shoulders, preparing to cast, fingers separated and face alert. 3 attack: both forearms extend forward/outward at chest height, palms and three readable fingers open in a grasping command gesture, small open mouth; do not draw any actual projectile, magic circle or dialogue bubble. 4 recover: elbows tuck inward and hands settle close to the waist in front, relaxed but unsettling face, clearly different hand placement from idle. Preserve negative gaps between hands, hair and torso in every pose. Keep the white bridal identity, not a generic robed mage. Use large coherent hard pixel clusters, selective cool dark outlines, restrained cloth folds, no antialiasing, gradient, blur, bloom or translucent haze. Palette limited to #2c2330 #34354f #575c79 #858eb0 #9dded1 #d9ffea #f5e8c8 #cbb696 #723f68 #eaa083 #e5c386; do not use hero orange #d97757. No motion trails, labels, writing, panel borders or watermark. This sheet is a pose reference, not a finished game asset.",
+      "size": "1536x1024",
+      "quality": "high",
+      "reference_images": [
+        "generated-images/image-20261029-185639-ea75fe.png"
+      ],
+      "actualModel": "gpt-image-2.5",
+      "actualQuality": "not reported",
+      "path": "generated-images/image-20261029-191317-708e20.png",
+      "actualSize": [
+        2172,
+        724
+      ],
+      "mode": "RGB",
+      "bytes": 1851390,
+      "sha256": "e49a18681d09494c93e4e4abc4ee1144a1b9f0e7c0c11d325bdcfee9780c68e6"
+    }
+  ],
+  "methodHistory": [
+    "pty19 oversized input stalled; SIGINT/close before execution. Glob confirmed no Sydney asset files were created. Rebuilt spec in short ASCII control lines.",
+    "Color-selection reported1 pixel unexpectedly; immediately cleared and never used for shading",
+    "Reference link only affected an existing cel; explicit copies supplied missing guide frames",
+    "Rows preview exported as a horizontal strip; actual4608x384 recorded"
+  ],
+  "referenceRead": {
+    "seen": true,
+    "subjects": 3,
+    "read": "Adult pale bride, dark flowing hair inside mint/ivory veil, fitted white wedding dress, three ghost tails; phase2 cyan seams, phase3 plum fissures",
+    "deviations": [
+      "Remove small floral/jewel crown and lace noise",
+      "Keep modest solid bodice and clear hands/face at74px",
+      "Use hard-alpha palette-native clusters, not reference pixels",
+      "No floating chips outside the silhouette or baked attacks"
+    ]
+  },
+  "referenceImports": {
+    "spriteId": "#5380",
+    "initialCanvas": [
+      74,
+      74
+    ],
+    "finalCanvas": [
+      96,
+      96
+    ],
+    "resize": "center, preserves reference size at74 tall; native art drawn separately afterward",
+    "story": {
+      "region": [
+        112,
+        40,
+        1960,
+        664
+      ],
+      "grid": [
+        4,
+        1
+      ],
+      "frames": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "fit": "contain",
+      "placement": [
+        10,
+        0
+      ],
+      "name": "reference-story"
+    },
+    "phase2": {
+      "region": [
+        794,
+        40,
+        584,
+        664
+      ],
+      "frame": 5,
+      "placement": [
+        4,
+        0
+      ]
+    },
+    "phase3": {
+      "region": [
+        1378,
+        40,
+        584,
+        664
+      ],
+      "frame": 9,
+      "placement": [
+        4,
+        0
+      ]
+    },
+    "correction": "First story import was left-aligned; compared, removed only its own reference layer, reimported centered before drawing"
+  },
+  "draftAReview": {
+    "path": "artifacts/asset-review-r15/review/a.png",
+    "sha256": "0bc46d30a27a028f383b609b09067d59e207a3aa656847d3d2fca2630443ef00",
+    "critic": "visual-reviewer",
+    "freshContext": false,
+    "coldRead": "Front-facing long-haired ghost-like human in pale robe with curling ribbon-tail hem; face/purple eyes, mint perimeter and split hem drew attention",
+    "briefAwareScore": 6,
+    "blocking": "Wedding veil/dress identity too weak: reads hood/cape and collared robe",
+    "necessaryFixes": [
+      "Separate crown-attached fabric veil from hair/sleeves",
+      "Clear fitted dress/waist/continuous skirt before tails",
+      "Reduce square eyes to narrow slits"
+    ],
+    "reviewScope": "Only enlarged base idle, not native game or12poses"
+  },
+  "adapterGate": {
+    "tests": 112,
+    "lint": "passed",
+    "typecheck": "passed",
+    "exit": 0,
+    "log": "artifacts/verification/r15-first-code-gate.log",
+    "integrated": false
+  },
+  "draftBReview": {
+    "path": "artifacts/asset-review-r15/review/b.png",
+    "sha256": "0384898670695dfc1ebfbd5ce6b59c1c9817b620950fd96b78046b53051aa3b5",
+    "targetedFixPasses": 1,
+    "critic": "visual-reviewer",
+    "freshContext": false,
+    "score": 8,
+    "blocking": 0,
+    "necessaryFixes": 0,
+    "stopBodyPolish": true,
+    "scope": "Enlarged single base pose only; not12poses or runtime",
+    "leadViewedNative": "artifacts/asset-review-r15/review/b-native.png",
+    "opaqueColors": 9,
+    "alpha": [
+      0,
+      255
+    ],
+    "bboxInclusive": [
+      26,
+      14,
+      70,
+      84
+    ],
+    "maxInkRadius": 36.66742423459821
+  },
+  "validationHistory": [
+    {
+      "pass": "initial12pose",
+      "errors": 9,
+      "warnings": 80,
+      "blocking": [
+        "Phase2 eye diagonals isolated on expression5..8",
+        "Phase3 diagonal corruption has9 isolated pixels on9..12",
+        "Corruption overlaps right recovery hand at51,50 onframe12"
+      ],
+      "action": "Connect digital seams as orthogonal clusters, use narrow connected eyes, start skirt fracture below hands; then relink corrected poses and revalidate"
+    },
+    {
+      "pass": "connectedFeaturesAndHandClearance",
+      "errors": 0,
+      "outlineWarnings": 76,
+      "bandingNotes": 0,
+      "strict": false,
+      "layerFrameContract": "passed",
+      "armAndCorruptionNonoverlap": "passed",
+      "reason": "Selective light/cool material edges intentionally do not use a single outline color; repeated linked-frame reports retained, not reported as zero warnings"
+    }
+  ],
+  "backendGate": {
+    "passed": 23,
+    "skipped": 0,
+    "exit": 0,
+    "log": "artifacts/verification/r15-backend-tests.log",
+    "cluster": "backend/.local/pg-test.SXnxKJ",
+    "postgresTerminal": "pty-23",
+    "apiTerminal": "pty-24",
+    "java": "17.0.17",
+    "postgres": "16.14"
+  },
+  "fullStaticReview": {
+    "path": "artifacts/asset-review-r15/review/c.png",
+    "sha256": "1ba87ca73946fd3836066479ffaf989441c24817a7767aa7aa2645c0cba27027",
+    "size": [
+      4608,
+      384
+    ],
+    "score": 8,
+    "blocking": 0,
+    "necessaryFixes": 0,
+    "critic": "visual-reviewer",
+    "freshContext": false,
+    "scope": "12 static poses only, not runtime",
+    "confirmation": "Complete peer report received; one subsequent turn failure was explicitly confirmed without re-review, then final acknowledgement completed",
+    "nonblocking": "Phase1/2 use subtle seams; tell/attack rely on hand height and mouth. Must verify actual gameplay."
+  },
+  "nativeExports": {
+    "assets/source/sydney.aseprite": {
+      "sha256": "696b3b4dde0aad94b46a93090476bdffa50b6d2e551b3daea56d6aacb924c7ee",
+      "bytes": 8575
+    },
+    "public/game/sydney.png": {
+      "sha256": "c573a6c4491c006b147000b68b8006e227e3048ccbd162e15ec0c1d53e43d588",
+      "bytes": 6382
+    },
+    "public/game/sydney.json": {
+      "sha256": "2e4c30e2157cd675bd9f71202ffb2bdbc2ed2006c8363913b58dee41b1c34d20",
+      "bytes": 4468
+    }
+  },
+  "nativeStructure": {
+    "frameSize": [
+      96,
+      96
+    ],
+    "frameCount": 12,
+    "layers": [
+      "veil-back",
+      "hair-back",
+      "skirt",
+      "torso",
+      "arm-left",
+      "arm-right",
+      "face",
+      "hair-front",
+      "veil-front",
+      "expression",
+      "corruption"
+    ],
+    "frameNames": [
+      "sydney 0.aseprite",
+      "sydney 1.aseprite",
+      "sydney 2.aseprite",
+      "sydney 3.aseprite",
+      "sydney 4.aseprite",
+      "sydney 5.aseprite",
+      "sydney 6.aseprite",
+      "sydney 7.aseprite",
+      "sydney 8.aseprite",
+      "sydney 9.aseprite",
+      "sydney 10.aseprite",
+      "sydney 11.aseprite"
+    ],
+    "durationsMs": [
+      600,
+      1100,
+      300,
+      1500,
+      600,
+      1100,
+      300,
+      1500,
+      600,
+      900,
+      300,
+      1250
+    ],
+    "tags": [
+      {
+        "name": "dialogue",
+        "from": 0,
+        "to": 3,
+        "direction": "forward",
+        "color": "#9dded1ff"
+      },
+      {
+        "name": "knife",
+        "from": 4,
+        "to": 7,
+        "direction": "forward",
+        "color": "#858eb0ff"
+      },
+      {
+        "name": "control",
+        "from": 8,
+        "to": 11,
+        "direction": "forward",
+        "color": "#723f68ff"
+      }
+    ],
+    "cels": 128,
+    "rasterCels": 23,
+    "linkedCels": 105,
+    "opaquePixelsByPose": [
+      1928,
+      1950,
+      1926,
+      1861
+    ],
+    "opaqueColorsTotal": 10
+  },
+  "runtimeContract": {
+    "integrated": true,
+    "verifiedInBrowser": false,
+    "staticFrames": 12,
+    "naturallyReachableFrames": 10,
+    "unreachableFrames": [
+      "phase2 idle",
+      "phase3 idle"
+    ],
+    "reason": "Inactive starts phase1 idle; arena entry immediately recover1200ms; phase switch recover1000ms; active loop has no idle",
+    "bodyDepth": 2,
+    "cueAndBulletDepth": 3,
+    "labelDepth": 4,
+    "collisionUnchanged": [
+      52,
+      74
+    ],
+    "coreModified": false
+  },
+  "integrationSmoke": {
+    "lint": true,
+    "typecheck": true,
+    "adapterUnitPassed": 112,
+    "legacyFactoryBrowserPassed": 4,
+    "seconds": 49.5,
+    "exit": 0,
+    "log": "artifacts/verification/r15-integration-smoke-01.log",
+    "archive": "artifacts/asset-review-r15/factory-native-01",
+    "imagesActuallyReadByLead": true,
+    "native10PoseGate": false
+  },
+  "codeGate": {
+    "log": "artifacts/verification/r15-code-gate-02.log",
+    "lint": true,
+    "typecheck": true,
+    "unitPassed": 1167,
+    "unitFiles": 47,
+    "newAdapterTests": 112,
+    "newSourceTests": 53,
+    "unitSeconds": 5.93,
+    "build": true,
+    "auditVulnerabilities": 0,
+    "diffCheck": true,
+    "exit": 0,
+    "warning": "Existing Phaser minified chunk1352.48kB exceeds500kB; no engine/config change"
+  },
+  "existingBrowserGate": {
+    "log": "artifacts/verification/r15-existing-browser-01.log",
+    "specFiles": 21,
+    "passed": 73,
+    "skipped": 0,
+    "minutes": 7.7,
+    "backendEnabled": true,
+    "exit": 0,
+    "scope": "Existing suite explicitly enumerated; excludes the new unfinished Sydney-specific spec"
+  },
+  "nativeGateHistory": [
+    {
+      "log": "artifacts/verification/r15-native-sydney-01.log",
+      "passed": 2,
+      "failed": 2,
+      "minutes": 1.2,
+      "exit": 1,
+      "findings": [
+        "PUA bound capture has a real dialogue box over body; hero-only capture did not require a source-matchable boss",
+        "Alignment pixels334,332,329,328,326 then remain326: wall-time tap can miss a real update, not oscillation"
+      ],
+      "productionModified": false,
+      "fix": "Require concurrent source-matchable boss/hero; keep every real frame; ordinary navigation holds across two real rAF callbacks. No thresholds or Core/art changed."
+    },
+    {
+      "log": "artifacts/verification/r15-native-sydney-02.log",
+      "passed": 3,
+      "failed": 1,
+      "minutes": 1.1,
+      "exit": 1,
+      "passedScope": "phase1 idle/tell/attack/recover, PUA/J/movement/longpause plus both resources",
+      "failure": "second battle route alignment still outside4px",
+      "productionModified": false,
+      "fix": "Two-rAF correction overshot312->333->306 etc. Restore the already-regressed live compositor orange-only navigation; source-art matching stays paused and640x360. Both independent4px checks retained."
+    },
+    {
+      "log": "artifacts/verification/r15-native-sydney-03.log",
+      "scope": "battle only",
+      "passed": 0,
+      "failed": 1,
+      "exit": 1,
+      "finding": "Actual last ledge had hero245/floor191=54px gap, but body null caused the navigator to jump into arena instead of waiting",
+      "fix": "Stop from independently visible ledge geometry; preserve unmatched raw frames and allow only bounded ordinary no-input camera settling",
+      "productionModified": false
+    },
+    {
+      "log": "artifacts/verification/r15-native-sydney-04.log",
+      "scope": "battle only",
+      "passed": 0,
+      "failed": 1,
+      "exit": 1,
+      "timeoutMs": 240000,
+      "observedPoses": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "rawFrames": 725,
+      "rows": 794,
+      "finding": "All10 poses/new phase effects reached alive, but per-frame browser/source decode exhausted test budget before victory",
+      "candidateFix": "Batch frozen captured PNG analysis; decode fixed art/masks once per batch; preserve every raw frame, threshold and assertion; timeout unchanged",
+      "productionModified": false
+    },
+    {
+      "log": "artifacts/verification/r15-native-sydney-05.log",
+      "scope": "battle only",
+      "passed": 1,
+      "failed": 0,
+      "minutes": 2.6,
+      "exit": 0,
+      "allTenReachablePoses": true,
+      "normalVictoryAndSameArenaCleanup": true,
+      "observationBatchOnly": true
+    },
+    {
+      "log": "artifacts/verification/r15-native-sydney-06-repeat.log",
+      "scope": "phase1/PUA case repeated3 times after explicit full-cycle observation",
+      "passed": 3,
+      "failed": 0,
+      "minutes": 2.6,
+      "exit": 0,
+      "thresholdsUnchanged": true
+    }
+  ],
+  "fullGateHistory": [
+    {
+      "log": "artifacts/verification/r15-full-gate-01.log",
+      "unitPassed": 1167,
+      "unitFiles": 47,
+      "browserPassed": 76,
+      "browserTotal": 77,
+      "browserMinutes": 11.0,
+      "backendEnabled": true,
+      "skipped": 0,
+      "exit": 1,
+      "codeChecksPassed": true,
+      "failure": "PUA-only case inferred it had seen attack2; its first emission was genuinely occluded. Full three-phase battle and other75 cases passed.",
+      "fix": "Explicit bounded ordinary full phase1 cycle, same strong pose/effect checks; no threshold, art or Core change"
+    },
+    {
+      "log": "artifacts/verification/r15-full-gate-02.log",
+      "unitPassed": 1167,
+      "unitTotal": 1167,
+      "unitFiles": 47,
+      "unitSeconds": 4.59,
+      "browserPassed": 77,
+      "browserTotal": 77,
+      "browserMinutes": 10.8,
+      "browserBackendEnabled": true,
+      "browserSkipped": 0,
+      "backendPassed": 23,
+      "backendTotal": 23,
+      "backendLog": "artifacts/verification/r15-backend-tests.log",
+      "backendCluster": "backend/.local/pg-test.SXnxKJ",
+      "lint": true,
+      "typecheck": true,
+      "build": true,
+      "auditVulnerabilities": 0,
+      "diffCheck": true,
+      "exit": 0,
+      "fullGddComplete": false
+    }
+  ],
+  "finalGate": {
+    "log": "artifacts/verification/r15-full-gate-02.log",
+    "unitPassed": 1167,
+    "unitTotal": 1167,
+    "unitFiles": 47,
+    "unitSeconds": 4.59,
+    "browserPassed": 77,
+    "browserTotal": 77,
+    "browserMinutes": 10.8,
+    "browserBackendEnabled": true,
+    "browserSkipped": 0,
+    "backendPassed": 23,
+    "backendTotal": 23,
+    "backendLog": "artifacts/verification/r15-backend-tests.log",
+    "backendCluster": "backend/.local/pg-test.SXnxKJ",
+    "lint": true,
+    "typecheck": true,
+    "build": true,
+    "auditVulnerabilities": 0,
+    "diffCheck": true,
+    "exit": 0,
+    "fullGddComplete": false
+  },
+  "runtimeEvidence": {
+    "path": "artifacts/asset-review-r15/runtime-review/evidence.json",
+    "scope": "native05 ordinary battle; native06 phase1/PUA3 repeats; all4 cases repeated in final77/77",
+    "observed": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+    ],
+    "minRatio": 0.9911825726141079,
+    "minSignature": 1,
+    "minWitnesses": 51,
+    "maxOcclusion": 0.12512980269989615,
+    "rawFrames": 668,
+    "visualReview": {
+      "reviewer": "visual-reviewer",
+      "freshContext": false,
+      "scope": "Six selected640x360 still frames only; not timing/mechanics/gameplay proof",
+      "files": [
+        "phase-1-idle.png",
+        "phase-2-attack.png",
+        "phase-3-tell.png",
+        "phase-3-attack.png",
+        "pua-bound.png",
+        "defeated-same-arena.png"
+      ],
+      "blocking": 0,
+      "necessaryFixes": 0,
+      "finding": "Bridal silhouette/three tails and orange four-legged Clawd remain distinct; real HP/tell/projectiles/control bubble readable. Some phase3 attack bullets cover left arm/skirt but not face/main silhouette/HP. No cosmetic pass requested."
+    }
+  },
+  "cleanup": {
+    "apiPort8081ConnectResult": 61,
+    "postgresPort55439ConnectResult": 61,
+    "apiThenPostgresStopped": true,
+    "privateClusterRetained": "backend/.local/pg-test.SXnxKJ",
+    "frontend8080Status": 200,
+    "frontendRetained": true,
+    "hostServicesUntouched": true
+  },
+  "finalChecks": {
+    "postDocumentLog": "artifacts/verification/r15-post-document-gate.log",
+    "postDocumentUnitPassed": 1167,
+    "postDocumentUnitFiles": 47,
+    "postDocumentUnitSeconds": 4.42,
+    "postDocumentExit": 0,
+    "documentCheck": "artifacts/verification/r15-document-check.json",
+    "sourceHashes": "artifacts/verification/r15-final-source-hashes.json",
+    "runtimeAndPackageFrozenAfterFinalGate": true
+  }
+}

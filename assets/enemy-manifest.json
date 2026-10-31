@@ -444,13 +444,113 @@
           "report": "docs/round14-probe-verification.md"
         }
       }
+    },
+    {
+      "id": "chinchilla",
+      "chapter": 3,
+      "sourceActorDomain": "WorldState.enemies (kind=chinchilla)",
+      "status": "reviewed, integrated and full-regression-verified",
+      "source": "assets/source/chinchilla.aseprite",
+      "png": "public/game/chinchilla.png",
+      "atlas": "public/game/chinchilla.json",
+      "reference": null,
+      "referenceStatus": "No image-generation request submitted; direct native design",
+      "generationRecord": "assets/chinchilla-generation.json",
+      "pixelSpec": "assets/chinchilla-pixelspec.md",
+      "sourceMode": "live",
+      "frameSize": [
+        32,
+        32
+      ],
+      "frameCount": 3,
+      "sheetSize": [
+        96,
+        32
+      ],
+      "frameNames": [
+        "chinchilla 0.aseprite",
+        "chinchilla 1.aseprite",
+        "chinchilla 2.aseprite"
+      ],
+      "pivot": [
+        16,
+        16
+      ],
+      "pivotStorage": "Explicit independent view binding; not atlas slice metadata",
+      "collisionSizeUnchanged": [
+        12,
+        12
+      ],
+      "facing": "left",
+      "filter": "nearest",
+      "scale": 1,
+      "padding": 0,
+      "trimmed": false,
+      "tags": {
+        "idle": [
+          0,
+          0
+        ],
+        "tell": [
+          1,
+          1
+        ],
+        "recover": [
+          2,
+          2
+        ]
+      },
+      "durationsMs": [
+        100,
+        100,
+        100
+      ],
+      "playback": "Three actual Core phase poses only. Metadata100ms is not a playback clock; no elapsedMs/phaseUntil read.",
+      "layers": [
+        "tail",
+        "far-limbs",
+        "body",
+        "head",
+        "near-limbs"
+      ],
+      "hiddenLayer": "sketch",
+      "linkedLayers": [
+        "tail",
+        "far-limbs",
+        "body"
+      ],
+      "paletteEntriesIncludingTransparent": 20,
+      "opaqueColors": 7,
+      "alphaValues": [
+        0,
+        255
+      ],
+      "reservedClawdOrangePixelCount": 0,
+      "validation": {
+        "errors": 0,
+        "styleWarnings": 0,
+        "notes": 13,
+        "staticReviewScore": 7.5,
+        "freshContext": false,
+        "blocking": 0,
+        "necessary": 0,
+        "adapterTestsAdded": 102,
+        "staticFileTestsAdded": 27,
+        "nativeScopeTests": "5/5, repeated in full85; actual+6TOK death and opaque-core GPU overlap; legal checkpoint slice, not fresh journey",
+        "finalGate": {
+          "unit": 1518,
+          "browser": 85,
+          "backend": 23,
+          "report": "docs/round17-chinchilla-verification.md"
+        }
+      }
     }
   ],
   "plannedNotProduced": [
-    "remaining first-chapter NPC/item/attack/endings assets",
-    "chapter-two Sydney/factory environment and later-chapter enemy/boss/environment families"
+    "remaining NPC/item/attack/ending assets",
+    "Basilisk and later-chapter boss/environment families; Sydney and factory environment are already in their separate manifests"
   ],
-  "releaseStatus": "Not externally published. Four reviewed enemy/probe families do not complete the full asset set.",
+  "releaseStatus": "Not externally published. Five reviewed enemy/probe families do not complete the full asset set.",
   "bossManifest": "assets/boss-manifest.json",
   "environmentManifest": "assets/environment-manifest.json"
 }

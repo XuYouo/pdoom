@@ -1,8 +1,11 @@
 import { randomUUID } from 'node:crypto';
+import { writeFile } from 'node:fs/promises';
 import { expect, test, type Page } from '@playwright/test';
 import type { GameSaveData } from '../../src/objects/game/GameSaveData';
 import { createRun } from '../../src/pages/GamePage/functions/saveModel';
 import { assertCheckpointAttempt } from './checkpoint-attempt';
+import { furnaceSource, furnaceFrames, inspectFurnace } from './furnace-pixels';
+import { basiliskSource, basiliskFrames, inspectBasilisk, type BasiliskSource } from './basilisk-pixels';
 
 const errors = new WeakMap<Page, string[]>();
 test.beforeEach(({ page }) => {
@@ -25,8 +28,9 @@ async function openSave(page: Page, save: GameSaveData) {
   return assertCheckpointAttempt(page, save);
 }
 async function capturedActors(page: Page, path?: string) {
-  const capture = await page.locator('canvas').screenshot({ path });
-  return page.evaluate(async base64 => {
+  const capture = (await furnaceFrames(page))[0];
+  if (path) await writeFile(path, Buffer.from(capture.png.split(',')[1], 'base64'));
+  const actors = await page.evaluate(async base64 => {
     const image = new Image(); image.src = `data:image/png;base64,${base64}`; await image.decode();
     const probe = document.createElement('canvas'); probe.width = image.naturalWidth; probe.height = image.naturalHeight;
     const context = probe.getContext('2d'); if (!context) throw new Error('Cannot inspect actual canvas capture');
@@ -50,8 +54,10 @@ async function capturedActors(page: Page, path?: string) {
         treadCount++; treadRight = Math.max(treadRight, index / 4 % probe.width * 640 / probe.width);
       }
     }
-    return { orange, stone: scan(188, 199, 200), eye: scan(237, 255, 184), pole: scan(146, 213, 123), rack: scan(38, 60, 43), tread: { count: treadCount, right: treadRight } };
-  }, capture.toString('base64'));
+    return { orange, stone: scan(188, 199, 200), eye: scan(237, 255, 184), pole: scan(146, 213, 123), tread: { count: treadCount, right: treadRight } };
+  }, capture.png.split(',')[1]);
+  const environment = (await inspectFurnace(page, [capture], await furnaceSource()))[0];
+  return { ...actors, rack: { count: environment.rackPixels }, environment };
 }
 const tokens = async (page: Page) => Number(/(\d+)\s*TOK/.exec(await page.locator('.hud-cell').filter({ hasText: 'TOK' }).innerText())?.[1]);
 
@@ -150,9 +156,21 @@ test('GPU background remains visible after a real WebGL context restoration', as
   await page.keyboard.press('Escape');
 });
 
+async function capturedBasilisk(page: Page, source: BasiliskSource, path: string) {
+  const capture = (await basiliskFrames(page))[0];
+  await writeFile(path, Buffer.from(capture.png.split(',')[1], 'base64'));
+  const view = (await inspectBasilisk(page, [capture], source))[0];
+  expect(view.opaque).toBeGreaterThan(0.99); expect(view.colors).toBeGreaterThan(12); expect(view.rack).toBeGreaterThan(1000);
+  expect(view.body, 'native source body, not the old global eye-color count').not.toBeNull();
+  expect(view.body!.ratio).toBeGreaterThanOrEqual(0.98); expect(view.body!.signature).toBeGreaterThanOrEqual(0.98);
+  expect(view.body!.ink).toBeGreaterThanOrEqual(900); expect(view.body!.cropped).toBeLessThanOrEqual(0.1);
+  return view;
+}
+
 for (const donated of [true, false]) {
-  test(`Basilisk ${donated ? 'honors prior donation' : 'enters debt rage'} and real Q releases petrification`, async ({ page }) => {
+  test(`Basilisk ${donated ? 'honors prior donation' : 'enters debt rage'} and real Q releases petrification`, async ({ page }, info) => {
     test.setTimeout(60000);
+    const source = await basiliskSource();
     await openSave(page, fixture({ donated, checkpoint: 2 }));
     await page.keyboard.down('d'); await page.waitForTimeout(1800); await page.keyboard.up('d');
     await expect(page.locator('.objective')).toContainText(donated ? '已捐款抑制狂暴' : '未捐款狂暴');
@@ -161,18 +179,18 @@ for (const donated of [true, false]) {
     await page.keyboard.down('d'); await page.waitForTimeout(450); await page.keyboard.up('d');
     await expect(page.locator('.objective')).toContainText('石化：');
     const kind = donated ? 'calm' : 'rage';
-    const before = await capturedActors(page, `artifacts/browser/basilisk-${kind}-stone.png`);
+    const before = await capturedBasilisk(page, source, info.outputPath(`basilisk-${kind}-stone.png`));
     expect(before.stone.count).toBeGreaterThan(20);
-    expect(before.eye.count).toBeGreaterThan(5);
+    expect(before.body!.witnesses).toBeGreaterThanOrEqual(30);
     await page.keyboard.press('q', { delay: 50 });
     await expect(page.locator('.objective')).not.toContainText('石化：');
     await page.waitForTimeout(1000); // 600ms actual rewind playback plus the 180ms end grace.
-    const after = await capturedActors(page, `artifacts/browser/basilisk-${kind}-rewind.png`);
+    const after = await capturedBasilisk(page, source, info.outputPath(`basilisk-${kind}-rewind.png`));
     expect(after.stone.count).toBe(0);
     expect(after.orange.count).toBeGreaterThan(20);
-    expect(after.eye.count).toBeGreaterThan(5);
+    expect(after.body!.witnesses).toBeGreaterThanOrEqual(30);
     // Relative to the stationary boss eye, camera movement cannot fake historical displacement.
-    expect(after.eye.x - after.orange.x).toBeGreaterThan(before.eye.x - before.stone.x + 40);
+    expect(after.body!.eyeX - after.orange.x).toBeGreaterThan(before.body!.eyeX - before.stone.x + 40);
     await expect(page.getByRole('heading', { name: '这次，梯度归零。' })).toHaveCount(0);
     await page.keyboard.press('Escape');
   });

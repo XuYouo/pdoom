@@ -5,7 +5,15 @@ import { CLAWD_FORMS, clawdTexture } from '../data/clawdAssets';
 import { ENEMY_ASSETS, type EnemySpriteKind } from '../data/enemyAssets';
 import { BOSS_ASSETS } from '../data/bossAssets';
 import { ENVIRONMENT_ASSETS } from '../data/environmentAssets';
+import { FACTORY_ENVIRONMENT_ASSETS } from '../data/factoryEnvironmentAssets';
+import { FURNACE_ENVIRONMENT_ASSETS, FURNACE_ENVIRONMENT_BINDING } from '../data/furnaceEnvironmentAssets';
+import { furnaceEnvironmentResourcesReady } from '../systems/FurnaceEnvironmentRenderer';
 import { PROBE_ASSET } from '../data/probeAssets';
+import { SYDNEY_ASSET } from '../data/sydneyAssets';
+import { CHINCHILLA_ASSET, CHINCHILLA_BINDING } from '../data/chinchillaAssets';
+import { chinchillaSpriteResourcesReady } from '../systems/ChinchillaSpriteRenderer';
+import { BASILISK_ASSET, BASILISK_BINDING } from '../data/basiliskAssets';
+import { basiliskSpriteResourcesReady } from '../systems/BasiliskSpriteRenderer';
 import type { BehaviorMemory, WorldState } from '../entities/model';
 import { CheckpointMemoryCache } from '../systems/runMemory';
 import { cloneBehavior } from '../systems/behavior';
@@ -43,7 +51,10 @@ export class WorldScene extends Phaser.Scene {
     for (const asset of ENEMY_ASSETS) this.load.atlas(asset.key, asset.image, asset.atlas);
     for (const asset of BOSS_ASSETS) this.load.atlas(asset.key, asset.image, asset.atlas);
     this.load.atlas(PROBE_ASSET.key, PROBE_ASSET.image, PROBE_ASSET.atlas);
-    for (const asset of ENVIRONMENT_ASSETS) {
+    this.load.atlas(SYDNEY_ASSET.key, SYDNEY_ASSET.image, SYDNEY_ASSET.atlas);
+    this.load.atlas(CHINCHILLA_ASSET.key, CHINCHILLA_ASSET.image, CHINCHILLA_ASSET.atlas);
+    this.load.atlas(BASILISK_ASSET.key, BASILISK_ASSET.image, BASILISK_ASSET.atlas);
+    for (const asset of [...ENVIRONMENT_ASSETS, ...FACTORY_ENVIRONMENT_ASSETS, ...FURNACE_ENVIRONMENT_ASSETS]) {
       if (asset.load === 'atlas') this.load.atlas(asset.key, asset.image, asset.atlas);
       else this.load.spritesheet(asset.key, asset.image, { frameWidth: asset.frameWidth, frameHeight: asset.frameHeight, margin: asset.margin, spacing: asset.spacing, startFrame: asset.startFrame, endFrame: asset.endFrame });
     }
@@ -88,6 +99,44 @@ export class WorldScene extends Phaser.Scene {
     });
     if (missingProbe) {
       this.bridge.emit({ type: 'load-failed', message: '冯·诺依曼探针图集加载失败。请检查网络后刷新页面；本地检查点未改动。' });
+      return;
+    }
+    const missingSydney = !this.textures.exists(SYDNEY_ASSET.key) || SYDNEY_ASSET.frames.some(name => {
+      const texture = this.textures.get(SYDNEY_ASSET.key);
+      if (!texture.has(String(name))) return true;
+      const frame = texture.get(String(name));
+      return frame.trimmed || frame.rotated || frame.x !== 0 || frame.y !== 0 || !frame.source
+        || frame.cutWidth !== 96 || frame.cutHeight !== 96 || frame.width !== 96 || frame.height !== 96 || frame.realWidth !== 96 || frame.realHeight !== 96
+        || ![frame.cutX, frame.cutY, frame.source.width, frame.source.height].every(Number.isSafeInteger)
+        || frame.cutX < 0 || frame.cutY < 0 || frame.cutX + 96 > frame.source.width || frame.cutY + 96 > frame.source.height;
+    });
+    if (missingSydney) {
+      this.bridge.emit({ type: 'load-failed', message: 'Sydney 幽灵新娘图集加载失败。请检查网络后刷新页面；本地检查点未改动。' });
+      return;
+    }
+    const missingFactoryEnvironment = FACTORY_ENVIRONMENT_ASSETS.some(asset => !this.textures.exists(asset.key) || asset.frames.some(name => {
+      const texture = this.textures.get(asset.key);
+      if (!texture.has(name)) return true;
+      const frame = texture.get(name);
+      return frame.trimmed || frame.rotated || frame.x !== 0 || frame.y !== 0 || !frame.source
+        || frame.cutWidth !== asset.frameWidth || frame.cutHeight !== asset.frameHeight || frame.width !== asset.frameWidth || frame.height !== asset.frameHeight
+        || frame.realWidth !== asset.frameWidth || frame.realHeight !== asset.frameHeight || ![frame.cutX, frame.cutY, frame.source.width, frame.source.height].every(Number.isSafeInteger)
+        || frame.cutX < 0 || frame.cutY < 0 || frame.cutX + asset.frameWidth > frame.source.width || frame.cutY + asset.frameHeight > frame.source.height;
+    }));
+    if (missingFactoryEnvironment) {
+      this.bridge.emit({ type: 'load-failed', message: '回形针工厂环境资源加载失败。请检查网络后刷新页面；本地检查点未改动。' });
+      return;
+    }
+    if (!furnaceEnvironmentResourcesReady(this.textures, FURNACE_ENVIRONMENT_BINDING)) {
+      this.bridge.emit({ type: 'load-failed', message: '大炼丹炉环境资源加载失败。请检查网络后刷新页面；本地检查点未改动。' });
+      return;
+    }
+    if (!chinchillaSpriteResourcesReady(this.textures, CHINCHILLA_BINDING)) {
+      this.bridge.emit({ type: 'load-failed', message: 'Chinchilla 小龙猫图集加载失败。请检查网络后刷新页面；本地检查点未改动。' });
+      return;
+    }
+    if (!basiliskSpriteResourcesReady(this.textures, BASILISK_BINDING)) {
+      this.bridge.emit({ type: 'load-failed', message: 'Basilisk 因果律蛇怪图集加载失败。请检查网络后刷新页面；本地检查点未改动。' });
       return;
     }
     this.cleaned = false; this.paused = false; this.accumulator = 0; this.lastHudAt = -Infinity;
