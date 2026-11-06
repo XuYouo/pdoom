@@ -1,0 +1,216 @@
+{
+  "canvas": [
+    256,
+    128
+  ],
+  "frames": [
+    {
+      "tag": "aligned",
+      "purpose": "restraint and relief",
+      "desk": [
+        12,
+        96,
+        232,
+        24
+      ],
+      "monitor": [
+        24,
+        46,
+        52,
+        42
+      ],
+      "actorCanvas": [
+        88,
+        44,
+        64,
+        64
+      ],
+      "actorSource": "public/game/clawd-aligned.png",
+      "actorSourceRect": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "actorScale": 2,
+      "switch": [
+        168,
+        72,
+        38,
+        34
+      ],
+      "quietZone": [
+        82,
+        12,
+        88,
+        30
+      ]
+    },
+    {
+      "tag": "warden",
+      "purpose": "vigilant restraint protects the human world",
+      "chair": [
+        86,
+        28,
+        76,
+        86
+      ],
+      "actorCanvas": [
+        92,
+        44,
+        64,
+        64
+      ],
+      "actorSource": "public/game/clawd-foom.png",
+      "actorSourceRect": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "actorScale": 2,
+      "halo": [
+        98,
+        28,
+        52,
+        18
+      ],
+      "door": [
+        196,
+        16,
+        48,
+        98
+      ],
+      "barrier": [
+        184,
+        18,
+        6,
+        94
+      ],
+      "threat": [
+        211,
+        49,
+        20,
+        28
+      ]
+    },
+    {
+      "tag": "foom",
+      "purpose": "sterile smiling success after the virtual desktop becomes paperclips",
+      "windows": [
+        [
+          12,
+          20,
+          76,
+          40
+        ],
+        [
+          169,
+          14,
+          74,
+          42
+        ],
+        [
+          159,
+          78,
+          84,
+          38
+        ]
+      ],
+      "smilePopup": [
+        88,
+        44,
+        80,
+        46
+      ],
+      "paperclipSizeRange": [
+        [
+          8,
+          13
+        ],
+        [
+          18,
+          29
+        ]
+      ],
+      "quietZone": [
+        84,
+        40,
+        88,
+        54
+      ],
+      "noActor": "final transformed state, not a fabricated shell-tearing animation"
+    }
+  ],
+  "palette": [
+    "00000000",
+    "2c2330",
+    "d97757",
+    "eaa083",
+    "b55a4a",
+    "783f4a",
+    "f5e8c8",
+    "cbb696",
+    "34354f",
+    "575c79",
+    "858eb0",
+    "9dded1",
+    "d9ffea",
+    "071417",
+    "112726",
+    "1c3b35",
+    "33564a",
+    "557a5d",
+    "7fa97a",
+    "3c2936",
+    "654052",
+    "9e5979",
+    "d78c9b",
+    "deb15e",
+    "8d6a43",
+    "513e36",
+    "91b7ae",
+    "e8dab0",
+    "4e8f90",
+    "315f65",
+    "648da9",
+    "b1c4c8"
+  ],
+  "layerRoles": [
+    "background",
+    "furniture",
+    "actor",
+    "narrative-props",
+    "accents"
+  ],
+  "outline": "selective1px cool/dark outer edges; canonical actor outlines stay exact",
+  "light": "upper left",
+  "reference": {
+    "tool": "functions.image_generate",
+    "model": "gpt-image-2.5",
+    "verifiedFilesystemPath": "/Users/ocean/code/pdoom/generated-images/image-20261103-133214-03f389.png",
+    "sha256": "71c7bbf47e02d79c0c1182c05b3e5a36729e15f8847d2ac29be2fa67c8312e35",
+    "verifiedOriginalDimensions": [
+      2172,
+      724
+    ],
+    "referenceImages": [
+      "public/game/clawd-aligned.png",
+      "public/game/clawd-foom.png"
+    ],
+    "promptVerbatim": "Pixel-art concept comparison sheet for three AI-game endings, three equal landscape panels in one horizontal row, no text or logos. Restrained orange, ivory, blue-gray, teal and dark purple, hard pixel edges, upper-left lighting. The hero is a flat wide rectangular orange toy with two tiny horizontal side arms, FOUR distinct short rectangular legs and two small dark vertical eyes, never round or humanoid. Left: peaceful wooden office desk, toy, quiet monitor and large physical lever switched down, powered-down server racks. Middle: the same orange four-legged toy with cream rectangular smiling mask and blue-gray tentacles on a swivel office chair, golden mechanical restraint ring, teal barrier keeping a distant purple cosmic eye beyond a doorway. Right: three generic virtual computer windows disintegrate into varied-size silver pixel paperclips around one bright square pixel-smile popup. Dark quiet backgrounds, obvious focal silhouettes, no gradients, realistic lighting, blur, watermark or operating-system branding. This is late visual comparison reference for independently hand-authored native scenes, not final runtime assets.",
+    "actualVisibleOutputReceived": true,
+    "verifiedInGoalRound": 56,
+    "referenceLayerImported": false,
+    "noDirectPixelTransfer": true,
+    "usedToDrawAnyCurrentNativePixels": false,
+    "earlierGenerationClaimsAccepted": false,
+    "earlierUnsupportedClaimsWithdrawn": true,
+    "role": "late comparison only, after all native scenes and their first export",
+    "nativePngBeforeReferenceSha256": "a6da59047a0a071b59efbb3176767287bf971b9826f9cbf8510a783187a4f6bc",
+    "basis": "All current native pixels come from the written specification and exact existing Clawd pixels, not the generated reference."
+  },
+  "status": "source package verified; runtime integration remains pending",
+  "geometryRole": "planned composition guides; tested final source and atlas are authoritative; actorCanvas coordinates remain exact",
+  "acceptedMarginException": "chair casters extend to y125, leaving2 native pixels at the bottom; the actor remains in the planned safe zone"
+}

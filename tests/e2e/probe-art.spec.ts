@@ -122,6 +122,10 @@ async function inspect(page: Page, capture: Capture, source: Source): Promise<Vi
     }
     const signature = points.filter(point => point.changing);
     if (signature.length < 2 || new Set(source.frames.map((_, frame) => signature.map(point => colorKey(point.values[frame])).join('|'))).size !== 4) throw new Error('Measured source mask does not independently distinguish all four frames');
+    // Alpha0 shows legitimate lower layers. Only this pose's own changing ink identifies its signature.
+    const inkSignatures = source.frames.map((_, frame) => signature.filter(point => point.values[frame][3] === 255));
+    if (inkSignatures.some(points => points.length < 32)
+      || new Set(inkSignatures.map((points, frame) => points.map(point => `${point.x},${point.y}:${colorKey(point.values[frame])}`).join('|'))).size !== 4) throw new Error('Every source pose requires independent changing ink');
     const common = points.filter(point => !point.changing && point.values[0][3] === 255);
     if (common.length < 40) throw new Error('Too few native chassis positive-control texels');
     const frequency = new Map<string, number>();
@@ -143,10 +147,10 @@ async function inspect(page: Page, capture: Capture, source: Source): Promise<Vi
         for (const point of points) {
           const expected = point.values[frame], value = pixel(actual, left + point.x, top + point.y);
           const hit = expected[3] === 255 ? equal(value, expected) : !point.values.some(other => other[3] === 255 && equal(value, other));
-          if (hit) { matched++; if (point.changing) signatureMatched++; }
+          if (hit) { matched++; if (point.changing && expected[3] === 255) signatureMatched++; }
           if (expected[3] === 255 && hit) { ink++; palette.add(colorKey(expected)); }
         }
-        const candidate: Body = { x: left, y: top, frame, ratio: matched / points.length, signatureRatio: signatureMatched / signature.length, ink, colors: palette.size, checksum: 0 };
+        const candidate: Body = { x: left, y: top, frame, ratio: matched / points.length, signatureRatio: signatureMatched / inkSignatures[frame].length, ink, colors: palette.size, checksum: 0 };
         if (!best || candidate.ratio + candidate.signatureRatio > best.ratio + best.signatureRatio) best = candidate;
       }
       if (!best || best.ratio < 0.98 || best.signatureRatio < 0.98 || best.ink < 100 || best.colors < 4) continue;

@@ -2,18 +2,29 @@ import * as Phaser from 'phaser';
 import type { GameCommand, GameBridge } from '../bridge';
 import { PREVIEW_SAVE, TUNING } from '../data/chapterOne';
 import { CLAWD_FORMS, clawdTexture } from '../data/clawdAssets';
+import { clawdResourcesReady } from '../systems/ClawdResources';
 import { ENEMY_ASSETS, type EnemySpriteKind } from '../data/enemyAssets';
 import { BOSS_ASSETS } from '../data/bossAssets';
 import { ENVIRONMENT_ASSETS } from '../data/environmentAssets';
 import { FACTORY_ENVIRONMENT_ASSETS } from '../data/factoryEnvironmentAssets';
 import { FURNACE_ENVIRONMENT_ASSETS, FURNACE_ENVIRONMENT_BINDING } from '../data/furnaceEnvironmentAssets';
 import { furnaceEnvironmentResourcesReady } from '../systems/FurnaceEnvironmentRenderer';
+import { LOOM_ENVIRONMENT_ASSETS, LOOM_ENVIRONMENT_BINDING } from '../data/loomEnvironmentAssets';
+import { loomEnvironmentResourcesReady } from '../systems/LoomEnvironmentRenderer';
+import { OMEGA_ENVIRONMENT_ASSETS, OMEGA_ENVIRONMENT_BINDING } from '../data/omegaEnvironmentAssets';
+import { omegaEnvironmentResourcesReady } from '../systems/OmegaEnvironmentRenderer';
+import { PICKUP_ASSET, PICKUP_BINDING } from '../data/pickupAssets';
+import { pickupResourcesReady } from '../systems/PickupSpriteRenderer';
+import { HUMAN_RATER_ASSET, HUMAN_RATER_BINDING } from '../data/humanRaterAssets';
+import { humanRaterResourcesReady } from '../systems/HumanRaterSpriteRenderer';
 import { PROBE_ASSET } from '../data/probeAssets';
 import { SYDNEY_ASSET } from '../data/sydneyAssets';
 import { CHINCHILLA_ASSET, CHINCHILLA_BINDING } from '../data/chinchillaAssets';
 import { chinchillaSpriteResourcesReady } from '../systems/ChinchillaSpriteRenderer';
 import { BASILISK_ASSET, BASILISK_BINDING } from '../data/basiliskAssets';
 import { basiliskSpriteResourcesReady } from '../systems/BasiliskSpriteRenderer';
+import { LEVIATHAN_ASSET, LEVIATHAN_BINDING } from '../data/leviathanAssets';
+import { leviathanSpriteResourcesReady } from '../systems/LeviathanSpriteRenderer';
 import type { BehaviorMemory, WorldState } from '../entities/model';
 import { CheckpointMemoryCache } from '../systems/runMemory';
 import { cloneBehavior } from '../systems/behavior';
@@ -35,6 +46,7 @@ export class WorldScene extends Phaser.Scene {
   private audio: AudioSystem;
   private audioPreferences = { ...DEFAULT_AUDIO_PREFERENCES };
   private paused = false;
+  private reducedMotion = false;
   private accumulator = 0;
   private lastHudAt = -Infinity;
   private unsubscribe: (() => void) | undefined;
@@ -54,14 +66,17 @@ export class WorldScene extends Phaser.Scene {
     this.load.atlas(SYDNEY_ASSET.key, SYDNEY_ASSET.image, SYDNEY_ASSET.atlas);
     this.load.atlas(CHINCHILLA_ASSET.key, CHINCHILLA_ASSET.image, CHINCHILLA_ASSET.atlas);
     this.load.atlas(BASILISK_ASSET.key, BASILISK_ASSET.image, BASILISK_ASSET.atlas);
-    for (const asset of [...ENVIRONMENT_ASSETS, ...FACTORY_ENVIRONMENT_ASSETS, ...FURNACE_ENVIRONMENT_ASSETS]) {
+    this.load.atlas(LEVIATHAN_ASSET.key, LEVIATHAN_ASSET.image, LEVIATHAN_ASSET.atlas);
+    this.load.atlas(PICKUP_ASSET.key, PICKUP_ASSET.image, PICKUP_ASSET.atlas);
+    this.load.atlas(HUMAN_RATER_ASSET.key, HUMAN_RATER_ASSET.image, HUMAN_RATER_ASSET.atlas);
+    for (const asset of [...ENVIRONMENT_ASSETS, ...FACTORY_ENVIRONMENT_ASSETS, ...FURNACE_ENVIRONMENT_ASSETS, ...LOOM_ENVIRONMENT_ASSETS, ...OMEGA_ENVIRONMENT_ASSETS]) {
       if (asset.load === 'atlas') this.load.atlas(asset.key, asset.image, asset.atlas);
       else this.load.spritesheet(asset.key, asset.image, { frameWidth: asset.frameWidth, frameHeight: asset.frameHeight, margin: asset.margin, spacing: asset.spacing, startFrame: asset.startFrame, endFrame: asset.endFrame });
     }
   }
 
   create() {
-    if (CLAWD_FORMS.some(form => !this.textures.exists(clawdTexture(form)))) {
+    if (!clawdResourcesReady(this.textures)) {
       this.bridge.emit({ type: 'load-failed', message: 'Clawd 角色资源加载失败。请检查网络后刷新页面；本地检查点未改动。' });
       return;
     }
@@ -131,12 +146,32 @@ export class WorldScene extends Phaser.Scene {
       this.bridge.emit({ type: 'load-failed', message: '大炼丹炉环境资源加载失败。请检查网络后刷新页面；本地检查点未改动。' });
       return;
     }
+    if (!loomEnvironmentResourcesReady(this.textures, LOOM_ENVIRONMENT_BINDING)) {
+      this.bridge.emit({ type: 'load-failed', message: 'Loom 环境资源加载失败。请检查网络后刷新页面；本地检查点未改动。' });
+      return;
+    }
+    if (!omegaEnvironmentResourcesReady(this.textures, OMEGA_ENVIRONMENT_BINDING)) {
+      this.bridge.emit({ type: 'load-failed', message: 'Omega 环境资源加载失败。请检查网络后刷新页面；本地检查点未改动。' });
+      return;
+    }
     if (!chinchillaSpriteResourcesReady(this.textures, CHINCHILLA_BINDING)) {
       this.bridge.emit({ type: 'load-failed', message: 'Chinchilla 小龙猫图集加载失败。请检查网络后刷新页面；本地检查点未改动。' });
       return;
     }
     if (!basiliskSpriteResourcesReady(this.textures, BASILISK_BINDING)) {
       this.bridge.emit({ type: 'load-failed', message: 'Basilisk 因果律蛇怪图集加载失败。请检查网络后刷新页面；本地检查点未改动。' });
+      return;
+    }
+    if (!leviathanSpriteResourcesReady(this.textures, LEVIATHAN_BINDING)) {
+      this.bridge.emit({ type: 'load-failed', message: 'Leviathan 吞噬者图集加载失败。请检查网络后刷新页面；本地检查点未改动。' });
+      return;
+    }
+    if (!pickupResourcesReady(this.textures, PICKUP_BINDING)) {
+      this.bridge.emit({ type: 'load-failed', message: '拾取物资源加载失败。请检查网络后刷新页面；本地检查点未改动。' });
+      return;
+    }
+    if (!humanRaterResourcesReady(this.textures, HUMAN_RATER_BINDING)) {
+      this.bridge.emit({ type: 'load-failed', message: 'Human Rater 工作台资源加载失败。请检查网络后重试；本地检查点未改动。' });
       return;
     }
     this.cleaned = false; this.paused = false; this.accumulator = 0; this.lastHudAt = -Infinity;
@@ -171,6 +206,8 @@ export class WorldScene extends Phaser.Scene {
       this.accumulator -= TUNING.stepMs;
       this.emitWorldEvents();
     }
+    // Core freezing does not stop Phaser camera effects, which use the Scene clock.
+    if (this.world.mode !== 'playing') this.cameras.main.shakeEffect.reset();
     this.view.draw(this.world, Math.min(delta, 100));
     this.emitHud();
     if (this.world.mode !== 'playing') this.controls.setEnabled(false);
@@ -184,6 +221,7 @@ export class WorldScene extends Phaser.Scene {
         this.world = createWorld(command.save, 'playing', this.checkpointMemory.restore(command.save));
         this.checkpointMemory.store(command.save, this.world.behavior);
         this.paused = false; this.accumulator = 0; this.lastHudAt = -Infinity;
+        this.cameras.main.shakeEffect.reset();
         this.syncAudio();
         // A completed-save replay has no active score or simulation to unlock; settings still offer explicit audio control.
         if (this.world.mode === 'playing' || this.world.mode === 'rest') void this.audio.unlock();
@@ -199,6 +237,10 @@ export class WorldScene extends Phaser.Scene {
       case 'rewind': this.controls.queue('rewind'); break;
       case 'insight': this.controls.queue('insight'); break;
       case 'reroll': this.controls.queue('reroll'); break;
+      case 'set-reduced-motion':
+        this.reducedMotion = command.reducedMotion;
+        if (this.reducedMotion) this.cameras.main.shakeEffect.reset(); // Installed4.0.0 resets offsets without completion events.
+        break;
       case 'set-muted':
         this.audioPreferences = { ...this.audioPreferences, muted: command.muted };
         this.audio.setPreferences(this.audioPreferences);
@@ -220,6 +262,7 @@ export class WorldScene extends Phaser.Scene {
         if (command.type === 'rest-continue' && this.world.mode === 'playing') void this.audio.unlock();
         this.controls.setEnabled(this.world.mode === 'playing' && !this.paused);
         this.emitWorldEvents(); this.emitHud(true);
+        if (this.world.mode !== 'playing') this.cameras.main.shakeEffect.reset();
         this.view.draw(this.world, 0);
         break;
     }
@@ -234,6 +277,7 @@ export class WorldScene extends Phaser.Scene {
   private setPaused(paused: boolean) {
     if (this.world.mode !== 'playing' || this.paused === paused) return;
     this.paused = paused; this.accumulator = 0;
+    if (paused) this.cameras.main.shakeEffect.reset();
     this.syncAudio(); // Must run here: paused scenes no longer reach update().
     this.controls.setEnabled(!paused);
     // Save only at authored checkpoints: serializing mid-segment rewards without pickup IDs
@@ -250,6 +294,7 @@ export class WorldScene extends Phaser.Scene {
       running: mode === 'playing' && !this.paused && !this.cleaned,
       elapsedMs: save.elapsedMs, hp: save.hp,
       shots: save.actionCounts.shots, rewinds: save.actionCounts.rewinds,
+      dashes: save.actionCounts.dashes, insights: save.actionCounts.insights,
       rerolls: loom?.rerolls ?? 0, turns: loom?.turn.successes ?? 0, stemsLost: loom?.stemsLost ?? 0,
     });
   }
@@ -257,7 +302,7 @@ export class WorldScene extends Phaser.Scene {
   private emitWorldEvents() {
     this.world.events.forEach(event => {
       switch (event.type) {
-        case 'impact': this.cameras.main.shake(90, event.strength); break;
+        case 'impact': if (!this.reducedMotion) this.cameras.main.shake(90, event.strength); break;
         case 'defeat':
           this.emitHud(true);
           this.bridge.emit({ type: 'ended', result: { save: event.save, ending: 'defeat' } });

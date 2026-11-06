@@ -7,7 +7,7 @@ interface Atlas {
   meta: { size: { w: number; h: number }; frameTags: Array<{ name: string; from: number; to: number }> };
 }
 
-const durations = Object.values(CLAWD_CLIPS).flatMap(clip => clip.map(item => item.duration));
+const durations = [...Object.values(CLAWD_CLIPS).flatMap(clip => clip.map(item => item.duration)), ...Array<number>(7).fill(83), ...Array<number>(7).fill(50)];
 
 describe('native Aseprite asset contract', () => {
   for (const form of CLAWD_FORMS) {
@@ -17,10 +17,10 @@ describe('native Aseprite asset contract', () => {
       const atlas: Atlas = JSON.parse(readFileSync(json, 'utf8'));
       const png = readFileSync(new URL(`../../public/game/${key}.png`, import.meta.url));
       expect(png.subarray(0, 8).toString('hex')).toBe('89504e470d0a1a0a');
-      expect(png.readUInt32BE(16)).toBe(256);
+      expect(png.readUInt32BE(16)).toBe(704);
       expect(png.readUInt32BE(20)).toBe(32);
-      expect(atlas.meta.size).toEqual({ w: 256, h: 32 });
-      expect(atlas.frames).toHaveLength(8);
+      expect(atlas.meta.size).toEqual({ w: 704, h: 32 });
+      expect(atlas.frames).toHaveLength(22);
       atlas.frames.forEach((frame, index) => {
         expect(frame.filename).toBe(clawdFrameName(index));
         expect(frame.frame).toEqual({ x: index * 32, y: 0, w: 32, h: 32 });
@@ -30,6 +30,7 @@ describe('native Aseprite asset contract', () => {
       expect(atlas.meta.frameTags.map(({ name, from, to }) => ({ name, from, to }))).toEqual([
         { name: 'idle', from: 0, to: 1 }, { name: 'run', from: 2, to: 5 },
         { name: 'jump', from: 6, to: 6 }, { name: 'hurt', from: 7, to: 7 },
+        { name: 'shot-fire-variants', from: 8, to: 14 }, { name: 'shot-recover-variants', from: 15, to: 21 },
       ]);
     });
   }

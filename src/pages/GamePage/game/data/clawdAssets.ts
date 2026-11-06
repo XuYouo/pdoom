@@ -1,7 +1,8 @@
 import type { DoomForm } from '../entities/model';
 
-/** Exported from assets/source/clawd-svg.aseprite; frames stay on the native 32px grid. */
-export const CLAWD_FORMS: readonly DoomForm[] = ['aligned', 'masked', 'foom'];
+/** R37 native extension of the original rig; all22 roles stay on the native 32px grid. */
+export const CLAWD_FORMS: readonly DoomForm[] = Object.freeze(['aligned', 'masked', 'foom']);
+export const CLAWD_FRAME_COUNT = 22;
 export const clawdTexture = (form: DoomForm) => `clawd-${form}`;
 export const clawdFrameName = (index: number) => `clawd-svg ${index}.aseprite`;
 export const CLAWD_CLIPS = {
@@ -22,4 +23,13 @@ export function clawdFrameAt(pose: ClawdPose, elapsedMs: number): number {
     cursor -= item.duration;
   }
   return clip[0].frame;
+}
+
+/** A pose matrix layered onto the current gait. Never restart locomotion or use a wall/animation clock. */
+export function clawdShotFrame(base: number, now: number, firedAt: number | null | undefined, enabled = true): number {
+  if (!Number.isInteger(base) || base < 0 || base > 7) throw Error('Invalid Clawd base frame');
+  if (!enabled || base === 7 || firedAt == null || !Number.isFinite(firedAt) || firedAt < 0 || !Number.isFinite(now)) return base;
+  const age = now - firedAt;
+  if (age < 0 || age >= 133) return base;
+  return base + (age < 83 ? 8 : 15);
 }

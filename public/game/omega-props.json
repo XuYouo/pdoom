@@ -1,0 +1,81 @@
+{ "frames": [
+   {
+    "filename": "omega-props 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 64, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 128 },
+    "sourceSize": { "w": 64, "h": 128 },
+    "duration": 100
+   },
+   {
+    "filename": "omega-props 1.aseprite",
+    "frame": { "x": 64, "y": 0, "w": 64, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 128 },
+    "sourceSize": { "w": 64, "h": 128 },
+    "duration": 100
+   },
+   {
+    "filename": "omega-props 2.aseprite",
+    "frame": { "x": 128, "y": 0, "w": 64, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 128 },
+    "sourceSize": { "w": 64, "h": 128 },
+    "duration": 100
+   },
+   {
+    "filename": "omega-props 3.aseprite",
+    "frame": { "x": 192, "y": 0, "w": 64, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 128 },
+    "sourceSize": { "w": 64, "h": 128 },
+    "duration": 100
+   },
+   {
+    "filename": "omega-props 4.aseprite",
+    "frame": { "x": 256, "y": 0, "w": 64, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 128 },
+    "sourceSize": { "w": 64, "h": 128 },
+    "duration": 100
+   },
+   {
+    "filename": "omega-props 5.aseprite",
+    "frame": { "x": 320, "y": 0, "w": 64, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 128 },
+    "sourceSize": { "w": 64, "h": 128 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.6-dev",
+  "image": "omega-props.png",
+  "format": "RGBA8888",
+  "size": { "w": 384, "h": 128 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "compute-bank", "from": 0, "to": 0, "direction": "forward", "color": "#575c79ff" },
+   { "name": "cable-arch", "from": 1, "to": 1, "direction": "forward", "color": "#575c79ff" },
+   { "name": "air-duct", "from": 2, "to": 2, "direction": "forward", "color": "#575c79ff" },
+   { "name": "empty-chair", "from": 3, "to": 3, "direction": "forward", "color": "#426b50ff" },
+   { "name": "final-door-frame", "from": 4, "to": 4, "direction": "forward", "color": "#858eb0ff" },
+   { "name": "standing-mirror", "from": 5, "to": 5, "direction": "forward", "color": "#b9905dff" }
+  ],
+  "layers": [
+   { "name": "structure", "opacity": 255, "blendMode": "normal" },
+   { "name": "material", "opacity": 255, "blendMode": "normal" },
+   { "name": "details", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+   { "name": "prop-origin", "color": "#858eb0ff", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 64, "h": 128 }, "center": {"x": 0, "y": 0, "w": 64, "h": 128 }, "pivot": {"x": 32, "y": 120 } }] }
+  ]
+ }
+}

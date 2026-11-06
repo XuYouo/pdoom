@@ -110,3 +110,15 @@ body{min-width:0}
 @media(orientation:portrait){.menu-device-hint{display:block;font-size:12px;line-height:1.6;color:#e4c29b;margin:0 0 13px}.game-shell .micro-label{font-size:8px}}
 @media(max-height:540px) and (orientation:landscape){.title-menu-content{max-height:calc(100dvh - 40px);overflow-y:auto;padding:4px}.game-shell .skill-button,.game-context-button,.game-context-button span{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.game-shell *{scroll-behavior:auto}.game-shell button{transition:none}}
+
+/* Page-local user reduction joins the existing system media rule. Do not disable gameplay motion. */
+.game-shell[data-reduced-motion="true"] *,
+.game-shell[data-reduced-motion="true"] *::before,
+.game-shell[data-reduced-motion="true"] *::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; }
+.game-shell[data-reduced-motion="true"] .ending-stage *,
+.game-shell[data-reduced-motion="true"] .ending-stage *::before,
+.game-shell[data-reduced-motion="true"] .ending-stage *::after { transform:none!important; }
+.game-shell[data-reduced-motion="true"] .ending-smile,
+.game-shell[data-reduced-motion="true"] .ending-paperclips span { opacity:1; }
+.game-shell[data-reduced-motion="true"] .ending-desktop-windows { opacity:.22; }
+.motion-settings input { accent-color:#acd9bd; }

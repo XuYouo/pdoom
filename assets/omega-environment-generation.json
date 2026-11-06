@@ -1,0 +1,192 @@
+{
+  "status": "runtime-integrated-and-current-native-verified; asset-scope-not-project-release",
+  "integrated": true,
+  "productionReady": true,
+  "fullGddComplete": false,
+  "engine": "Phaser4.0.0",
+  "sourceMode": "live",
+  "paletteEntries": 20,
+  "sourceFiles": {
+    "assets/source/omega-tiles.aseprite": {
+      "bytes": 3838,
+      "sha256": "ace8f39816c4bcae96218c43be5864e2ae6e47a1058e62c0d2d5dd1caab02c95"
+    },
+    "assets/source/omega-props.aseprite": {
+      "bytes": 4894,
+      "sha256": "81ee2b1cb70fed72af1c04dd42f47545140a06aa02b26fd664b49d091fa32d2d"
+    },
+    "public/game/omega-terrain.png": {
+      "bytes": 1131,
+      "sha256": "80314bb9f3e3d5a75ed11cfdb2effde5b80f877ee6f7dc33335367c77ae0e605"
+    },
+    "public/game/omega-terrain.json": {
+      "bytes": 620,
+      "sha256": "95b6c2ac8ba248a2daf3eb884bdad04adc6b0e8a9af5e75fe6a8f250043789c7"
+    },
+    "public/game/omega-props.png": {
+      "bytes": 2876,
+      "sha256": "bf900b539504a7404fb2885b4577e91ca214391bfe4161ac6344ec4960a7f7b4"
+    },
+    "public/game/omega-props.json": {
+      "bytes": 2892,
+      "sha256": "e6de214a11320109f241d7325c08fef7dddcbafe9199f4f9429f50a110c04aa6"
+    }
+  },
+  "runtimeAdmissionPending": false,
+  "reference": {
+    "tool": "image_gen.imagegen",
+    "invoked": true,
+    "promptVerbatim": "Pixel-art environment prop CONCEPT sheet for the quiet final room and cooling compute corridor of a side-view action platformer. Exactly SIX equal panels in ONE horizontal row, same scale, flat plain #0f191b background, no panel borders, text, labels or watermark. Each panel represents a 64x128 native sprite, baseline at y120, front/side elevation with one shallow top plane and consistent upper-left light. Hard pixel edges, large deliberate clusters, no gradients or glow blur, selective dark one-pixel outlines. Left to right: (1) low two-bay compute cooling bank with quiet vents and sockets, about56x64, (2) broad segmented cable loop on two maintenance feet, about52x60, (3) short ribbed exhaust elbow and low plinth, about52x56, (4) unmistakably EMPTY padded swivel office chair with backrest, two armrests, seat, narrow central stem and five wheeled spokes, about48x80, (5) restrained heavy door FRAME with empty40x96 opening, no leaf or handle, (6) tall brass-edged standing MIRROR frame around48x98 glass, sparse edge glints, mostly empty dark interior, absolutely no reflected person or eyes. Final three feel abandoned and calm, not magical treasure or fantasy gates. Colours only: #0f191b #2c2330 #34354f #575c79 #858eb0 #24423b #426b50 #8fa86b #783f4a #b9905d #cbb696 #f5e8c8 #9dded1. No orange, characters, symbols, readable screens, battle effects, scenery or fake playable floor. Design reference only, not final game spritesheet.",
+    "actualOutputVisible": true,
+    "verifiedFilesystemPath": null,
+    "referenceLayerImported": false,
+    "noDirectPixelTransfer": true,
+    "verifiedOriginalDimensions": null,
+    "observedLayout": "sixobjectsinsinglewiderow",
+    "generationFailureClaimed": false,
+    "timing": "actualvisibletooloutputafter-native-source-freeze",
+    "usedToDesignFrozenPixels": false,
+    "preDrawVerifiedBasis": "writtenPixelSpec-and-approvedsharedpalette",
+    "unsupportedEarlierBeforePixelReferenceClaimWithdrawn": true
+  },
+  "inheritedR23Only": {
+    "unit": 3784,
+    "browser": 108,
+    "backend": 23
+  },
+  "currentRuntimeBrowserExecuted": 119,
+  "currentBackendExecuted": 23,
+  "securityAuditNotRerun": true,
+  "sourceReady": true,
+  "reviews": {
+    "terrain": {
+      "context": "reused/nonfreshAI",
+      "score": 7.5,
+      "blocking": 0,
+      "necessary": 0,
+      "optionalPolishApplied": false,
+      "preview": "artifacts/verification/r24-review-a.png"
+    },
+    "props": {
+      "context": "reused/nonfreshAI",
+      "firstScore": 7,
+      "firstBlocking": 1,
+      "firstNecessary": 1,
+      "fixedScore": 8,
+      "blocking": 0,
+      "necessary": 0,
+      "necessaryFixRounds": 1,
+      "optionalPolishApplied": false,
+      "preview": "artifacts/verification/r24-review-b2.png",
+      "pixelDiff": "artifacts/verification/r24-props-required-fix-diff.json"
+    },
+    "freshCriticCreationLimit": "Team8reached-no-fresh-claim",
+    "runtime": {
+      "context": "reused/nonfreshAI; not human blind test",
+      "score": 8,
+      "blocking": 0,
+      "necessary": 0,
+      "optionalPolishApplied": false,
+      "scope": "entry, quietroom and normal chamber3staticviews; activated scan separately literal-RGB verified",
+      "evidence": "artifacts/verification/r25-visual-review.md"
+    }
+  },
+  "validate": {
+    "terrainErrors": 0,
+    "terrainWarnings": 0,
+    "propsErrors": 0,
+    "propsOutlineWarnings": 5,
+    "beforeCleanupPropsErrors": 5,
+    "notes": "selectivematerialedges/straightmetalbandsretained;initialstraysjoinedaspixelclusters"
+  },
+  "projectReleaseReady": false,
+  "securityGateClosed": false,
+  "sourceTests": {
+    "terrain": 57,
+    "props": 22,
+    "total": 79,
+    "exit": 0,
+    "firstRun": {
+      "passed": 77,
+      "failed": 2,
+      "reason": "uncontracted-hidden-layer-position-assumptions-in-new-test-only"
+    },
+    "evidence": "artifacts/verification/r24-source-tests-run-02.log"
+  },
+  "currentLocalGates": {
+    "unit": 3993,
+    "testFiles": 65,
+    "typeExit": 0,
+    "lintExit": 0,
+    "buildExit": 0,
+    "diffExit": 0,
+    "browserExecuted": 119,
+    "backendExecuted": 23,
+    "auditExecuted": false,
+    "evidence": "artifacts/verification/r25-final-local-gates-01.json",
+    "finalPostAdmissionLocalGatesPending": false
+  },
+  "r24SourceOnlySnapshot": {
+    "status": "source-ready-only;runtime-integration-pending",
+    "integrated": false,
+    "productionReady": false,
+    "runtimeAdmissionPending": true,
+    "currentRuntimeBrowserExecuted": 0,
+    "currentBackendExecuted": 0,
+    "currentLocalGates": {
+      "unit": 3863,
+      "testFiles": 64,
+      "typeExit": 0,
+      "lintExit": 0,
+      "buildExit": 0,
+      "diffExit": 0,
+      "browserCollectOnly": 108,
+      "browserExecuted": 0,
+      "backendExecuted": 0,
+      "auditExecuted": false,
+      "evidence": "artifacts/verification/r24-local-gates-01.log"
+    }
+  },
+  "runtimeVerification": {
+    "round": "R25",
+    "browserLog": "artifacts/verification/r25-current-browser-02.log",
+    "browserMetrics": "artifacts/verification/r25-current-browser-02-metrics.json",
+    "native11Log": "artifacts/verification/r25-browser-author-native-02.log",
+    "selectedFullMetrics": "artifacts/verification/r25-current-native-selected-metrics.json",
+    "adapterTests": 130,
+    "sourceTests": 79,
+    "browserSkipped": 0,
+    "browserSeconds": 1085.593,
+    "backendLog": "artifacts/verification/r25-backend-tests-01.log",
+    "backendCleanup": "artifacts/verification/r25-backend-cleanup.json",
+    "leadCleanup": "artifacts/verification/r25-lead-service-cleanup.json",
+    "sourceFrozenDuringFullBrowser": 153,
+    "visibleBudget": {
+      "limit": 384,
+      "measuredPeak": 135,
+      "views": 5121,
+      "wholeWorldSupports": 605,
+      "purePlanNotFrameRateBenchmark": true
+    },
+    "roles": {
+      "planned": 25,
+      "sourceMatchedNative02": 22,
+      "propsSourceMatchedWithHero": 6,
+      "all32InLevel": false,
+      "resourceGuard38NotObserved38": true
+    },
+    "firstRedRecords": {
+      "adapter": "artifacts/verification/r25-adapter-independent-01.log",
+      "native11": "artifacts/verification/r25-browser-author-native-01.log",
+      "full119": "artifacts/verification/r25-current-browser-01.log",
+      "unmodifiedPair": "artifacts/verification/r25-regression-pair-01.log",
+      "diagnosis": "artifacts/verification/r25-browser-author-first-red-diagnosis.json",
+      "timingSensitivityStillOpen": true,
+      "notCombinedToMakeFinal119": true
+    },
+    "newCollision": false,
+    "independentClock": false,
+    "newGameContinuousFiveChapters": false,
+    "report": "docs/round25-omega-environment-progress.md"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "provenance": "Byte-for-byte original failed full129 browser frame; not generated/edited/repainted",
+  "sha256": "1fcb5bf8ebe897c7177504f189719480f04522099d4573f85a4bf9df5d267dd1",
+  "width": 640,
+  "height": 360,
+  "trace": "artifacts/verification/r26-current-browser-01/probe-art-native-probe-war-7048c-nd-resumes-both-seek-frames/trace.zip",
+  "traceSha256": "15d5ae4f6dfaa9b0c8b70a3cf3af0404a2b2a346310afbbe5113f59feab61eab",
+  "frameIndex": 61,
+  "actualAt": 7338.600000023842,
+  "relativeAt": 1206.1000000238419,
+  "originalTest": "tests/e2e/probe-art.spec.ts:232",
+  "oldOracleRejected": true,
+  "bodyLeft": 64,
+  "bodyTop": 43,
+  "actualOpaqueSource": 294,
+  "actualOpaqueMatched": 294,
+  "oldUnionRatio": 0.9862637362637363,
+  "oldSignatureRatio": 0.9519230769230769,
+  "correctOpaqueSignature": 34,
+  "arbitraryCompositingRobustnessNotClaimed": true
+}

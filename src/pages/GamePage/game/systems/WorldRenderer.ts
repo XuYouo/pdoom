@@ -1,6 +1,7 @@
 import * as Phaser from 'phaser';
 import { bossRect, CHINCHILLA_HALF_SIZE, type BulletKind, type WorldState } from '../entities/model';
 import { worldPlatforms } from './platforms';
+import { platformRuleCue } from './platformRuleCue';
 import { FurnaceRenderer } from './FurnaceRenderer';
 import { LoomRenderer, loomBranchColor } from './LoomRenderer';
 import { OmegaRenderer } from './OmegaRenderer';
@@ -8,6 +9,9 @@ import { canReflect } from './rules';
 import { decodeCheckpoint } from '../data/checkpoints';
 import { contextEffects } from './context';
 import { ClawdRenderer } from './ClawdRenderer';
+import { BossHudRenderer } from './BossHudRenderer';
+import { counterFeedbackFrame } from './counterFeedback';
+import { drawCounterReward } from './CounterRewardRenderer';
 import { EnemySpriteRenderer } from './EnemySpriteRenderer';
 import { ChinchillaSpriteRenderer } from './ChinchillaSpriteRenderer';
 import { CHINCHILLA_BINDING } from '../data/chinchillaAssets';
@@ -16,34 +20,52 @@ import { SydneySpriteRenderer } from './SydneySpriteRenderer';
 import { SYDNEY_BINDING } from '../data/sydneyAssets';
 import { BasiliskSpriteRenderer } from './BasiliskSpriteRenderer';
 import { BASILISK_BINDING } from '../data/basiliskAssets';
+import { LeviathanSpriteRenderer } from './LeviathanSpriteRenderer';
+import { LEVIATHAN_BINDING } from '../data/leviathanAssets';
 import { ChapterOneEnvironmentRenderer } from './ChapterOneEnvironmentRenderer';
 import { FactoryEnvironmentRenderer } from './FactoryEnvironmentRenderer';
 import { FACTORY_ENVIRONMENT_BINDING } from '../data/factoryEnvironmentAssets';
 import { FurnaceEnvironmentRenderer } from './FurnaceEnvironmentRenderer';
 import { FURNACE_ENVIRONMENT_BINDING } from '../data/furnaceEnvironmentAssets';
+import { LoomEnvironmentRenderer } from './LoomEnvironmentRenderer';
+import { LOOM_ENVIRONMENT_BINDING } from '../data/loomEnvironmentAssets';
+import { OmegaEnvironmentRenderer } from './OmegaEnvironmentRenderer';
+import { OMEGA_ENVIRONMENT_BINDING } from '../data/omegaEnvironmentAssets';
+import { PICKUP_BINDING } from '../data/pickupAssets';
+import { PickupSpriteRenderer } from './PickupSpriteRenderer';
+import { HumanRaterSpriteRenderer } from './HumanRaterSpriteRenderer';
+import { HUMAN_RATER_BINDING } from '../data/humanRaterAssets';
 import { FactoryRenderer } from './FactoryRenderer';
 import { drawChapterDecor } from './ChapterDecor';
-import { cameraTarget, stepCamera, worldLabelFits, rasterCameraPoint, type CameraPoint } from './cameraFrame';
+import { cameraTarget, stepCamera, worldLabelFits, worldAnnotationCenterX, rasterCameraPoint, type CameraPoint } from './cameraFrame';
 
 const ink = { orange: 0xf3aa78, purple: 0xb197ef };
 const bulletColors: Record<BulletKind, number> = { dictionary: 0xeec76d, echo: 0x80d5c8, caption: 0xda91ca, impact: 0xee866a, dialogue: 0x9dcbe4, knife: 0xff9ec3, gpu: 0xf1dc8b, causal: 0xb7ef83, void: 0xb4e2c6, mirror: 0xc7a4f5 };
 
 /** View-only native bodies and environment; Core owns every combat cue and state. */
 export class WorldRenderer {
+  private pickups: PickupSpriteRenderer;
+  private raters: HumanRaterSpriteRenderer;
+  private pickupMarkers: Phaser.GameObjects.Graphics;
   private clawd: ClawdRenderer;
   private enemies: EnemySpriteRenderer;
   private chinchillas: ChinchillaSpriteRenderer;
   private gato: GatoSpriteRenderer;
   private sydney: SydneySpriteRenderer;
   private basilisk: BasiliskSpriteRenderer;
+  private leviathan: LeviathanSpriteRenderer;
   private environment: ChapterOneEnvironmentRenderer;
   private nativeEnvironment = false;
   private factoryEnvironment: FactoryEnvironmentRenderer;
   private nativeFactoryEnvironment = false;
   private furnaceEnvironment: FurnaceEnvironmentRenderer;
   private nativeFurnaceEnvironment = false;
+  private loomEnvironment: LoomEnvironmentRenderer;
+  private nativeLoomEnvironment = false;
+  private omegaEnvironment: OmegaEnvironmentRenderer;
+  private nativeOmegaEnvironment = false;
   private lastWorld: WorldState | null = null;
-  private chapterOneFollow: CameraPoint | null = null;
+  private cameraFollow: CameraPoint | null = null;
   private disposed = false;
   private factory: FactoryRenderer;
   private furnace: FurnaceRenderer;
@@ -59,22 +81,31 @@ export class WorldRenderer {
   private labels: Phaser.GameObjects.Text[] = [];
   private stateText: Phaser.GameObjects.Text;
   private bossText: Phaser.GameObjects.Text;
+  private bossHud: BossHudRenderer;
 
   constructor(private scene: Phaser.Scene) {
     this.background = scene.add.graphics().setDepth(-10);
     this.graphics = scene.add.graphics();
+    // Preserve old marker-before-pickup painter order without lifting pickups above real danger cues.
+    this.pickupMarkers = scene.add.graphics().setDepth(-2);
+    this.pickups = new PickupSpriteRenderer(scene, PICKUP_BINDING);
+    this.raters = new HumanRaterSpriteRenderer(scene, HUMAN_RATER_BINDING);
     this.factoryForeground = scene.add.graphics().setDepth(1);
     // Real combat targets and boss danger cues stay above native Images (depth 2), never baked into art.
     this.coreGraphics = scene.add.graphics().setDepth(3);
+    this.bossHud = new BossHudRenderer(scene);
     this.clawd = new ClawdRenderer(scene);
     this.enemies = new EnemySpriteRenderer(scene);
     this.chinchillas = new ChinchillaSpriteRenderer(scene, CHINCHILLA_BINDING);
     this.gato = new GatoSpriteRenderer(scene);
     this.sydney = new SydneySpriteRenderer(scene, SYDNEY_BINDING);
     this.basilisk = new BasiliskSpriteRenderer(scene, BASILISK_BINDING);
+    this.leviathan = new LeviathanSpriteRenderer(scene, LEVIATHAN_BINDING);
     this.environment = new ChapterOneEnvironmentRenderer(scene, undefined, this.repaintFrozenEnvironment);
     this.factoryEnvironment = new FactoryEnvironmentRenderer<Phaser.Textures.Texture>(scene, FACTORY_ENVIRONMENT_BINDING, this.repaintFrozenEnvironment);
     this.furnaceEnvironment = new FurnaceEnvironmentRenderer(scene, FURNACE_ENVIRONMENT_BINDING, this.repaintFrozenEnvironment);
+    this.loomEnvironment = new LoomEnvironmentRenderer(scene, LOOM_ENVIRONMENT_BINDING);
+    this.omegaEnvironment = new OmegaEnvironmentRenderer(scene, OMEGA_ENVIRONMENT_BINDING);
     this.factory = new FactoryRenderer(scene);
     this.furnace = new FurnaceRenderer(scene);
     this.loom = new LoomRenderer(scene);
@@ -93,6 +124,17 @@ export class WorldRenderer {
     if (!this.chapter) return;
     this.cachedBackdrop?.destroy(); this.cachedBackdrop = null;
     this.background.setVisible(true);
+    if (this.chapter.stage === 4 && this.nativeLoomEnvironment) {
+      // Source Images supply sparse weave/fork dressing. No new support beneath real branch gaps.
+      this.background.clear().fillStyle(0x121722).fillRect(0, 0, this.chapter.width, this.chapter.height);
+      this.background.fillStyle(0x0b111d).fillRect(0, this.chapter.height - 30, this.chapter.width, 30);
+      return;
+    }
+    if (this.chapter.stage === 5 && this.nativeOmegaEnvironment) {
+      // Native Images own static office/cooling dressing. Door leaf and mirror cues remain live projections.
+      this.background.clear().fillStyle(0x0f191b).fillRect(0, 0, this.chapter.width, this.chapter.height);
+      return;
+    }
     if ((this.chapter.stage === 1 && this.nativeEnvironment) || (this.chapter.stage === 2 && this.nativeFactoryEnvironment) || (this.chapter.stage === 3 && this.nativeFurnaceEnvironment)) {
       this.background.clear().fillStyle(0x0f191b).fillRect(0, 0, this.chapter.width, this.chapter.height);
       return;
@@ -115,17 +157,19 @@ export class WorldRenderer {
   }
 
   private configureChapter(world: WorldState) {
-    this.chapter = world.chapter; this.nativeEnvironment = false; this.nativeFactoryEnvironment = false; this.nativeFurnaceEnvironment = false; this.chapterOneFollow = null;
+    this.chapter = world.chapter; this.nativeEnvironment = false; this.nativeFactoryEnvironment = false; this.nativeFurnaceEnvironment = false; this.nativeLoomEnvironment = false; this.nativeOmegaEnvironment = false; this.cameraFollow = null;
     this.rebuildBackdrop();
     this.labels.forEach(label => label.destroy());
-    // Chapter3 keeps environmental identifiers here; the React objective owns the one current instruction.
+    // Environment labels identify places; React owns the one current action instruction.
     const furnaceNames = ['GPU CLUSTER', 'NVDA / K-LINE', '安全检查点', 'GPU 热区', 'BASILISK', '因果律核心'];
-    this.labels = world.chapter.signs.map((sign, index) => this.scene.add.text(sign.x, sign.y, world.chapter.stage === 3 ? furnaceNames[index] ?? sign.text.split('\n')[0] : sign.text, { fontFamily: 'monospace', fontSize: '10px', color: '#9cb4a9', lineSpacing: 4 }).setDepth(1));
-    if (world.chapter.stage <= 2) {
-      world.chapter.checkpoints.slice(1).forEach(checkpoint => {
-        this.labels.push(this.scene.add.text(checkpoint.x + 22, this.checkpointFloor(world.chapter, checkpoint) - 29, '募捐箱 → 休息室', { fontFamily: 'monospace', fontSize: '8px', color: '#a3b199' }).setDepth(1));
-      });
-    }
+    const loomNames = ['04 / THE LOOM', 'PARALLEL BRANCH', '最后安全点', 'LEVIATHAN'];
+    const omegaNames = ['05 / OMEGA POINT', 'MIRROR MEMORY', '最后休息点'];
+    const identifiers = world.chapter.stage === 3 ? furnaceNames : world.chapter.stage === 4 ? loomNames : world.chapter.stage === 5 ? omegaNames : null;
+    this.labels = world.chapter.signs.map((sign, index) => {
+      const text = identifiers ? identifiers[index] ?? sign.text.split('\n')[0] : sign.text;
+      return this.scene.add.text(sign.x, sign.y, text, { fontFamily: 'monospace', fontSize: '10px', color: '#9cb4a9', lineSpacing: 4 }).setDepth(1);
+    });
+    // The workstation replaces floating copy; donation/flag facts are retained without covering its feet.
     this.scene.cameras.main.setBounds(0, 0, world.chapter.width, world.chapter.height);
   }
 
@@ -142,24 +186,31 @@ export class WorldRenderer {
     const focus = world.mode === 'finished' ? { ...player, x: chapter.arena.x + 320, y: chapter.floor - 11, vy: 0 } : player;
     const frameQuietRoom = !!world.omega && (world.omega.phase === 'chamber' || world.omega.phase === 'reveal') && player.x >= chapter.arena.x + 16;
     const target = cameraTarget(chapter, focus, world.boss.active || world.mode === 'finished' || frameQuietRoom);
-    const current = chapter.stage === 1 && this.chapterOneFollow ? this.chapterOneFollow : { x: camera.scrollX, y: camera.scrollY };
+    const current = this.cameraFollow ?? { x: camera.scrollX, y: camera.scrollY };
     const scroll = stepCamera(current, target, deltaMs, snapCamera);
-    if (chapter.stage === 1) {
-      // Native4.0 probe found fractional camera drift between Graphics and rounded Image quads.
-      this.chapterOneFollow = scroll; const raster = rasterCameraPoint(scroll); camera.setScroll(raster.x, raster.y);
-    } else { this.chapterOneFollow = null; camera.setScroll(scroll.x, scroll.y); }
-    if (chapter.stage === 1 || chapter.stage === 3) for (const label of this.labels) label.setVisible(worldLabelFits(label.x, label.displayWidth, camera.scrollX));
+    // Phaser4.0 mirrored Images can mis-sample at half-pixel scroll even with roundPixels.
+    // Retain floating follow, but publish one raster camera for Images and Graphics in every chapter.
+    this.cameraFollow = scroll;
+    const raster = rasterCameraPoint(scroll); camera.setScroll(raster.x, raster.y);
+    if (chapter.stage === 1 || chapter.stage === 3 || chapter.stage === 4 || chapter.stage === 5) for (const label of this.labels) label.setVisible(worldLabelFits(label.x, label.displayWidth, camera.scrollX));
     const platforms = worldPlatforms(world);
     const nativeEnvironment = this.environment.draw(world, platforms);
     const nativeFactoryEnvironment = this.factoryEnvironment.draw(world, platforms, { x: camera.scrollX, y: camera.scrollY, width: 640, height: 360 });
     const nativeFurnaceEnvironment = this.furnaceEnvironment.draw(world, platforms, { x: camera.scrollX, y: camera.scrollY, width: 640, height: 360 });
-    if (nativeEnvironment !== this.nativeEnvironment || nativeFactoryEnvironment !== this.nativeFactoryEnvironment || nativeFurnaceEnvironment !== this.nativeFurnaceEnvironment) {
-      this.nativeEnvironment = nativeEnvironment; this.nativeFactoryEnvironment = nativeFactoryEnvironment; this.nativeFurnaceEnvironment = nativeFurnaceEnvironment; this.rebuildBackdrop();
+    const nativeLoomEnvironment = this.loomEnvironment.draw(world, { x: camera.scrollX, y: camera.scrollY, width: 640, height: 360 });
+    const nativeOmegaEnvironment = this.omegaEnvironment.draw(world, { x: camera.scrollX, y: camera.scrollY, width: 640, height: 360 });
+    if (nativeEnvironment !== this.nativeEnvironment || nativeFactoryEnvironment !== this.nativeFactoryEnvironment
+      || nativeFurnaceEnvironment !== this.nativeFurnaceEnvironment || nativeLoomEnvironment !== this.nativeLoomEnvironment || nativeOmegaEnvironment !== this.nativeOmegaEnvironment) {
+      this.nativeEnvironment = nativeEnvironment; this.nativeFactoryEnvironment = nativeFactoryEnvironment; this.nativeFurnaceEnvironment = nativeFurnaceEnvironment; this.nativeLoomEnvironment = nativeLoomEnvironment; this.nativeOmegaEnvironment = nativeOmegaEnvironment; this.rebuildBackdrop();
     }
-    const nativePlatforms = nativeEnvironment || nativeFactoryEnvironment || nativeFurnaceEnvironment;
+    const nativePlatforms = nativeEnvironment || nativeFactoryEnvironment || nativeFurnaceEnvironment || nativeLoomEnvironment || nativeOmegaEnvironment;
+    const nativePickups = this.pickups.draw(world, { x: camera.scrollX, y: camera.scrollY, width: 640, height: 360 });
+    this.raters.draw(world, { x: camera.scrollX, y: camera.scrollY, width: 640, height: 360 });
     const inView = (x: number, y: number, w = 0, h = 0) => x + w >= camera.scrollX - 50 && x <= camera.scrollX + 690 && y + h >= camera.scrollY - 65 && y <= camera.scrollY + 425;
     const g = this.graphics.clear();
+    const markers = this.pickupMarkers.clear();
     const core = this.coreGraphics.clear();
+    this.bossHud.clear();
     const afterSea = this.factoryForeground.clear();
     const insight = now < player.insightUntil;
     const coreRadius = contextEffects(world.save).coreRadius;
@@ -170,40 +221,42 @@ export class WorldRenderer {
     }
     this.furnace.drawEnvironment(g, world, nativeFurnaceEnvironment);
     this.loom.drawEnvironment(g, world);
-    this.omega.drawEnvironment(g, world);
+    this.omega.drawEnvironment(nativeOmegaEnvironment ? afterSea : g, world);
     platforms.forEach(platform => {
       if (world.collapsed.includes(platform.id) || !inView(platform.x, platform.y, platform.w, platform.h)) return;
       const node = world.loom?.nodes.find(value => value.id === platform.id);
       const collapsing = !!world.collapseAt[platform.id] || node?.collapseAt != null;
       const fill = node?.branch === 'upper' ? 0x343047 : node?.branch === 'lower' ? 0x243d3f : platform.oneWay ? 0x3a4f44 : 0x293c34;
-      const surfaceGraphics = nativeFurnaceEnvironment ? afterSea : g;
+      const surfaceGraphics = nativeFurnaceEnvironment || nativeLoomEnvironment || nativeOmegaEnvironment ? afterSea : g;
       if (!nativePlatforms || collapsing) surfaceGraphics.fillStyle(collapsing ? 0x674336 : fill).fillRect(platform.x, platform.y, platform.w, platform.h);
-      // The exact native edge is the ordinary surface; retain only real rule cues over it.
-      if (!nativePlatforms || collapsing || node || platform.fragile || platform.protected) {
-        surfaceGraphics.fillStyle(collapsing ? 0xed926c : node ? loomBranchColor(node.branch) : platform.fragile ? 0xa98a64 : platform.protected ? 0x90c6b0 : 0x8caa83).fillRect(platform.x, platform.y, platform.w, 3);
+      // Native skins round their placement. Share that grid so a fractional lift
+      // cannot spill the3px rule strip into the fourth authored row.
+      if (!nativePlatforms || collapsing || node || platform.fragile || platform.protected || nativeOmegaEnvironment) {
+        surfaceGraphics.fillStyle(collapsing ? 0xed926c : node ? loomBranchColor(node.branch) : platform.fragile ? 0xa98a64 : platform.protected ? 0x90c6b0 : 0x8caa83).fillRect(...platformRuleCue(platform, nativePlatforms));
       }
       if (!nativePlatforms) g.lineStyle(1, 0x51634d, 0.6).strokeRect(platform.x, platform.y + 3, platform.w, platform.h - 3);
       if (platform.fragile) {
-        g.lineStyle(1, collapsing ? 0xfaad6b : 0x121d1b).lineBetween(platform.x + 35, platform.y + 2, platform.x + 42, platform.y + 7);
-        g.lineBetween(platform.x + 42, platform.y + 7, platform.x + 37, platform.y + 11);
+        const cracks = nativeLoomEnvironment ? afterSea : g;
+        cracks.lineStyle(1, collapsing ? 0xfaad6b : 0x121d1b).lineBetween(platform.x + 35, platform.y + 2, platform.x + 42, platform.y + 7);
+        cracks.lineBetween(platform.x + 42, platform.y + 7, platform.x + 37, platform.y + 11);
       }
     });
-    this.loom.drawWarnings(g, world);
+    this.loom.drawWarnings(core, world);
     chapter.checkpoints.slice(1).forEach(checkpoint => {
       const reached = decodeCheckpoint(world.save.checkpoint).room >= checkpoint.id || world.mode === 'cleared' || world.mode === 'finished';
       const floor = this.checkpointFloor(chapter, checkpoint);
-      g.lineStyle(2, reached ? 0x8bca9f : 0x617972).lineBetween(checkpoint.x, floor - 47, checkpoint.x, floor);
-      g.fillStyle(reached ? 0x8bca9f : 0x617972).fillTriangle(checkpoint.x, floor - 47, checkpoint.x + 17, floor - 41, checkpoint.x, floor - 35);
+      markers.lineStyle(2, reached ? 0x8bca9f : 0x617972).lineBetween(checkpoint.x, floor - 47, checkpoint.x, floor);
+      markers.fillStyle(reached ? 0x8bca9f : 0x617972).fillTriangle(checkpoint.x, floor - 47, checkpoint.x + 17, floor - 41, checkpoint.x, floor - 35);
       if (chapter.stage <= 2) {
-        const x = checkpoint.x + 24;
-        g.fillStyle(0x293e34).fillRect(x, floor - 13, 19, 13);
-        g.lineStyle(1, 0x82977a).strokeRect(x, floor - 13, 19, 13);
-        g.fillStyle(0x121e1b).fillRect(x + 4, floor - 11, 11, 2);
-        g.lineStyle(1, world.save.donated ? 0xb0dd93 : 0x708967).lineBetween(x + 5, floor - 7, x + 12, floor - 7).lineBetween(x + 12, floor - 7, x + 12, floor - 4).lineBetween(x + 12, floor - 4, x + 7, floor - 4);
+        const x = checkpoint.x + (chapter.stage === 1 && checkpoint.id === 2 ? 24 : -36);
+        markers.fillStyle(0x293e34).fillRect(x, floor - 13, 19, 13);
+        markers.lineStyle(1, 0x82977a).strokeRect(x, floor - 13, 19, 13);
+        markers.fillStyle(0x121e1b).fillRect(x + 4, floor - 11, 11, 2);
+        markers.lineStyle(1, world.save.donated ? 0xb0dd93 : 0x708967).lineBetween(x + 5, floor - 7, x + 12, floor - 7).lineBetween(x + 12, floor - 7, x + 12, floor - 4).lineBetween(x + 12, floor - 4, x + 7, floor - 4);
       }
     });
     world.pickups.forEach(pickup => {
-      if (!inView(pickup.x, pickup.y)) return;
+      if (!inView(pickup.x, pickup.y) || nativePickups.has(pickup.id)) return;
       if (nativeEnvironment && pickup.kind === 'mushroom') return;
       const y = pickup.y + Math.sin(now / 280 + pickup.x) * 2;
       if (pickup.kind === 'token') {
@@ -219,6 +272,7 @@ export class WorldRenderer {
         g.fillStyle(0x8063b1).fillTriangle(pickup.x, y - 9, pickup.x - 8, y, pickup.x, y + 9);
       }
     });
+    const enemyEffects = world.omega ? core : g;
     const spriteEnemies = this.enemies.draw(world);
     const nativeChinchillas = this.chinchillas.draw(world);
     world.enemies.filter(enemy => enemy.hp > 0).forEach(enemy => {
@@ -236,7 +290,7 @@ export class WorldRenderer {
       }
       if (spriteEnemies.has(enemy.id)) {
         // The sprite replaces only the actor: retain the real attack warning, not a cosmetic timer.
-        if (enemy.phase === 'tell') g.lineStyle(2, 0xe6c47f).strokeCircle(enemy.x, enemy.y, 17);
+        if (enemy.phase === 'tell') enemyEffects.lineStyle(2, 0xe6c47f).strokeCircle(enemy.x, enemy.y, 17);
         return;
       }
       if (enemy.kind === 'chinchilla') {
@@ -252,7 +306,7 @@ export class WorldRenderer {
       g.lineStyle(1, 0xd5c3a5).strokeRect(enemy.x - 10, enemy.y - 11, 20, 22);
       g.fillStyle(0x162124).fillRect(enemy.x - 5, enemy.y - 4, 3, 4).fillRect(enemy.x + 3, enemy.y - 4, 3, 4);
       if (enemy.kind === 'parrot') g.fillStyle(0xd7af72).fillTriangle(enemy.x - 11, enemy.y - 4, enemy.x - 18, enemy.y, enemy.x - 11, enemy.y + 4);
-      if (enemy.phase === 'tell') g.lineStyle(2, 0xe6c47f).strokeCircle(enemy.x, enemy.y, 17);
+      if (enemy.phase === 'tell') enemyEffects.lineStyle(2, 0xe6c47f).strokeCircle(enemy.x, enemy.y, 17);
     });
     this.drawBoss(world);
     world.shocks.forEach(shock => core.fillStyle(0xfb926d, 0.6).fillRect(shock.x - shock.width / 2, chapter.floor - 12, shock.width, 12));
@@ -264,7 +318,8 @@ export class WorldRenderer {
       world.history.filter((_, index) => index % 12 === 0).forEach(sample => g.fillCircle(sample.x, sample.y, 2));
     }
     // Native boss bodies must not hide real projectiles; the same Core bullets stay above them.
-    const shots = (world.boss.kind === 'gato' && world.boss.active) || world.boss.kind === 'sydney' || world.boss.kind === 'basilisk' || (chapter.stage === 3 && !world.boss.active) ? core : g;
+    const shots = (world.boss.kind === 'gato' && world.boss.active) || world.boss.kind === 'sydney' || world.boss.kind === 'basilisk' || world.boss.kind === 'leviathan' || world.boss.kind === 'mirror' || (chapter.stage === 3 && !world.boss.active) ? core : g;
+    drawCounterReward(shots, counterFeedbackFrame(world, { x: camera.scrollX, y: camera.scrollY, w: 640, h: 360 }));
     world.bullets.forEach(bullet => {
       if (!inView(bullet.x, bullet.y)) return;
       if (bullet.harmless) {
@@ -286,10 +341,10 @@ export class WorldRenderer {
     });
     this.factory.draw(g, world, core, afterSea, nativeFactoryEnvironment);
     this.furnace.drawCombat(world.boss.kind === 'basilisk' ? core : g, world);
-    this.loom.drawCombat(g, world);
-    this.omega.drawCombat(g, world);
+    this.loom.drawCombat(core, world);
+    this.omega.drawCombat(world.omega ? core : g, world);
     this.clawd.draw(world);
-    const actorEffects = world.factory ? afterSea : g;
+    const actorEffects = world.factory ? afterSea : world.omega ? core : g;
     if (Object.values(player.immunity).some(until => until !== undefined && until > now)) actorEffects.lineStyle(1, 0x87e3cd, 0.8).strokeCircle(player.x, player.y, 17);
     if (now < player.dashUntil) actorEffects.lineStyle(2, 0xffd9ae, 0.6).lineBetween(player.x, player.y, player.x - player.facing * 32, player.y);
     // React owns the single death/chapter transition screen; do not duplicate a text panel behind it.
@@ -301,14 +356,21 @@ export class WorldRenderer {
     const spriteBoss = this.gato.draw(world); // Update even on death/other chapters, before the early return.
     const spriteSydney = this.sydney.draw(world);
     const spriteBasilisk = this.basilisk.draw(world);
+    const spriteLeviathan = this.leviathan.draw(world);
     const b = world.boss, g = this.graphics, cues = this.coreGraphics, chapter = world.chapter;
-    this.bossText.setVisible(b.active && b.hp > 0).setDepth(b.kind === 'gato' || b.kind === 'sydney' || b.kind === 'basilisk' ? 4 : 2);
+    this.bossText.setVisible(b.active && b.hp > 0).setDepth(b.kind === 'gato' || b.kind === 'sydney' || b.kind === 'basilisk' || b.kind === 'leviathan' || b.kind === 'mirror' ? 4 : 2);
     if (b.hp <= 0) return;
     this.bossText.setOrigin(0.5);
     if (b.kind === 'mirror') {
-      if (b.active) this.bossText.setPosition(b.x, b.y - 42).setText(`AGI / 你的镜像 ${b.phase}/3`);
+      if (b.active) {
+        // setText synchronously measures the full label in installed Phaser4.0.0. Keep it and HP together.
+        this.bossText.setText(`AGI / 你的镜像 ${b.phase}/3`);
+        const camera = this.scene.cameras.main;
+        const x = worldAnnotationCenterX(b.x, Math.max(64, this.bossText.displayWidth), camera.scrollX, camera.width);
+        this.bossText.setPosition(x, b.y - 42);
+      }
     } else if (b.kind === 'leviathan') {
-      this.loom.drawBoss(g, world);
+      this.loom.drawBoss(g, world, spriteLeviathan, cues);
       const bounds = bossRect(b);
       if (b.active) this.bossText.setOrigin(1, 0.5).setPosition(bounds.x + bounds.w, bounds.y - 20)
         .setText(`LEVIATHAN / ${world.loom && world.loom.turn.weakUntil > world.save.elapsedMs ? '弱点' : '闭壳'} ${b.phase}/3`);
@@ -357,19 +419,19 @@ export class WorldRenderer {
     }
     if (b.active) {
       const barY = b.kind === 'leviathan' ? bossRect(b).y - 10 : b.kind === 'mirror' ? b.y - 31 : b.y - 51;
-      const bar = b.kind === 'gato' || b.kind === 'sydney' || b.kind === 'basilisk' ? cues : g; // Preserve HP above the tell column, as in the original draw order.
-      bar.fillStyle(0x252b28).fillRect(b.x - 32, barY, 64, 4);
-      bar.fillStyle(0xebaa7b).fillRect(b.x - 32, barY, 64 * b.hp / b.maxHp, 4);
+      const barX = b.kind === 'mirror' ? this.bossText.x : b.x;
+      this.bossHud.drawHealth(barX, barY, b.hp, b.maxHp);
     }
   }
 
   destroy() {
     if (this.disposed) return;
-    this.disposed = true; this.lastWorld = null; this.environment.destroy(); this.factoryEnvironment.destroy(); this.furnaceEnvironment.destroy();
+    this.disposed = true; this.lastWorld = null; this.environment.destroy(); this.factoryEnvironment.destroy(); this.furnaceEnvironment.destroy(); this.loomEnvironment.destroy(); this.omegaEnvironment.destroy();
     this.scene.game.renderer.off(Phaser.Renderer.Events.RESTORE_WEBGL, this.rebuildBackdrop);
     this.cachedBackdrop?.destroy(); this.cachedBackdrop = null;
-    this.clawd.destroy(); this.enemies.destroy(); this.chinchillas.destroy(); this.gato.destroy(); this.sydney.destroy(); this.basilisk.destroy(); this.factory.destroy(); this.furnace.destroy(); this.loom.destroy(); this.omega.destroy(); this.background.destroy(); this.graphics.destroy(); this.coreGraphics.destroy(); this.factoryForeground.destroy();
+    this.raters.destroy(); this.pickups.destroy(); this.pickupMarkers.destroy();
+    this.clawd.destroy(); this.enemies.destroy(); this.chinchillas.destroy(); this.gato.destroy(); this.sydney.destroy(); this.basilisk.destroy(); this.leviathan.destroy(); this.factory.destroy(); this.furnace.destroy(); this.loom.destroy(); this.omega.destroy(); this.background.destroy(); this.graphics.destroy(); this.coreGraphics.destroy(); this.factoryForeground.destroy();
     this.labels.forEach(label => label.destroy());
-    this.stateText.destroy(); this.bossText.destroy();
+    this.stateText.destroy(); this.bossText.destroy(); this.bossHud.destroy();
   }
 }

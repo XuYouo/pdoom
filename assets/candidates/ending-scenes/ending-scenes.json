@@ -1,0 +1,52 @@
+{ "frames": [
+   {
+    "filename": "ending-scenes #aligned.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 1000
+   },
+   {
+    "filename": "ending-scenes #warden.aseprite",
+    "frame": { "x": 256, "y": 0, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 1000
+   },
+   {
+    "filename": "ending-scenes #foom.aseprite",
+    "frame": { "x": 512, "y": 0, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 1000
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.6-dev",
+  "image": "ending-scenes.png",
+  "format": "RGBA8888",
+  "size": { "w": 768, "h": 128 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "aligned", "from": 0, "to": 0, "direction": "forward", "color": "#d97757ff" },
+   { "name": "warden", "from": 1, "to": 1, "direction": "forward", "color": "#9dded1ff" },
+   { "name": "foom", "from": 2, "to": 2, "direction": "forward", "color": "#9e5979ff" }
+  ],
+  "layers": [
+   { "name": "background", "opacity": 255, "blendMode": "normal" },
+   { "name": "furniture", "opacity": 255, "blendMode": "normal" },
+   { "name": "actor", "opacity": 255, "blendMode": "normal" },
+   { "name": "narrative-props", "opacity": 255, "blendMode": "normal" },
+   { "name": "accents", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

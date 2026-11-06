@@ -93,7 +93,7 @@ test('the public audio adapter closes a real context on destroy without reopenin
     const { AudioSystem } = await import(modulePath) as typeof import('../../src/pages/GamePage/game/audio/AudioSystem');
     const status = document.createElement('output'); status.dataset.testid = 'native-audio-status';
     const audio = new AudioSystem(value => { status.textContent = value; });
-    audio.update({ runId: 'isolated-native-audio-proof', stage: 4, doom: 8, bossActive: true, running: true, elapsedMs: 0, hp: 100, shots: 0, rewinds: 0, rerolls: 0, turns: 0, stemsLost: 0 });
+    audio.update({ runId: 'isolated-native-audio-proof', stage: 4, doom: 8, bossActive: true, running: true, elapsedMs: 0, hp: 100, shots: 0, rewinds: 0, dashes: 0, insights: 0, rerolls: 0, turns: 0, stemsLost: 0 });
     const start = document.createElement('button'); start.textContent = 'Native audio start'; start.onclick = () => { void audio.unlock(); };
     const stop = document.createElement('button'); stop.textContent = 'Native audio destroy'; stop.onclick = () => { audio.destroy(); void audio.unlock(); };
     const panel = document.createElement('div'); panel.style.cssText = 'position:fixed;inset:0 auto auto 0;z-index:9999;background:black;padding:8px;display:flex;gap:12px';

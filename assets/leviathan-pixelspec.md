@@ -1,4 +1,4 @@
-# Leviathan PixelSpec — design locked, not yet admitted
+# Leviathan PixelSpec — source frozen, native asset regression-admitted
 
 ## Mechanical source
 
@@ -32,6 +32,9 @@ Native active skin alpha1/inactive.55; fixed center, no flip or floor snapping. 
 
 No new image-generation output was obtained or imported. Proceed from the explicit written GDD/mechanical design; an unverified image is not a reference. Generated geometry/colours are not authority; redraw native art in live Aseprite. Never ship a downscaled reference as the sprite.
 
-Independent anonymous cold read before brief-aware review, at most3 necessary corrections;7/10 with0blocking is enough to freeze. Source proof needs8 unique frames/consistentpivot/palette/alpha/realcel reconstruction. Actual native browser proof must preserve existing Loom/audio/collision controls and later add source pose registration,realweak andphase/death/cleanup coverage. Current CP2 browser route doesnotshoot and doesnot certify all phases.
+Independent anonymous cold read precedes brief-aware review, at most3 necessary corrections;7/10 with0blocking is enough to freeze.
+Source8unique frames/pivot/palette/alpha/realcel reconstruction remain frozen. R20 firstHP-phase CP2 candidate proof is historical.
+[R21 ordinary keyboard/mouse](<../docs/round21-leviathan-verification.md>) now covers all HP floors and real kill, independent same-arena cleanup, hurtBoss/player void defeat, checkpoint/newattempt fullHP closed reset and actual chapter5 entry; complete102browser/23freshPG/3567unit functional gates pass.
+No private browserWorld, clock/HP injection,98% or seven-other threshold reduction; fresh continuous five-chapter journey and human audiovisual review remain separate.
 
-Project audit12 moderate development-chain entries remain open separately. This design is not a production or whole-GDD completion claim.
+Project audit12 moderate development-chain entries remain open separately. The native asset admission is not a production game/security or whole-GDD completion claim.

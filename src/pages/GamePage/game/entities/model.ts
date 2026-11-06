@@ -1,3 +1,4 @@
+import type { HumanRaterEvaluation } from '../data/humanRater';
 import type { GameSaveData, RelicId, RunResult } from '../../../../objects/game/GameSaveData';
 
 export interface Vec2 { x: number; y: number }
@@ -74,6 +75,8 @@ export interface Player extends Vec2 {
   standingOn: string | null; petrifiedUntil: number;
   coyoteUntil: number; jumpUntil: number; dashUntil: number; dashReadyAt: number;
   shotReadyAt: number; invulnerableUntil: number; rewindReadyAt: number;
+  /** Last successful emission in simulation time; runtime-only, never reconstructed from a save. */
+  lastFiredAt: number | null;
   insightUntil: number; insightReadyAt: number; invertedUntil: number;
   immunity: Partial<Record<BulletKind, number>>; criticalCharges: number;
 }
@@ -108,7 +111,7 @@ export interface WorldState {
   mode: 'ready' | 'playing' | 'rest' | 'dead' | 'cleared' | 'finished' | 'unavailable';
   chapter: ChapterDefinition; factory: FactoryState | null; furnace: FurnaceState | null; loom: LoomState | null;
   omega: OmegaState | null; behavior: BehaviorMemory;
-  rest: { room: 1 | 2; message: string } | null;
+  rest: { room: 1 | 2; message: string; evaluation: HumanRaterEvaluation | null } | null;
   save: GameSaveData; player: Player; enemies: Enemy[]; boss: Boss;
   bullets: Bullet[]; pickups: Pickup[]; history: HistorySample[]; rewind: RewindState | null;
   shocks: Shockwave[]; collapsed: string[]; collapseAt: Record<string, number>;

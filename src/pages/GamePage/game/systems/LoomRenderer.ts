@@ -12,7 +12,7 @@ export class LoomRenderer {
 
   constructor(private scene: Phaser.Scene) {
     this.status = scene.add.text(630, 28, '', { fontFamily: 'monospace', fontSize: '10px', color: '#c8bedf', align: 'right', lineSpacing: 4, backgroundColor: '#121724eb', padding: { x: 5, y: 4 } }).setOrigin(1, 0).setScrollFactor(0).setDepth(6);
-    this.action = scene.add.text(12, 132, '', { fontFamily: 'monospace', fontSize: '11px', color: '#ffe0a3', align: 'left', lineSpacing: 3, backgroundColor: '#181e29ef', padding: { x: 5, y: 4 } }).setOrigin(0, 0).setScrollFactor(0).setDepth(6);
+    this.action = scene.add.text(12, 132, '', { fontFamily: 'monospace', fontSize: '11px', color: '#ffe0a3', align: 'left', lineSpacing: 3, backgroundColor: '#181e29ef', padding: { x: 5, y: 4 } }).setOrigin(0.5, 1).setScrollFactor(1).setDepth(6);
   }
 
   private label(id: string, x: number, y: number, text: string, color: string) {
@@ -83,15 +83,14 @@ export class LoomRenderer {
 
   drawCombat(g: Phaser.GameObjects.Graphics, world: WorldState) {
     const loom = world.loom;
-    this.status.setVisible(!!loom);
+    this.status.setVisible(false);
     this.action.setVisible(false);
     if (!loom) return;
     const now = world.save.elapsedMs, boss = world.boss;
-    const ready = now >= loom.rerollReadyAt && !world.rewind;
-    const reroll = ready ? 'R / 可重roll' : world.rewind ? '回溯中不可重roll' : `R / ${remaining(loom.rerollReadyAt, now)}s`;
-    this.status.setText(boss.active && boss.hp > 0
-      ? `${reroll} · 时间线${loom.timeline === 0 ? 'A' : 'B'}\n${loom.hpUiTaken ? '血条已被吞' : '血条可读'} · 音轨被吞 ${loom.stemsLost}/4`
-      : `LOOM / 时间线${loom.timeline === 0 ? 'A' : 'B'}\n${reroll} · 上下都可通行`);
+    // React owns timeline/HP/music state. Keep only the otherwise missing exact R cooldown.
+    const cooling = now < loom.rerollReadyAt;
+    this.status.setVisible(cooling);
+    if (cooling) this.status.setText(`R / ${remaining(loom.rerollReadyAt, now)}s`);
     if (loom.lastReroll && now - loom.lastReroll.at < 450) {
       const { from, to, at } = loom.lastReroll;
       const alpha = Math.max(0, 1 - (now - at) / 450);
@@ -112,39 +111,39 @@ export class LoomRenderer {
       g.lineStyle(3, 0xffdba1).lineBetween(ax + 38, ay, ax - 18, ay);
       g.fillStyle(0xffdba1).fillTriangle(ax - 22, ay, ax - 10, ay - 7, ax - 10, ay + 7);
     }
-    this.action.setVisible(world.mode === 'playing');
-    this.action.setText(open ? `SHARP LEFT TURN / 弱点 ${remaining(loom.turn.weakUntil, now)}s\n血条与音轨已吐回 · 立即射击`
-      : turning ? `先在标线右侧，再 A + SHIFT 向左跨线\n急转弯窗口 ${remaining(loom.turn.until, now)}s`
-        : boss.action === 'tell' ? loom.swallow?.ids.length
-          ? '吞噬预警 / 橙框平台即将消失\n靠近标线右侧，等待吸力与左转箭头'
-          : '吞噬预警 / 本轮无新增平台消失\n中心锚仍保留 · 准备下一次左转'
-          : '闭壳反击无效 / 准备下一轮急转弯');
+    // Unique deadline beside the real staging line, not a second instruction paragraph.
+    this.action.setVisible(world.mode === 'playing' && (open || turning));
+    this.action.setPosition(Math.round(loom.turn.lineX), Math.round(floor - 82));
+    this.action.setText(open ? `弱点 ${remaining(loom.turn.weakUntil, now)}s`
+      : turning ? `急左转 ${remaining(loom.turn.until, now)}s` : '');
   }
 
-  drawBoss(g: Phaser.GameObjects.Graphics, world: WorldState) {
+  drawBoss(g: Phaser.GameObjects.Graphics, world: WorldState, nativeBody = false, cues: Phaser.GameObjects.Graphics = g) {
     const boss = world.boss, loom = world.loom;
     if (!loom) return;
     const bounds = bossRect(boss);
     const open = loom.turn.weakUntil > world.save.elapsedMs;
     // The entire shared square contact domain is visible, including corners outside the inner hexagon.
     g.fillStyle(0x204e3f, boss.active ? 0.3 : 0.15).fillRect(bounds.x, bounds.y, bounds.w, bounds.h);
-    g.lineStyle(1, open ? 0xffda9b : 0x8dd6ba, 0.65).strokeRect(bounds.x, bounds.y, bounds.w, bounds.h);
-    const turn = Math.floor(world.save.elapsedMs / 100) % 24 * Math.PI / 12;
-    for (let ring = 3; ring >= 0; ring--) {
-      const radius = bounds.w * (0.16 + ring * 0.1);
-      const angle = turn * (ring % 2 ? -1 : 1) + ring * Math.PI / 6;
-      const points = Array.from({ length: 6 }, (_, i) => ({
-        x: Math.round(boss.x + Math.cos(angle + i * Math.PI / 3) * radius),
-        y: Math.round(boss.y + Math.sin(angle + i * Math.PI / 3) * radius),
-      }));
-      g.fillStyle(ring % 2 ? 0x1f5445 : 0x39735d, boss.active ? 0.95 : 0.55)
-        .lineStyle(2, open ? 0xf3d69d : ring % 2 ? 0x83c7a4 : 0x5aa98b).beginPath().moveTo(points[0].x, points[0].y);
-      for (let i = 1; i < points.length; i++) g.lineTo(points[i].x, points[i].y);
-      g.closePath().fillPath().strokePath();
+    cues.lineStyle(1, open ? 0xffda9b : 0x8dd6ba, 0.65).strokeRect(bounds.x, bounds.y, bounds.w, bounds.h);
+    if (!nativeBody) {
+      const turn = Math.floor(world.save.elapsedMs / 100) % 24 * Math.PI / 12;
+      for (let ring = 3; ring >= 0; ring--) {
+        const radius = bounds.w * (0.16 + ring * 0.1);
+        const angle = turn * (ring % 2 ? -1 : 1) + ring * Math.PI / 6;
+        const points = Array.from({ length: 6 }, (_, i) => ({
+          x: Math.round(boss.x + Math.cos(angle + i * Math.PI / 3) * radius),
+          y: Math.round(boss.y + Math.sin(angle + i * Math.PI / 3) * radius),
+        }));
+        g.fillStyle(ring % 2 ? 0x1f5445 : 0x39735d, boss.active ? 0.95 : 0.55)
+          .lineStyle(2, open ? 0xf3d69d : ring % 2 ? 0x83c7a4 : 0x5aa98b).beginPath().moveTo(points[0].x, points[0].y);
+        for (let i = 1; i < points.length; i++) g.lineTo(points[i].x, points[i].y);
+        g.closePath().fillPath().strokePath();
+      }
     }
-    g.fillStyle(open ? 0xffd69b : 0x0e251f).fillRect(boss.x - 13, boss.y - 15, 26, 30);
-    g.lineStyle(1, open ? 0xfff1c4 : 0x92cbb5).strokeRect(boss.x - 13, boss.y - 15, 26, 30);
-    if (!open) g.lineStyle(2, 0x68a991).lineBetween(boss.x - 10, boss.y, boss.x + 10, boss.y);
+    cues.fillStyle(open ? 0xffd69b : 0x0e251f).fillRect(boss.x - 13, boss.y - 15, 26, 30);
+    cues.lineStyle(1, open ? 0xfff1c4 : 0x92cbb5).strokeRect(boss.x - 13, boss.y - 15, 26, 30);
+    if (!open) cues.lineStyle(2, 0x68a991).lineBetween(boss.x - 10, boss.y, boss.x + 10, boss.y);
   }
 
   destroy() {

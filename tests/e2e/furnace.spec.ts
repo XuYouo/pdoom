@@ -175,8 +175,9 @@ for (const donated of [true, false]) {
     await page.keyboard.down('d'); await page.waitForTimeout(1800); await page.keyboard.up('d');
     await expect(page.locator('.objective')).toContainText(donated ? '已捐款抑制狂暴' : '未捐款狂暴');
     await expect(page.locator('.objective')).toContainText('已锁向左侧');
-    // Move during the locked tell so the previous two seconds contain a real, different position.
-    await page.keyboard.down('d'); await page.waitForTimeout(450); await page.keyboard.up('d');
+    // Keep >40px of real tell-time Q history while stopping short of stone/label overlap with the boss.
+    // 150ms failed the unchanged displacement check; 450ms could occlude native body pixels.
+    await page.keyboard.down('d'); await page.waitForTimeout(300); await page.keyboard.up('d');
     await expect(page.locator('.objective')).toContainText('石化：');
     const kind = donated ? 'calm' : 'rage';
     const before = await capturedBasilisk(page, source, info.outputPath(`basilisk-${kind}-stone.png`));

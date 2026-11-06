@@ -3,7 +3,7 @@ import { AudioSystem, type AudioFrame } from '../../src/pages/GamePage/game/audi
 import type { AudioStatus } from '../../src/pages/GamePage/game/bridge';
 import { FakeContext, FakeGain } from './fakeAudio';
 
-const frame: AudioFrame = { runId: 'run-a', stage: 4, doom: 85, bossActive: true, running: true, elapsedMs: 5000, hp: 90, shots: 1, rewinds: 0, rerolls: 0, turns: 0, stemsLost: 0 };
+const frame: AudioFrame = { runId: 'run-a', stage: 4, doom: 85, bossActive: true, running: true, elapsedMs: 5000, hp: 90, shots: 1, rewinds: 0, dashes: 0, insights: 0, rerolls: 0, turns: 0, stemsLost: 0 };
 let owned: AudioSystem[] = [];
 beforeEach(() => { vi.useFakeTimers(); owned = []; vi.spyOn(console, 'warn').mockImplementation(() => undefined); });
 afterEach(() => { owned.forEach(system => system.destroy()); vi.clearAllTimers(); vi.useRealTimers(); vi.restoreAllMocks(); });

@@ -41,7 +41,8 @@ async function visiblePixels(page: Page, capture: Buffer): Promise<Pixels> {
   }, { base64: capture.toString('base64'), palette: PALETTE });
 }
 async function snapshot(page: Page): Promise<View> {
-  const capture = await page.locator('canvas').screenshot(); return { capture, pixels: await visiblePixels(page, capture) };
+  // Inspect the real640px render, not a costly CSS-upscaled screenshot while combat keeps advancing.
+  return actualCanvasFrame(page);
 }
 /** Read the public canvas once after a real animation-frame render; never replace rAF or inspect Phaser. */
 async function actualCanvasFrame(page: Page): Promise<View> {
@@ -151,10 +152,10 @@ test('Gato real front reflector survives a long pause and reflects a real mouse-
   await hold(page, 'd', 2300); await walkTo(page, 400);
   let sawClear = false;
   const tell = await waitView(page, view => { if (!goldBar(view)) sawClear = true; return sawClear && !!goldBar(view); }, 'fresh real gold bar', 60, actualCanvasFrame);
+  await page.keyboard.press('Escape'); await expect(page.getByRole('dialog', { name: '暂停前向传播。' })).toBeVisible();
   expect(ink(tell, 'cassette')).toBeGreaterThan(20); expect(bodyAt(tell).hp.w).toBeCloseTo(64, 0);
   expect([...observed.loaded].sort()).toEqual(['/game/gato.json', '/game/gato.png']);
   await writeFile('artifacts/browser/gato-reflection-tell.png', tell.capture);
-  await page.keyboard.press('Escape'); await expect(page.getByRole('dialog', { name: '暂停前向传播。' })).toBeVisible();
   await page.waitForTimeout(200); const paused = await page.locator('canvas').screenshot(), clock = await page.locator('.hud-cell').last().innerText();
   await page.waitForTimeout(4400); expect(await page.locator('canvas').screenshot()).toEqual(paused);
   expect(await page.locator('.hud-cell').last().innerText()).toBe(clock);
@@ -163,12 +164,16 @@ test('Gato real front reflector survives a long pause and reflects a real mouse-
   // much of the real650ms shield window before the mouse could fire.
   const aim = bodyAt(tell), canvasBox = await page.locator('canvas').boundingBox(); expect(canvasBox).not.toBeNull();
   const pointer = { x: canvasBox!.x + aim.x * canvasBox!.width / 640, y: canvasBox!.y + aim.y * canvasBox!.height / 360 };
-  await page.getByRole('button', { name: '继续训练', exact: true }).click();
+  // Prepare pointer position while paused; keyboard activation keeps it on the canvas.
+  await page.getByRole('button', { name: '继续训练', exact: true }).focus();
+  await page.mouse.move(pointer.x, pointer.y);
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('dialog', { name: '暂停前向传播。' })).not.toBeVisible();
+  // Deliver the ordinary mouse edge BEFORE readbacks can delay input dispatch.
+  await page.mouse.down();
   const [frames] = await Promise.all([actualCanvasBurst(page, 24), (async () => {
-    await page.mouse.move(pointer.x, pointer.y);
-    await page.mouse.down();
     try {
-      // Ordinary held mouse input through two real render callbacks. This does not
+      // Ordinary held mouse input through two real browser animation callbacks. This does not
       // assert an exact emitted-shot count or replace/advance the game clock.
       await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
     } finally { await page.mouse.up(); }
@@ -187,14 +192,14 @@ test('Gato real front reflector survives a long pause and reflects a real mouse-
   expect(observed.errors).toEqual([]); expect(observed.writes).toEqual([]);
 });
 
-test('Gato three real phases preserve overlapping HP cues, seven captions and clean up after victory', async ({ page }) => {
+test('Gato three real phases preserve overlapping HP cues, seven captions and clean up after victory', async ({ page }, info) => {
   test.setTimeout(90000); const observed = watch(page), attempt = await resumeCheckpoint(page);
   try {
     await hold(page, 'd', 3000); await walkTo(page, 570);
     const aliveCanvas = await actualCanvasFrame(page); expect(ink(aliveCanvas, 'cassette')).toBeGreaterThan(20);
     await writeFile('artifacts/browser/gato-alive-canvas.png', aliveCanvas.capture);
     await shootUntil(page, '机械臂');
-    const tell = await waitView(page, view => !!landing(view), 'real 112px mechanical-arm target');
+    const tell = await waitView(page, view => !!landing(view), 'real 112px mechanical-arm target', 35, actualCanvasFrame);
     const column = landing(tell)!, targetX = column.x + column.w / 2, before = bodyAt(tell);
     expect(Math.abs(column.w - 114)).toBeLessThan(1); expect(Math.abs(column.h - 16)).toBeLessThan(1);
     expect(Math.abs(before.x - 480)).toBeLessThan(1.5); expect(Math.abs(before.y - 244)).toBeLessThan(1.5);
@@ -203,20 +208,35 @@ test('Gato three real phases preserve overlapping HP cues, seven captions and cl
     const spriteX = Math.max(...tell.pixels.cassette.map(part => part.x + part.w)) - 24;
     expect(Math.abs(spriteX - before.x)).toBeLessThan(3); // The actual body must not anticipate targetX.
     await writeFile('artifacts/browser/gato-arm-tell.png', tell.capture);
-    await page.waitForTimeout(350); await page.keyboard.down('a'); await page.keyboard.down('Space');
+    await page.waitForTimeout(350);
+    await Promise.all([page.keyboard.down('a'), page.keyboard.down('Space')]);
+    // Keep transient jump/impact evidence out of the screenshot/decode protocol loop.
+    const [armFrames] = await Promise.all([actualCanvasBurst(page, 36), (async () => {
+      try { await page.waitForTimeout(500); }
+      finally { await Promise.all([page.keyboard.up('a'), page.keyboard.up('Space')]); }
+    })()]);
+    await page.keyboard.press('Escape'); await expect(page.getByRole('dialog', { name: '暂停前向传播。' })).toBeVisible();
+    await Promise.all(armFrames.map((url, index) => writeFile(info.outputPath(`gato-arm-frame-${String(index).padStart(2, '0')}.png`), Buffer.from(url.split(',')[1], 'base64'))));
     let jump: View | null = null, attack: View | null = null;
-    for (let i = 0; i < 12; i++) {
-      const view = await snapshot(page), hero = view.pixels.hero[0];
-      if (hero?.y < 290 && (!jump || hero.y < jump.pixels.hero[0].y)) jump = view;
-      if (view.pixels.impact.length >= 2 && Math.abs(bodyAt(view).x - targetX) < 6) { attack = view; break; }
-      await page.waitForTimeout(25);
+    for (const frame of armFrames) {
+      const view = await inspectActualFrame(page, frame), hero = view.pixels.hero[0];
+      if (hero && hero.w > 20 && hero.pixels > 100 && hero.y < 290 && (!jump || hero.y < jump.pixels.hero[0].y)) jump = view;
+      if (!attack && view.pixels.impact.length >= 2 && Math.abs(bodyAt(view).x - targetX) < 6) attack = view;
     }
-    await page.waitForTimeout(200); await page.keyboard.up('a'); await page.keyboard.up('Space');
     expect(jump, 'actual normal Space jump').not.toBeNull(); expect(jump!.pixels.hero[0].y).toBeLessThan(280);
     expect(attack, 'real body relocation and two ground waves').not.toBeNull();
     expect(Math.abs(bodyAt(attack!).y - 282)).toBeLessThan(4); expect(attack!.pixels.impact.length).toBeGreaterThanOrEqual(2);
     await writeFile('artifacts/browser/gato-arm-jump.png', jump!.capture);
     await writeFile('artifacts/browser/gato-arm-impact.png', attack!.capture);
+    await writeFile(info.outputPath('gato-arm-selected.json'), JSON.stringify({
+      jumpFrame: armFrames.findIndex(url => Buffer.from(url.split(',')[1], 'base64').equals(jump!.capture)),
+      impactFrame: armFrames.findIndex(url => Buffer.from(url.split(',')[1], 'base64').equals(attack!.capture)),
+      hero: jump!.pixels.hero[0], targetX, attack: bodyAt(attack!), waves: attack!.pixels.impact,
+    }));
+    await page.getByRole('button', { name: '继续训练', exact: true }).click();
+    // Reach a visible left-side firing position using ordinary movement before continuing combat.
+    const firingPosition = await walkTo(page, 420);
+    await writeFile(info.outputPath('gato-left-firing-position.png'), firingPosition.capture);
     const evidence: { overlap?: View } = {};
     await shootUntil(page, '字幕', view => {
       const mark = landing(view);
@@ -232,18 +252,23 @@ test('Gato three real phases preserve overlapping HP cues, seven captions and cl
     expect(captionRects(captions)).toHaveLength(7);
     for (const part of captionRects(captions)) { expect(Math.abs(part.w - 14)).toBeLessThan(1); expect(Math.abs(part.h - 6)).toBeLessThan(1); }
     await writeFile('artifacts/browser/gato-seven-captions.png', captions.capture);
+    // Use the advertised ordinary Q defence through the retreat trail; never inject immunity or HP.
+    await page.keyboard.press('q');
     const nextChapter = page.getByRole('button', { name: '进入第二章', exact: true });
     await aimBody(page, captions); await page.mouse.down();
     try {
       for (let i = 0; i < 100 && !(await nextChapter.isVisible()); i++) {
         const view = await snapshot(page);
-        if (!view.pixels.hp.length) { await expect(nextChapter).toBeVisible({ timeout: 1500 }); break; }
-        await aimBody(page, view); await page.waitForTimeout(35);
+        // An invisible/occluded last fill is not proof of victory. Keep the ordinary held shot.
+        if (view.pixels.hp.length) await aimBody(page, view);
+        await page.waitForTimeout(35);
       }
+      await expect(nextChapter).toBeVisible({ timeout: 1500 });
     } finally { await page.mouse.up(); }
     await expect(nextChapter).toBeVisible(); await expect(page.getByRole('heading', { name: '中文房间与迷幻森林已突破。', exact: true })).toBeVisible();
     const won: GameSaveData = await page.evaluate(() => JSON.parse(localStorage.getItem('pdoom.save.v1') ?? 'null'));
     expect(isGameSave(won)).toBe(true); expect(won).toMatchObject({ runId: attempt.runId, seed: 42, stage: 2, checkpoint: 0, doom: 8 });
+    expect(won.actionCounts.rewinds).toBeGreaterThan(0);
     expect(won.hp).toBeGreaterThan(0); expect(won.actionCounts.shots).toBeGreaterThan(0); expect(won.elapsedMs).toBeGreaterThan(attempt.elapsedMs);
     // Same arena, before the chapter button: DOM overlay cannot hide a stale image in this raw-canvas proof.
     const clearedCanvas = await actualCanvasFrame(page);

@@ -1,0 +1,306 @@
+{
+  "revision": "R38",
+  "goalRound": 48,
+  "referenceMode": "existing-user-SVG-derived-native-rig-edit",
+  "imageGenerationClaimed": false,
+  "imageGenerationOutput": null,
+  "nativeSourceReady": true,
+  "sourceValidationComplete": true,
+  "runtimeReady": true,
+  "productionReady": true,
+  "fullGddComplete": false,
+  "source": {
+    "path": "assets/source/clawd-attack-candidate/clawd-svg.aseprite",
+    "sha256": "1379e474ad24148d38eac2b9e0cdbb5c1dfc5779c87cd6bd902583d0e853566d",
+    "width": 32,
+    "height": 32,
+    "frames": 22,
+    "layers": 7,
+    "paletteSize": 13,
+    "pivot": [
+      16,
+      27
+    ]
+  },
+  "sourceAncestor": {
+    "path": "assets/source/clawd-svg.aseprite",
+    "sha256": "89c9f38f39366585a580226b2eceec8d0a2be16f535d276a87b871dfc4431611",
+    "oldFramesPreserved": 8
+  },
+  "poseMatrix": {
+    "baseFramesZeroBased": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "fireOffset": 8,
+    "recoverOffset": 15,
+    "proposedFireMs": 83,
+    "proposedRecoverMs": 50,
+    "notSequentialSevenFrameClip": true
+  },
+  "exports": {
+    "aligned": {
+      "png": "assets/candidates/clawd-attack/clawd-aligned.png",
+      "atlas": "assets/candidates/clawd-attack/clawd-aligned.json",
+      "width": 704,
+      "height": 32,
+      "pngSha256": "c82079381bd482d648c6ecd06c0605f8b54508eb8f121d700d718725669de0bc",
+      "atlasSha256": "19e86e1c54754e8e1d9f1b4bcf7d59bbb643e80bf079bb70c8cda887add8d5a9"
+    },
+    "masked": {
+      "png": "assets/candidates/clawd-attack/clawd-masked.png",
+      "atlas": "assets/candidates/clawd-attack/clawd-masked.json",
+      "width": 704,
+      "height": 32,
+      "pngSha256": "7b8198cc53d85ab8407697c979d0c051d3ec1b47e32db9235e898f84df37267d",
+      "atlasSha256": "db086cbb3fdf0c3f1c275ed6c8b32bd63d9e21d04fd44486632e1eef1ff22c4b"
+    },
+    "foom": {
+      "png": "assets/candidates/clawd-attack/clawd-foom.png",
+      "atlas": "assets/candidates/clawd-attack/clawd-foom.json",
+      "width": 704,
+      "height": 32,
+      "pngSha256": "60e408fe7161ee2ea48871663beaaf853b21fc04d4e22b102bb2dfbabcc6a300",
+      "atlasSha256": "19e2514613b168b81120661220e786d931d25c28267ab96b2a8c2adda949cc43"
+    }
+  },
+  "review": {
+    "notIndependent": true,
+    "freshColdReview": false,
+    "runtimeReview": true,
+    "nativePreviewViewed": true,
+    "allSevenLayersValidateClean": true,
+    "styleFindingsReported": 58,
+    "warningFree": false,
+    "styleRationale": "Unchanged selective tentacle edge highlights and SVG-style straight warm body border; no palette/shape expansion to silence stylistic lint.",
+    "viewedImages": [
+      {
+        "path": "artifacts/verification/r37-review-aligned.png",
+        "sha256": "2bb9d7124f5d419cc44c707fb50deb250ad5ce9ea053d17a7e43ec1d412ab32d"
+      },
+      {
+        "path": "artifacts/verification/r37-review-masked.png",
+        "sha256": "7ac8a1dc5cf4436a67c15b681f97a3a841c65cdc2d9943eee7547696154ba081"
+      },
+      {
+        "path": "artifacts/verification/r37-review-foom.png",
+        "sha256": "bc738825521ecea27b59996051e3c638080ab8713f7f7db09182218d0ea482cd"
+      },
+      {
+        "path": "artifacts/verification/r37-phase-aligned.png",
+        "sha256": "a010f604c33cf7423041c0ea24dbb7ad3a5c1989537fa028e00a69f8a28ace98"
+      },
+      {
+        "path": "artifacts/verification/r37-phase-foom.png",
+        "sha256": "c9ff3dd039f185bd93f871d63048c697932f2871a65b733f395aa0f8fbfe2117"
+      },
+      {
+        "path": "artifacts/verification/r37-key-fire-aligned.png",
+        "sha256": "d4d4d17fc3b64a687dd84b6bd3639a8758f3bd38aaa8bae8225cd7b584280a56"
+      },
+      {
+        "path": "artifacts/verification/r37-key-fire-foom.png",
+        "sha256": "3f230332eeaf7e1a86aaaf2e095a7b354c254b72e47b69a19020666acefe9f1f"
+      },
+      {
+        "path": "artifacts/verification/r38-browser-scoped-18-03-results/clawd-combat-Clawd-aligned-69dc5-guish-fire-recover-and-calm/fire.png",
+        "sha256": "8259ef9565b750e7181e980019e8636305cd02d9d94fe426be2664c543492ae4",
+        "view": "Corrected-nearest aligned fire in actual first-chapter room"
+      },
+      {
+        "path": "artifacts/verification/r38-browser-scoped-18-03-results/clawd-combat-Clawd-foom-ac-a44df-guish-fire-recover-and-calm/fire.png",
+        "sha256": "d25772da592338f0103918625a75fc5614758990423530e70ade6d1147c6d369",
+        "view": "Corrected-nearest FOOM fire in actual first-chapter room"
+      },
+      {
+        "path": "artifacts/verification/r38-full-02/clawd-combat-Clawd-masked--90153-guish-fire-recover-and-calm/fire.png",
+        "sha256": "5740c220f7749ecd44c723f2b89e6c567c4dfcff928dee9c1ed6b82986257d07",
+        "view": "Final-full actual masked fire"
+      },
+      {
+        "path": "artifacts/verification/r38-full-02/clawd-combat-Clawd-foom-ac-a44df-guish-fire-recover-and-calm/fire.png",
+        "sha256": "d25772da592338f0103918625a75fc5614758990423530e70ade6d1147c6d369",
+        "view": "Final-full actual FOOM fire"
+      },
+      {
+        "path": "artifacts/verification/r38-full-02/clawd-combat-Clawd-ordinar-6b16d-endent-hostile-mirror-shots/real-hostile-mirror-fire.png",
+        "sha256": "b0148d5276a59b57be49be5e87e7d8c9f4e8856ce045033ade31ce3246643e5f",
+        "view": "Final-full actual hostile mirror fire"
+      },
+      {
+        "path": "artifacts/verification/r38-full-02/clawd-combat-Clawd-ordinar-6b16d-endent-hostile-mirror-shots/quiet-reflection-recover.png",
+        "sha256": "b1182485401cf771aa26bbb7c1641012b5ee3fdc23dd1ec03115bd1adb93b0c3",
+        "view": "Final-full actual .45-alpha reversed recovery"
+      }
+    ],
+    "method": "R37 native/source views preserved in sourceStage; R38 same Lead actually viewed corrected runtime PNGs, including four final-full captures. No independent/cold/human-feel claim.",
+    "runtimeObservations": [
+      "Original rectangular identity, four short legs and per-form mask/tentacles stay readable; warm raised palm remains deliberately subtle at native32px.",
+      "Quiet reflection remains dim behind glass and reversed; hostile mirror uses its distinct opaque FOOM actor.",
+      "Existing hostile-mirror name/HP UI can clip at the far right camera edge. This is visible in the actual image and is not an all-HUD-polished claim; no HUD-position change in this package.",
+      "No optional native repaint: frozen source, color count and all original8 roles stay unchanged. Static visual review is not human movement-feel, audio or performance certification."
+    ],
+    "currentVisibleValidate": "Clean14 notes; not a fresh all-seven-layer report. Unchanged R37 all-layer58 findings remain.",
+    "nativeLiveCopyReport": "artifacts/verification/r38-native-live-review.json"
+  },
+  "toolingFindings": [
+    "duplicate inserts after source; native reorder restored original8 and appended14",
+    "linked cel positions move together; four varying-position arm cels were unlinked before positioning",
+    "linked ASE raster support was added to the read-only decoder before checking; no art was rewritten off-tool"
+  ],
+  "verification": {
+    "phase": "Frozen runtime02, before provenance/doc finalization",
+    "sourcePassed": 169,
+    "sourceExit": 0,
+    "sourceReport": "artifacts/verification/r38-nearest-unit.json",
+    "sourceTestFile": "tests/rendering/clawdAttackSource.test.ts",
+    "newCoreProjectionResourceCases": 308,
+    "fullUnitPassed": 6003,
+    "fullUnitFiles": 83,
+    "fullUnitExit": 0,
+    "fullUnitReport": "artifacts/verification/r38-nearest-unit.json",
+    "typesExit": 0,
+    "lintExit": 0,
+    "buildExit": 0,
+    "browserRunThisRound": true,
+    "browserPassed": 171,
+    "browserRetry": 0,
+    "browserSkip": 0,
+    "browserFlaky": 0,
+    "browserExit": 0,
+    "browserSeconds": 1400.019,
+    "browserReport": "artifacts/verification/r38-full-02-results.json",
+    "backendRunThisRound": true,
+    "backendPassed": 23,
+    "backendExit": 0,
+    "backendReport": "artifacts/verification/r38b-backend-tests-metrics.json",
+    "cleanupReport": "artifacts/verification/r38b-services-cleanup.json",
+    "original78Restored": true,
+    "pointerUnchanged": true,
+    "abortedFirstFullNotCombined": true,
+    "securityAuditRunThisRound": false
+  },
+  "sourceStage": {
+    "revision": "R37",
+    "goalRound": 47,
+    "runtimeReady": false,
+    "productionReady": false,
+    "review": {
+      "notIndependent": true,
+      "freshColdReview": false,
+      "runtimeReview": false,
+      "nativePreviewViewed": true,
+      "allSevenLayersValidateClean": true,
+      "styleFindingsReported": 58,
+      "warningFree": false,
+      "styleRationale": "Unchanged selective tentacle edge highlights and SVG-style straight warm body border; no palette/shape expansion to silence stylistic lint.",
+      "viewedImages": [
+        {
+          "path": "artifacts/verification/r37-review-aligned.png",
+          "sha256": "2bb9d7124f5d419cc44c707fb50deb250ad5ce9ea053d17a7e43ec1d412ab32d"
+        },
+        {
+          "path": "artifacts/verification/r37-review-masked.png",
+          "sha256": "7ac8a1dc5cf4436a67c15b681f97a3a841c65cdc2d9943eee7547696154ba081"
+        },
+        {
+          "path": "artifacts/verification/r37-review-foom.png",
+          "sha256": "bc738825521ecea27b59996051e3c638080ab8713f7f7db09182218d0ea482cd"
+        },
+        {
+          "path": "artifacts/verification/r37-phase-aligned.png",
+          "sha256": "a010f604c33cf7423041c0ea24dbb7ad3a5c1989537fa028e00a69f8a28ace98"
+        },
+        {
+          "path": "artifacts/verification/r37-phase-foom.png",
+          "sha256": "c9ff3dd039f185bd93f871d63048c697932f2871a65b733f395aa0f8fbfe2117"
+        },
+        {
+          "path": "artifacts/verification/r37-key-fire-aligned.png",
+          "sha256": "d4d4d17fc3b64a687dd84b6bd3639a8758f3bd38aaa8bae8225cd7b584280a56"
+        },
+        {
+          "path": "artifacts/verification/r37-key-fire-foom.png",
+          "sha256": "3f230332eeaf7e1a86aaaf2e095a7b354c254b72e47b69a19020666acefe9f1f"
+        }
+      ],
+      "method": "Same Lead actually viewed all seven PNGs and native arm filmstrip/ascii; not cold, not independent, not gameplay timing evidence."
+    },
+    "verification": {
+      "sourcePassed": 166,
+      "sourceExit": 0,
+      "sourceReport": "artifacts/verification/r37-source-01.json",
+      "typesExit": 0,
+      "browserRunThisRound": false,
+      "backendRunThisRound": false,
+      "fullUnitPassed": 5692,
+      "fullUnitFiles": 79,
+      "fullUnitExit": 0,
+      "fullUnitReport": "artifacts/verification/r37-unit-all-01.json",
+      "lintExit": 0,
+      "buildExit": 0
+    }
+  },
+  "admissionScope": "Clawd native asset and tested runtime package only; not project release or complete GDD",
+  "runtimeIntegration": {
+    "receipt": "Player.lastFiredAt: nullable runtime-only simulation timestamp after actual emission",
+    "fireAgeMs": [
+      0,
+      83
+    ],
+    "recoverAgeMs": [
+      83,
+      133
+    ],
+    "gaitRestarts": false,
+    "newAnimationClock": false,
+    "saveOrApiChanges": false,
+    "originalBulletOrigin": "actor.x, actor.y-3",
+    "nativeFilterCode": 1,
+    "wholeFamilyRoles": 66,
+    "imagesPerActorMax": 1,
+    "browserBlurScope": "Standard DOM blur event; not an OS focus-switch claim",
+    "freeze": "artifacts/verification/r38-runtime-freeze-02.json",
+    "fullGate": "artifacts/verification/r38-full-validated.json"
+  },
+  "runtimeExports": {
+    "aligned": {
+      "png": "public/game/clawd-aligned.png",
+      "atlas": "public/game/clawd-aligned.json",
+      "pngSha256": "c82079381bd482d648c6ecd06c0605f8b54508eb8f121d700d718725669de0bc",
+      "atlasSha256": "19e86e1c54754e8e1d9f1b4bcf7d59bbb643e80bf079bb70c8cda887add8d5a9",
+      "frames": 22,
+      "size": [
+        704,
+        32
+      ]
+    },
+    "masked": {
+      "png": "public/game/clawd-masked.png",
+      "atlas": "public/game/clawd-masked.json",
+      "pngSha256": "7b8198cc53d85ab8407697c979d0c051d3ec1b47e32db9235e898f84df37267d",
+      "atlasSha256": "db086cbb3fdf0c3f1c275ed6c8b32bd63d9e21d04fd44486632e1eef1ff22c4b",
+      "frames": 22,
+      "size": [
+        704,
+        32
+      ]
+    },
+    "foom": {
+      "png": "public/game/clawd-foom.png",
+      "atlas": "public/game/clawd-foom.json",
+      "pngSha256": "60e408fe7161ee2ea48871663beaaf853b21fc04d4e22b102bb2dfbabcc6a300",
+      "atlasSha256": "19e2514613b168b81120661220e786d931d25c28267ab96b2a8c2adda949cc43",
+      "frames": 22,
+      "size": [
+        704,
+        32
+      ]
+    }
+  }
+}

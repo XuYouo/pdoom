@@ -1,0 +1,191 @@
+{
+  "round": 44,
+  "atUtc": "2026-11-02T02:53:14.311898+00:00",
+  "knownFiles": 438,
+  "sourceDrift": [],
+  "phaser": "4.0.0",
+  "referenceMode": "none-user-approved-native",
+  "userDecision": {
+    "questionId": "human-rater-reference-path",
+    "selected": "直接用 Aseprite 绘制（推荐）"
+  },
+  "imageGenerationClaimed": false,
+  "imageGenerationOutput": null,
+  "productionReady": true,
+  "fullGddComplete": false,
+  "palette": [
+    "#00000000",
+    "#2c2330",
+    "#d97757",
+    "#eaa083",
+    "#b55a4a",
+    "#783f4a",
+    "#f5e8c8",
+    "#cbb696",
+    "#34354f",
+    "#575c79",
+    "#858eb0",
+    "#9dded1",
+    "#d9ffea",
+    "#0f191b",
+    "#24423b",
+    "#426b50",
+    "#8fa86b",
+    "#b9905d",
+    "#e5c386",
+    "#723f68"
+  ],
+  "source": {
+    "path": "assets/source/human-rater.aseprite",
+    "sha256": "f54e21841d2dde8433d50181288abb5f057907d3a9b02b33dc500c4bddaa11fd",
+    "status": "frozen R35 native source; R36 scene and menu bundle admitted",
+    "liveSpriteAtSave": "#363",
+    "layers": 7,
+    "frames": 4,
+    "paletteEntries": 20,
+    "pivot": [
+      32,
+      60
+    ],
+    "portraitCrop": [
+      8,
+      4,
+      48,
+      48
+    ]
+  },
+  "export": {
+    "png": {
+      "path": "public/game/human-rater.png",
+      "sha256": "26bea93f4201916e6af597f9386e3087ee617adb234fd8dd7004753e97c80b2f"
+    },
+    "atlas": {
+      "path": "public/game/human-rater.json",
+      "sha256": "2c506ec8be37da8590fea4a83b650fbc0044332e29dd165681ac745dff9b0d45"
+    },
+    "size": [
+      256,
+      64
+    ],
+    "frameSize": [
+      64,
+      64
+    ],
+    "tags": [
+      "neutral",
+      "approved",
+      "disapproved",
+      "hacked"
+    ],
+    "padding": 0,
+    "reason": "padding1 native export reported 66-square rectangles against64-square source sizes; native transparent margins provide at least3px gutter instead"
+  },
+  "validation": {
+    "tool": "mcp__aseprite__validate",
+    "summary": "Clean (17 style notes)",
+    "errors": 0,
+    "styleNotes": 17,
+    "sourceTestResult": "artifacts/verification/r35-source-03.json",
+    "sourceTestsPassed": 34,
+    "decoderIndependentOfRuntime": true,
+    "styleDecisions": [
+      "selective material outlines intentionally use dark purple, brown skin edges and cool soles",
+      "skin/collar joins blend without black seams",
+      "the straight machined counter edge is intentional; no noisy dither added"
+    ]
+  },
+  "review": {
+    "complete": true,
+    "notIndependent": true,
+    "freshColdReview": false,
+    "runtimeReview": true,
+    "method": "Same Lead actually read all seven real native/browser PNGs with read_image; not an independent cold review.",
+    "images": [
+      {
+        "path": "artifacts/verification/r36-final-hacked-menu.png",
+        "sha256": "b3130380ae677511e4dbeeb8cae89fe847ea0bca55f1e9d50254377ca0124b18"
+      },
+      {
+        "path": "artifacts/verification/r36-final-scene-c1.png",
+        "sha256": "d9b8ed55e7bcd0ea796d883801e2ab693420064b5d7e62e62bf4dbcf5ca37469"
+      },
+      {
+        "path": "artifacts/verification/r36-final-hacked-world.png",
+        "sha256": "c92c5fe53975c0ba0f87ec98df6f5391e0e9b50f70358a0878023330d8d30df2"
+      },
+      {
+        "path": "artifacts/verification/r36-final-scene-loom.png",
+        "sha256": "a7360b3cb499fcbdf42602e6940698720bf9e22d5775f873aa9950deb12c0d5a"
+      },
+      {
+        "path": "artifacts/verification/r36-final-actual-menu-1280x720.png",
+        "sha256": "6d2cfb668096a45a64b5c5a931b6565be0a8fe58b26c90dd9ca5b93a3400b2ce"
+      },
+      {
+        "path": "artifacts/verification/r36-final-actual-menu-390x844.png",
+        "sha256": "d649414ceeda08ced4a19fd7a3e589a505db8e534ff1d81e91d5c1c4f6741c92"
+      },
+      {
+        "path": "artifacts/verification/r36-final-actual-menu-800x450.png",
+        "sha256": "f9c4425d91f71475c4065c4945be617c52d6727eaf449fda1a88230bb0e39758"
+      }
+    ]
+  },
+  "nativeSourceReady": true,
+  "runtimeReady": true,
+  "sourceCheckpoint": {
+    "round": 45,
+    "revision": "R35",
+    "atUtc": "2026-11-02T04:34:14.816638+00:00",
+    "scope": "native source candidate only"
+  },
+  "previousInterruption": "User asked to verify/switch subagent models; draft saved before investigating.",
+  "deviations": [
+    "thumb fist extends one pixel farther left than initial sketch (x47 rather than48); still wholly inside the unscaled48-square portrait crop"
+  ],
+  "recovery": {
+    "padding1": "kept actual failed exports/reports; re-exported through native MCP with padding0",
+    "crop_to_content": "unexpectedly cropped whole canvas to56x53 despite layer/frame arguments; restored a native backup in live Aseprite, re-inspected it, and rewrote only the exact torso cel with a grid",
+    "appearancePreserved": true
+  },
+  "sourceReview": {
+    "stage": "four native states after recovery",
+    "complete": true,
+    "notIndependent": true,
+    "freshColdReview": false,
+    "method": "real head preview, gesture filmstrip, full native exported PNGs read with read_image",
+    "capture": "artifacts/verification/r35-final-native-4x.png",
+    "captureSha256": "1f8b3018b49c098cfa0e339cbf0aff965342fac7c60ce0648404636e76797cd0",
+    "runtimeReview": false,
+    "note": "Same Lead review, not a separate critic. Literal empty layer previews were black; named-layer views and actual native composite exports were inspected."
+  },
+  "projectReleaseReady": false,
+  "runtimeAdmission": {
+    "revision": "R36",
+    "goalRound": 46,
+    "fullBrowser": {
+      "stats": {
+        "startTime": "2026-11-02T05:55:07.980Z",
+        "duration": 1485569.927,
+        "expected": 153,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "uniquePassed": 153,
+      "retries": 0,
+      "actualExit": 0,
+      "seconds": 1486.047,
+      "source451Drift": [],
+      "legacy78Preserved": true
+    },
+    "scope": "this native workstation bundle only",
+    "unitPassed": 5526,
+    "unitFiles": 78,
+    "backendPassed": 23,
+    "scopedBrowserPassed": 20,
+    "maskedPixels": false,
+    "cleanupProof": "artifacts/verification/r36-cleanup.json",
+    "report": "artifacts/verification/r36-full-01-results.json"
+  }
+}

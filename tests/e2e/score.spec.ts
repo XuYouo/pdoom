@@ -2,6 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { expect, test, type Page } from '@playwright/test';
 import { createRun } from '../../src/pages/GamePage/functions/saveModel';
 import { assertCheckpointAttempt } from './checkpoint-attempt';
+import { installBootObserver, attachBootObservation } from './boot-observer';
 
 test.beforeEach(() => {
   test.skip(process.env.PDOOM_E2E_BACKEND !== '1', 'Requires this task’s explicitly provisioned Scala/PostgreSQL test cluster.');
@@ -21,8 +22,14 @@ async function endedRun(page: Page) {
   // No production debug hook or synthetic success response is installed.
   const save = { ...createRun(runId, 42), hp: 0, score: 2468, elapsedMs: 1500 };
   await page.addInitScript(value => localStorage.setItem('pdoom.save.v1', JSON.stringify(value)), save);
-  await page.goto('/');
-  await expect(page.getByRole('button', { name: '恢复检查点', exact: true })).toBeEnabled();
+  await page.addInitScript(installBootObserver);
+  try {
+    await page.goto('/');
+    await expect(page.getByRole('button', { name: '恢复检查点', exact: true })).toBeEnabled();
+  } finally {
+    // No extra RPC/wait between navigation and the original5s assertion.
+    await attachBootObservation(page, test.info());
+  }
   await page.getByRole('button', { name: '恢复检查点', exact: true }).click();
   await expect(page.getByRole('region', { name: '本局成绩上传' })).toBeVisible({ timeout: 15000 });
   const attempt = await assertCheckpointAttempt(page, save);

@@ -10,6 +10,12 @@ import { restSnapshot } from '../../src/pages/GamePage/game/systems/shop';
 import { createWorld } from '../../src/pages/GamePage/game/systems/simulation';
 
 describe('context and rest-room React contract', () => {
+  it('preserves readable label/value text for a cloud-restored HP snapshot', () => {
+    const snapshot = restSnapshot(createWorld({ ...PREVIEW_SAVE, stage: 4, checkpoint: 12, hp: 76, tokens: 153 }))!;
+    const html = renderToStaticMarkup(createElement(RestRoomPanel, { bridge: new GameBridge(), snapshot }));
+    expect(html.replace(/<[^>]+>/g, '')).toContain('完整度 76/100');
+    expect(html).toContain('153 TOK');
+  });
   it('renders capacity, explicit disabled-middle state and keyboard reorder controls', () => {
     const snapshot = contextSnapshot({ ...PREVIEW_SAVE, inventory: ['constitutional', 'recursive', 'residual'] }, true);
     const html = renderToStaticMarkup(createElement(ContextPanel, { bridge: new GameBridge(), snapshot }));
@@ -45,5 +51,38 @@ describe('context and rest-room React contract', () => {
     expect(world.save.inventory).toEqual(['constitutional']);
     expect(world.save.tokens).toBe(0);
     expect(contextSnapshot(world.save).slots[0].active).toBe(true);
+  });
+  it('keeps every purchase and hack reachable in the compact menu, not only the selected item', () => {
+    const snapshot = restSnapshot(createWorld({ ...PREVIEW_SAVE, checkpoint: 11, tokens: 76 }))!;
+    const html = renderToStaticMarkup(createElement(RestRoomPanel, { bridge: new GameBridge(), snapshot, onReturnToMenu: () => undefined }));
+    expect((html.match(/aria-label="购买 /g) ?? []).length).toBe(snapshot.offers.length);
+    expect((html.match(/aria-label="奖励劫持 /g) ?? []).length).toBe(snapshot.offers.filter(o => o.kind === 'relic' || o.kind === 'upgrade').length);
+    expect((html.match(/aria-label="不再交易，继续前进"/g) ?? []).length).toBe(1);
+    expect((html.match(/aria-label="返回终端并保留检查点"/g) ?? []).length).toBe(1);
+    expect(html).toContain('class="rest-footer"');
+  });
+  it('defaults long rest rules to a closed disclosure and uses the compact equipped list', () => {
+    const snapshot = restSnapshot(createWorld({ ...PREVIEW_SAVE, checkpoint: 11 }))!;
+    const html = renderToStaticMarkup(createElement(RestRoomPanel, { bridge: new GameBridge(), snapshot }));
+    expect(html).toContain('<details class="rest-rules">');
+    expect(html).toContain('class="context-compact"');
+    expect(html).toContain('aria-label="已装备词条顺序"');
+    expect(html).toContain(snapshot.hackRequirement.replace('>','&gt;'));
+    expect(html).not.toContain('人类标注员工作台');
+  });
+  it('compact context preserves overload, inactive-middle and reorder semantics', () => {
+    const snapshot = contextSnapshot({ ...PREVIEW_SAVE, inventory: ['constitutional', 'recursive', 'residual'] }, true);
+    const html = renderToStaticMarkup(createElement(ContextPanel, { bridge: new GameBridge(), snapshot, compact: true }));
+    expect(html).toContain('窗口满载 · 中间词条失活');
+    expect(html).toContain('中间迷失 · 被动失活');
+    expect(html).toContain('32K / 32K');
+    expect(html).toContain('aria-label="上移 递归自升级"');
+    expect(html).toContain('<details class="context-slot-details">');
+  });
+  it('compact does not override the Core read-only reorder boundary', () => {
+    const snapshot = contextSnapshot(PREVIEW_SAVE);
+    const html = renderToStaticMarkup(createElement(ContextPanel, { bridge: new GameBridge(), snapshot, compact: true }));
+    expect(html).toContain('只能在安全休息室调整顺序');
+    expect((html.match(/disabled=""/g) ?? []).length).toBe(2);
   });
 });

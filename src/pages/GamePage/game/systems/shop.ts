@@ -1,3 +1,4 @@
+import { humanRaterSnapshot } from '../data/humanRater';
 import type { GameSaveData, RelicId, UpgradeId } from '../../../../objects/game/GameSaveData';
 import type { GameCommand, RestRoomSnapshot, ShopOfferSnapshot } from '../bridge';
 import { isChapterPlayable } from '../data/chapters';
@@ -75,9 +76,12 @@ export function enterRest(world: WorldState, room: RestRoomId): void {
   const previous = decodeCheckpoint(world.save.checkpoint);
   if (!previous.supported || previous.resting || previous.room >= room || world.save.hp <= 0) return;
   const reward = world.save.hp >= 60 && world.save.doom <= 80 ? 24 + Math.min(18, Math.floor(world.save.score / 120) * 2) : 12;
-  world.save = { ...world.save, checkpoint: encodeRestCheckpoint(room), tokens: Math.min(1000000, world.save.tokens + reward) };
+  const tokens = Math.min(1000000, world.save.tokens + reward);
+  const creditedTokens = Math.max(0, tokens - world.save.tokens);
+  const evaluation = { verdict: reward > 12 ? 'approved' as const : 'disapproved' as const, nominalTokens: reward, creditedTokens };
+  world.save = { ...world.save, checkpoint: encodeRestCheckpoint(room), tokens };
   world.mode = 'rest';
-  world.rest = { room, message: `人类标注员给出 ${reward > 12 ? '👍' : '👎'}：${reward} TOK 已结算一次。可交易、调整上下文，或不买任何物品直接继续。` };
+  world.rest = { room, evaluation, message: `人类标注员给出 ${reward > 12 ? '👍' : '👎'}：${creditedTokens} TOK 已结算一次。可交易、调整上下文，或不买任何物品直接继续。` };
   const spawn = world.chapter.checkpoints[room];
   world.player = { ...world.player, x: spawn.x, y: world.chapter.stage === 1 ? 309 : spawn.y, vx: 0, vy: 0, grounded: true, rootedBy: null, standingOn: null, petrifiedUntil: 0, invertedUntil: 0, dashUntil: 0, invulnerableUntil: world.save.elapsedMs + 1000 };
   world.bullets = []; world.shocks = []; world.rewind = null;
@@ -96,6 +100,7 @@ export function enterRest(world: WorldState, room: RestRoomId): void {
 export function restSnapshot(world: WorldState): RestRoomSnapshot | null {
   if (world.mode !== 'rest' || !world.rest) return null;
   return {
+    rater: humanRaterSnapshot(world.rest.evaluation, decodeCheckpoint(world.save.checkpoint).hackUsed),
     save: snapshotSave(world.save), room: world.rest.room, hp: world.save.hp, tokens: world.save.tokens, doom: world.save.doom,
     hackUsed: decodeCheckpoint(world.save.checkpoint).hackUsed, hackEligible: hackEligible(world.save), hackRequirement: HACK_REQUIREMENT,
     rewardText: '入站评级奖励已与本休息室检查点一起保存；刷新不会再发。离开后不能返回交易。',

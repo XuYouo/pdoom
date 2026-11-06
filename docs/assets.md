@@ -1,12 +1,18 @@
 # 资源来源与制作状态
 
-## 当前：Clawd、五类敌人/探针、Gato/Sydney/Basilisk及前三章环境原生资源，其余素材仍在补齐
+## 当前：主角真实射击姿态、五章环境、四Boss、拾取与Human Rater已准入
+
+R32不重画源图，仅将native规则提示对齐皮肤网格，并以普通跳跃修正拾取观察位置；原像素门和动作预算不降。
+最新[R38主角真实攻击反馈](<round38-clawd-attack-integration.md>)单完整171/171、零skip/retry/flaky、EXIT0/1400.019s；6003单元/83文件、新隔离后端23及type/lint/build通过。R36工作台/肖像已验结果保持，不冒称整个GDD成品。
+[R35原生源](<round35-human-rater-source.md>)三SHA保持；现已接实际支撑面与紧凑肖像，runtime准入仅限本包，同Lead实看而非独立冷评。
+[拾取正式清单](<../assets/pickup-manifest.json>)保留原三SHA、生成来源及非fresh审查；[R32完整证据](<round32-pickup-admission.md>)明确本包技术准入不等于全GDD/项目发布。下表旧准入仍保留各自历史含义。
 
 | 资源 | 实际来源与状态 |
 |---|---|
 | Clawd 三形态 | 用户提供的[SVG参考副本](</Users/ocean/code/pdoom/assets/references/claudecode-color.svg>) → 专用工具image-to-image设计参考 → Aseprite MCP手工像素解释 |
-| 可编辑源 | [clawd-svg.aseprite](</Users/ocean/code/pdoom/assets/source/clawd-svg.aseprite>)，32×32、7层、8帧、13色palette含透明 |
-| 基础 / 面具 / FOOM | [基础PNG](</Users/ocean/code/pdoom/public/game/clawd-aligned.png>)、[面具PNG](</Users/ocean/code/pdoom/public/game/clawd-masked.png>)、[FOOM PNG](</Users/ocean/code/pdoom/public/game/clawd-foom.png>)；各256×32，配同名JSON |
+| 原八帧独立oracle | [原始源](<../assets/source/clawd-svg.aseprite>)仍32²/7层/8帧/13项palette，不覆盖；当前22帧可编辑源见下方射击姿态行 |
+| 基础 / 面具 / FOOM | [基础PNG](<../public/game/clawd-aligned.png>)、[面具PNG](<../public/game/clawd-masked.png>)、[FOOM PNG](<../public/game/clawd-foom.png>)；各704×32/22帧，配同名JSON，逐字节等于R37冻结导出 |
+| Clawd射击姿态（R38已接入） | [22帧源](<../assets/source/clawd-attack-candidate/clawd-svg.aseprite>)/[溯源与准入](<../assets/clawd-attack-generation.json>)：原8+14姿态矩阵，169源例；[R37源历史](<round37-clawd-attack-source.md>)之后由[R38](<round38-clawd-attack-integration.md>)接实际成功出弹，83/50ms，不重启步态或增加保存字段 |
 | UI标记 | [clawd-mark.svg](</Users/ocean/code/pdoom/public/game/clawd-mark.svg>)原样复用用户提供的SVG，不改原文件 |
 | 随机鹦鹉 | [live Aseprite源](<../assets/source/parrot.aseprite>)、[PNG](<../public/game/parrot.png>)/[JSON](<../public/game/parrot.json>)；48×48、6层4帧，20项源palette/11不透明色，闭合字典与折翼明确可读；模拟时钟选idle/tell/recover，碰撞不变 |
 | 复读机 | [live Aseprite源](<../assets/source/repeater.aseprite>)、[PNG](<../public/game/repeater.png>)/[JSON](<../public/game/repeater.json>)；48×48、6层4帧、12实际不透明色；分离轮盘孔槽、3px前扬声器与状态灯，硬壳/脚位置固定，24×24碰撞不变 |
@@ -16,16 +22,21 @@
 | Gato三形态 | [源](<../assets/source/gato.aseprite>)、[PNG](<../public/game/gato.png>)/[JSON](<../public/game/gato.json>)；96×96、11层12pose、15不透明色，原52×74身体不变；静态8/10并已接线，[原生/全门通过](<round12-gato-verification.md>) |
 | Sydney 婚纱幽灵 | [源](<../assets/source/sydney.aseprite>)、[PNG](<../public/game/sydney.png>)/[atlas](<../public/game/sydney.json>)；96px/11层/12静态pose、10不透明色、105 linked cels；10种自然可达姿势与真实弹幕/定身解控独立验证，[准入记录](<round15-sydney-verification.md>) |
 | Basilisk 因果律蛇怪 | [源](<../assets/source/basilisk.aseprite>)、[PNG](<../public/game/basilisk.png>)/[atlas](<../public/game/basilisk.json>)；96px、九可见层＋草图、八静态pose/42linked cel，真实捐款模式/锁向/动作投影；[源重建、原生及全门准入](<round18-basilisk-progress.md>) |
+| Leviathan 吞噬者 | [源](<../assets/source/leviathan.aseprite>)、[PNG](<../public/game/leviathan.png>)/[atlas](<../public/game/leviathan.json>)；160px/4层8pose/21linked，源183/适配器83/oracle23；普通输入全HP阶段、真实受伤/坠落/新尝试与同场/跨章清理，R21的3567/102/23功能门通过；[正式准入及安全边界](<round21-leviathan-verification.md>) |
 | 第一章地形kit | [源](<../assets/source/chapter-one-tiles.aseprite>)、[PNG](<../public/game/chapter-one-terrain.png>)/[map](<../public/game/chapter-one-terrain.json>)；32种16px片、96×96/6列；运行使用9角色、12px台/40px地面精确裁切，原生map不作物理 |
 | 第一章道具 | [源](<../assets/source/chapter-one-props.aseprite>)、[PNG](<../public/game/chapter-one-props.png>)/[图集](<../public/game/chapter-one-props.json>)；8静态64px帧、512×64；树干socket/落地/真实蘑菇均验，[环境清单](<../assets/environment-manifest.json>)与[全门结果](<round13-environment-verification.md>) |
-| 第二章工厂地形 | [源](<../assets/source/factory-tiles.aseprite>)、[PNG](<../public/game/factory-terrain.png>)/[map](<../public/game/factory-terrain.json>)；32片16px kit，运行22角色，真实保护主路/海面/吞台不变；[历史验收](<round16-factory-environment-verification.md>) |
+| 第二章工厂地形 | [源](<../assets/source/factory-tiles.aseprite>)、[PNG](<../public/game/factory-terrain.png>)/[map](<../public/game/factory-terrain.json>)；32片16px kit，运行22帧，真实保护主路/海面/吞台不变；[历史验收](<round16-factory-environment-verification.md>) |
 | 第二章机器 | [源](<../assets/source/factory-props.aseprite>)、[PNG](<../public/game/factory-props.png>)/[图集](<../public/game/factory-props.json>)；6静态64px帧，只读真实场景，无新碰撞 |
 | 第三章炉房地形 | [源](<../assets/source/furnace-tiles.aseprite>)、[PNG](<../public/game/furnace-terrain.png>)/[map](<../public/game/furnace-terrain.json>)；32片16px kit，完整CP0 Plan用14角色；40px地板、12px台与120×12真实K线精确皮肤，样板map不是碰撞 |
 | 第三章六件道具 | [源](<../assets/source/furnace-props.aseprite>)、[PNG](<../public/game/furnace-props.png>)/[图集](<../public/game/furnace-props.json>)；6静态64px帧/3层，GPU/冷却/铜排/排风/破口/月窗；[本地功能准入与安全边界](<round19-furnace-progress.md>) |
-| 第五章镜像 | 重用同一套Clawd三态资产；安静镜面是只读投影，对决使用现有FOOM图集。共享渲染适配器，不生成另一只形状不一致的角色；没有新增Aseprite成品资产 |
+| 第四章Loom环境 | [地形源](<../assets/source/loom-tiles.aseprite>)/[PNG](<../public/game/loom-terrain.png>)/[map](<../public/game/loom-terrain.json>)与[道具源](<../assets/source/loom-props.aseprite>)/[PNG](<../public/game/loom-props.png>)/[atlas](<../public/game/loom-props.json>)；32片16px、6静态64px、68独立源案例通过；R23正式准入：149适配器/3784全unit、当前108浏览器/0skip与新簇后端23通过；6动作/故障例实跑通过，Core/碰撞/镜头不变，见[R23实际进度与失败记录](<round23-loom-environment-progress.md>)/[R22源边界](<round22-loom-source.md>) |
+| 第五章Omega环境 | [地形源](<../assets/source/omega-tiles.aseprite>)/[PNG](<../public/game/omega-terrain.png>)/[map](<../public/game/omega-terrain.json>)与[道具源](<../assets/source/omega-props.aseprite>)/[PNG](<../public/game/omega-props.png>)/[atlas](<../public/game/omega-props.json>)；32片16px、6静态64×128；R25源79/适配器130、全局3993/119浏览器/23后端实际通过，已正式接线，[验收](<round25-omega-environment-progress.md>)。R24仅源候选为历史，不再代表当前 |
+| Token / Compute / Heal 三类拾取 | [原生源](<../assets/source/pickup-items.aseprite>)/[PNG](<../public/game/pickup-items.png>)/[atlas](<../public/game/pickup-items.json>)；32²×3静态，源33/适配器145；R32单完整133中的原native10与新后端23全过，已[正式准入](<../assets/pickup-manifest.json>)。保留[R26首红历史](<round26-pickup-items-progress.md>)，不重画已原生蘑菇。 |
+| Human Rater工作台/NPC | [原生源](<../assets/source/human-rater.aseprite>)/[PNG](<../public/game/human-rater.png>)/[atlas](<../public/game/human-rater.json>)：64²、7层4静态、20项palette；用户批准直接原生制作，无生成参考；源34/renderer142/observer14与全unit5526通过；[R36](<round36-human-rater-integration.md>)单完整153与新后端23准入。64²工作台、原槽48²肖像按真实四态显示；非独立冷评，无新clock/碰撞 |
+| 第五章镜像 | 重用同套Clawd22帧；安静镜面读取玩家实际发射，敌方FOOM镜像读取自身实际发射，Q不捏造倒影动作；共享只读适配器、无另造角色或额外动画时钟 |
 | 三结局演出 | 项目内CSS/SVG与有限24个DOM回形针；场景、椅子、触手、虚拟窗口仍为临时表现，不冒称完整像素过场动画 |
 | 未列出的敌人/Boss与环境 | 仍是Phaser Graphics blockout。实际弹幕/伤害提示继续由Core几何绘制，不烘焙到皮肤；不据此声称专用攻击与场景资产齐全 |
-| UI文字 | 项目内HTML/CSS/Tailwind与系统字体，没有外部字体请求 |
+| UI文字与休息室菜单 | 项目内HTML/CSS/Tailwind与系统字体，无外部字体；[R27紧凑整备菜单](<round27-rest-menu-progress.md>)含手写像素边缘SVG分类符号；R36另接原生NPC肖像，四视口与真实交互保留 |
 | 音频基础 | [原创谱面](<../src/pages/GamePage/game/audio/score.ts>)与[原生合成图](<../src/pages/GamePage/game/audio/SynthGraph.ts>)：120BPM四stem、独立SFX、动态吞音/恢复，运行时Web Audio合成，不加载第三方录音。未复制《I'm Upping My P(Doom)》录音或歌词，未下载第三方歌曲 |
 
 ## 来源与权利
@@ -41,10 +52,10 @@
 
 完整尺寸、palette、pivot、动画时序、限制和冷评记录见[美术规格](</Users/ocean/code/pdoom/assets/art-direction.md>)。
 
-- Aseprite8帧有idle/run/jump/hurt标签；尚无专用attack帧。运行时按模拟时间选帧，因此暂停/休息室不会继续播放。
-- 独立冷读发现内腿过暗；修正后基础态和FOOM均8/10、无剩余阻塞。已实际检查32px原生图和8格条带，不声称静态条带证明播放流畅度。
+- 原八帧idle/run/jump/hurt保持；追加十四个fire/recover步态变体，共22帧/六tag，不是七帧攻击循环。真实发射收据+模拟时间驱动，暂停/休息室不推进动作。
+- 原八帧历史冷读发现内腿过暗，修正后基础态/FOOM8分；该历史评分不外推给R38。当前攻击姿态只有同Lead上下文实看、源重建及真实浏览器证据，没有新独立冷评或人类手感认证。
 - 最终像素只读扫描：alpha仅0/255；基础3色、面具6色、FOOM10色；三图全部在源palette内，idle四腿主色及间隙通过。
-- validate为0错误，不是零警告：保留FOOM触手高光引起的8条选择性描边warning及矩形顶光/无整圈描边style note，理由已记录。
+- validate不冒称零警告：R37全七层Clean含58条风格提示（含warning）；R38当前可见层Clean14 notes不替代全层报告，live副本与源字节相同。既有矩形顶光/触手边缘高光保留。
 - 图集几何、帧名、duration及tag由[资产测试](</Users/ocean/code/pdoom/tests/game/assets.test.ts>)核对。游戏内可读性由真实浏览器截图另行确认，不能只用源图测试代替。
 - 原创声音的工程验收使用真实Chrome OfflineAudioContext和实机旁路PCM，验证四层非零、吞音归零、恢复及SFX独立性；来源、旧失败与修正见[音频基础验收](<round5-verification.md>)。没有人工试听结论，也没有声称已完成全章声景、全部动作音效、最终混音或音频硬件适配。
 
@@ -125,3 +136,29 @@ Core时钟、碰撞、伤害、DTO和原观测阈值不改；素材准入不是�
 新增203源文件案例＋881独立adapter案例；当前3278单元／96真实浏览器（15.5m、0skip、真后端）／23后端通过，type/lint/build/diff通过。实机逐像素prop正控是GPU，不能据源文件六帧重建就称六道具都逐项实机匹配。实际三态热区、载人/隐藏奖励、正常/狂暴/Q/击杀与资源失败保档不改Core/相机/DTO。
 
 首次完整轮的子任务服务交接失效，74记录67过/7失败后中断；Lead换第三个全新cluster并持有进程完成完整门，已清理临时API/PG。完整npm审计当前12个moderate开发链依赖项，关联同一公告；生产依赖0，不强行major修复，不称项目生产就绪。所有失败、方法边界与剩余GDD见[R19记录](<round19-furnace-progress.md>)。
+
+
+## Leviathan原生资产准入（R21）
+
+源与独立观察器沿用R20冻结版本，不重画7分素材；真实八态/急左转、暂停/GL/R锚点与资源重试由完整Loom9例复验。
+新增普通瞄准三阶段击杀、独立固定已注册ROI清理正控，以及受伤HP像素240→死冻结240→重试256、真实进入第五章67帧无旧源色。
+最新3567单元/102真实浏览器/23新私有PG后端、type/lint/build/diff通过；完整审计仍12 moderate开发链、生产依赖0。
+[生成记录](<../assets/leviathan-generation.json>)的productionReady仅指该原生资产及已测runtime，不代表项目可发布、全动画人工观感或完整GDD；详见[R21记录](<round21-leviathan-verification.md>)。
+
+
+## Omega Point历史源候选（R24，当轮尚无runtime准入）
+
+[PixelSpec](<../assets/omega-environment-pixelspec.md>)/[生成与过程](<../assets/omega-environment-generation.json>)记录native32mothers、6高道具/18cels、真实prop-origin32,120、40×96空门与48×98玻璃/透明actorquiet/17edgepixels。独立[79源例](<../artifacts/verification/r24-source-tests-run-02.log#L95-L117>)精确RGBA重建，首77/79仅两个未约定层位置假设修为唯一名字/type/flags/cel定位；未改源或弱化像素门。
+材料7.5、道具先7分马头误读阻断，一次第三件上轮廓518px定点修复后8分/0必要，均nonfresh；[审查记录](<../artifacts/verification/r24-visual-review.md>)保留前后。validate0error/5选择性描边warnings，不是全零警告。
+真实imagegen输出仅在六源冻结后可核验，绘前已读参考的早先说法撤回；没有本地路径/原尺寸/导入或缩图制作声明。当轮3863单元/64文件及type/lint/build/diff通过；旧108仅collect，本轮没跑browser/backend/安全审计。只准备源，没有解决605预算/scan前景或证明第五章实际显示。
+
+
+## Omega Point原生环境准入（R25，资产范围而非项目发布）
+
+沿用R24六源SHA和79独立源例，不重画既有材料/道具，不反写晚到生图的来源历史。[运行记录](<round25-omega-environment-progress.md>)/[生成溯源](<../assets/omega-environment-generation.json>)/[环境清单](<../assets/environment-manifest.json>)将R24 source-only快照与R25实际准入分开；source validate原5条选择性描边warnings保留。
+
+本轮新增130独立adapter和11真实native案例；完整3993单元/65文件、119浏览器单轮（1085.593s/0skip/真后端）、23新隔离PG后端通过，type/lint/build/diff通过。完整首轮117/119与2例原样重放并未拼接；源/旧测试/Core/配置不改的第二整轮119通过，旧固定像素/时长观察敏感性仍开放。
+
+完整保留Core六support/两60px断口、40=16+16+8地面/12px观察台；全部38帧eager资源守卫，viewport峰值135/384，不以Loom512整世界预算漏掉605命令。native02实际源匹配22terrain角色+六props并有同帧hero；纯Plan合法视口25角色，不谎称all32运行中已见。镜只排除被真实floor遮住的源底4行，.45/.9投影不是烘进静态图。
+
+最新完整轮[r5/r8扫描脚部指标](<../artifacts/verification/r25-current-native-selected-metrics.json>)分别176/176两色、350/350三色，源与角色同帧；[非fresh实景8/10](<../artifacts/verification/r25-visual-review.md>)无必要项后停止optional。静帧AI不是人类听感、动画手感或性能认证。[服务清理](<../artifacts/verification/r25-lead-service-cleanup.json>)保留原8080与54字节pointer，不动用户服务；项目安全/全GDD/连续新局三结局门仍开。

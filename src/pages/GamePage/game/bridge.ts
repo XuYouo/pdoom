@@ -1,3 +1,4 @@
+import type { HumanRaterSnapshot } from './data/humanRater';
 import type { GameSaveData, RelicId, RunResult } from '../../../objects/game/GameSaveData';
 
 export interface ContextSnapshot {
@@ -23,6 +24,7 @@ export interface ShopOfferSnapshot {
 }
 
 export interface RestRoomSnapshot {
+  rater: HumanRaterSnapshot;
   save: GameSaveData;
   rewardText: string;
   room: 1 | 2;
@@ -83,6 +85,7 @@ export type GameCommand =
   | { type: 'set-muted'; muted: boolean }
   | { type: 'reroll' }
   | { type: 'set-audio'; muted: boolean; volume: number; unlock?: boolean }
+  | { type: 'set-reduced-motion'; reducedMotion: boolean }
   | { type: 'shop-buy'; offerId: string }
   | { type: 'shop-hack'; offerId: string }
   | { type: 'rest-continue' }

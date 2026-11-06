@@ -9,6 +9,7 @@ import { createRun, isGameSave } from '../functions/saveModel';
 import { forkCheckpointAttempt } from '../functions/checkpointAttempt';
 import { readLocalSave, writeLocalSave } from '../functions/localSave';
 import { useAudioSettings } from './useAudioSettings';
+import { useMotionSettings } from './useMotionSettings';
 
 type Screen = { kind: 'menu' } | { kind: 'playing' } | { kind: 'paused' }
   | { kind: 'rest'; snapshot: RestRoomSnapshot }
@@ -43,6 +44,7 @@ const hudFromSave = (save: GameSaveData, selecting = true): HudSnapshot => ({
 export function useGameSession() {
   const [bridge] = useState(() => new GameBridge());
   const audio = useAudioSettings(bridge);
+  const motion = useMotionSettings(bridge);
   const [ready, setReady] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [screen, setScreen] = useState<Screen>({ kind: 'menu' });
@@ -197,7 +199,7 @@ export function useGameSession() {
     setPanel(next);
   }, [pause, bridge]);
 
-  return { bridge, audio, ready, loadError, screen, panel, hud, context, save, notice, saveStatus, newRun, start, resumeCheckpoint, pause, resume, returnToMenu, openPanel, setPanel, persist, restoreCloud, setNotice };
+  return { bridge, audio, motion, ready, loadError, screen, panel, hud, context, save, notice, saveStatus, newRun, start, resumeCheckpoint, pause, resume, returnToMenu, openPanel, setPanel, persist, restoreCloud, setNotice };
 }
 export type GameSession = ReturnType<typeof useGameSession>;
 

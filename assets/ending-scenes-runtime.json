@@ -1,0 +1,123 @@
+{
+  "stage": "runtime-admitted",
+  "sourceReady": true,
+  "runtimeReady": true,
+  "fullGddComplete": false,
+  "historicalSourceRecord": "assets/ending-scenes-generation.json",
+  "historicalSourceRecordSha256": "42d38106d7191b33df160ebe61a76c016bb1262ef20ab538f786957bb7d1a322",
+  "historicalSourceRecordUnchanged": true,
+  "sourceIsThreeStaticOutcomesNotAnAnimationLoop": true,
+  "engine": "Phaser 4.0.0",
+  "files": {
+    "assets/source/ending-scenes/ending-scenes.aseprite": {
+      "bytes": 8788,
+      "sha256": "4fa9b3572de15b57f098481ebb8868d761c6925c2e6e56aede3a10cdd4adaa08"
+    },
+    "assets/candidates/ending-scenes/ending-scenes.png": {
+      "bytes": 7232,
+      "sha256": "a6da59047a0a071b59efbb3176767287bf971b9826f9cbf8510a783187a4f6bc"
+    },
+    "assets/candidates/ending-scenes/ending-scenes.json": {
+      "bytes": 1729,
+      "sha256": "a48941510859a05de4a46f07dbaceee0f7a8423d5d29c1ec751af121f8cf5206"
+    },
+    "public/game/ending-scenes.png": {
+      "bytes": 7232,
+      "sha256": "a6da59047a0a071b59efbb3176767287bf971b9826f9cbf8510a783187a4f6bc"
+    },
+    "public/game/ending-scenes.json": {
+      "bytes": 1729,
+      "sha256": "a48941510859a05de4a46f07dbaceee0f7a8423d5d29c1ec751af121f8cf5206"
+    },
+    "public/game/ending-clips.png": {
+      "bytes": 1373,
+      "sha256": "ae333d818a0de55b4bc86bb9d0c1bc3fcae22d62ef22427d55ec26b7e25708ea"
+    }
+  },
+  "runtime": {
+    "canvas": [
+      256,
+      128
+    ],
+    "atlas": [
+      768,
+      128
+    ],
+    "integerScales": [
+      1,
+      2
+    ],
+    "outcomes": [
+      "aligned",
+      "warden",
+      "foom"
+    ],
+    "sourceRectangleSelection": "left/top offsets; not transform-dependent",
+    "explicitLoadErrorRetry": true,
+    "naturalDimensionsRequired": [
+      768,
+      128
+    ],
+    "staleRequestGuard": true,
+    "passiveImageCallbacksDoNotStealFocus": true,
+    "realDoomAndFrozenResultUnchanged": true,
+    "foomClips": 24
+  },
+  "verification": {
+    "fullBrowser": {
+      "passed": 202,
+      "actualExit": 0,
+      "seconds": 1764.6401073340094,
+      "retries": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "evidence": "artifacts/verification/r42-full-03-validated.json",
+      "old186Preserved": true,
+      "noScopedAggregation": true
+    },
+    "unitPassed": 6218,
+    "unitFiles": 94,
+    "backendPassed": 23,
+    "backendActualExit": 0,
+    "sourceFreezeCount": 534,
+    "scenePixels": 1835008,
+    "clipPixelsIncludingTransparency": 66096,
+    "clipOpaquePixels": 29808,
+    "clipInstances": 144,
+    "pixelTolerance": 0,
+    "auditedImages": 20,
+    "pixelEvidence": "artifacts/verification/r42-full-03-ending-pixel-proof.json",
+    "notColdReview": true,
+    "actualViewedImages": 5,
+    "visualEvidence": "artifacts/verification/r42-full-03-actual-ui-viewing.json"
+  },
+  "relatedRepairs": {
+    "camera": "Retain floating follow state but publish integer scroll; reset independent shake at frozen Scene boundaries.",
+    "observerAndInput": "Four old e2e files changed; original697 assertion call nodes preserved. No HP/time/position or immunity setters.",
+    "qCorrection": "Normal Q does not add Doom. Gato current full run used one rewind; Loom current full run saved zero rewinds, so do not credit its victory to Q.",
+    "specificBulletAbsorptionNotIndependentlyObservedInThisFullRun": true
+  },
+  "preservation": {
+    "oldPublicAssets": 49,
+    "oldBrowserPngs": 78,
+    "pngBytesAndMtimesRestored": true,
+    "pointerUnchanged": true,
+    "originalVitePreserved": true,
+    "ownedBackendCleaned": true
+  },
+  "reviewLimits": {
+    "sameLead": true,
+    "freshColdReview": false,
+    "originalImageReferenceWasPostExportComparison": true,
+    "nativePixelsNotGeneratedFromThatReference": true,
+    "shortViewportFooterMayRequireScrolling": true,
+    "fullCinematicAndWholeGddNotClaimed": true,
+    "audioListeningNotClaimed": true
+  },
+  "priorFailuresRetained": [
+    "r42-full-01:201/1",
+    "r42-full-02:151/7/44",
+    "r42-observation-stability-01:13/5",
+    "r42-blink-combat-01:4/2"
+  ]
+}

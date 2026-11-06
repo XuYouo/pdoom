@@ -115,7 +115,10 @@ export class LeviathanSpriteRenderer {
     this.drawing = true;
     try {
       const { runId, elapsedMs } = world.save, stage = world.chapter.stage;
-      if (this.runId !== runId || this.stage !== stage) { this.clear(); this.runId = runId; this.stage = stage; }
+      this.assertCurrent();
+      if (this.runId !== runId || this.stage !== stage) {
+        this.clear(); this.assertCurrent(); this.runId = runId; this.stage = stage;
+      }
       const boss = world.boss, binding = this.binding;
       if (!binding || stage !== 4 || boss.kind !== 'leviathan' || !world.loom
         || typeof runId !== 'string' || !runId.trim() || !Number.isFinite(boss.hp) || boss.hp <= 0
@@ -123,23 +126,40 @@ export class LeviathanSpriteRenderer {
       // HP is checked before the weak deadline: defeat may leave weakUntil in the snapshot.
       const index = leviathanSpriteFrameFor(elapsedMs, world.loom.turn.weakUntil);
       if (index === null) { this.clear(); return false; }
+      const x = Math.round(boss.x), y = Math.round(boss.y), alpha = boss.active ? 1 : 0.55;
+      this.assertCurrent();
       const ready = resources(this.scene.textures, binding);
+      this.assertCurrent();
       if (!ready) { this.clear(); return false; }
       if (ready.refs.length !== this.refs.length || ready.refs.some((value, i) => value !== this.refs[i])) {
-        this.clear(); ready.texture.setFilter(NEAREST); this.refs = ready.refs;
+        this.clear(); this.assertCurrent();
+        ready.texture.setFilter(NEAREST); this.assertCurrent(); this.refs = ready.refs;
       }
       const frame = binding.frames[index]; let image = this.image;
       if (!image) {
-        image = this.scene.add.image(Math.round(boss.x), Math.round(boss.y), binding.key, frame);
-        this.image = image; this.frame = frame; // Own before any setter can throw.
-      } else if (this.frame !== frame) { image.setFrame(frame); this.frame = frame; }
-      image.setDisplayOrigin(80, 80); image.setScale(1); image.setDepth(2);
-      image.setAlpha(boss.active ? 1 : 0.55); image.setRotation(0);
-      image.setFlipX(false); image.setFlipY(false); image.clearTint();
-      image.setPosition(Math.round(boss.x), Math.round(boss.y)); image.setVisible(true);
+        image = this.scene.add.image(x, y, binding.key, frame);
+        // ADDED_TO_SCENE is synchronous. Adopt even a cancelled factory return so catch releases it.
+        this.image = image; this.assertCurrent(image); this.frame = frame;
+      } else if (this.frame !== frame) {
+        image.setFrame(frame); this.assertCurrent(image); this.frame = frame;
+      }
+      image.setDisplayOrigin(80, 80); this.assertCurrent(image);
+      image.setScale(1); this.assertCurrent(image);
+      image.setDepth(2); this.assertCurrent(image);
+      image.setAlpha(alpha); this.assertCurrent(image);
+      image.setRotation(0); this.assertCurrent(image);
+      image.setFlipX(false); this.assertCurrent(image);
+      image.setFlipY(false); this.assertCurrent(image);
+      image.clearTint(); this.assertCurrent(image);
+      image.setPosition(x, y); this.assertCurrent(image);
+      image.setVisible(true); this.assertCurrent(image);
       return true;
     } catch { this.clear(); return false; }
     finally { this.drawing = false; }
+  }
+  /** Disposal wins over an in-flight draw, including synchronous engine callbacks. */
+  private assertCurrent(image?: LeviathanSpriteImage): void {
+    if (this.disposed || (image !== undefined && this.image !== image)) throw new Error('Leviathan draw cancelled');
   }
   private clear(): void {
     const image = this.image; this.image = null; this.frame = null; this.refs = [];

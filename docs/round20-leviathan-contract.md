@@ -1,6 +1,7 @@
-# Leviathan native-art contract — next-milestone draft only
+# Leviathan native-art contract — frozen mechanics, admitted native asset
 
-Persisted from the read-only task77 specialist report. No new sprite, code, test or runtime admission is claimed here. Actual engine stays Phaser4.0.0; re-read relevant implementation and preflight live Aseprite before any future drawing.
+Mechanics below originate in the read-only task77 report. Initial integration is historical in [R20](<round20-leviathan-progress.md>); current admission is [R21](<round21-leviathan-verification.md>).
+Actual engine stays Phaser4.0.0. Future art edits still require live preflight and current sprite_info; no engine/physics/DTO/camera changes.
 
 ## Fixed mechanics
 
@@ -13,19 +14,30 @@ Persisted from the read-only task77 specialist report. No new sprite, code, test
 - [Swallow](<../src/pages/GamePage/game/systems/leviathan.ts#L24-L43>): outerL,outerR,innerL,innerR; natural stages add2/1/1, width640→410→about300→center anchor. Later tell can have emptyids and remain genuine. Player HP readout is swallowed, not actual HP; Boss64×4 bar still exists. Loststems=min(4,eaten.length),success temporarily returns0,nexttell swallowsagain.
 - [Projectile origin](<../src/pages/GamePage/game/systems/leviathan.ts#L42-L50>):(bx−78,by),aimatactualplayer;3/5/7 shots,speed120/135/150,r5,damage18/20/22,TTL4500. Existing dedicated Core keeps Boss facing−1 and position fixed. Never interpret the player's left-turn as Boss flipping.
 
-## Smallest candidate art contract — still to confirm
+## Frozen source contract
 
-[Current shape](<../src/pages/GamePage/game/systems/LoomRenderer.ts#L124-L147>) has only closed/weak-open semantic appearances. Minimum2poses; if preserving rotation, closed/open×4 hand-drawn rotor phases (8frames) may cover the basic60-degree symmetry of the existing100ms-quantized15-degree rotation. Asymmetric final details still need review. Read actual elapsed time, no second clock/arbitrary PNG rotation; enteredAt is not reset at everyaction.
+160×160,pivot80,80;contact local[8,8,152,152),Core-clear local(67,65,26,30),actualemission local(2,80).
+Four layers:anchors / outer-rotor / inner-rotor / iris;32cels＝11compressed＋21linked,20palette includingtransparent,5/7opaque colours andhard0/255alpha.
+Eight manually authored frames:closed0..3/open4..7. phase=floor(actualsave.elapsedMs/100)%4,open only realweakUntil>now;no second clock,bitmap rotation or action-reset timer.
+Fixed body center,never flip or snap tofloor;full144square contact/hit domain stays legible,not silently shrunk tohexagon.
+No invented right-facing/walk/run/death poses;hp0 hides despite leftoverweakUntil.
 
-Candidate160×160,pivot(80,80);144-domain atlocal(8,8),aperturelocal(67,65,26,30),realemissionlocal(2,80). Minimal rig:shell/contact-frame,rotors,aperture. The square contact corners must remain legible rather than silently shrinking the hitbox to a hexagon.
+Entry recover/tell/attack and trueleftdash opening are naturally reachable;phase2/3 need realdamage.
+Inactive pretriggerx<1960 cannot showfullbody: [camera](<../src/pages/GamePage/game/systems/cameraFrame.ts#L11-L24>) rightedge≤2365 is leftofcontact2418,followedby120ms entrysmoothing.
+Do not require an impossible full inactive-idle browser witness.
 
-Entry recover/tell/attack and realdash weak are naturally reachable;phase2/3 need realdamage. Inactive pretriggerx<1960 cannot show a full body: [camera](<../src/pages/GamePage/game/systems/cameraFrame.ts#L11-L24>) rightedge≤2365 is left ofbody2418, then entry has120ms smoothing. Do not demand impossible complete inactive-idle evidence. No right-facing/walk/run/death pose is currently justified;hp0 hides immediately even if weakUntil remains set.
+## Independent cues and current limits
 
-## Independent cues and verification limits
+[Body integration](<../src/pages/GamePage/game/systems/WorldRenderer.ts>) usesImage2;contactfill remainsbehind.
+[Loom cues](<../src/pages/GamePage/game/systems/LoomRenderer.ts>) keeptrue144outline,26×30Core,swallow targets/links,narrow region,line2240,leftarrow,projectiles andHP onforeground3;Boss title4 andunique localdeadline6.
+React ownsonecurrentinstruction andtimeline/HP/music state,not a second large native statusboard. None ofthese cues isbaked inskin.
 
-- Preserve actual swallow target orange boxes/links, collapse/noncollidingghost, narrowing region,line2240,turn arrow/countdown,remainingweak andrealHP/music. None belongs baked in the skin. [Loom cues](<../src/pages/GamePage/game/systems/LoomRenderer.ts#L68-L121>).
-- Body,player/voidbullets,HP andLoomcombat currentlyshareg(depth0),title2,HUD6. FutureImage2 must not cover actualcues; separatebodyreplacement fromforegroundcue3/title4 as needed without moving Core. [Integration](<../src/pages/GamePage/game/systems/WorldRenderer.ts#L257-L314>),[HP](<../src/pages/GamePage/game/systems/WorldRenderer.ts#L358-L362>).
-- Current [browser case](<../tests/e2e/loom.spec.ts#L199-L244>) is legalCP2→normalnavigation→firstleftturn→HUD/actualPCMreturn→reswallow. It explicitly doesnotshoot and proves neither all phases/kill nor source-pixel body registration. [Pure rule routes](<../tests/game/loomPlaythrough.test.ts#L43-L86>) can readWorld tochooseFrameInput; that is not browser visual proof.
-- Next gate needs independent PNG/atlas registration, multi-colour/pose witnesses, realcueoverlap,pausedfreeze,hp0/crosschapter/restartcleanup. Do not let newbodycolours spoof existingClawdorange/marker/platform [RGB observations](<../tests/e2e/loom.spec.ts#L36-L70>). [Release](<../src/pages/GamePage/game/systems/leviathan.ts#L81-L84>) leavesweakUntil:weakalonecannotkeepdeadbodyvisible.
+The original [CP2 browser route](<../tests/e2e/loom.spec.ts#L201>) stilldoesnotshoot:normalnavigation→firstleftturn→HUD/actualPCMreturn→reswallow.
+The added [native case](<../tests/e2e/loom.spec.ts#L269>) independently registers8sourceposes,realopening/reclose,pause/nativeGLrestore andrealA/B reroll withfixedbodyanchor.
+Initialwide-field source1 wascorrectly rejectedundertrueforegroundnarrowline;laternaturally narrowerfields providedstrictqualifyingwitnesses withoutthreshold/source/geometry changes.
+Threeadditionalrealresourcefaults preventready,preservecheckpoint andallowretry. R20Loomscope7/7 wasnot then-currentfull100browser/backendgate; R21 complete102/23 functional regression now passes.
+[Pure rule routes](<../tests/game/loomPlaythrough.test.ts#L43-L86>) mayreadWorld tochooseFrameInput;thatdoesnot make thembrowserjourneyproof.
 
-Final canvas,palette/detail and actual native visibility/rotation witnesses remain pending. This draft does not authorize engine upgrades, new physics, synthetic browser state or broadening an existing sprite palette silently.
+R21 verified allHP-phase ordinary nativekill,samearena hurtdefeat/retry,crosschaptercleanup and current102browser/23backend. Remaining: fresh continuous journey and subjectiveplayback/humanlistening.
+[Release](<../src/pages/GamePage/game/systems/leviathan.ts#L81-L84>) leavesweakUntil;weakalonecannotkeepdeadbodyvisible.
+Do not add synthetic browserstate,spoofhero/marker/platformcolours or silently widen thepalette. Nativeasset productionReady is asset-scoped; game release/security and fullGddComplete remainfalse.

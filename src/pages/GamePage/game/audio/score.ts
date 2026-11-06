@@ -36,7 +36,8 @@ export function notesForStep(stage: number, index: number): VoiceSpec[] {
 
 export function isAudioReset(previous: AudioFrame | null, next: AudioFrame): boolean {
   return !previous || previous.runId !== next.runId || previous.stage !== next.stage || next.elapsedMs < previous.elapsedMs
-    || next.shots < previous.shots || next.rewinds < previous.rewinds || next.rerolls < previous.rerolls || next.turns < previous.turns;
+    || next.shots < previous.shots || next.rewinds < previous.rewinds || next.rerolls < previous.rerolls || next.turns < previous.turns
+    || next.dashes < previous.dashes || next.insights < previous.insights;
 }
 
 export function planSfx(previous: AudioFrame | null, next: AudioFrame): SfxKind[] {
@@ -46,6 +47,9 @@ export function planSfx(previous: AudioFrame | null, next: AudioFrame): SfxKind[
   if (next.turns > previous.turns) cues.push('turn');
   if (next.rerolls > previous.rerolls) cues.push('reroll');
   if (next.rewinds > previous.rewinds) cues.push('rewind');
+  if (next.insights > previous.insights) cues.push('insight');
+  // A successful left turn already supplies the stronger confirmation for that same sampled dash.
+  if (next.dashes > previous.dashes && next.turns === previous.turns) cues.push('dash');
   if (next.shots > previous.shots) cues.push('shot'); // Coalesce bursts, never replay every historical shot.
   return cues;
 }
@@ -54,6 +58,8 @@ export function sfxVoices(kind: SfxKind, variation = 0): VoiceSpec[] {
   const pitch = 1 + ((Math.abs(Math.floor(variation)) % 5) - 2) * 0.018;
   const base = { bus: 'sfx' as const };
   switch (kind) {
+    case 'dash': return [{ ...base, waveform: 'triangle', frequency: 760, endFrequency: 190, duration: 0.095, gain: 0.12 }, { ...base, waveform: 'noise', frequency: 3500, highpass: 2200, duration: 0.06, gain: 0.08 }];
+    case 'insight': return [{ ...base, waveform: 'sine', frequency: 620, endFrequency: 1240, duration: 0.18, gain: 0.115 }, { ...base, waveform: 'triangle', frequency: 930, endFrequency: 1860, duration: 0.14, gain: 0.07 }];
     case 'shot': return [{ ...base, waveform: 'square', frequency: 920 * pitch, endFrequency: 420 * pitch, duration: 0.055, gain: 0.16 }];
     case 'hit': return [{ ...base, waveform: 'noise', frequency: 1400, highpass: 220, duration: 0.16, gain: 0.25 }];
     case 'rewind': return [{ ...base, waveform: 'triangle', frequency: 900, endFrequency: 170, duration: 0.3, gain: 0.23 }];

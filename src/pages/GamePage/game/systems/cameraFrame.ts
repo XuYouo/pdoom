@@ -29,5 +29,11 @@ export function worldLabelFits(x: number, width: number, scrollX: number, viewpo
   return width > 0 && x - scrollX >= inset && x + width - scrollX <= viewportWidth - inset;
 }
 
+/** Fit a measured HUD group, not its subject. Oversized groups center without pretending to shrink text. */
+export function worldAnnotationCenterX(x: number, width: number, scrollX: number, viewportWidth = 640, inset = 8): number {
+  if (width + inset * 2 > viewportWidth) return scrollX + viewportWidth / 2;
+  return clamp(x, scrollX + inset + width / 2, scrollX + viewportWidth - inset - width / 2);
+}
+
 /** Quantize only the published view, never the floating follow state used by smoothing. */
 export const rasterCameraPoint = (point: CameraPoint): CameraPoint => ({ x: Math.round(point.x), y: Math.round(point.y) });

@@ -3,32 +3,24 @@ import { bossRect, PLAYER_HEIGHT, type WorldState } from '../entities/model';
 import { ClawdRenderer } from './ClawdRenderer';
 import { clamp } from './geometry';
 import { doomForm } from './rules';
-import { mirrorComboLabel, omegaHudSnapshot, OMEGA_PHASE_LABELS } from './omegaPresentation';
 
 /** Read-only projections: the reflection is decoration; the duel actor uses its actual 16×22 contact domain. */
 export class OmegaRenderer {
   private reflection: ClawdRenderer;
-  private title: Phaser.GameObjects.Text;
   private profile: Phaser.GameObjects.Text;
 
   constructor(scene: Phaser.Scene) {
     this.reflection = new ClawdRenderer(scene);
-    this.title = scene.add.text(14, 28, '', { fontFamily: 'monospace', fontSize: '10px', color: '#e3d8c4', lineSpacing: 3, backgroundColor: '#101923db', padding: { x: 5, y: 4 }, wordWrap: { width: 350 } }).setScrollFactor(0).setDepth(5);
-    this.profile = scene.add.text(626, 28, '', { fontFamily: 'monospace', fontSize: '9px', color: '#d3bedf', align: 'right', lineSpacing: 3, backgroundColor: '#101923db', padding: { x: 5, y: 4 }, wordWrap: { width: 230 } }).setOrigin(1, 0).setScrollFactor(0).setDepth(5);
+    this.profile = scene.add.text(626, 50, '', { fontFamily: 'monospace', fontSize: '9px', color: '#d3bedf', align: 'right', lineSpacing: 3, backgroundColor: '#101923db', padding: { x: 5, y: 4 }, wordWrap: { width: 230 } }).setOrigin(1, 0).setScrollFactor(0).setDepth(5);
   }
 
   drawEnvironment(g: Phaser.GameObjects.Graphics, world: WorldState) {
     const omega = world.omega;
-    this.title.setVisible(!!omega); this.profile.setVisible(!!omega);
+    this.profile.setVisible(!!omega);
     if (!omega) { this.reflection.setVisible(false); return; }
-    const now = world.save.elapsedMs, hud = omegaHudSnapshot(world)!;
-    const caption = omega.phase === 'storm' ? '跳过亮框风暴和断口 · 前往最后的门'
-      : omega.phase === 'chamber' ? '空椅子。落地镜。靠近镜面，站稳。'
-        : omega.phase === 'reveal' ? '镜中睁眼的，是一路升级的你。'
-          : omega.phase === 'complete' ? '结果已锁定 · 不再推进战斗计时'
-            : omega.mirror.state === 'tell' ? `预告：${mirrorComboLabel(omega.mirror.plan)}` : `${hud.mirrorAction} · 留意恢复空档`;
-    this.title.setText(`${OMEGA_PHASE_LABELS[omega.phase]} / OMEGA\n${caption}`);
-    this.profile.setText(`${hud.memorySource === 'ordered' ? '实际观察序列' : '频次起手 · 继续观察'} / ${hud.dominantAction}\n遗物有效 ${omega.mirror.profile.activeBuild.length} · 失活 ${omega.mirror.profile.suppressedBuild.length} · 连招 ${hud.observedCombos}`);
+    const now = world.save.elapsedMs;
+    // React owns phase/current action and the observed combo. These relic-only counts are unique; activeTraits also includes upgrades.
+    this.profile.setText(`遗物有效 ${omega.mirror.profile.activeBuild.length} · 失活 ${omega.mirror.profile.suppressedBuild.length}`);
     if (omega.phase === 'storm') for (const zone of omega.stormZones) {
       const color = zone.phase === 'tell' ? 0xf4d298 : zone.phase === 'active' ? 0xe89fce : 0x688c91;
       g.fillStyle(color, zone.phase === 'active' ? 0.25 : 0.08).fillRect(zone.x, zone.y, zone.w, zone.h);
@@ -63,7 +55,7 @@ export class OmegaRenderer {
     if (!omega) { this.reflection.setVisible(false); return; }
     const now = world.save.elapsedMs, { mirror, glass } = omega;
     if (omega.phase === 'duel' && world.boss.hp > 0) {
-      this.reflection.drawVisual({ runId: `${world.save.runId}:mirror`, now, hp: world.boss.hp, form: 'foom', actor: mirror.actor, playing: world.mode === 'playing', rewinding: mirror.rewind !== null });
+      this.reflection.drawVisual({ runId: `${world.save.runId}:mirror`, now, hp: world.boss.hp, form: 'foom', actor: mirror.actor, firedAt: mirror.actor.lastFiredAt, playing: world.mode === 'playing', rewinding: mirror.rewind !== null });
       const bounds = bossRect(world.boss);
       g.lineStyle(1, 0xd4b0ff, 0.95).strokeRect(bounds.x, bounds.y, bounds.w, bounds.h);
       // A visible hostile chevron distinguishes two legitimate Clawd silhouettes; it is not a second hitbox.
@@ -85,9 +77,9 @@ export class OmegaRenderer {
     } else if ((omega.phase === 'chamber' || omega.phase === 'reveal') && world.player.x > glass.x - 190) {
       // A projected reflection is not the active enemy: its position never enters the simulation.
       const actor = { ...world.player, x: glass.x + glass.w / 2, y: clamp(world.player.y, glass.y + PLAYER_HEIGHT, world.chapter.floor - PLAYER_HEIGHT / 2), facing: (world.player.facing === 1 ? -1 : 1) as -1 | 1, invulnerableUntil: 0 };
-      this.reflection.drawVisual({ runId: `${world.save.runId}:glass`, now, hp: world.save.hp, actor, form: omega.phase === 'reveal' ? 'foom' : doomForm(world.save.doom), playing: world.mode === 'playing', rewinding: false, alpha: omega.phase === 'reveal' ? 0.9 : 0.45 });
+      this.reflection.drawVisual({ runId: `${world.save.runId}:glass`, now, hp: world.save.hp, actor, firedAt: world.rewind ? null : world.player.lastFiredAt, form: omega.phase === 'reveal' ? 'foom' : doomForm(world.save.doom), playing: world.mode === 'playing', rewinding: false, alpha: omega.phase === 'reveal' ? 0.9 : 0.45 });
     } else this.reflection.setVisible(false);
   }
 
-  destroy() { this.reflection.destroy(); this.title.destroy(); this.profile.destroy(); }
+  destroy() { this.reflection.destroy(); this.profile.destroy(); }
 }

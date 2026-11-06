@@ -32,7 +32,7 @@ function saved(stage: number, checkpoint = 0): GameSaveData {
     actionCounts: { shots: 7, dashes: 3, rewinds: 2, insights: 1 } };
 }
 function rest(save: GameSaveData): RestRoomSnapshot {
-  return { save, room: 1, hp: save.hp, doom: save.doom, tokens: save.tokens, context: contextSnapshot(save, true),
+  return { save, rater: { pose: decodeCheckpoint(save.checkpoint).hackUsed ? 'hacked' : 'neutral', evaluation: null }, room: 1, hp: save.hp, doom: save.doom, tokens: save.tokens, context: contextSnapshot(save, true),
     rewardText: '评级奖励已记录', hackUsed: decodeCheckpoint(save.checkpoint).hackUsed, hackEligible: false,
     hackRequirement: '门槛尚未满足', message: '休息室已恢复', offers: [] };
 }
@@ -41,6 +41,7 @@ function sessionFor(stage = 1, screen: GameSession['screen'] = { kind: 'menu' })
   return {
     bridge: new GameBridge(), ready: true, loadError: null, screen, panel: null, save,
     audio: { preferences: { muted: false, volume: 0.5 }, status: 'locked', storageWarning: null, setMuted: vi.fn(), setVolume: vi.fn(), unlock: vi.fn() },
+    motion: { mode: 'system', systemReduced: false, reducedMotion: false, storageWarning: null, setMode: vi.fn() },
     hud: { hp: save.hp, doom: save.doom, tokens: save.tokens, score: save.score, stage, elapsedMs: save.elapsedMs,
       rewindReady: false, insightActive: false, boss: null, objective: '本章目标' },
     context: contextSnapshot(save), notice: '运行时就绪', saveStatus: '检查点已保存',

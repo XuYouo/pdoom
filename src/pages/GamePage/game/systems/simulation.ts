@@ -35,7 +35,7 @@ export function createWorld(save: GameSaveData, mode: WorldState['mode'] = 'play
   const world: WorldState = {
     chapter, factory, furnace, loom, omega, behavior,
     mode: completed ? 'finished' : supported ? resting ? 'rest' : mode : 'unavailable', save: snapshotSave(save), player,
-    rest: resting && checkpoint.room !== 0 ? { room: checkpoint.room, message: '已恢复安全休息室：评级奖励不重发，之前扣款、词条与劫持标记均已保留。' } : null,
+    rest: resting && checkpoint.room !== 0 ? { room: checkpoint.room, evaluation: null, message: '已恢复安全休息室：评级奖励不重发，之前扣款、词条与劫持标记均已保留。' } : null,
     enemies: completed ? [] : chapter.enemies.filter(enemy => checkpoint.room === 0 || aheadOf(chapter, enemy, spawn)).map(enemy => ({ ...enemy, phaseUntil: now + enemy.phaseUntil })),
     pickups: completed ? [] : [...chapter.pickups, ...(loom ? loomPickups(loom) : [])].filter(pickup => checkpoint.room === 0 || aheadOf(chapter, pickup, spawn)).map(pickup => ({ ...pickup })),
     boss: { ...chapter.boss, facing: -1, hp: completed ? 0 : chapter.boss.maxHp, active: false, phase: 1, action: 'idle', actionUntil: now, targetX: chapter.arena.x + 160, volley: 0, enteredAt: now },

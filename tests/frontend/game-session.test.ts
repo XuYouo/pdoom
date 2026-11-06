@@ -45,7 +45,7 @@ class MemoryStorage {
 }
 const KEY = 'pdoom.save.v1';
 const saveFor = (stage = 5, checkpoint = 90, doom = 55): GameSaveData => ({ ...createRun('465df28f-4c40-4c3c-b401-56bb55b6de89', 42), stage, checkpoint, doom, hp: 67, tokens: 137, score: 4567, elapsedMs: 123456, inventory: ['constitutional', 'residual'], upgrades: ['reinforced'], actionCounts: { shots: 77, dashes: 32, rewinds: 12, insights: 5 } });
-const roomFor = (save: GameSaveData): RestRoomSnapshot => ({ save, room: 1, hp: save.hp, doom: save.doom, tokens: save.tokens, context: contextSnapshot(save, true), rewardText: '已记录', hackUsed: false, hackEligible: false, hackRequirement: '未满足', message: '已恢复', offers: [] });
+const roomFor = (save: GameSaveData): RestRoomSnapshot => ({ save, rater: { pose: 'neutral', evaluation: null }, room: 1, hp: save.hp, doom: save.doom, tokens: save.tokens, context: contextSnapshot(save, true), rewardText: '已记录', hackUsed: false, hackEligible: false, hackRequirement: '未满足', message: '已恢复', offers: [] });
 function render() {
   hooks.begin();
   // eslint-disable-next-line react-hooks/rules-of-hooks -- This isolated test driver supplies the mocked hook dispatcher above, not a React/browser mount.

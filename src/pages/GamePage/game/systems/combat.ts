@@ -27,7 +27,7 @@ export function firePlayer(world: WorldState, input: FrameInput, now: number): v
       ...(hallucination ? { glyph: index % 2 ? ')' as const : '(' as const } : {}), expiresAt: now + 1500 });
   });
   if (hallucination) world.events.push({ type: 'notice', message: '注意力发散！本次前向传播变为无伤 Lisp 括号；休息室可调整顺序或扩容。' });
-  world.player = { ...p, shotReadyAt: now + effects.fireIntervalMs, criticalCharges: Math.max(0, p.criticalCharges - (critical ? 1 : 0)) };
+  world.player = { ...p, lastFiredAt: now, shotReadyAt: now + effects.fireIntervalMs, criticalCharges: Math.max(0, p.criticalCharges - (critical ? 1 : 0)) };
   world.save = recordAction(world.save, 'shots');
 }
 

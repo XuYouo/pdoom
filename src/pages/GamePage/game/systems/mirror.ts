@@ -101,7 +101,7 @@ export function advanceMirror(world: WorldState, now: number, dt = TUNING.stepMs
     bullets.push({ id: nextId++, ...origin, vx: velocity.x, vy: velocity.y, radius: critical ? 4 : 3,
       damage: hallucination ? 0 : Math.min(24, Math.round((8 + boss.phase) * mirror.profile.damageMultiplier * (critical ? mirror.profile.criticalMultiplier : 1))),
       faction: 'enemy', kind: 'mirror', critical, harmless: hallucination, ...(hallucination ? { glyph: '(' as const } : {}), expiresAt: now + 2400 });
-    mirror.executed.shots += 1; mirror.actor.shotReadyAt = now + mirror.profile.fireIntervalMs;
+    mirror.executed.shots += 1; mirror.actor.lastFiredAt = now; mirror.actor.shotReadyAt = now + mirror.profile.fireIntervalMs;
     if (critical) mirror.actor.criticalCharges -= 1;
   }
   if (mirror.state === 'execute' && now >= mirror.until && !mirror.rewind) {

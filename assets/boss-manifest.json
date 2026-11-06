@@ -599,7 +599,197 @@
           "bytes": 3756
         }
       }
+    },
+    {
+      "id": "leviathan",
+      "status": "approved native art, integrated and regression-verified across all HP phases, same-arena kill, ordinary hurt defeat/retry and chapter exit",
+      "source": "assets/source/leviathan.aseprite",
+      "references": [],
+      "generationRecord": "assets/leviathan-generation.json",
+      "pixelSpec": "assets/leviathan-pixelspec.md",
+      "png": "public/game/leviathan.png",
+      "atlas": "public/game/leviathan.json",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "frameSize": [
+        160,
+        160
+      ],
+      "frameCount": 8,
+      "sheetSize": [
+        1280,
+        160
+      ],
+      "frameNames": [
+        "leviathan 0.aseprite",
+        "leviathan 1.aseprite",
+        "leviathan 2.aseprite",
+        "leviathan 3.aseprite",
+        "leviathan 4.aseprite",
+        "leviathan 5.aseprite",
+        "leviathan 6.aseprite",
+        "leviathan 7.aseprite"
+      ],
+      "pivot": [
+        80,
+        80
+      ],
+      "pivotStorage": "Explicit view descriptor; no atlas slice metadata.",
+      "collisionSizeUnchanged": [
+        144,
+        144
+      ],
+      "opaqueEnvelopeHalfOpen": [
+        2,
+        8,
+        152,
+        152
+      ],
+      "coreReservedRect": [
+        67,
+        65,
+        26,
+        30
+      ],
+      "facing": "Left nozzle; no flip, locomotion or floor snapping",
+      "filter": "nearest",
+      "padding": 0,
+      "trimmed": false,
+      "tags": {
+        "closed": [
+          0,
+          3
+        ],
+        "open": [
+          4,
+          7
+        ]
+      },
+      "durationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "playback": "Actual save.elapsedMs100ms modulo4; open only weakUntil>now. No second animation clock. HP0 hides despite leftover weakUntil.",
+      "layers": [
+        "anchors",
+        "outer-rotor",
+        "inner-rotor",
+        "iris"
+      ],
+      "cels": 32,
+      "linkedCels": 21,
+      "rasterCels": 11,
+      "paletteEntriesIncludingTransparent": 20,
+      "opaqueColors": 7,
+      "opaqueColorsPerFrame": [
+        5,
+        5,
+        5,
+        5,
+        7,
+        7,
+        7,
+        7
+      ],
+      "alphaValues": [
+        0,
+        255
+      ],
+      "reservedClawdOrangePixelCount": 0,
+      "overlays": "True contact fill remains behind Image2;144-square outline,26x30 Core,swallow/narrow/line/arrow and all projectiles/HP stay independently above on3;Boss title4,unique countdown6. No new collision or floor.",
+      "validation": {
+        "sourceCasesAdded": 183,
+        "adapterCasesAdded": 83,
+        "offlineOracleCasesAdded": 23,
+        "nativeScope": 9,
+        "nativeLog": "artifacts/verification/r21-browser-01.log",
+        "staticReviewScore": 7,
+        "sceneReviewScore": 7.5,
+        "freshReviewer": false,
+        "necessary": 0,
+        "fullGatePending": false,
+        "mcpStyleWarningsRetained": true,
+        "productionReady": true,
+        "currentLocalGate": {
+          "unit": 3567,
+          "unitFiles": 59,
+          "type": 0,
+          "lint": 0,
+          "build": 0,
+          "diff": 0,
+          "log": "artifacts/verification/r21-current-global-gates.log"
+        },
+        "nativeMetrics": "artifacts/verification/r21-native-metrics.json",
+        "productionReadyScope": "Leviathan asset only; not whole-game release or security certification",
+        "finalGate": {
+          "unitPassed": 3567,
+          "unitFiles": 59,
+          "browserPassed": 102,
+          "browserTotal": 102,
+          "browserSkipped": 0,
+          "browserBackendEnabled": true,
+          "browserSeconds": 903.464,
+          "backendPassed": 23,
+          "backendTotal": 23,
+          "backendSkipped": 0,
+          "typeExit": 0,
+          "lintExit": 0,
+          "buildExit": 0,
+          "diffExit": 0,
+          "functionalPassed": true,
+          "securityGatePassed": false,
+          "fullGddComplete": false,
+          "fullBrowserLog": "artifacts/verification/r21-browser-01.log",
+          "globalLog": "artifacts/verification/r21-current-global-gates.log",
+          "backendLog": "artifacts/verification/r21-backend-tests.log",
+          "serviceCleanup": "artifacts/verification/r21-lead-service-cleanup.json"
+        }
+      },
+      "nativeLimitations": "LegalCP2 routes:8sourceposes,real left-turn/open/reclose,pause+nativeGLrestore,actual A/B reroll fixed body,3resource retries; ordinary aimed all-phase kill and same-arena cleanup; real damagedBoss/player void defeat,frozen livebody,newrunId/fullHP closed reset; actual chapter5 entry raw. Not fresh continuous five-chapter journey/human hearing/fullanimation certification.",
+      "hashes": {
+        "assets/source/leviathan.aseprite": {
+          "bytes": 15546,
+          "sha256": "3b897bdc63635d925366f9c1089c2620b24c7116b4af34294f4f102482d4b8fc"
+        },
+        "public/game/leviathan.png": {
+          "bytes": 18671,
+          "sha256": "105ec83d223e56b5e77f0878079c4273dec469cd7bcb502fcecbfe5cfb2bbe9d"
+        },
+        "public/game/leviathan.json": {
+          "bytes": 2912,
+          "sha256": "e3386c663c8052aed49b0e09fdff2c821ef89eb626a633d2872ee7fc5e8fbcf2"
+        }
+      }
     }
   ],
-  "releaseStatus": "Not externally published. Three formal bosses do not complete the GDD or remaining chapter/environment art."
+  "releaseStatus": "Not externally published. Four formally regression-admitted native Boss assets do not complete the GDD,remaining chapter art or security gate;12moderate development-chain alerts remain.",
+  "currentVerification": {
+    "unitPassed": 3567,
+    "unitFiles": 59,
+    "browserPassed": 102,
+    "browserTotal": 102,
+    "browserSkipped": 0,
+    "browserBackendEnabled": true,
+    "browserSeconds": 903.464,
+    "backendPassed": 23,
+    "backendTotal": 23,
+    "backendSkipped": 0,
+    "typeExit": 0,
+    "lintExit": 0,
+    "buildExit": 0,
+    "diffExit": 0,
+    "functionalPassed": true,
+    "securityGatePassed": false,
+    "fullGddComplete": false,
+    "fullBrowserLog": "artifacts/verification/r21-browser-01.log",
+    "globalLog": "artifacts/verification/r21-current-global-gates.log",
+    "backendLog": "artifacts/verification/r21-backend-tests.log",
+    "serviceCleanup": "artifacts/verification/r21-lead-service-cleanup.json"
+  }
 }

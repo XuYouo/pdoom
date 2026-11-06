@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { MAX_MASTER_GAIN, notesForStep, planSfx, planStemLevels, sfxVoices, sliderToGain } from '../../src/pages/GamePage/game/audio/score';
 import { STEM_ORDER, type AudioFrame } from '../../src/pages/GamePage/game/audio/types';
-const frame: AudioFrame = { runId: 'run-a', stage: 4, doom: 8, bossActive: true, running: true, elapsedMs: 5000, hp: 90, shots: 1, rewinds: 0, rerolls: 0, turns: 0, stemsLost: 0 };
+const frame: AudioFrame = { runId: 'run-a', stage: 4, doom: 8, bossActive: true, running: true, elapsedMs: 5000, hp: 90, shots: 1, rewinds: 0, dashes: 0, insights: 0, rerolls: 0, turns: 0, stemsLost: 0 };
 
 describe('original adaptive music and cue planning', () => {
   it.each([0, 1, 2, 3, 4])('sets exactly the first %i music stems to zero', stemsLost => {

@@ -4,6 +4,8 @@ import { expect, test, type Page } from '@playwright/test';
 import { createRun } from '../../src/pages/GamePage/functions/saveModel';
 import type { GameSaveData } from '../../src/objects/game/GameSaveData';
 import { assertCheckpointAttempt } from './checkpoint-attempt';
+import { assertDeceiverCaptureCompleted, keepDeceiverDiagnostic } from './deceiver-controls';
+import { deceiverFrame, deceiverFrames, prepareDeceiverJump, nextDeceiverJumpFrame, finishDeceiverJump, keepDeceiverFrames, nativeBytes, type DeceiverAimFrame, type DeceiverCapturedFrame } from './deceiver-native';
 
 /** Read only actual screenshot pixels; never inspect or set the engine's world. */
 async function visiblePixels(page: Page, capture: Buffer) {
@@ -78,30 +80,83 @@ test('real E reveals the two-state sprite, stays alive through a long pause and 
 });
 
 for (const upgraded of [false, true]) {
-  test(`a normal jump and one mouse shot hit the visible ${upgraded ? 8 : 5}px core and actually defeat the disguised enemy`, async ({ page }) => {
+  test(`a normal jump and one mouse shot hit the visible ${upgraded ? 8 : 5}px core and actually defeat the disguised enemy`, async ({ page }, info) => {
     await resumeAtActualCheckpoint(page, upgraded);
-    const alive = await snapshot(page); expect(alive.pixels.ivory).toBeGreaterThan(40);
+    // Actual history readiness guarantees birth grace elapsed; no fixed wall wait or simulator mutation.
+    await expect(page.getByRole('button', { name: 'Q 回溯', exact: true })).toBeEnabled({ timeout: 12000 });
+    const alive = await deceiverFrame(page); expect(alive.pixels.ivory).toBeGreaterThan(40);
     await page.keyboard.press('e');
-    await expect.poll(async () => (await snapshot(page)).pixels.coreCount).toBeGreaterThan(30);
-    const exposed = await snapshot(page), p = exposed.pixels, radius = upgraded ? 8 : 5;
+    await expect.poll(async () => (await deceiverFrame(page)).pixels.coreCount).toBeGreaterThan(30);
+    const exposed = await deceiverFrame(page), p = exposed.pixels, radius = upgraded ? 8 : 5;
     expect(p.purple).toBeGreaterThan(30); expect(p.coreX).not.toBeNull(); expect(p.coreY).not.toBeNull();
     expect(p.coreWidth).toBeGreaterThan(radius * 2 - 1.5); expect(p.coreWidth).toBeLessThan(radius * 2 + 1.5);
-    // Rise above the body/platform before aiming at the real, screenshot-observed node.
-    await page.keyboard.down('Space'); await page.waitForTimeout(150);
-    let airborne = await snapshot(page);
-    for (let attempt = 0; attempt < 4 && (airborne.pixels.heroY === null || airborne.pixels.heroY >= 245); attempt++) airborne = await snapshot(page);
+    // One bounded ordinary jump; no repeat-until-success jump or extra shot.
+    const box = await page.locator('canvas').boundingBox(); expect(box).not.toBeNull();
+    const approach: DeceiverAimFrame[] = []; let airborne: DeceiverAimFrame | null = null;
+    let capturedApproach: DeceiverCapturedFrame[] = [];
+    let recording: Awaited<ReturnType<typeof prepareDeceiverJump>> | null = null;
+    let proof: Awaited<ReturnType<typeof deceiverFrames>> | null = null;
+    let failed = false, primary: unknown; const diagnosticErrors: Error[] = [];
+    const keep = async (label: string, action: () => Promise<unknown>) => {
+      await keepDeceiverDiagnostic(diagnosticErrors, label, action);
+    };
     try {
-      expect(airborne.pixels.heroY).not.toBeNull(); expect(airborne.pixels.heroY!).toBeLessThan(245);
-      const box = await page.locator('canvas').boundingBox(); expect(box).not.toBeNull();
-      // One trusted click, shorter than the 185ms fire interval. No health/entity edits or hidden aiming hooks.
-      await page.mouse.click(box!.x + p.coreX! * box!.width / 640, box!.y + p.coreY! * box!.height / 360, { delay: 20 });
-    } finally { await page.keyboard.up('Space'); }
-    await expect(page.locator('.runtime-log')).toContainText('核心节点已击破', { timeout: 5000 });
-    await expect.poll(async () => (await snapshot(page)).pixels.purple).toBe(0);
-    const defeated = await snapshot(page); expect(defeated.pixels.coreCount).toBe(0);
-    await writeFile(`artifacts/browser/deceiver-core-${radius}.png`, exposed.capture);
-    await writeFile(`artifacts/browser/deceiver-defeated-${radius}.png`, defeated.capture);
-    console.log('DECEIVER_NATIVE_ONE_SHOT', { radius, visibleCore: p, airborne: airborne.pixels.heroY, after: defeated.pixels });
+      recording = await prepareDeceiverJump(page);
+      await page.keyboard.down('Space');
+      for (let attempt = 0; attempt < 40; attempt++) {
+        const f = await nextDeceiverJumpFrame(recording); approach.push(f); const q = f.pixels;
+        if (f.at - approach[0].at > 900) break; // Deadline is measured from first observed native frame, not the Space edge.
+        if (q.heroY !== null && q.heroCount >= 80 && q.heroY < 245 && q.coreY !== null && q.heroY <= q.coreY + 12 && q.purple > 30 && q.coreCount > 30) { airborne = f; break; }
+      }
+      expect(airborne, 'Fresh visible native actor near jump apex, not an old CSS screenshot').not.toBeNull();
+      const aim = airborne!.pixels; expect(aim.heroY).not.toBeNull(); expect(aim.heroY!).toBeLessThan(245);
+      expect(aim.coreWidth).toBeGreaterThan(radius * 2 - 1.5); expect(aim.coreWidth).toBeLessThan(radius * 2 + 1.5);
+      expect(airborne!.rect).toEqual(box); expect(aim.coreX).not.toBeNull(); expect(aim.coreY).not.toBeNull();
+      // The first qualifying frame already armed the one900ms shot stream. No new handle or PNG here.
+      // Same-frame observed node; actual input still exactly one20ms trusted click, no hidden aiming hooks.
+      await page.mouse.click(box!.x + aim.coreX! * box!.width / 640, box!.y + aim.coreY! * box!.height / 360, { delay: 20 });
+      await page.keyboard.up('Space');
+      await expect(page.locator('.runtime-log')).toContainText('核心节点已击破', { timeout: 5000 });
+      await expect.poll(async () => (await snapshot(page)).pixels.purple).toBe(0);
+      const defeated = await snapshot(page); expect(defeated.pixels.coreCount).toBe(0);
+      await writeFile(`artifacts/browser/deceiver-core-${radius}.png`, nativeBytes(exposed));
+      await writeFile(`artifacts/browser/deceiver-defeated-${radius}.png`, defeated.capture);
+      console.log('DECEIVER_NATIVE_ONE_SHOT', { radius, visibleCore: p, airborne: aim.heroY, after: defeated.pixels });
+    } catch (error) { failed = true; primary = error; }
+    finally {
+      await keep('release Space', () => page.keyboard.up('Space'));
+      if (recording) await keep('collect actual recording', async () => {
+        const saved = await finishDeceiverJump(recording!); capturedApproach = saved.approach; proof = saved;
+        if (airborne) {
+          const original = capturedApproach[airborne.captureId];
+          if (!original || JSON.stringify({ ...original, png: undefined }) !== JSON.stringify(airborne)) throw Error('Original qualifying capture changed');
+          airborne = original;
+        }
+        info.annotations.push({ type: 'deceiver-capture-budget', description: JSON.stringify({ ...saved.budget,
+          qualificationToPointerMs: airborne && saved.edges[0] ? saved.edges[0].at - airborne.sampledAt : null,
+          problems: saved.problems, deferredOriginalRgbaEncoding: true,
+        }) });
+        assertDeceiverCaptureCompleted(saved);
+      });
+      await keep('save jump evidence', () => keepDeceiverFrames(info, 'native-single-jump', capturedApproach));
+      if (proof) {
+        await keep('save emitted-shot evidence', () => keepDeceiverFrames(info, 'native-actual-single-shot', proof!.frames));
+        await keep('save pointer evidence', () => info.attach('native-single-shot-inputs', { body: JSON.stringify({ edges: proof!.edges, aim: airborne, box }), contentType: 'application/json' }));
+      }
+    }
+    if (failed) {
+      if (diagnosticErrors.length) throw Object.assign(Error(`Original failure: ${primary instanceof Error ? primary.stack : String(primary)}; diagnostic failures: ${diagnosticErrors.map(e => e.message).join('; ')}`), { primary, diagnosticErrors });
+      throw primary;
+    }
+    if (diagnosticErrors.length) throw Object.assign(Error(diagnosticErrors.map(e => e.message).join('; ')), { diagnosticErrors });
+    // Original game assertions and every diagnostic must pass; failures remain independently recorded.
+    expect(proof).not.toBeNull();
+    expect(proof!.edges.map(e => [e.type, e.trusted, e.button, e.target])).toEqual([['pointerdown', true, 0, 'CANVAS'], ['pointerup', true, 0, 'CANVAS']]);
+    const heldMs = proof!.edges[1].at - proof!.edges[0].at; expect(heldMs).toBeGreaterThanOrEqual(0); expect(heldMs).toBeLessThan(185);
+    const moving = proof!.frames.flatMap(f => f.pixels.shots.map(b => ({ at: f.at, ...b })));
+    expect(moving.length).toBeGreaterThanOrEqual(2);
+    expect(moving.some((b, i) => moving.slice(i + 1).some(c => c.x > b.x + 5 && c.x < b.x + 50 && Math.abs(c.y - b.y) <= 12 && c.at > b.at && c.at - b.at <= 100))).toBe(true);
+    expect(proof!.frames.every(f => f.pixels.shots.length <= 1)).toBe(true);
   });
 }
 

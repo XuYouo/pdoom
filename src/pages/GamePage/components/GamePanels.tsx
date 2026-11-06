@@ -6,12 +6,12 @@ import { AccountPanel } from './AccountPanel';
 import { ContextPanel } from './ContextPanel';
 import { LeaderboardPanel } from './LeaderboardPanel';
 import { RestRoomPanel } from './RestRoomPanel';
+import { MotionSettings } from './MotionSettings';
 
 const controls = [['A / D · ← / →', '左右移动并改变角色面向'], ['SPACE / ↑', '跳跃（长按更高，松开短跳）'], ['J / 鼠标左键', '持续射击（鼠标瞄准不改变角色面向）'], ['SHIFT', '短距离冲刺'], ['Q', '反向传播 · 回溯过去两秒的真实轨迹'], ['E', '机械可解释性 · 显露核心'], ['ESC', '暂停训练（休息室须明确选择继续或返回终端）']];
 export function GamePanels({ session }: { session: GameSession }) {
   if (session.screen.kind === 'rest') return <Dialog title="安全休息室 / HUMAN RATER" dismissible={false} onClose={() => undefined} className="rest-dialog">
-    <div className="rest-menu-actions"><p>Esc 与点击背景不会关闭休息室。进度只保存在本地；云端仍需在账户中显式上传。</p><button type="button" className="secondary-button" onClick={session.returnToMenu}>返回终端并保留检查点</button></div>
-    <RestRoomPanel bridge={session.bridge} snapshot={session.screen.snapshot} />
+    <RestRoomPanel bridge={session.bridge} snapshot={session.screen.snapshot} onReturnToMenu={session.returnToMenu} />
   </Dialog>;
   if (!session.panel) return null;
   const stage = getDisplayedStage(session);
@@ -65,9 +65,10 @@ export function GamePanels({ session }: { session: GameSession }) {
         <p>基础技能预留 8K，上下文容量为 32K，可扩至 128K。窗口满载时中间遗物失活，并周期性发射无伤 Lisp 括号。进入安全休息室后，敌人与计时完全冻结，可以排序、购买、修复，前两章还可捐款；也可不购买直接继续。</p>
         <p>奖励劫持要求模型密度至少 75% 且 Doom 超过 50%，每室一次，代价 +25% Doom。交易立即保存本地，刷新不会重新发放评级奖励。战斗中查看上下文为只读。</p>
       </div>
-      <p className="tiny-text">Clawd／鹦鹉／复读机／伪装者两态／Gato三态已接入Aseprite，其余Boss与环境仍blockout。当前已开放 {PLAYABLE_CHAPTERS.length} 章：{PLAYABLE_CHAPTERS.map(value => `${chapterLabel(value.stage)} · ${value.name}`).join('、')}。{unopened && `${unopened}尚未开放，入口检查点仍保留。`}章节通过后须明确进入已开放的下一章；未开放入口不是最终结局。跨章沿用本局词条、升级与捐款标记；音频为原创四层合成与音效，未使用原曲或人声。第五章提供三个终局分支，完成档可回看；完整触控与正式环境美术仍待完善。</p>
+      <p className="tiny-text">Clawd、五类小怪、四Boss、五章环境、拾取和Human Rater已接入原生素材；专用终局演出与完整声景仍待补齐。当前已开放 {PLAYABLE_CHAPTERS.length} 章：{PLAYABLE_CHAPTERS.map(value => `${chapterLabel(value.stage)} · ${value.name}`).join('、')}。{unopened && `${unopened}尚未开放，入口检查点仍保留。`}章节通过后须明确进入已开放的下一章；未开放入口不是最终结局。跨章沿用本局词条、升级与捐款标记；音频为原创四层合成与音效，未使用原曲或人声。第五章提供三个终局分支，完成档可回看；完整触控与更多演出细节仍待完善。</p>
     </div>}
     {session.panel === 'settings' && <div className="space-y-5">
+      <MotionSettings motion={session.motion} />
       <section className="audio-settings" aria-label="原创游戏音频">
         <h3>原创四层合成 / AUDIO</h3>
         <p className="muted-text">芯片旋律、低音、打击、失真按 Boss / Doom 叠加。未使用未获许可的歌曲或歌词。设置窗口暂停训练，继续后才播放。</p>
@@ -78,8 +79,8 @@ export function GamePanels({ session }: { session: GameSession }) {
         {session.audio.storageWarning && <p className="status-message error" role="status">{session.audio.storageWarning}</p>}
         <p className="tiny-text">音量与静音仅保存在本机，不进入游戏存档。暂停、休息室与失焦会暂停音频；吞音只影响音乐，不吞掉操作音效。</p>
       </section>
-      <div className="data-row"><span>渲染</span><strong>640 × 360 · NEAREST</strong></div><div className="data-row"><span>模拟</span><strong>固定 60 Hz</strong></div><div className="data-row"><span>原生像素</span><strong>Clawd · 3类小怪 · Gato</strong></div><div className="data-row"><span>其余美术</span><strong>BLOCKOUT</strong></div><div className="data-row"><span>存档</span><strong>安全检查点 / schema v1</strong></div>
-      <p className="muted-text">失去窗口焦点时自动暂停，避免后台战斗。页面动效遵循系统的“减少动态效果”偏好。休息室必须明确选择继续或返回终端；关闭普通面板不会自动恢复战斗。云保存仅通过账户显式读写。按键重绑和完整触控设置仍待实现。</p>
+      <div className="data-row"><span>渲染</span><strong>640 × 360 · NEAREST</strong></div><div className="data-row"><span>模拟</span><strong>固定 60 Hz</strong></div><div className="data-row"><span>原生像素</span><strong>Clawd · 5类小怪 · 4 Boss</strong></div><div className="data-row"><span>场景与道具</span><strong>五章环境 · 拾取 · Human Rater</strong></div><div className="data-row"><span>存档</span><strong>安全检查点 / schema v1</strong></div>
+      <p className="muted-text">失去窗口焦点时自动暂停，避免后台战斗。镜头震动与页面动效遵循系统或本机的减少动态效果偏好；不关闭危险预警。休息室必须明确选择继续或返回终端；关闭普通面板不会自动恢复战斗。云保存仅通过账户显式读写。按键重绑和完整触控设置仍待实现。</p>
     </div>}
   </Dialog>;
 }

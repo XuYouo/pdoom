@@ -1,0 +1,148 @@
+{
+  "stage": "native-source-only",
+  "sourceReady": true,
+  "runtimeReady": false,
+  "fullGddComplete": false,
+  "canvas": [
+    256,
+    128
+  ],
+  "frames": 3,
+  "kind": "three independent static outcomes, not an animation loop",
+  "files": {
+    "assets/source/ending-scenes/ending-scenes.aseprite": {
+      "bytes": 8788,
+      "sha256": "4fa9b3572de15b57f098481ebb8868d761c6925c2e6e56aede3a10cdd4adaa08"
+    },
+    "assets/candidates/ending-scenes/ending-scenes.png": {
+      "bytes": 7232,
+      "sha256": "a6da59047a0a071b59efbb3176767287bf971b9826f9cbf8510a783187a4f6bc"
+    },
+    "assets/candidates/ending-scenes/ending-scenes.json": {
+      "bytes": 1729,
+      "sha256": "a48941510859a05de4a46f07dbaceee0f7a8423d5d29c1ec751af121f8cf5206"
+    }
+  },
+  "palette": [
+    "00000000",
+    "2c2330",
+    "d97757",
+    "eaa083",
+    "b55a4a",
+    "783f4a",
+    "f5e8c8",
+    "cbb696",
+    "34354f",
+    "575c79",
+    "858eb0",
+    "9dded1",
+    "d9ffea",
+    "071417",
+    "112726",
+    "1c3b35",
+    "33564a",
+    "557a5d",
+    "7fa97a",
+    "3c2936",
+    "654052",
+    "9e5979",
+    "d78c9b",
+    "deb15e",
+    "8d6a43",
+    "513e36",
+    "91b7ae",
+    "e8dab0",
+    "4e8f90",
+    "315f65",
+    "648da9",
+    "b1c4c8"
+  ],
+  "canonicalActors": {
+    "aligned": {
+      "sourceSha256": "c82079381bd482d648c6ecd06c0605f8b54508eb8f121d700d718725669de0bc",
+      "bbox": [
+        0,
+        7,
+        32,
+        27
+      ],
+      "sourceOpaque": 432,
+      "expectedOpaqueAt2x": 1728,
+      "cellPosition": [
+        88,
+        44
+      ]
+    },
+    "foom": {
+      "sourceSha256": "60e408fe7161ee2ea48871663beaaf853b21fc04d4e22b102bb2dfbabcc6a300",
+      "bbox": [
+        0,
+        0,
+        32,
+        27
+      ],
+      "sourceOpaque": 546,
+      "expectedOpaqueAt2x": 2184,
+      "cellPosition": [
+        92,
+        44
+      ]
+    }
+  },
+  "imageReference": {
+    "path": "generated-images/image-20261103-133214-03f389.png",
+    "sha256": "71c7bbf47e02d79c0c1182c05b3e5a36729e15f8847d2ac29be2fa67c8312e35",
+    "tool": "functions.image_generate",
+    "model": "gpt-image-2.5",
+    "timing": "after native export",
+    "usedToDrawNativePixels": false,
+    "earlierClaimsAccepted": false,
+    "referenceLayerImported": false
+  },
+  "review": {
+    "sameLead": true,
+    "freshColdReview": false,
+    "independentScore": null,
+    "native1xViewed": true,
+    "previews": [
+      {
+        "path": "assets/candidates/ending-scenes/ending-scenes.png",
+        "scale": 1
+      },
+      {
+        "path": "artifacts/verification/r41-ending-scenes-2x.png",
+        "scale": 2
+      }
+    ]
+  },
+  "validation": {
+    "errors": 0,
+    "retainedOutlineWarnings": 8,
+    "bandingNotes": 5,
+    "otherOutlineNotes": 2,
+    "fixed": "24 isolated small-clip chamfer pixels and3 diagonal cable pixels; connected wire steps instead of weakening validation",
+    "retainedReason": "Hard UI/metal boundaries and selective material highlights; canonical Clawd silhouette stays unchanged.",
+    "independentPaletteCheck": {
+      "uniqueEntries": 32,
+      "transparentEntries": 1,
+      "note": "ASE byte contract passes; palette analyzer transparent self-near-duplicate warning is not two actual duplicate entries"
+    }
+  },
+  "oldRuntimeBaseline": "artifacts/verification/r40-post-doc-verification.json",
+  "protectedOldFiles": 512,
+  "protectedPublicAssets": 49,
+  "verification": {
+    "sourceTests": 30,
+    "sourceActualExit": 0,
+    "sourceSeconds": 0.716,
+    "unitPassed": 6150,
+    "unitFiles": 90,
+    "typesExit": 0,
+    "lintExit": 0,
+    "buildExit": 0,
+    "currentBrowserExecuted": 0,
+    "currentBackendExecuted": 0,
+    "runtimeAdmissionPending": true,
+    "evidence": "artifacts/verification/r41-checks-01.json"
+  }
+}

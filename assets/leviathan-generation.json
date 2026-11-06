@@ -1,0 +1,303 @@
+{
+  "asset": "Leviathan",
+  "status": "approved native art; integrated and regression-admitted across all HP phases and ordinary-input defeat/retry/chapter exit",
+  "sourceMode": "live",
+  "sprite": "#9451",
+  "asepriteVersion": "1.3.18.6-dev",
+  "newImageGenerationVerified": false,
+  "newReferenceImported": false,
+  "conceptSource": "Written GDD, mechanical contract and admitted palette only; no new image output claimed",
+  "canvas": [
+    160,
+    160
+  ],
+  "pivot": [
+    80,
+    80
+  ],
+  "atlasSize": [
+    1280,
+    160
+  ],
+  "layers": [
+    "anchors",
+    "outer-rotor",
+    "inner-rotor",
+    "iris"
+  ],
+  "frameTags": {
+    "closed": [
+      0,
+      3
+    ],
+    "open": [
+      4,
+      7
+    ]
+  },
+  "durationMs": 100,
+  "coreReservedRect": [
+    67,
+    65,
+    26,
+    30
+  ],
+  "sourceFiles": {
+    "assets/source/leviathan.aseprite": {
+      "bytes": 15546,
+      "sha256": "3b897bdc63635d925366f9c1089c2620b24c7116b4af34294f4f102482d4b8fc"
+    },
+    "public/game/leviathan.png": {
+      "bytes": 18671,
+      "sha256": "105ec83d223e56b5e77f0878079c4273dec469cd7bcb502fcecbfe5cfb2bbe9d"
+    },
+    "public/game/leviathan.json": {
+      "bytes": 2912,
+      "sha256": "e3386c663c8052aed49b0e09fdff2c821ef89eb626a633d2872ee7fc5e8fbcf2"
+    }
+  },
+  "frameStats": [
+    {
+      "index": 0,
+      "ink": 12704,
+      "colors": 5,
+      "boundsHalfOpen": [
+        2,
+        8,
+        152,
+        152
+      ],
+      "sha256": "77a72a9393f06d88a068f1e7ed5805328f9c976500d65aa98b02c485425d750b"
+    },
+    {
+      "index": 1,
+      "ink": 12716,
+      "colors": 5,
+      "boundsHalfOpen": [
+        2,
+        8,
+        152,
+        152
+      ],
+      "sha256": "aa3397505abf6906bbdfa2137e36755960159359f8784649b6286f5effc598c5"
+    },
+    {
+      "index": 2,
+      "ink": 12513,
+      "colors": 5,
+      "boundsHalfOpen": [
+        2,
+        8,
+        152,
+        152
+      ],
+      "sha256": "97c775aa445c94c6edba200c997efd63002bf1259874bf4bd94f23057da61e66"
+    },
+    {
+      "index": 3,
+      "ink": 12715,
+      "colors": 5,
+      "boundsHalfOpen": [
+        2,
+        8,
+        152,
+        152
+      ],
+      "sha256": "97c5e52087afcea7fce896b5680d4411c3f683edc14b9a5b599fa9ba859ea27f"
+    },
+    {
+      "index": 4,
+      "ink": 12704,
+      "colors": 7,
+      "boundsHalfOpen": [
+        2,
+        8,
+        152,
+        152
+      ],
+      "sha256": "e839c63770d2ed6eca0342f691f0a95ec89d288b3205ebcc3f16eb7ae279c316"
+    },
+    {
+      "index": 5,
+      "ink": 12716,
+      "colors": 7,
+      "boundsHalfOpen": [
+        2,
+        8,
+        152,
+        152
+      ],
+      "sha256": "bf3530aff62b87643220d2d04036240e52ab1256d209141d3bc6ccc3ee5ca21e"
+    },
+    {
+      "index": 6,
+      "ink": 12513,
+      "colors": 7,
+      "boundsHalfOpen": [
+        2,
+        8,
+        152,
+        152
+      ],
+      "sha256": "b2310033444eb2d2981220da05fd7f4533f2e9e65e3a66f60174268c0d395c87"
+    },
+    {
+      "index": 7,
+      "ink": 12715,
+      "colors": 7,
+      "boundsHalfOpen": [
+        2,
+        8,
+        152,
+        152
+      ],
+      "sha256": "cae9118bc750475465a797c0fed73cf817d6e5f52db4350c611ebe39cfb9492b"
+    }
+  ],
+  "review": {
+    "context": "reused; fresh spawn refused at team cap8",
+    "first": {
+      "score": 6.5,
+      "blocking": 1,
+      "necessary": 2
+    },
+    "corrected": {
+      "score": 7,
+      "blocking": 0,
+      "necessary": 0
+    },
+    "family": {
+      "score": 7,
+      "blocking": 0,
+      "necessary": 0
+    },
+    "fixRounds": 1,
+    "staticOnly": true,
+    "playbackNotVisuallyCertified": true
+  },
+  "validate": {
+    "reported": "Clean (6 style notes)",
+    "warningsRetained": "Selective-outline/straight-boundary notes on anchors, outer phase3/7 and closed iris; not a zero-warning claim"
+  },
+  "sourceComplete": true,
+  "runtimeIntegrated": true,
+  "productionReady": true,
+  "openScope": [
+    "Game-wide Chapter4/5 environments, terminal/NPC/item presentation and remaining full GDD",
+    "Fresh new-game continuous five-chapter browser journey",
+    "Development-chain12moderate alerts and human audio/playback review"
+  ],
+  "sourceVerification": {
+    "passed": 183,
+    "log": "artifacts/verification/r20-leviathan-source-tests.log",
+    "compressedCels": 11,
+    "linkedCels": 21,
+    "rgbaBytesReconstructed": 819200,
+    "globalTypePendingParallelHelper": false,
+    "globalTypeExit": 0
+  },
+  "adapterVerification": {
+    "passed": 83,
+    "log": "artifacts/verification/r20-leviathan-view-tests.log",
+    "initialPassed": 81,
+    "initialFailed": 2,
+    "originalFailureAssertionsPreserved": true,
+    "fixedProductionSha256": "afd2ddb56e37d2bd786f3eb6a90f06e887f238428815c6c08f5f1145fea30c61"
+  },
+  "runtimeVerification": {
+    "existingLoomMechanics": 3,
+    "existingLog": "artifacts/verification/r20-loom-regression-01.log",
+    "initialSceneScore": 6.5,
+    "necessaryTextFixes": 2,
+    "nativeEightPoseCasesPending": false,
+    "fullBrowserPending": false,
+    "nativeScopePassed": 9,
+    "nativeLog": "artifacts/verification/r21-browser-01.log",
+    "sceneScoreAfterTextFix": 7.5,
+    "remainingNecessary": 0,
+    "firstScopePassed": 6,
+    "firstScopeFailed": 1,
+    "firstScopeLog": "artifacts/verification/r20-native-01.log",
+    "standaloneNativeRepeatLog": "artifacts/verification/r20-native-02.log",
+    "naturalBranchABodyAnchorEqual": true,
+    "noThresholdReduction": true,
+    "allPhasesKilled": true,
+    "metrics": "artifacts/verification/r21-native-metrics.json",
+    "r20CheckpointScopeHistorical": {
+      "existingLoomMechanics": 3,
+      "existingLog": "artifacts/verification/r20-loom-regression-01.log",
+      "initialSceneScore": 6.5,
+      "necessaryTextFixes": 2,
+      "nativeEightPoseCasesPending": false,
+      "fullBrowserPending": true,
+      "nativeScopePassed": 7,
+      "nativeLog": "artifacts/verification/r20-native-03.log",
+      "sceneScoreAfterTextFix": 7.5,
+      "remainingNecessary": 0,
+      "firstScopePassed": 6,
+      "firstScopeFailed": 1,
+      "firstScopeLog": "artifacts/verification/r20-native-01.log",
+      "standaloneNativeRepeatLog": "artifacts/verification/r20-native-02.log",
+      "naturalBranchABodyAnchorEqual": true,
+      "noThresholdReduction": true,
+      "allPhasesKilled": false,
+      "metrics": "artifacts/verification/r20-native-metrics.json"
+    },
+    "standaloneLoomScopeLog": "artifacts/verification/r21-loom-09-04.log",
+    "latestHurtRetryLog": "artifacts/verification/r21-hurt-retry-06.log",
+    "ordinaryInputOnly": true,
+    "sameArenaCleanupIndependentRawRoi": true,
+    "newAttemptHurtHpResetVerified": true,
+    "chapter5EntryRawFrames": 67
+  },
+  "oracleVerification": {
+    "offlinePassed": 23,
+    "log": "artifacts/verification/r20-leviathan-oracle.log",
+    "helperSha256": "cb49a95a0f8a6fa2777e39f9f2806ce37f1de4cb35d8e0f0869efc6f6eea2c4f",
+    "offlineIsGameplayProof": false
+  },
+  "currentLocalGate": {
+    "unit": 3567,
+    "unitFiles": 59,
+    "type": 0,
+    "lint": 0,
+    "build": 0,
+    "diff": 0,
+    "log": "artifacts/verification/r21-current-global-gates.log"
+  },
+  "security": {
+    "fullModerate": 12,
+    "fullExit": 1,
+    "high": 0,
+    "critical": 0,
+    "productionTotal": 0,
+    "productionExit": 0,
+    "log": "artifacts/verification/r21-audit-exits.json",
+    "fixed": false
+  },
+  "productionReadyScope": "This native Leviathan asset and tested runtime integration only, not game release/security/full GDD.",
+  "fullGddComplete": false,
+  "finalGate": {
+    "unitPassed": 3567,
+    "unitFiles": 59,
+    "browserPassed": 102,
+    "browserTotal": 102,
+    "browserSkipped": 0,
+    "browserBackendEnabled": true,
+    "browserSeconds": 903.464,
+    "backendPassed": 23,
+    "backendTotal": 23,
+    "backendSkipped": 0,
+    "typeExit": 0,
+    "lintExit": 0,
+    "buildExit": 0,
+    "diffExit": 0,
+    "functionalPassed": true,
+    "securityGatePassed": false,
+    "fullGddComplete": false,
+    "fullBrowserLog": "artifacts/verification/r21-browser-01.log",
+    "globalLog": "artifacts/verification/r21-current-global-gates.log",
+    "backendLog": "artifacts/verification/r21-backend-tests.log",
+    "serviceCleanup": "artifacts/verification/r21-lead-service-cleanup.json"
+  }
+}

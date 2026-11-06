@@ -3,9 +3,33 @@
 **Clawd's Sharp Left Turn** — React + TypeScript + Phaser 4.0.0 像素平台动作肉鸽，搭配 Scala 3 / http4s / PostgreSQL 后端。
 
 > 当前已实现五章核心玩法、三分支结局与原创分层音频基础，**仍不是全量GDD成品**。
-> Clawd、第一章三类小怪、Gato、第二章探针/Sydney、前三章原生环境，以及第三章Chinchilla三静态姿态/Basilisk八态已接入并验证；其余Boss/环境、NPC/物品演出、完整声景与局外成长仍待补。
+> Clawd、五类小怪、四Boss、五章原生环境、三类拾取与[Human Rater工作台](<docs/round36-human-rater-integration.md>)已接入验证；[主角真实射击姿态](<docs/round38-clawd-attack-integration.md>)现已接入，终局完整演出、声景与局外成长仍待补。
 > 桌面为全窗口16:9游戏舞台，菜单覆盖场景、必要HUD与短提示，长信息按需展开；可主动进入浏览器全屏。竖屏保留视野并提示键鼠/横屏，不宣称触屏战斗支持。
-> 最新见[GPU炼丹炉原生环境与本地功能验收](<docs/round19-furnace-progress.md>)，历史[Basilisk八态与真实绕后](<docs/round18-basilisk-progress.md>)/[Chinchilla与输入修复](<docs/round17-chinchilla-verification.md>)/[工厂环境](<docs/round16-factory-environment-verification.md>)/[Sydney](<docs/round15-sydney-verification.md>)/[全窗口UI](<docs/round9-ui-verification.md>)及[完整差距](<docs/development-plan.md>)。
+> [R38主角攻击反馈](<docs/round38-clawd-attack-integration.md>)：三态各22原生姿态帧，原八帧不变；只在真正出弹后显示83/50ms出手/回落，跑跳步态和冻结不重启，不从旧计数造动作。
+> 此前完整[R42原生结局集成](<docs/round42-native-ending-integration.md>)：**单完整202/202，零跳过/重试/报告flaky，EXIT0/1764.640s**；6218单元/94文件、新独占后端23及type/lint/生产build通过。三张256×128原生静态场景、整数缩放与明确资源重试已接线；同轮20张PNG零容差复核。原186名称完整、四份旧用例原697断言调用节点保留；整数相机/冻结抖动边界已修。[R40动态减弱](<docs/round40-reduced-motion-integration.md>)、[R39镜像HUD](<docs/round39-mirror-hud-viewport.md>)与工作台/交易/冻结保持；不是全GDD完成。
+> 当前[R49 / 回合92](<docs/round49-loom-control.md>)原10一次**7通过/3失败、CLI1/94.933s，未准入且不重跑**。11个waypoint阶段均选真实final/lag0，但stop后仍移11–22px；254原PNG/11完整准备trace和6图实看仅作诊断。无产品/UI改动，不拼216。
+> 此前[R49 / 回合91](<docs/round49-loom-control.md>)已实现获授权go位置反馈与独立准备证据；180合同、6976单元/111及静态门通过，1315旧帧定位比对一致。**无新native，两失败仍待**；无生产/UI改版，不拼216。
+> 此前[R49 / 回合90](<docs/round49-loom-control.md>)已核263旧PNG并定位拾取两失败，只修订shoot180延后编码；40合同、6836单元/111与type/lint/build通过。**无新native，go仍待，两失败不关闭**；无生产/UI改版，不拼216。
+> 此前[R49 / 回合89](<docs/round49-loom-control.md>)Omega原11项**11/11 EXIT0/89.841s**，535张原生PNG/7负控及严格scope0。真实Core支持早起跳，投影/揭示分用当前镜/椅锚点，越带或关键状态不可判便停止；152合同、6796单元/110与type/lint/build通过。无生产/UI改版；仍待拾取两失败与单整轮216，完整GDD未完成。
+> 此前[R49 / 回合88](<docs/round49-loom-control.md>)已按授权加入≤5秒公开位置准备和95项控制合同，6739单元/110及type/lint/build通过；Omega原11项**9通过/2失败、EXIT1/89.705s，未准入**。起跳带与椅子匹配依赖仍需修订；无生产/UI变更，保原测量与像素门、不拼216。
+> 此前[R49 / 回合85](<docs/round49-loom-control.md>)镜像HUD原3项**3/3 EXIT0/99.105s**，10PNG/4负控与严格scope0；并行原右缘观测/冲刺确认后进入真实左缘。35项收尾合同、6644单元/109及type/lint/build通过，577源；旧失败保留，不改生产/UI、不拼216。
+> 回合84[R49旧顺序候选](<docs/round49-loom-control.md>)镜像HUD原3项**2通过/1失败、EXIT1/77.927s，未准入**：右缘546源像素已采到，但随后原5秒冲刺文字确认超时，left未执行。6622单元/109及type/lint/build通过，577源；保留失败，不改生产/UI、不拼216。
+> 回合83[R49 Deceiver验证](<docs/round49-loom-control.md>)将Deceiver跳射改为单采样器，首资格后不新建录像或编码PNG：原5项**5/5 EXIT0/35.146s**，同批133真PNG与范围审计v2通过，6609单元/108及type/lint/build通过。本次5/8px资格到可信点击68.9/64.9ms；575源，生产/UI不改，仍不拼216。
+> 回合82[R49环境验证](<docs/round49-loom-control.md>)修正C1第一跳射的公开准备：共享原5秒预算等待Q-ready与真实可见演员，原跳射块不变、PNG后置。原环境2项**2/2 EXIT0/28.508s**及范围/像素审计通过，6550单元/107与type/lint/build通过；检查点蘑菇/反转/坍塌与存档休息室冻结/继续均过。573源，生产/UI不改，仍不拼216。
+> 回合81[R49 Loom范围验证](<docs/round49-loom-control.md>)增加远左侧有界普通接近，近线仍按原短步与同帧门：原Loom9项**9/9 EXIT0/124.184s**、范围审计通过，6518单元/106与type/lint/build通过。实际三次开窗过三阶段并进入第五章，死亡冻结/重试复位保持；旧8/9首失败保留，不改生产/菜单，不拼216。
+> 回合80[R49菜单验证](<docs/round49-loom-control.md>)重新验证安全休息室：原菜单10项**10/10 EXIT0/59.558s**，12条图像/24负控/4几何/3冻结对核过，桌面/竖屏/短屏8张实看；本轮未改菜单布局。Loom控制候选原9项**8通过/1失败、EXIT1/109.149s**，远距短脉冲在原100步内未完成站位，未准入。6497单元/106及type/lint/build通过，仍不拼全量。
+> 此前[R49反击采样修正](<docs/round49-loom-control.md>)将原40ms的两张raw先采齐再解析，原位移/资源/冻结门不变。原5项定向**5/5 EXIT0/91.730s**、38真PNG复核过，6470单元/106与type/lint/build通过；4对实际rAF间隔66.6–66.8ms、位移34px。启动3次诊断未复现旧15s延迟，Loom等仍待修，非整轮准入。
+> 最近完整[R49回归尝试](<docs/round49-loom-control.md>)为**171通过/11unexpected/34skipped，EXIT1/2700.722s**，触发原45分钟全局预算。菜单10/Sydney4本轮未执行，不能补旧结果；新I后端23通过，6456单元/106与type/lint/build通过，保护项已实际恢复。严格审计未执行，**正式仍R44**。此前原两项定向各跑两次4/4保留，不拼成整轮；164个两轮通过且spec相同用例耗时中位比1.40755，原因未证。
+> 此前[R48主机生命周期诊断](<docs/round48-sydney-lifecycle.md>)仅加host记录，原220断言/3浏览器回调和预算保留。定向4/4、6434单元/105文件及type/lint/build通过；新H23通过，但完整216为**214/2、EXIT1/2225.466s**，两项Loom旧断言失败。同轮Sydney4、反击5和菜单10均通过；首项trace确认空演员默认320参与位移运算，另一项弱窗死亡排程待核。旧关闭根因未证；strict整轮审计未执行，**正式仍R44**。
+> 此前[R47普通反击输入准备](<docs/round47-counter-control.md>)已修订，原194断言与全部预算保留；定向5/5、38真PNG、6427单元/104文件及type/lint/build通过。新G23通过，单完整216为**215/1、EXIT1/2255.909s**：原5反击与10菜单均过，唯一Sydney页面关闭待诊断；严格整轮审计未执行，**正式仍R44**。
+> 此前[R46菜单层级与条色](<docs/round46-rest-hierarchy.md>)已实际减少重复框，满载/溢出暖色、扩容后浅绿；三视口交易/重排/刷新/继续与旧菜单、图标定向10/10，12条真实PNG/24负控通过。6385单元/103文件及type/lint/build通过；新完整216为**212/4、EXIT1/2215.778s**，4旧反击准备/跨坑失败原样保留，正式仍R44；该输入准备已在R47修订，原失败记录仍保留。
+> 此前界面改进[R45休息室遗物图标](<docs/round45-rest-icons.md>)：七种稳定ID使用盾、回环、透镜、分支、括号、卷纸、温度计，不改交易/存档/冻结/布局。三视口实看并修正残差铃形；定向7/7、EXIT0/42.488s，6375单元/102文件及type/lint/build通过。完整213仅收集未执行，不能替代下列整轮准入。
+> 最新正式切片[R44反击收益反馈](<docs/round44-counter-feedback.md>)：真实字典吸收才显示书盾、刻度与充能点，覆盖实际充能的暂停/GL恢复/死亡重试/自然进休息室与继续。**单次完整210/210、EXIT0/1719.625s，零skip/retry/flaky**；6353单元/101文件、新E后端23及type/lint/build通过。
+> 原202/205/208身份与四菜单视口保留；同轮38收益PNG、109核心原生PNG和原音频/结局/镜头/Loom严格核对。旧209/1与定向首红保留，只修普通观测/输入，不改战斗、API/v1/资产或宣称旧失败因果已证实。78旧图/pointer保全、临时服务清理；全GDD仍未完成。
+> 此前正式[R43动作音频与回归修复](<docs/round43-action-audio-feedback.md>)为单次205/205、EXIT0/1671.267s。音频两P3、Loom未实触的防吸力分支、声景/试听等继续。菜单已在R45/R46增加遗物辨识并减少框密度、纠正条色，但不冒称完整场景化或美学成品；当时原反击5已通过；后续当前状态见上，不拼定向为全绿。
+> [紧凑安全休息室](<docs/round27-rest-menu-progress.md>)保留固定底部操作、真实交易与冻结；原52×60槽现在使用48²原生肖像，五章各两处实际支撑面的工作台只读真实四态。
+> [R35原生源](<docs/round35-human-rater-source.md>)已在R36完成运行时接线与准入，源三SHA不变；仅同Lead实看，非独立冷评。API/v1/碰撞不改，临时服务已清理。
+> [R25五章环境历史](<docs/round25-omega-environment-progress.md>)、[Leviathan准入](<docs/round21-leviathan-verification.md>)、[完整GDD差距](<docs/development-plan.md>)。历史首红与中断保留，不拼运行成全绿。
 
 ## 本地启动
 
@@ -44,6 +68,7 @@ bash scripts/sbt-local.sh run
 - Leviathan真吞平台、血条读数与音乐；生命仍正常计算。到金色标线右侧约20–30px，吸力窗口内A+Shift左冲并实际跨线，才打开弱点；三阶段各需一次，最终只剩158–180px中心锚。弱点期间暂时吐回血条/音轨，不回血、不返还平台。
 - 第五章：FLOPs风暴、两处安全休息室、最后的门、空椅子与落地镜；真正走近并站稳后才揭示镜像。镜像使用实际动作频次/有效构筑和本连续尝试观察到的2/3连招，真正移动、射击、冲刺、沿自己的两秒历史Q回溯和E扫描，三阶段都有预警、执行与反击空档。
 - 镜像不是从旧计数编造历史：新页或新尝试只知道频次/构筑，再现场学习；失活遗物仍失活。同连续尝试跨章可保留有界次序记录，次序不写进v1存档。
+- [镜像名称与HP边界](<docs/round39-mirror-hud-viewport.md>)已按完整文本实际宽度约束，左右缘均保留名称和64×4真实血条；暂停与新检查点尝试保持原生命周期，不移动敌人来遮掩裁切。
 - A/D 或左右箭头移动；Space/↑ 跳跃（长按/短按不同高度）；Shift 冲刺。
 - J 持续射击；鼠标左键可瞄准射击。A/D改变角色面向，鼠标瞄准不会自动转身；Basilisk战斗中有明确面向提示。
 - Q 沿过去 **2 秒**轨迹回溯，穿越弹幕获得该类型 **10 秒免疫**。
@@ -54,8 +79,10 @@ bash scripts/sbt-local.sh run
 - 新训练会替换本地当前检查点；死亡不覆盖安全检查点。明确“恢复检查点”会以新UUID开启一次尝试，其他全部保存字段保留，落盘失败不启动；不会用同ID覆盖已提交的失败成绩。暂停/rest继续、跨章和完成档回看不换ID。备份可从损坏主存档恢复。
 - 32K/128K Context Window：满载时中间词条失效，可能射出无伤 Lisp 括号；排序仅能在休息室调整。无伤括号不能击破气泡或探针。
 - 五章各两处Human Rater休息室：敌人、海面、热区、K线、Loom节点、风暴/镜像、技能、计时与音频冻结；购买、修复、升级、前两章捐款与奖励劫持都是真实事务。零消费也可继续，正常刷新不重发奖励。
+- Human Rater评价仅来自实际入站；购买/修复不会改写。旧档显示已结算，真实劫持标记优先，算力封顶显示实际到账而非名义奖励。[四态工作台/肖像](<docs/round36-human-rater-integration.md>)已完成实际像素与完整浏览器验收，无新时钟，不改交易规则。
 - 原创chip/bass/打击/失真四层音乐与独立SFX；需用户手势开启，暂停/rest/失焦停播。AUDIO入口调节音量/静音，偏好只存本机，不污染游戏/云存档。未内置未获许可的原曲或人声。
-- Clawd 保持参考 SVG 的矩形身体、方短臂和四腿：三形态共用 idle/run/jump/hurt 八帧，原生32px绘制，不把概念图直接缩小当精灵。
+- 运行设置可选“跟随系统 / 减少动态效果”，偏好只存本机；立即停止镜头震动，减少现有界面和结局位移，真实移动、弹幕、危险预警与结果仍保留。系统能力不可读取时保守减弱，不提供强制覆盖系统偏好的全动态选项。
+- Clawd 保持SVG的矩形身体、方短臂和四腿：原idle/run/jump/hurt八帧加十四射击步态变体，共22帧/三态704×32。实际成功发射才抬手；原16×22碰撞、pivot16,27与子弹原点不变，敌方镜像用自己的发射收据。
 - 随机鹦鹉使用手工48px、6层4帧：两脚绿鸟用折翼持闭合字典，抬书预警/收书与真实FSM一致；不改变24×24碰撞，不增加另一套攻击时序，暂停时画面与计时一起冻结。
 - 复读机使用48px双卷盘/格栅/提手/机械脚4帧；真实预警时扬声器前移，机壳和足底保持稳定。
 - 伪装者使用48px、9层8帧：友善笑脸牌在E期间裂开并显出开放卷须，按真实模拟窗口切态、到期恢复。默认5px/升级8px核心独立画在精灵上层，真实跳跃瞄准后一次命中击破；4.3秒暂停不会耗尽E。
@@ -85,17 +112,44 @@ npm run build
 # 另一个终端先 npm run dev，使用已经安装的 Chrome：
 npm run test:e2e
 # 真实Scala/PostgreSQL在线后才启用全部云端浏览器测试：
-PDOOM_E2E_BACKEND=1 npm run test:e2e -- --global-timeout=1200000
+PDOOM_E2E_BACKEND=1 npm run test:e2e -- --workers=1 --retries=0 --max-failures=0 --global-timeout=2100000
 ```
 
 浏览器测试默认使用macOS已安装的Google Chrome，不下载系统浏览器；其他路径可设`CHROME_EXECUTABLE_PATH`。截图在忽略的[浏览器产物目录](<artifacts/browser/>)，失败记录在[测试产物目录](<test-results/>)。五章均有**仅正常FrameInput、无手工改血/改位置/直接击杀**的纯规则通关测试（R是第四章正式环境技能）；第五章四条路线覆盖三Doom结果及实际Q/E连招学习。浏览器以真实按键攀爬工厂、击碎控制泡、乘K线、解除石化、跨Loom分岔/真实R/向左冲刺，以及从第五章rest02走到镜前并实际击败镜像；只读实际画布像素，不设置隐藏引擎状态。这不等于已经在浏览器从新局连续玩完五章。原生音频测量实际PCM、吞音/恢复和独立SFX，不用休眠节点的缓存getter冒充声音；另有真实WebGL丢失/恢复与背景像素校验，不能用空画面冒充性能优化。
 
-最新本地功能基线：**3278/3278单元、96/96真实浏览器（15.5m、真实后端开启、0skip）、23/23本轮Scala/HTTP/新隔离PG通过**；lint/type/build/diff通过。**安全门未关闭：完整npm审计12个moderate开发链依赖项，关联同一个[minimatch公告](<https://github.com/advisories/GHSA-g3hv-75wg-m249>)；仅生产依赖审计为0。**未自动跨major修复，不称全项目生产就绪。
+R19历史完整浏览器／后端回归基线：**3278/3278单元、96/96真实浏览器（15.5m、真实后端开启、0skip）、23/23 Scala/HTTP/新隔离PG通过**；该轮lint/type/build/diff通过。**安全门未关闭：完整npm审计12个moderate开发链依赖项，关联同一个[minimatch公告](<https://github.com/advisories/GHSA-g3hv-75wg-m249>)；仅生产依赖审计为0。**未自动跨major修复，不称全项目生产就绪。
 Chinchilla使用32px、五可见层/三静态pose、7色原生素材；保留12×12碰撞、真实r11告警与九发GPU扇形。源像素三姿势、实弹覆盖本体、暂停冻结、真实+6TOK击杀及缺图/末帧/错矩形保档均已验证。
 R17连续Escape曾复现关闭键在恢复后再次进入游戏；新增4单测先红后20输入例全绿，相同三轮暂停用例重复3/3通过，未改原viewport/20ms单击或命中阈值。
 Basilisk源图与八态原生匹配、真实光束覆盖头部、Q历史绕后、同场击杀清理和3种缺资源保档均已验。失败记录、非fresh独立复核与最终全门见[R18历史验收](<docs/round18-basilisk-progress.md>)；[R16工厂与短点击修复](<docs/round16-factory-environment-verification.md>)保留为历史。
 第三章环境已有32片16px kit与6件64px道具（完整CP0 Plan实际使用14种tile/6道具）；真实热区、K线载人、隐藏奖励、两Boss模式及源像素观察仍读Core。场景只留短标识/当前提示，完整入镜才显示，复用上下文实景复核8/10、0必要项。首轮服务交接失效后由Lead持有第三个新PG/API完成96全门；临时服务现已关闭，8080保留。完整证据与失败见[R19记录](<docs/round19-furnace-progress.md>)。
-全量GDD未完成：后续章环境、Leviathan/终局专用资产、NPC/物品与演出、完整声景/内容、局外成长、新局连续五章原生旅程仍待补齐。检查点夹具不是新局通关；Phaser约1,352KB大chunk提示仍在，不声称低端稳定60FPS。
+R20完成Leviathan八帧160px源与首阶段集成，历史7例/失败/限制保留在[R20记录](<docs/round20-leviathan-progress.md>)。
+R21已用普通输入打完420→280→140→0三阶段、同场原生清理，验证受伤Boss后的真实坠落/新runId重试复原与进入第五章无残留；四个Boss原生资产现已正式功能准入。
+R21完整门为**3567/3567单元（59文件）、102/102真实浏览器（15.1m、真后端、0skip）、23/23本轮新隔离PG后端**，type/lint/build/diff通过。
+第五章重复大标题/教学文字已收敛，保留唯一当前行动与独有遗物计数；入口实景0必要项复核为非fresh。完整证据见[R21验收](<docs/round21-leviathan-verification.md>)。
+R22新增第四章环境**32片16px地形与6件64px静态道具**，源逐RGBA独立验证68/68；当前全局3635单元/61文件、type/lint/build/diff通过。
+R22当时素材仅源候选、未接线；其后R23已正式准入，以上102/23只保留为R22历史。
+实际图、源与边界见[R22源记录](<docs/round22-loom-source.md>)；下一步验证分岔/R/坍塌/吞台的原生显示，不重复抛光已冻结素材。
+全量GDD未完成：R42仅准入三张静态原生结局场景，更完整终局动画/特效、完整声景/内容、局外成长、新局连续五章原生旅程仍待补齐；拾取、HumanRater与主角真实出弹姿态已分别在R32/R36/R38准入。检查点夹具不是新局通关；现有大chunk提示仍在，不声称低端稳定60FPS。
+
+## R24历史源阶段：当时尚未接入第五章环境
+
+新增32片16px地形、六件native64×128静态道具（空椅、门框、镜框与三件后景设备），[源记录](<docs/round24-omega-source.md>)与[规格](<assets/omega-environment-pixelspec.md>)区分候选/正式准入。独立ASE/PNG/JSON79/79、当轮全局3863/64文件及type/lint/build/diff通过。R24时第五章运行仍用既有dressing；不把源候选算第五个已准入环境。
+
+R24当时只collect旧108、不执行browser/backend/audit；当时最新完整真后端108/23为R23。此为历史源阶段记录，其后R25已完成119/23，均不等于新局连续五章。生图实际输出的可核验时间在源冻结后，早先绘前参考说法已撤回；原生源按书面规格绘制，无缩图或参考导入。
+
+## R25：第五章原生环境已接入并通过本轮完整回归
+
+[当轮验收](<docs/round25-omega-environment-progress.md>)：3993单元/65文件、**119真实浏览器/0skip/18.1m、23新隔离PG后端**；type/lint/build/diff通过。完整浏览器是独立单轮，不把首117/119与两旧案重放2/2拼接；原失败与时序敏感性保留。
+
+32片母格和六件64×128道具只替换静态表现，保留40px地面/12px观察台、真实60px断口、门叶/镜像/风暴/扫描。先视口筛选，5121半像素视口峰值135/384；不是低端FPS证明。当前[环境清单](<assets/environment-manifest.json>)正式五章；守卫38帧不代表全32片都出现在实际画面。
+
+新11覆盖同帧原生角色/三排地面、普通跳跃/坠落、门/空椅/反转倒影与揭示、r5/r8地面下方真实扫描、暂停/rest/全屏/真WebGL恢复及五类资源故障保档。[自有API/PG已关闭](<artifacts/verification/r25-lead-service-cleanup.json>)、数据保留，原前端地址不变。仍不是新局连续五章、人类平衡/听感或完整GDD；安全门仍开，无依赖升级。
+
+## R26 / R27 历史补充（当时整合未全绿，已由R32闭环）
+
+[R26三类拾取](<docs/round26-pickup-items-progress.md>)源33/适配器145/专属native10真实通过；首完整129为128过1红，第二完整129因主机重启中断，并保留重启前的两条旧输入/采样失败。不能将窄例或中断进度拼成全套通过，当时正式拾取清单尚未创建；现见[R32正式准入](<docs/round32-pickup-admission.md>)。
+
+[R27休息室](<docs/round27-rest-menu-progress.md>)已由长表单改为紧凑整备菜单：单处详情、构筑侧栏、底部继续常驻、规则主动展开、完整Tab循环。4种视口和原6项离线事务通过；当轮4200单元/68文件、类型/lint/build通过，133只是新收集总数，未完成单整133。云端1项本轮未启动后端而未重跑；游戏存档/交易规则不变。
 
 ## 架构
 
@@ -110,6 +164,6 @@ Basilisk源图与八态原生匹配、真实光束覆盖头部、Q历史绕后�
 
 ## 美术、音频与许可
 
-见[资源清单](<docs/assets.md>)、[主角规格](<assets/art-direction.md>)与[第一章统一规格](<assets/chapter-one-art-spec.md>)。[小怪清单](<assets/enemy-manifest.json>)、[Boss清单](<assets/boss-manifest.json>)、[环境清单](<assets/environment-manifest.json>)列出可编辑源、图集、PixelSpec与完整生成/审查记录；正式资产均通过原生制作、像素校验和真实游戏验证，不把未完成的Boss/环境冒称最终素材。没有内置未许可原曲；用户品牌参考的再分发权利仍需核验。
+见[资源清单](<docs/assets.md>)、[主角规格](<assets/art-direction.md>)与[第一章统一规格](<assets/chapter-one-art-spec.md>)。[小怪清单](<assets/enemy-manifest.json>)、[Boss清单](<assets/boss-manifest.json>)、[环境清单](<assets/environment-manifest.json>)与[拾取清单](<assets/pickup-manifest.json>)列出可编辑源、图集、PixelSpec与完整生成/审查记录；正式资产均通过原生制作、像素校验和真实游戏验证，不把未完成的Boss/环境冒称最终素材。没有内置未许可原曲；用户品牌参考的再分发权利仍需核验。
 
 本项目基于 Phaser Studio 的 MIT React TypeScript 模板，原始许可保留在 [LICENSE](<LICENSE>)。题材来自用户提供的 [GDD](<GAME_DESIGN_GDD.md>)；这是非官方同人开发项目，不代表 Anthropic 背书。

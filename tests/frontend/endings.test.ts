@@ -54,7 +54,8 @@ describe('three explicit final presentations', () => {
   it('keeps FOOM inside a labelled virtual surface with a finite clip budget and the authored closing line', () => {
     const html = renderToStaticMarkup(createElement(EndingOverlayContent, propsFor(resultFor('foom', 88))));
     expect(html).toContain(FOOM_MESSAGE); expect(html).toContain('真实系统与文件未被操作'); expect(html).toContain('仅游戏演出区域');
-    expect((html.match(/style="animation-delay:[^"]+">📎<\/span>/g) ?? []).length).toBe(ENDING_CLIP_COUNT);
+    expect((html.match(/data-native-clip="\d+"/g) ?? []).length).toBe(ENDING_CLIP_COUNT);
+    expect(html).toContain('game/ending-clips.png'); expect(html).not.toContain('>📎</span>');
     expect(ENDING_CLIP_COUNT).toBeLessThanOrEqual(24);
   });
   it('does not round a real boundary Doom into the next narrative branch', () => {

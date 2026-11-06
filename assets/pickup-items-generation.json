@@ -1,0 +1,142 @@
+{
+  "status": "runtime-admitted-R32-current-complete-gates; project-release-and-fullGdd-not-complete",
+  "files": {
+    "assets/source/pickup-items.aseprite": {
+      "bytes": 1090,
+      "sha256": "8dbb67cb410b950aa4bb07486ad654216755669cb4dc3162b23400d67b780e08"
+    },
+    "public/game/pickup-items.png": {
+      "bytes": 593,
+      "sha256": "11956e3e6df80d034490ebe2b2efc73cd984646c491644e7cb7effa530c2d358"
+    },
+    "public/game/pickup-items.json": {
+      "bytes": 1739,
+      "sha256": "bd20d7af35385dc7747fec219b067dc128dad8b5088488ab309f42c675ed6068"
+    }
+  },
+  "frameStats": [
+    {
+      "role": "token",
+      "bbox": [
+        11,
+        11,
+        21,
+        21
+      ],
+      "ink": 88,
+      "colors": [
+        "2c2330ff",
+        "783f4aff",
+        "b9905dff",
+        "e5c386ff",
+        "f5e8c8ff"
+      ]
+    },
+    {
+      "role": "compute",
+      "bbox": [
+        8,
+        7,
+        24,
+        25
+      ],
+      "ink": 176,
+      "colors": [
+        "34354fff",
+        "575c79ff",
+        "723f68ff",
+        "858eb0ff",
+        "cbb696ff"
+      ]
+    },
+    {
+      "role": "heal",
+      "bbox": [
+        9,
+        9,
+        23,
+        23
+      ],
+      "ink": 132,
+      "colors": [
+        "24423bff",
+        "426b50ff",
+        "9dded1ff",
+        "d9ffeaff"
+      ]
+    }
+  ],
+  "method": "user-selected-direct-native-writtenPixelSpec",
+  "newGeneratedReference": false,
+  "promptWasExecuted": false,
+  "referenceImported": false,
+  "sourceCanvas": [
+    32,
+    32
+  ],
+  "sheet": [
+    96,
+    32
+  ],
+  "pivot": [
+    16,
+    16
+  ],
+  "metadataCenterFullCanvas": [
+    0,
+    0,
+    32,
+    32
+  ],
+  "runtimeUses9slice": false,
+  "validate": {
+    "errors": 0,
+    "warnings": 0,
+    "notes": 3,
+    "noteReason": "selective edges: no single colour owns silhouette per named role"
+  },
+  "independentSourceTestsExecuted": 33,
+  "runtimeBrowserExecuted": 10,
+  "integrated": true,
+  "productionReady": true,
+  "projectReleaseReady": false,
+  "fullGddComplete": false,
+  "runtimeAdmissionPending": false,
+  "independentAdapterTestsExecuted": 145,
+  "review": {
+    "context": "reused/nonfresh AI; anonymous stage1 beforebrief/native1x stage2",
+    "score": 7.5,
+    "blocking": 0,
+    "necessary": 0,
+    "optionalPolishApplied": false,
+    "cold": "artifacts/verification/r26-critic-cold.md",
+    "brief": "artifacts/verification/r26-critic-brief.md",
+    "notInSceneRuntimeReview": true
+  },
+  "sourceTests": "artifacts/verification/r26-pickup-source-run-01.log",
+  "adapterTests": "artifacts/verification/r26-pickup-adapter-independent-02.log",
+  "runtimeAdmission": {
+    "round": "R32",
+    "admittedAtUtc": "2026-11-02T00:02:33.111780+00:00",
+    "scope": "these three static runtime pickup assets only; not project release or fullGDD",
+    "unitTests": 5138,
+    "sourceTests": 33,
+    "adapterTests": 145,
+    "nativePickupTests": 10,
+    "completeBrowserTests": 133,
+    "backendTests": 23,
+    "completeActualExit": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0,
+    "sourceFreeze": "artifacts/verification/r32-source-freeze-02.json",
+    "completeResults": "artifacts/verification/r32-complete-result-summary.json",
+    "nativeReview": "artifacts/verification/r32-full-native-review.json",
+    "backendResults": "artifacts/verification/r32-backend-tests-metrics.json",
+    "cleanup": "artifacts/verification/r32-services-cleanup.json",
+    "assetBytesUnchangedFromR26": true,
+    "newAsepriteValidationExecuted": false,
+    "sourceValidationReuse": "original zero-error validation retained because all three source/export hashes are identical; current independent tests rerun"
+  },
+  "formalManifest": "assets/pickup-manifest.json"
+}

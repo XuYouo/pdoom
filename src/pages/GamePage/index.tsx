@@ -19,7 +19,7 @@ export default function GamePage() {
   const playing = session.screen.kind === 'playing';
   const stage = getDisplayedStage(session), chapter = getChapter(stage);
   const fullscreenButton = <button type="button" className="display-button" onClick={() => void fullscreen.toggle()} aria-label={fullscreen.active ? '退出全屏' : '全屏显示'}>{fullscreen.active ? '退出全屏' : '⛶ 全屏'}</button>;
-  return <main ref={root} className={`game-shell game-shell--${session.screen.kind}`} aria-label="P(Doom) 游戏">
+  return <main ref={root} className={`game-shell game-shell--${session.screen.kind}`} aria-label="P(Doom) 游戏" data-reduced-motion={session.motion.reducedMotion}>
     <div className="world-viewport" aria-label="游戏舞台">
       <GameCanvas bridge={session.bridge} />
       {!inMenu && <div className="game-hud-layer" onKeyDown={event => { if (event.key !== 'Escape' && event.target instanceof HTMLElement && event.target.closest('button,summary,details,[tabindex]')) event.stopPropagation(); }}>

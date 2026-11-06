@@ -3,6 +3,7 @@ import { expect, test, type Page } from '@playwright/test';
 import type { GameSaveData } from '../../src/objects/game/GameSaveData';
 import { createRun } from '../../src/pages/GamePage/functions/saveModel';
 import { assertCheckpointAttempt } from './checkpoint-attempt';
+import { navigateFactoryEntry, navigationReceiver } from './factory-navigation';
 
 const errors = new WeakMap<Page, string[]>();
 test.beforeEach(async ({ page }) => {
@@ -49,11 +50,16 @@ async function factoryHero(page: Page, capture?: Buffer) {
   }, base64);
 }
 
-async function visibleFactoryHero(page: Page) {
-  let hero: Awaited<ReturnType<typeof factoryHero>> = { count: 0, x: null, bottom: 0 };
-  // Spawn grace intentionally hides Clawd on alternate 80ms intervals. Use the SAME successful visible capture, not a second sample that may blink out.
-  await expect.poll(async () => { hero = await factoryHero(page); return hero.count; }, { timeout: 1500, intervals: [20, 40, 60] }).toBeGreaterThan(20);
-  return hero;
+const factoryPauseDialog = (page: Page) => page.getByRole('dialog', { name: '暂停前向传播。', exact: true });
+async function pauseFactory(page: Page) {
+  await expect(page.getByRole('heading', { name: '这次，梯度归零。' })).toHaveCount(0);
+  if (!await factoryPauseDialog(page).isVisible()) await page.keyboard.press('Escape');
+  await expect(factoryPauseDialog(page)).toBeVisible();
+}
+async function resumeFactory(page: Page) {
+  await factoryPauseDialog(page).getByRole('button', { name: '继续训练', exact: true }).click();
+  await expect(factoryPauseDialog(page)).not.toBeVisible();
+  await expect.poll(() => navigationReceiver(page), { message: 'ordinary non-dialog, non-editor keyboard receiver' }).toMatchObject({ ready: true });
 }
 
 test('chapter two restores the correct frozen room, retains its build and persists a purchase', async ({ page }) => {
@@ -109,19 +115,17 @@ test('Sydney really binds the player and keyboard shooting breaks the control bu
   await page.keyboard.down('a'); await page.keyboard.down('Space');
   await page.waitForTimeout(330); await page.keyboard.up('a');
   await page.waitForTimeout(270); await page.keyboard.up('Space');
-  // Alternating 180px steps overlap only at x310..330. Never rely on the initial wall-clock pulse for exact alignment.
-  const entry: number[] = [];
-  for (let adjustment = 0; adjustment < 12; adjustment++) {
-    await expect(page.locator('.world-titlebar strong')).toHaveText('02');
-    await expect(page.getByRole('heading', { name: '这次，梯度归零。' })).toHaveCount(0);
-    const hero = await visibleFactoryHero(page); expect(hero.count).toBeGreaterThan(20); expect(hero.x).not.toBeNull();
-    entry.push(hero.x!); if (Math.abs(hero.x! - 320) <= 4) break;
-    const key = hero.x! > 320 ? 'a' : 'd';
-    await page.keyboard.down(key); await page.waitForTimeout(Math.min(200, Math.max(18, (Math.abs(hero.x! - 320) - 2) / 190 * 1000))); await page.keyboard.up(key);
-    await page.waitForTimeout(85);
-  }
-  const aligned = await visibleFactoryHero(page); expect(Math.abs(aligned.x! - 320)).toBeLessThanOrEqual(4);
-  console.log('SYDNEY_VISIBLE_CLIMB_ALIGNMENT', { entry, alignedX: aligned.x });
+  const navigation = await navigateFactoryEntry(page, {
+    pause: () => pauseFactory(page), resume: () => resumeFactory(page),
+    alive: async () => {
+      await expect(page.locator('.world-titlebar strong')).toHaveText('02');
+      await expect(page.getByRole('heading', { name: '这次，梯度归零。' })).toHaveCount(0);
+    },
+  });
+  expect(navigation.hero.count).toBeGreaterThan(20);
+  expect(Math.abs(navigation.hero.x! - 320)).toBeLessThanOrEqual(4);
+  console.log('SYDNEY_VISIBLE_CLIMB_ALIGNMENT', { entry: navigation.alignment, alignedX: navigation.hero.x, measurement: 'paused-native640' });
+  await resumeFactory(page);
   for (let jump = 0; jump < 14; jump++) {
     await expect(page.locator('.world-titlebar strong')).toHaveText('02');
     await expect(page.getByRole('heading', { name: '这次，梯度归零。' })).toHaveCount(0);

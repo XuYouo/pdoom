@@ -1,9 +1,12 @@
+import { watchBrowserLifecycle } from './browser-lifecycle-evidence';
+import { readCombatBoundary, verifyReleaseBoundary } from './sydney-release-boundary';
 import { randomUUID } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import { expect, test, type Page, type TestInfo, type Route } from '@playwright/test';
 import { createRun, isGameSave } from '../../src/pages/GamePage/functions/saveModel';
 import type { GameSaveData } from '../../src/objects/game/GameSaveData';
 import { assertCheckpointAttempt } from './checkpoint-attempt';
+import { captureInputBoundary, navigateFactoryEntry, navigationReceiver, withCleanup } from './factory-navigation';
 
 // Legal checkpoint acceptance only, never a fresh chapter journey. No world hooks,
 // HP/clock injection, fake rAF, production pose-selector oracle or DOM concealment.
@@ -20,16 +23,29 @@ type View = { capture: Capture; body: Body | null; hp: Part | null; hpPixels: nu
 type Tape = { latest: Capture | null; rows: unknown[]; serial: number; seen: Set<number> };
 const tape = (): Tape => ({ latest: null, rows: [], serial: 0, seen: new Set() });
 const pauseDialog = (page: Page) => page.getByRole('dialog', { name: '暂停前向传播。', exact: true });
-const objective = (page: Page) => page.locator('.objective').innerText();
+const objective = (page: Page) => page.locator('.objective').innerText({ timeout: 5000 });
 const rawSave = (page: Page) => page.evaluate(() => localStorage.getItem('pdoom.save.v1'));
 const cleared = (page: Page) => page.getByRole('heading', { name: '回形针无尽工厂已突破。', exact: true });
+const observedPages = new WeakMap<Page, ReturnType<typeof watch>>();
 function watch(page: Page) {
   const errors: string[] = [], writes: string[] = [], loaded = new Set<string>();
   page.on('pageerror', error => errors.push(error.message));
   page.on('request', r => { if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(r.method()) && new URL(r.url()).pathname.startsWith('/api/')) writes.push(r.method() + ' ' + r.url()); });
   page.on('response', r => { const p = new URL(r.url()).pathname; if (r.status() === 200 && RESOURCES.includes(p)) loaded.add(p); });
-  return { errors, writes, loaded };
+  const result = { errors, writes, loaded, lifecycle: watchBrowserLifecycle(page) };
+  observedPages.set(page, result); return result;
 }
+test.afterEach(async ({ page }, info) => {
+  const observed = observedPages.get(page); if (!observed) return;
+  observed.lifecycle.mark('test-body-ended-before-fixture-teardown');
+  let disposalFailure: unknown, failedDisposal = false;
+  try { observed.lifecycle.dispose(); } catch (error) { disposalFailure = error; failedDisposal = true; }
+  const data = { lifecycle: observed.lifecycle.snapshot(), pageErrors: [...observed.errors],
+    writes: [...observed.writes], loaded: [...observed.loaded].sort(), testStatus: info.status, expectedStatus: info.expectedStatus };
+  await withCleanup(() => info.attach('sydney-host-lifecycle', { body: JSON.stringify(data), contentType: 'application/json' }), async () => {
+    observedPages.delete(page); if (failedDisposal) throw disposalFailure;
+  });
+});
 async function sourceArt(): Promise<Source> {
   const [image, text] = await Promise.all([readFile('public/game/sydney.png'), readFile('public/game/sydney.json', 'utf8')]);
   const atlas = JSON.parse(text) as { frames: { filename: string; frame: Rect; rotated: boolean; trimmed: boolean; spriteSourceSize: Rect; sourceSize: { w: number; h: number } }[]; meta: { size: { w: number; h: number }; frameTags: { name: string; from: number; to: number }[] } };
@@ -67,6 +83,9 @@ async function alive(page: Page) { await expect(page.getByRole('heading', { name
  * identified opaque projectiles may occlude a match; transparent pixels never
  * forgive arbitrary color errors. Every accepted pose has witnesses against ALL11 alternatives. */
 async function inspectBatch(page: Page, captures: Capture[], source: Source): Promise<View[]> {
+  const lifecycle = observedPages.get(page)?.lifecycle;
+  const batch = { frameCount: captures.length, pngStringChars: captures.reduce((n, capture) => n + capture.png.length, 0) };
+  lifecycle?.mark('inspectBatch-start', batch);
   const result = await page.evaluate(async ({ captures, source }) => {
     const decode = async (url: string) => { const image = new Image(); image.src = url; await image.decode(); const canvas = document.createElement('canvas'); canvas.width = image.naturalWidth; canvas.height = image.naturalHeight; const ctx = canvas.getContext('2d'); if (!ctx) throw Error('No pixel decoder'); ctx.drawImage(image, 0, 0); return { w: canvas.width, h: canvas.height, data: ctx.getImageData(0, 0, canvas.width, canvas.height).data }; };
     const art = await decode(source.image);
@@ -158,6 +177,7 @@ async function inspectBatch(page: Page, captures: Capture[], source: Source): Pr
     }
     return results;
   }, { captures, source });
+  lifecycle?.mark('inspectBatch-returned', batch);
   return result.map((view, i) => ({ capture: captures[i], ...view }));
 }
 async function inspect(page: Page, capture: Capture, source: Source): Promise<View> {
@@ -194,46 +214,27 @@ async function finishEvidence(info: TestInfo, record: Tape) {
 }
 async function frozenView(page: Page, source: Source, record: Tape, label: string) { await pause(page); return observe(page, source, record, label); }
 /** Capture first. Ordinary Escape freezes Core BEFORE any source decode or disk IO. */
-async function burst(page: Page, source: Source, record: Tape, info: TestInfo, label: string, milliseconds: number, input?: () => Promise<void>) {
-  await alive(page); await resume(page); let frames: Capture[] = [];
-  try { [frames] = await Promise.all([nativeFrames(page, milliseconds), input ? input() : Promise.resolve()]); }
-  finally { await page.mouse.up(); await page.keyboard.up('j'); await alive(page); await pause(page); }
-  const serial = record.serial++; record.latest = frames[frames.length - 1] ?? record.latest;
-  await Promise.all(frames.map((frame, i) => png(info, label + '-' + serial + '-' + String(i).padStart(3, '0'), frame)));
-  record.rows.push({ label, serial, rawFrames: frames.length, firstAt: frames[0]?.at, lastAt: frames[frames.length - 1]?.at });
-  // Paused batch decodes the fixed source/masks once, without game globals or skipping a frame.
+async function burst(page: Page, source: Source, record: Tape, info: TestInfo, label: string, milliseconds: number, input?: () => Promise<void>, terminal = false) {
+  await alive(page); await resume(page);
+  const captures = await captureInputBoundary({
+    sample: () => nativeFrames(page, milliseconds), input: input ?? (async () => {}),
+    release: async () => { await page.mouse.up(); await page.keyboard.up('j'); },
+    freeze: async () => { try { await alive(page); } finally { await pause(page); } },
+    ...(terminal ? { terminal: async () => (await nativeFrames(page))[0] } : {}),
+  });
+  const timed = captures.filter(item => item.phase === 'timed-window');
+  const frames = captures.map(item => item.capture), serial = record.serial++;
+  record.latest = frames[frames.length - 1];
+  if (terminal) expect(record.latest.at).toBeGreaterThanOrEqual(timed[timed.length - 1].capture.at);
+  const suffix = (i: number) => captures[i].phase === 'timed-window' ? String(i).padStart(3, '0') : 'after-input-paused';
+  await Promise.all(frames.map((frame, i) => png(info, label + '-' + serial + '-' + suffix(i), frame)));
+  record.rows.push({ label, serial, nominalWindowMs: milliseconds, rawFrames: frames.length,
+    timedWindowFrames: timed.length, timedFirstAt: timed[0].capture.at, timedLastAt: timed[timed.length - 1].capture.at,
+    terminalPhase: terminal ? 'after-input-paused' : null, terminalAt: terminal ? record.latest.at : null });
   const views = await inspectBatch(page, frames, source);
-  return views.map((view, i) => remember(record, label + ':' + i, view));
+  return views.map((view, i) => remember(record, label + ':' + suffix(i), view));
 }
 async function hold(page: Page, key: string, milliseconds: number) { await page.keyboard.down(key); try { await page.waitForTimeout(milliseconds); } finally { await page.keyboard.up(key); } }
-
-// Proven live compositor navigation only; native body acceptance remains640x360.
-/** Read the actual visible orange Clawd, never a hidden game/Phaser object. */
-async function navigationHero(page: Page, capture?: Buffer) {
-  // Read the displayed compositor image, not engine state or an asynchronously cleared WebGL buffer.
-  const base64 = (capture ?? await page.locator('canvas').screenshot()).toString('base64');
-  return page.evaluate(async value => {
-    const image = new Image(); image.src = `data:image/png;base64,${value}`; await image.decode();
-    const probe = document.createElement('canvas'); probe.width = image.naturalWidth; probe.height = image.naturalHeight;
-    const context = probe.getContext('2d'); if (!context) throw new Error('Cannot inspect captured pixels');
-    context.drawImage(image, 0, 0);
-    const pixels = context.getImageData(0, 0, probe.width, probe.height).data;
-    let count = 0, left = probe.width, right = 0, bottom = 0;
-    for (let index = 0; index < pixels.length; index += 4) {
-      if (pixels[index] !== 217 || pixels[index + 1] !== 119 || pixels[index + 2] !== 87) continue;
-      const x = index / 4 % probe.width; count++; left = Math.min(left, x); right = Math.max(right, x);
-      bottom = Math.max(bottom, Math.floor(index / 4 / probe.width));
-    }
-    return { count, x: count ? (left + right + 1) / 2 * 640 / probe.width : null, bottom: bottom * 360 / probe.height };
-  }, base64);
-}
-
-async function visibleNavigationHero(page: Page) {
-  let hero: Awaited<ReturnType<typeof navigationHero>> = { count: 0, x: null, bottom: 0 };
-  // Spawn grace intentionally hides Clawd on alternate 80ms intervals. Use the SAME successful visible capture, not a second sample that may blink out.
-  await expect.poll(async () => { hero = await navigationHero(page); return hero.count; }, { timeout: 1500, intervals: [20, 40, 60] }).toBeGreaterThan(20);
-  return hero;
-}
 
 async function visibleHero(page: Page, source: Source, record: Tape, info: TestInfo, bossRequired = false) {
   for (let i = 0; i < 12; i++) { const view = await frozenView(page, source, record, 'visible-hero'); if (view.hero.count > 20 && view.hero.x !== null && (!bossRequired || view.body)) return view; await burst(page, source, record, info, 'normal-flicker-wait', 90); }
@@ -247,28 +248,39 @@ async function reachLip(page: Page, source: Source, record: Tape, info: TestInfo
   const original = fixture(); await seedOnce(page, original);
   await expect(page.getByRole('button', { name: '恢复检查点', exact: true })).toBeEnabled({ timeout: 15000 });
   await page.getByRole('button', { name: '恢复检查点', exact: true }).click();
-  // Escape budget is real. Use proven lightweight visible navigation; full source matching stays paused.
+  // Escape budget is real. Initial ordinary jump first; all navigation measurement then stays paused.
   await page.keyboard.down('a'); await page.keyboard.down('Space');
   try { await page.waitForTimeout(330); await page.keyboard.up('a'); await page.waitForTimeout(270); }
   finally { await page.keyboard.up('a'); await page.keyboard.up('Space'); }
   const alignment: number[] = [];
-  try {
-    for (let n = 0; n < 12; n++) {
-      await alive(page); const hero = await visibleNavigationHero(page); const x = hero.x!; alignment.push(x);
-      if (Math.abs(x - 320) <= 4) break;
-      await hold(page, x > 320 ? 'a' : 'd', Math.min(200, Math.max(18, (Math.abs(x - 320) - 2) / 190 * 1000)));
-      await page.waitForTimeout(85);
-    }
-    const aligned = await visibleNavigationHero(page); alignment.push(aligned.x!);
-    expect(Math.abs(aligned.x! - 320)).toBeLessThanOrEqual(4);
-  } finally {
-    record.rows.push({ label: 'compositor-navigation-only-not-native-proof', alignment });
+  await withCleanup(async () => {
+    const navigation = await navigateFactoryEntry(page, {
+      pause: () => pause(page), alive: () => alive(page),
+      resume: async () => {
+        await resume(page); await expect(pauseDialog(page)).not.toBeVisible();
+        await expect.poll(() => navigationReceiver(page), { message: 'ordinary non-dialog, non-editor keyboard receiver' }).toMatchObject({ ready: true });
+      },
+    });
+    alignment.push(...navigation.alignment);
+    expect(navigation.hero.count).toBeGreaterThan(20);
+    expect(Math.abs(navigation.hero.x! - 320)).toBeLessThanOrEqual(4);
+  }, async () => {
+    record.rows.push({ label: 'paused-native640-navigation-not-body-proof', alignment });
     await pause(page); await observe(page, source, record, 'native-after-navigation');
-  }
+  });
   const attempt = await assertCheckpointAttempt(page, original);
   expect(Math.abs((await visibleHero(page, source, record, info)).hero.x! - 320)).toBeLessThanOrEqual(4);
-  for (let jump = 0; jump < 14; jump++) {
+  //14 ordinary jumps have15 observation boundaries; never discard the final action result.
+  for (let jump = 0; jump <= 14; jump++) {
     await alive(page); let view = await visibleHero(page, source, record, info);
+    record.rows.push({ label: 'lip-control-observation', completedJumpInputs: jump, hero: view.hero, ledges: view.ledges });
+    // A real gap43 idle frame is still airborne above the last55px ledge. Do not jump into the trigger.
+    // This only waits without jump input; the original45..65/idle0/noHP/ring gates below stay exact.
+    for (let settle = 0; settle < 8 && view.ledges.some(p => p.w >= 600 && view.hero.bottom! - p.y > 0 && view.hero.bottom! - p.y < 45); settle++) {
+      expect(await objective(page)).not.toMatch(/Sydney|精神控制/);
+      await burst(page, source, record, info, 'last-ledge-neutral-landing', 120);
+      view = await visibleHero(page, source, record, info);
+    }
     const upperFloor = view.ledges.find(p => p.w >= 600 && view.hero.bottom! - p.y >= 45 && view.hero.bottom! - p.y <= 65);
     if (upperFloor) {
       // The real last ledge is already reached. Never jump again just because a transient view failed to match.
@@ -286,6 +298,7 @@ async function reachLip(page: Page, source: Source, record: Tape, info: TestInfo
       return { original, attempt, idle: view };
     }
     expect(await objective(page), 'must stop below the actual arena trigger, not manufacture an idle pose').not.toMatch(/Sydney|精神控制/);
+    if (jump === 14) break;
     await resume(page); await hold(page, 'Space', 600); await page.waitForTimeout(250); await pause(page);
   }
   throw Error('Did not visibly reach the last y355 step below the arena with normal jumps');
@@ -295,13 +308,25 @@ async function enterArena(page: Page, source: Source, record: Tape, info: TestIn
   const view = await bodyView(page, source, record, info); liveBoss(view); expect(view.hp!.w).toBeCloseTo(64, 0);
   expect(await objective(page)).toContain('Sydney'); return view;
 }
-async function releaseBubble(page: Page, source: Source, record: Tape, info: TestInfo) {
-  const before = await bodyView(page, source, record, info); liveBoss(before);
+async function releaseBubble(page: Page, source: Source, record: Tape, info: TestInfo, allowChapterClear = false, observed?: View) {
+  const before = observed ?? await bodyView(page, source, record, info); liveBoss(before);
   expect(await objective(page)).toContain('精神控制'); expect(before.bubbles.length, 'real bright outlined binding bubble').toBeGreaterThan(0);
-  await page.mouse.up(); const shots = await burst(page, source, record, info, 'normal-j-breaks-pua', 650, () => hold(page, 'j', 620));
-  const after = await bodyView(page, source, record, info); liveBoss(after); await alive(page);
-  expect(after.bubbles, 'positive live bubble must disappear after real shots').toHaveLength(0); expect(await objective(page)).not.toContain('精神控制');
-  await expect(page.locator('.runtime-log')).toContainText('控制解除');
+  await page.mouse.up(); const shots = await burst(page, source, record, info, 'normal-j-breaks-pua', 650, () => hold(page, 'j', 620), true);
+  const after = await bodyView(page, source, record, info); await alive(page);
+  const outcome = await verifyReleaseBoundary({ cleared: await cleared(page).isVisible(), body: after.body,
+    hpPixels: after.hpPixels, bubbleCount: after.bubbles.length, dangerPixels: after.dangerPixels }, allowChapterClear, {
+    live: async () => {
+      liveBoss(after); expect(await objective(page)).not.toContain('精神控制');
+      await expect(page.locator('.runtime-log')).toContainText('控制解除');
+    },
+    cleared: async () => {
+      signal(after); await expect(cleared(page)).toBeVisible();
+      await expect(page.locator('.objective')).toHaveCount(0);
+      await expect(page.locator('.runtime-log')).toHaveCount(0);
+    },
+  });
+  record.rows.push({ label: 'release-outcome', outcome, afterAt: after.capture.at });
+  expect(after.bubbles, 'positive live bubble must disappear after real shots').toHaveLength(0);
   expect(shots.some(v => v.bubbles.length === 0), 'raw sequence contains actual release').toBe(true);
   return after;
 }
@@ -336,9 +361,13 @@ async function shootTo(page: Page, source: Source, record: Tape, info: TestInfo,
   for (let n = 0; n < 75; n++) {
     if (await cleared(page).isVisible()) { expect(phase).toBe('clear'); return; }
     await alive(page);
-    if ((await objective(page)).includes('精神控制')) { await releaseBubble(page, source, record, info); continue; }
-    const view = await bodyView(page, source, record, info);
-    if (await cleared(page).isVisible()) { expect(phase).toBe('clear'); return; }
+    const boundary = await readCombatBoundary({
+      capture: () => bodyView(page, source, record, info), cleared: () => cleared(page).isVisible(),
+      controlled: async () => (await objective(page)).includes('精神控制'),
+    });
+    if (boundary.kind === 'cleared') { expect(phase).toBe('clear'); return; }
+    const view = boundary.view;
+    if (boundary.kind === 'bound') { await releaseBubble(page, source, record, info, phase === 'clear', view); continue; }
     const body = liveBoss(view), actualPhase = Math.floor(body.frame / 4) + 1;
     if (phase !== 'clear' && actualPhase >= phase) {
       expect(actualPhase, 'stop ordinary firing at the requested phase, never skip it').toBe(phase);
@@ -359,7 +388,7 @@ async function releaseInputs(page: Page) { await page.mouse.up(); for (const key
 
 test('Sydney legal cp2 idle1, real tell, PUA shooting release and long-pause native freeze', async ({ page }, info) => {
   test.setTimeout(180000); const observed = watch(page), source = await sourceArt(), record = tape();
-  try {
+  await withCleanup(async () => {
     await reachLip(page, source, record, info); await enterArena(page, source, record, info);
     let tell: View | null = null;
     for (let n = 0; n < 12 && !tell; n++) {
@@ -385,12 +414,12 @@ test('Sydney legal cp2 idle1, real tell, PUA shooting release and long-pause nat
     await collectPhase(page, source, record, info, 1);
     for (const frame of [0, 1, 2, 3]) expect(record.seen.has(frame), 'actual phase1 source pose ' + frame).toBe(true);
     expect([...observed.loaded].sort()).toEqual([...RESOURCES].sort()); expect(observed.errors).toEqual([]); expect(observed.writes).toEqual([]);
-  } finally { try { await releaseInputs(page); } finally { await finishEvidence(info, record); } }
+  }, () => withCleanup(() => releaseInputs(page), () => finishEvidence(info, record)));
 });
 
 test('Sydney real ordinary combat reaches all nine active poses and cleans the same arena before chapter three', async ({ page }, info) => {
   test.setTimeout(240000); const observed = watch(page), source = await sourceArt(), record = tape();
-  try {
+  await withCleanup(async () => {
     const { attempt } = await reachLip(page, source, record, info); await enterArena(page, source, record, info);
     await collectPhase(page, source, record, info, 1);
     await shootTo(page, source, record, info, 2); await collectPhase(page, source, record, info, 2);
@@ -411,7 +440,7 @@ test('Sydney real ordinary combat reaches all nine active poses and cleans the s
     const next = await observe(page, source, record, 'next-chapter-no-sydney'); signal(next); expect(next.body).toBeNull();
     await expect(page.locator('.world-titlebar strong')).toHaveText('03');
     expect([...observed.loaded].sort()).toEqual([...RESOURCES].sort()); expect(observed.errors).toEqual([]); expect(observed.writes).toEqual([]);
-  } finally { try { await releaseInputs(page); } finally { await finishEvidence(info, record); } }
+  }, () => withCleanup(() => releaseInputs(page), () => finishEvidence(info, record)));
 });
 
 for (const fault of ['missing-png', 'missing-unused-idle2'] as const) {

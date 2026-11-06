@@ -12,6 +12,8 @@ export interface AudioFrame {
   hp: number;
   shots: number;
   rewinds: number;
+  dashes: number;
+  insights: number;
   rerolls: number;
   turns: number;
   stemsLost: number;
@@ -19,7 +21,7 @@ export interface AudioFrame {
 export const STEM_ORDER = ['chip', 'bass', 'percussion', 'drive'] as const;
 export type MusicStem = typeof STEM_ORDER[number];
 export type StemLevels = Record<MusicStem, number>;
-export type SfxKind = 'shot' | 'hit' | 'rewind' | 'reroll' | 'turn';
+export type SfxKind = 'shot' | 'hit' | 'rewind' | 'reroll' | 'turn' | 'dash' | 'insight';
 export interface VoiceSpec {
   bus: MusicStem | 'sfx';
   waveform: 'sine' | 'triangle' | 'square' | 'sawtooth' | 'noise';

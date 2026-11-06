@@ -4,6 +4,8 @@ import { expect, test, type Page, type TestInfo } from '@playwright/test';
 import { createRun, isGameSave } from '../../src/pages/GamePage/functions/saveModel';
 import type { GameSaveData } from '../../src/objects/game/GameSaveData';
 import { assertCheckpointAttempt } from './checkpoint-attempt';
+import { groundedEnvironmentActor, prepareEnvironmentJump } from './environment-controls';
+import { withCleanup } from './factory-navigation';
 
 // Supported checkpoint fixtures, NOT fresh journeys. Only normal input and DOM/canvas observations.
 // No engine/global/React-internal access, gameplay setters, clock substitution or hidden DOM.
@@ -20,7 +22,7 @@ type Observation = {
   mushroom: { ratio: number; centerY: number; inkPixels: number; checksum: number } | null;
   canopyProof: Proof | null; propProof: Proof | null; groundProof: Proof | null; exposedProof: Proof | null;
 };
-type Trace = Omit<Observation, 'png' | 'opaqueRatio' | 'core'> & { label: string };
+type Trace = Omit<Observation, 'png' | 'opaqueRatio'> & { label: string };
 type Recorder = { anchor: number | null; latest: Observation | null; rows: Trace[] };
 const recorder = (): Recorder => ({ anchor: null, latest: null, rows: [] });
 
@@ -73,7 +75,7 @@ async function hud(page: Page) {
 async function release(page: Page) { for (const key of ['d', 'a', 'j', 'Space']) await page.keyboard.up(key); }
 
 /** One real rAF/readback, without advancing or replacing the game clock. */
-async function observe(page: Page, source: Sources, fallback: number | null): Promise<Observation> {
+async function observe(page: Page, source: Sources, fallback: number | null, navigationOnly = false): Promise<Observation> {
   const capture = await page.evaluate(() => new Promise<{ png: string; at: number }>((resolve, reject) => {
     requestAnimationFrame(() => {
       const canvas = document.querySelector('canvas');
@@ -81,14 +83,14 @@ async function observe(page: Page, source: Sources, fallback: number | null): Pr
       resolve({ png: canvas.toDataURL('image/png'), at: performance.now() });
     });
   }));
-  const measured = await page.evaluate(async ({ capture, source, fallback, recipe }) => {
+  const measured = await page.evaluate(async ({ capture, source, fallback, recipe, navigationOnly }) => {
     const decode = async (url: string) => {
       const image = new Image(); image.src = url; await image.decode();
       const canvas = document.createElement('canvas'); canvas.width = image.naturalWidth; canvas.height = image.naturalHeight;
       const context = canvas.getContext('2d'); if (!context) throw new Error('No read-only pixel decoder'); context.drawImage(image, 0, 0);
       return { width: canvas.width, height: canvas.height, data: context.getImageData(0, 0, canvas.width, canvas.height).data };
     };
-    const [actual, terrain, props] = await Promise.all([decode(capture.png), decode(source.terrain), decode(source.props)]);
+    const actual = await decode(capture.png);
     const pixel = (image: typeof actual, x: number, y: number) => {
       if (x < 0 || y < 0 || x >= image.width || y >= image.height) return [0, 0, 0, 0];
       const i = (y * image.width + x) * 4; return [image.data[i], image.data[i + 1], image.data[i + 2], image.data[i + 3]];
@@ -96,7 +98,6 @@ async function observe(page: Page, source: Sources, fallback: number | null): Pr
     const close = (a: number[], b: readonly number[], tolerance = 2) => Math.abs(a[0] - b[0]) <= tolerance && Math.abs(a[1] - b[1]) <= tolerance && Math.abs(a[2] - b[2]) <= tolerance;
     const distance = (a: readonly number[], b: readonly number[]) => Math.max(Math.abs(a[0] - b[0]), Math.abs(a[1] - b[1]), Math.abs(a[2] - b[2]));
     const mod = (value: number, divisor: number) => ((value % divisor) + divisor) % divisor;
-    const tiled = (frame: Rect, x: number, y: number) => pixel(terrain, frame.x + mod(x, frame.w), frame.y + mod(y, frame.h));
     const over = (below: number[], above: number[], alpha: number) => { const a = alpha * above[3] / 255; return [0, 1, 2].map(c => Math.round(above[c] * a + below[c] * (1 - a))).concat(255); };
     let opaque = 0, count = 0, sumX = 0, sumY = 0, left = 640, right = -1, top = 360, bottom = -1;
     let coreCount = 0, coreX = 0, coreY = 0;
@@ -118,7 +119,11 @@ async function observe(page: Page, source: Sources, fallback: number | null): Pr
     const hash = (area: Rect) => { let value = 2166136261; for (let y = area.y; y < area.y + area.h; y++) for (let x = area.x; x < area.x + area.w; x++) for (const byte of pixel(actual, x, y)) value = Math.imul(value ^ byte, 16777619) >>> 0; return value; };
     const empty = { opaqueRatio: opaque / (640 * 360), hero, core, anchor, surface, rulePixels: surface === 'warning' ? warning.pixels : normal.pixels,
       mushroom: null, canopyProof: null, propProof: null, groundProof: null, exposedProof: null };
-    if (anchor === null) return empty;
+    // Jump aiming needs the exact live hero/core pixels, not an unrelated full terrain audit.
+    // Every original art acceptance keeps the full path below.
+    if (anchor === null || navigationOnly) return empty;
+    const [terrain, props] = await Promise.all([decode(source.terrain), decode(source.props)]);
+    const tiled = (frame: Rect, x: number, y: number) => pixel(terrain, frame.x + mod(x, frame.w), frame.y + mod(y, frame.h));
     const scroll = 1610 - anchor;
     const background = (x: number, y: number) => {
       let color = [...recipe.base, 255];
@@ -152,18 +157,18 @@ async function observe(page: Page, source: Sources, fallback: number | null): Pr
     }
     return { ...empty, canopyProof, propProof, groundProof, exposedProof,
       mushroom: { ratio: best / mask.length, centerY, inkPixels: mask.length, checksum: hash({ x: anchor + 48, y: 162, w: 20, h: 25 }) } };
-  }, { capture, source, fallback, recipe: RECIPE });
+  }, { capture, source, fallback, recipe: RECIPE, navigationOnly });
   return { ...capture, ...measured };
 }
-async function sample(page: Page, source: Sources, state: Recorder, label: string) {
-  const value = await observe(page, source, state.anchor); state.anchor = value.anchor ?? state.anchor; state.latest = value;
-  const { at, hero, surface, anchor, rulePixels, mushroom, canopyProof, propProof, groundProof, exposedProof } = value;
-  state.rows.push({ label, at, hero, surface, anchor, rulePixels, mushroom, canopyProof, propProof, groundProof, exposedProof });
+async function sample(page: Page, source: Sources, state: Recorder, label: string, navigationOnly = false) {
+  const value = await observe(page, source, state.anchor, navigationOnly); state.anchor = value.anchor ?? state.anchor; state.latest = value;
+  const { at, hero, core, surface, anchor, rulePixels, mushroom, canopyProof, propProof, groundProof, exposedProof } = value;
+  state.rows.push({ label, at, hero, core, surface, anchor, rulePixels, mushroom, canopyProof, propProof, groundProof, exposedProof });
   expect(value.opaqueRatio).toBeGreaterThan(0.99); return value;
 }
-async function until(page: Page, source: Sources, state: Recorder, label: string, accept: (value: Observation) => boolean, timeout = 5000) {
+async function until(page: Page, source: Sources, state: Recorder, label: string, accept: (value: Observation) => boolean, timeout = 5000, navigationOnly = false) {
   const deadline = Date.now() + timeout;
-  do { const value = await sample(page, source, state, label); if (accept(value)) return value; await page.waitForTimeout(35); } while (Date.now() < deadline);
+  do { const value = await sample(page, source, state, label, navigationOnly); if (accept(value)) return value; await page.waitForTimeout(35); } while (Date.now() < deadline);
   throw new Error(`Missing observed phase: ${label}`);
 }
 function hero(value: Observation): Hero { if (!value.hero || value.hero.count < 20) throw new Error('Missing live Clawd pixel positive control'); return value.hero; }
@@ -191,19 +196,34 @@ test('checkpoint-1 fixture: native mushroom pickup, real inversion and actual fr
   const observed = watch(page), source = await sources(), state = recorder();
   try {
     const { attempt } = await fixture(page, 1);
-    await page.keyboard.press('e');
-    const exposed = await until(page, source, state, 'real-E-core', value => (value.core?.count ?? 0) > 30);
-    await png(info, 'environment-cp1-E-core', exposed);
-    await page.keyboard.down('Space');
-    try {
-      await page.waitForTimeout(150);
-      const aimed = await until(page, source, state, 'jump-for-one-core-shot', value => !!value.hero && value.hero.meanY < 245 && (value.core?.count ?? 0) > 30, 1000);
-      if (!aimed.core) throw new Error('Lost observed E core');
-      const box = await page.locator('canvas').boundingBox(); if (!box) throw new Error('No actual canvas rectangle');
-      //80ms survives ordinary render cadence but remains below the real185ms fire interval.
-      await page.mouse.click(box.x + aimed.core.x / 640 * box.width, box.y + aimed.core.y / 360 * box.height, { delay: 80 });
-    } finally { await page.keyboard.up('Space'); }
-    await expect(page.locator('.runtime-log')).toContainText('核心节点已击破');
+    const prepared = await prepareEnvironmentJump({
+      now: () => performance.now(),
+      ready: timeout => expect(page.getByRole('button', { name: 'Q 回溯', exact: true })).toBeEnabled({ timeout }),
+      ground: timeout => until(page, source, state, 'visible-ground-before-E', groundedEnvironmentActor, timeout, true),
+      insight: () => page.keyboard.press('e'),
+      core: timeout => until(page, source, state, 'real-E-core', value => groundedEnvironmentActor(value) && (value.core?.count ?? 0) > 30, timeout),
+    });
+    const exposed = prepared.exposed;
+    info.annotations.push({ type: 'environment-jump-preparation', description: JSON.stringify({
+      publicQReady: true, grounded: prepared.grounded.hero, exposed: exposed.hero, core: exposed.core,
+      elapsedMs: prepared.elapsedMs, requests: prepared.requests,
+    }) });
+    await withCleanup(async () => {
+      await page.keyboard.down('Space');
+      try {
+        await page.waitForTimeout(150);
+        const aimed = await until(page, source, state, 'jump-for-one-core-shot', value => !!value.hero && value.hero.meanY < 245 && (value.core?.count ?? 0) > 30, 1000, true);
+        if (!aimed.core) throw new Error('Lost observed E core');
+        const box = await page.locator('canvas').boundingBox(); if (!box) throw new Error('No actual canvas rectangle');
+        //80ms survives ordinary render cadence but remains below the real185ms fire interval.
+        await page.mouse.click(box.x + aimed.core.x / 640 * box.width, box.y + aimed.core.y / 360 * box.height, { delay: 80 });
+      } finally { await page.keyboard.up('Space'); }
+      await expect(page.locator('.runtime-log')).toContainText('核心节点已击破');
+    }, async () => {
+      // Archive the same preparation frames only after the original jump/shot/hit wait.
+      await png(info, 'environment-cp1-E-core', exposed);
+      await png(info, 'environment-cp1-prepared-grounded', prepared.grounded);
+    });
     await until(page, source, state, 'ground-reset', value => !!value.hero && value.hero.meanY > 285, 2500);
     // Three actual forward enemies, six TOK each. No HP setters or forced kills.
     await page.keyboard.down('j');

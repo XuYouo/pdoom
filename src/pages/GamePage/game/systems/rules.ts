@@ -71,7 +71,7 @@ export function objectiveFor(x: number, boss: Boss): string {
 
 export function createPlayer(x: number, y: number, now: number): Player {
   return { x, y, vx: 0, vy: 0, facing: 1, grounded: false, rootedBy: null, standingOn: null, petrifiedUntil: 0, coyoteUntil: 0, jumpUntil: 0,
-    dashUntil: 0, dashReadyAt: now, shotReadyAt: now, invulnerableUntil: now + 1000,
+    dashUntil: 0, dashReadyAt: now, shotReadyAt: now, lastFiredAt: null, invulnerableUntil: now + 1000,
     rewindReadyAt: now, insightUntil: 0, insightReadyAt: now, invertedUntil: 0,
     immunity: {}, criticalCharges: 0 };
 }

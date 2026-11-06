@@ -391,6 +391,311 @@
       "nativePixelEvidenceRoles": [
         "gpu-rack"
       ]
+    },
+    {
+      "status": "approved native art, integrated and current full-regression verified",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "filter": "nearest",
+      "trimmed": false,
+      "padding": 0,
+      "pixelSpec": "assets/loom-environment-pixelspec.md",
+      "generationRecord": "assets/loom-environment-generation.json",
+      "id": "loom-terrain",
+      "source": "assets/source/loom-tiles.aseprite",
+      "png": "public/game/loom-terrain.png",
+      "map": "public/game/loom-terrain.json",
+      "key": "environment-loom-terrain",
+      "frameSize": [
+        16,
+        16
+      ],
+      "frameCount": 32,
+      "sheetSize": [
+        96,
+        96
+      ],
+      "columns": 6,
+      "unusedTrailingSlots": 4,
+      "frameRoles": {
+        "upper-left": "0",
+        "upper-mid-a": "1",
+        "upper-mid-b": "2",
+        "upper-right": "3",
+        "lower-left": "4",
+        "lower-mid-a": "5",
+        "lower-mid-b": "6",
+        "lower-right": "7",
+        "hub-left": "8",
+        "hub-mid-a": "9",
+        "hub-mid-b": "10",
+        "hub-right": "11",
+        "anchor-left": "12",
+        "anchor-mid-a": "13",
+        "anchor-mid-b": "14",
+        "anchor-right": "15",
+        "void-wall-a": "16",
+        "void-wall-b": "17",
+        "thread-v": "18",
+        "thread-h": "19",
+        "thread-elbow": "20",
+        "thread-fork": "21",
+        "shuttle-socket": "22",
+        "quiet-ring": "23",
+        "loom-upright": "24",
+        "loom-crossbar": "25",
+        "loom-elbow": "26",
+        "thread-knot": "27",
+        "thread-tail": "28",
+        "dark-weave-a": "29",
+        "dark-weave-b": "30",
+        "loom-rivet-panel": "31"
+      },
+      "runtimeRoles": [
+        "upper-left",
+        "upper-mid-a",
+        "upper-mid-b",
+        "upper-right",
+        "lower-left",
+        "lower-mid-a",
+        "lower-mid-b",
+        "lower-right",
+        "hub-left",
+        "hub-mid-a",
+        "hub-mid-b",
+        "hub-right",
+        "anchor-left",
+        "anchor-mid-a",
+        "anchor-mid-b",
+        "anchor-right",
+        "dark-weave-a",
+        "dark-weave-b"
+      ],
+      "exportedMapIsCollision": false,
+      "nativeSupportSourceRows": [
+        3,
+        11
+      ],
+      "actualCoreSupportHeight": 12,
+      "fullCapsAndMiddlePrefixOnly": true
+    },
+    {
+      "status": "approved native art, integrated and current full-regression verified",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "filter": "nearest",
+      "trimmed": false,
+      "padding": 0,
+      "pixelSpec": "assets/loom-environment-pixelspec.md",
+      "generationRecord": "assets/loom-environment-generation.json",
+      "id": "loom-props",
+      "source": "assets/source/loom-props.aseprite",
+      "png": "public/game/loom-props.png",
+      "atlas": "public/game/loom-props.json",
+      "key": "environment-loom-props",
+      "frameSize": [
+        64,
+        64
+      ],
+      "frameCount": 6,
+      "sheetSize": [
+        384,
+        64
+      ],
+      "staticFramesNotAnAnimation": true,
+      "frameRoles": {
+        "fork-spindle": "loom-props 0.aseprite",
+        "split-reel": "loom-props 1.aseprite",
+        "shuttle-bank": "loom-props 2.aseprite",
+        "branch-coupler": "loom-props 3.aseprite",
+        "broken-loom": "loom-props 4.aseprite",
+        "distant-fork-tree": "loom-props 5.aseprite"
+      },
+      "solid": false
+    },
+    {
+      "status": "approved native art, integrated and current full-regression verified",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "filter": "nearest",
+      "trimmed": false,
+      "padding": 0,
+      "pixelSpec": "assets/omega-environment-pixelspec.md",
+      "generationRecord": "assets/omega-environment-generation.json",
+      "id": "omega-terrain",
+      "source": "assets/source/omega-tiles.aseprite",
+      "png": "public/game/omega-terrain.png",
+      "map": "public/game/omega-terrain.json",
+      "key": "environment-omega-terrain",
+      "frameSize": [
+        16,
+        16
+      ],
+      "frameCount": 32,
+      "sheetSize": [
+        96,
+        96
+      ],
+      "columns": 6,
+      "unusedTrailingSlots": 4,
+      "frameRoles": {
+        "corridor-top-left": "0",
+        "corridor-top-mid-a": "1",
+        "corridor-top-mid-b": "2",
+        "corridor-top-right": "3",
+        "corridor-body-left": "4",
+        "corridor-body-a": "5",
+        "corridor-body-b": "6",
+        "corridor-body-right": "7",
+        "corridor-foot-left": "8",
+        "corridor-foot-a": "9",
+        "corridor-foot-b": "10",
+        "corridor-foot-right": "11",
+        "chamber-top-left": "12",
+        "chamber-top-mid-a": "13",
+        "chamber-top-mid-b": "14",
+        "chamber-top-right": "15",
+        "chamber-body-left": "16",
+        "chamber-body-a": "17",
+        "chamber-body-b": "18",
+        "chamber-body-right": "19",
+        "chamber-foot-left": "20",
+        "chamber-foot-a": "21",
+        "chamber-foot-b": "22",
+        "chamber-foot-right": "23",
+        "observer-left": "24",
+        "observer-mid-a": "25",
+        "observer-mid-b": "26",
+        "observer-right": "27",
+        "quiet-wall": "28",
+        "rear-channel": "29",
+        "rack-base": "30",
+        "floor-recess": "31"
+      },
+      "runtimeRoles": [
+        "corridor-top-left",
+        "corridor-top-mid-a",
+        "corridor-top-mid-b",
+        "corridor-top-right",
+        "corridor-body-left",
+        "corridor-body-a",
+        "corridor-body-b",
+        "corridor-body-right",
+        "corridor-foot-left",
+        "corridor-foot-a",
+        "corridor-foot-b",
+        "corridor-foot-right",
+        "chamber-top-mid-a",
+        "chamber-top-mid-b",
+        "chamber-body-a",
+        "chamber-body-b",
+        "chamber-foot-a",
+        "chamber-foot-b",
+        "observer-left",
+        "observer-mid-a",
+        "observer-mid-b",
+        "observer-right"
+      ],
+      "runtimeRolesScope": "actually source-matched native02; planned legal views additionally use3chamber-right caps",
+      "plannedLegalViewRoles": [
+        "corridor-top-left",
+        "corridor-top-mid-a",
+        "corridor-top-mid-b",
+        "corridor-top-right",
+        "corridor-body-left",
+        "corridor-body-a",
+        "corridor-body-b",
+        "corridor-body-right",
+        "corridor-foot-left",
+        "corridor-foot-a",
+        "corridor-foot-b",
+        "corridor-foot-right",
+        "chamber-top-mid-a",
+        "chamber-top-mid-b",
+        "chamber-top-right",
+        "chamber-body-a",
+        "chamber-body-b",
+        "chamber-body-right",
+        "chamber-foot-a",
+        "chamber-foot-b",
+        "chamber-foot-right",
+        "observer-left",
+        "observer-mid-a",
+        "observer-mid-b",
+        "observer-right"
+      ],
+      "plannedRoleCount": 25,
+      "actualCoreFloorHeight": 40,
+      "floorRows": [
+        16,
+        16,
+        8
+      ],
+      "actualCoreObserverHeight": 12,
+      "preservedCoreTopRows": 3,
+      "fullCapsAndMiddlePrefixOnly": true,
+      "exportedMapIsCollision": false
+    },
+    {
+      "status": "approved native art, integrated and current full-regression verified",
+      "sourceMode": "live",
+      "asepriteVersion": "1.3.18.6-dev",
+      "filter": "nearest",
+      "trimmed": false,
+      "padding": 0,
+      "pixelSpec": "assets/omega-environment-pixelspec.md",
+      "generationRecord": "assets/omega-environment-generation.json",
+      "id": "omega-props",
+      "source": "assets/source/omega-props.aseprite",
+      "png": "public/game/omega-props.png",
+      "atlas": "public/game/omega-props.json",
+      "key": "environment-omega-props",
+      "frameSize": [
+        64,
+        128
+      ],
+      "frameCount": 6,
+      "sheetSize": [
+        384,
+        128
+      ],
+      "staticFramesNotAnAnimation": true,
+      "frameRoles": {
+        "compute-bank": "omega-props 0.aseprite",
+        "cable-arch": "omega-props 1.aseprite",
+        "air-duct": "omega-props 2.aseprite",
+        "empty-chair": "omega-props 3.aseprite",
+        "final-door-frame": "omega-props 4.aseprite",
+        "standing-mirror": "omega-props 5.aseprite"
+      },
+      "pivot": [
+        32,
+        120
+      ],
+      "solid": false,
+      "doorOpening": [
+        12,
+        24,
+        40,
+        96
+      ],
+      "mirrorGlass": [
+        8,
+        22,
+        48,
+        98
+      ],
+      "mirrorActorQuiet": [
+        20,
+        74,
+        24,
+        46
+      ],
+      "mirrorFloorOccludedSourceRows": [
+        120,
+        123
+      ],
+      "nativeMirrorPixelMaskOnlyFloorRail": true
     }
   ],
   "checks": {
@@ -492,6 +797,66 @@
       "path": "public/game/furnace-props.json",
       "bytes": 2686,
       "sha256": "4a2266b954de7ae45caf9ed7f3969215fb85cef0ae558605cdc819db6a5e13e1"
+    },
+    {
+      "path": "assets/source/loom-tiles.aseprite",
+      "bytes": 4751,
+      "sha256": "8bfb01ae4652e2eed86e2a7bd33a455006e5a9a2559910ab8d3f50761b1afc4b"
+    },
+    {
+      "path": "assets/source/loom-props.aseprite",
+      "bytes": 4993,
+      "sha256": "2e6e22c4941b5c2279066927128a58c6bd9a6ef32dfb4db19aaaa36a9783f229"
+    },
+    {
+      "path": "public/game/loom-terrain.png",
+      "bytes": 1720,
+      "sha256": "441734201ed497c5013c153c89a0828bda80decb4e8ea8ee9d2a09a6d3ee1cb2"
+    },
+    {
+      "path": "public/game/loom-terrain.json",
+      "bytes": 618,
+      "sha256": "208dd4abf5b4d13b1093b7d4ed4bada678a53b011bdb79c8da68de4a105e2ad3"
+    },
+    {
+      "path": "public/game/loom-props.png",
+      "bytes": 3571,
+      "sha256": "f159173241559365fcfeff0ccb9b8a26c97d466cc9b4c3f09e5ad8b067cd7340"
+    },
+    {
+      "path": "public/game/loom-props.json",
+      "bytes": 2664,
+      "sha256": "76eb8af3ea05d0cf52014197b367bc53c382b9236e7bcd3c760fc409a9ffa3dc"
+    },
+    {
+      "path": "assets/source/omega-tiles.aseprite",
+      "bytes": 3838,
+      "sha256": "ace8f39816c4bcae96218c43be5864e2ae6e47a1058e62c0d2d5dd1caab02c95"
+    },
+    {
+      "path": "assets/source/omega-props.aseprite",
+      "bytes": 4894,
+      "sha256": "81ee2b1cb70fed72af1c04dd42f47545140a06aa02b26fd664b49d091fa32d2d"
+    },
+    {
+      "path": "public/game/omega-terrain.png",
+      "bytes": 1131,
+      "sha256": "80314bb9f3e3d5a75ed11cfdb2effde5b80f877ee6f7dc33335367c77ae0e605"
+    },
+    {
+      "path": "public/game/omega-terrain.json",
+      "bytes": 620,
+      "sha256": "95b6c2ac8ba248a2daf3eb884bdad04adc6b0e8a9af5e75fe6a8f250043789c7"
+    },
+    {
+      "path": "public/game/omega-props.png",
+      "bytes": 2876,
+      "sha256": "bf900b539504a7404fb2885b4577e91ca214391bfe4161ac6344ec4960a7f7b4"
+    },
+    {
+      "path": "public/game/omega-props.json",
+      "bytes": 2892,
+      "sha256": "e6de214a11320109f241d7325c08fef7dddcbafe9199f4f9429f50a110c04aa6"
     }
   ],
   "allChapterOneArtComplete": false,
@@ -505,7 +870,7 @@
     "nativeSkipped": 0,
     "log": "artifacts/verification/r13-final-gate-02.log"
   },
-  "checksScope": "Historical chapter-one checks; factory and furnace checks and verification are separate.",
+  "checksScope": "Historical first-four verification records are retained; R25 current single-run119/backend23 verifies integration, not fullGDD or production release.",
   "factoryChecks": {
     "sharedPaletteEntries": 20,
     "terrainOpaqueColors": 12,
@@ -570,5 +935,102 @@
     "productionOnlyAuditEntries": 0,
     "projectSecurityGate": "open; no forced dependency upgrade",
     "fullGddComplete": false
+  },
+  "loomChecks": {
+    "sharedPaletteEntries": 20,
+    "terrainOpaqueColors": 13,
+    "hardAlpha": true,
+    "reservedHeroColorCount": 0,
+    "sourceExportRGBAEqual": true,
+    "runtimeTerrainRoleCount": 18,
+    "all32TilesAppearInLevel": false,
+    "runtimePropRoleCount": 6,
+    "allSixPropsNativePixelMatched": false,
+    "actualCoreGeometryOnly": true,
+    "all38RequiredFramesGuarded": true,
+    "ownedImageLimit": 512,
+    "newCollisions": false,
+    "independentClock": false
+  },
+  "loomVerification": {
+    "round": "R23",
+    "fullRegressionPending": false,
+    "unit": 3784,
+    "unitFiles": 62,
+    "sourceTests": 68,
+    "adapterTests": 149,
+    "nativeEnvironmentCases": 6,
+    "browser": 108,
+    "browserSkipped": 0,
+    "browserSeconds": 939.244,
+    "backend": 23,
+    "backendSkipped": 0,
+    "protectedFilesUnchangedDuringFullBrowser": 136,
+    "actualEngine": "Phaser4.0.0",
+    "globalGateLog": "artifacts/verification/r23-final-local-gates-01.log",
+    "browserLog": "artifacts/verification/r23-current-browser-01.log",
+    "backendLog": "artifacts/verification/r23-backend-tests.log",
+    "serviceCleanup": "artifacts/verification/r23-lead-service-cleanup.json",
+    "selectedMetrics": "artifacts/verification/r23-native-selected-metrics.json",
+    "entryReview": "artifacts/verification/r23-entry-review.json",
+    "report": "docs/round23-loom-environment-progress.md",
+    "projectSecurityGate": "open;R21latest12moderatedev/prod0notre-auditedR23",
+    "fullGddComplete": false
+  },
+  "integratedEnvironmentCount": 5,
+  "omegaChecks": {
+    "sharedPaletteEntries": 20,
+    "terrainOpaqueColors": 10,
+    "propOpaqueColors": 11,
+    "hardAlpha": true,
+    "reservedHeroColorCount": 0,
+    "sourceExportRGBAEqual": true,
+    "runtimeTerrainRoleCount": 22,
+    "plannedLegalViewRoleCount": 25,
+    "all32TilesAppearInLevel": false,
+    "runtimePropRoleCount": 6,
+    "allSixPropsNativePixelMatched": true,
+    "actualCoreGeometryOnly": true,
+    "all38RequiredFramesGuarded": true,
+    "ownedImageLimit": 384,
+    "halfPixelViewSamples": 5121,
+    "measuredVisiblePeak": 135,
+    "wholeWorldSupportCommands": 605,
+    "newCollisions": false,
+    "independentClock": false
+  },
+  "omegaVerification": {
+    "round": "R25",
+    "fullRegressionPending": false,
+    "unit": 3993,
+    "unitFiles": 65,
+    "sourceTests": 79,
+    "adapterTests": 130,
+    "nativeEnvironmentCases": 11,
+    "browser": 119,
+    "browserSkipped": 0,
+    "browserSeconds": 1085.593,
+    "backend": 23,
+    "backendSkipped": 0,
+    "protectedFilesUnchangedDuringFullBrowser": 153,
+    "actualEngine": "Phaser4.0.0",
+    "browserLog": "artifacts/verification/r25-current-browser-02.log",
+    "backendLog": "artifacts/verification/r25-backend-tests-01.log",
+    "serviceCleanup": "artifacts/verification/r25-lead-service-cleanup.json",
+    "selectedMetrics": "artifacts/verification/r25-current-native-selected-metrics.json",
+    "report": "docs/round25-omega-environment-progress.md",
+    "firstFullRun": {
+      "passed": 117,
+      "failed": 2,
+      "exit": 1,
+      "log": "artifacts/verification/r25-current-browser-01.log",
+      "unmodifiedPairPassed": 2,
+      "notCombinedWithFinalRun": true,
+      "oldTimingAndScreenCoordinateSensitivityStillOpen": true
+    },
+    "projectSecurityGate": "open; R21latest12moderatedev/prod0 historical, not re-auditedR25; no forced upgrade",
+    "fullGddComplete": false,
+    "globalGateLog": "artifacts/verification/r25-final-local-gates-01.json",
+    "sourceFreezeRecord": "artifacts/verification/r25-final-source-hashes.json"
   }
 }

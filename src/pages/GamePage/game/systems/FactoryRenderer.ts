@@ -11,7 +11,8 @@ export class FactoryRenderer {
 
   constructor(private scene: Phaser.Scene) {
     this.probes = new ProbeSpriteRenderer(scene, PROBE_BINDING);
-    this.status = scene.add.text(630, 28, '', { fontFamily: 'monospace', fontSize: '10px', color: '#b7d5df', align: 'right', lineSpacing: 4, backgroundColor: '#101a1bdb', padding: { x: 5, y: 4 } }).setOrigin(1, 0).setScrollFactor(0).setDepth(6);
+    // Keep the readout above the arena label and away from Sydney's right-side entrance.
+    this.status = scene.add.text(scene.cameras.main.width / 2, 12, '', { fontFamily: 'monospace', fontSize: '10px', color: '#b7d5df', align: 'center', lineSpacing: 4, backgroundColor: '#101a1bdb', padding: { x: 5, y: 4 } }).setOrigin(0.5, 0).setScrollFactor(0).setDepth(6);
   }
 
   draw(g: Phaser.GameObjects.Graphics, world: WorldState, cues: Phaser.GameObjects.Graphics = g, afterSea: Phaser.GameObjects.Graphics = g, nativeSea = false) {

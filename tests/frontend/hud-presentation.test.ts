@@ -120,7 +120,7 @@ describe('mission visibility and minimal feedback', () => {
     const screens: Parameters<typeof missionPresentation>[0]['screen'][] = [
       { kind: 'menu' }, { kind: 'ended', result: { save, ending: 'defeat' } },
       { kind: 'chapter-clear', save: { ...save, stage: 2 }, stage: 1 },
-      { kind: 'rest', snapshot: { save, rewardText: '', room: 1, hp: 73, tokens: 123, doom: 8, hackUsed: false, hackEligible: false, hackRequirement: '', message: '', offers: [], context } },
+      { kind: 'rest', snapshot: { save, rater: { pose: 'neutral', evaluation: null }, rewardText: '', room: 1, hp: 73, tokens: 123, doom: 8, hackUsed: false, hackEligible: false, hackRequirement: '', message: '', offers: [], context } },
     ];
     for (const screen of screens) expect(missionPresentation(mission({ screen }))).toBeNull();
   });
@@ -143,6 +143,7 @@ describe('mission visibility and minimal feedback', () => {
 const fullSession = (input = mission()): GameSession => ({
   ...input, bridge: new GameBridge(), ready: true, loadError: null, panel: null, save,
   audio: { preferences: { muted: false, volume: 0.5 }, status: 'running', storageWarning: null, setMuted: vi.fn(), setVolume: vi.fn(), unlock: vi.fn() },
+  motion: { mode: 'system', systemReduced: false, reducedMotion: false, storageWarning: null, setMode: vi.fn() },
   context: { capacityK: 32, usedK: 0, overloaded: false, hallucinationEvery: null, editable: false, slots: [] },
   newRun: vi.fn(), start: vi.fn(), resumeCheckpoint: vi.fn(), pause: vi.fn(), resume: vi.fn(), returnToMenu: vi.fn(), openPanel: vi.fn(), setPanel: vi.fn(), persist: vi.fn(() => true), restoreCloud: vi.fn(), setNotice: vi.fn(),
 });
