@@ -15,7 +15,9 @@ type Screen = { kind: 'menu' } | { kind: 'playing' } | { kind: 'paused' }
   | { kind: 'rest'; snapshot: RestRoomSnapshot }
   | { kind: 'ended'; result: RunResult } | { kind: 'chapter-clear'; save: GameSaveData; stage: number };
 export type Panel = 'guide' | 'leaderboard' | 'account' | 'settings' | 'context' | null;
-const initialHud: HudSnapshot = { hp: 100, doom: 8, tokens: 0, score: 0, stage: 1, elapsedMs: 0, rewindReady: false, insightActive: false, boss: null, objective: '寻找安全开关，穿过中文房间。' };
+const initialHud: HudSnapshot = { hp: 100, doom: 8, tokens: 0, score: 0, stage: 1, elapsedMs: 0, rewindReady: false, insightActive: false,
+  skills: { rewind: { state: 'recording', remainingMs: 2000 }, insight: { ready: true, activeRemainingMs: 0, cooldownRemainingMs: 0, blockedByRewind: false } },
+  boss: null, objective: '寻找安全开关，穿过中文房间。' };
 const preview = createRun('00000000-0000-4000-8000-000000000000', 1);
 export const chapterLabel = (stage: number): string => `第${['', '一', '二', '三', '四', '五'][stage] ?? stage}章`;
 

@@ -78,6 +78,16 @@
 
 在 bundle 目录执行 `node --test test/*.test.mjs`。集成测试只在随机 loopback 端口执行 MCP initialize/list/read/preflight，不接触用户的真实编辑器、文件或凭据；测试 bridge ownership 与关闭清理。workflow 模板用 stub agents 测试失败分支和 cold-read 信息隔离，不声称已运行真实模型的端到端工作流。
 
+DSH 0.2.2 已将 `list_agents` 合并到原生代理控制插件。模式根据原生包是否仍导出 `./list-agents` 决定是否加载旧独立入口，避免升级后出现 **Failed to load**，同时保留旧版的独立入口与原有工具。
+
+升级后还需执行真实预设加载回归（只读发行包，使用临时 profile 和独立 MCP 端口，不操作桌面或真实 Aseprite 文档）：
+
+```sh
+ELECTRON_RUN_AS_NODE=1 DSH_RUNTIME_PACKAGE='/Applications/DeepSeek Harness.app/Contents/Resources/app.asar/dsh/package.json' '/Applications/DeepSeek Harness.app/Contents/MacOS/DeepSeek Harness' --expose-internals test/verify-native.mjs
+```
+
+此检查使用原生 Loader、PresetRegistry、技能和工具注册服务，验证预设加载、120 个专属技能、18 个 Aseprite 工具、代理控制与 workflow，以及全局隔离。不会发送模型请求或绘图工具调用，不替代桌面视觉及编辑器实际创作验收。
+
 当前安装是本地目录链接：**不要直接移动或删除本目录或其 node_modules**，否则模式资源会失效。升级 DSH、上游来源或 MCP 时需重新核查版本合约与测试。更新本目录后，通过 DSH plugin manager 对该 bundle disable/enable，再用新会话验证；不要手改 profile 内生成配置。
 
 卸载或停用只需在 DSH bundle 管理中处理 `@local/dsh-game-dev-bundle`，不需要撤销其他模式的配置。

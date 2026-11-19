@@ -1,0 +1,40 @@
+/* Snapshot values keep their original geometry; the frame uses hard pixel edges. */
+.game-shell .game-hud-layer .hud-grid,
+.game-shell[data-touch-controls=true] .game-hud-layer>.hud-grid[aria-label]{background:var(--game-panel,#15232a);border:0;box-shadow:0 0 0 1px var(--game-edge,#060d10),inset 0 0 0 1px var(--game-line,#6d7564),inset 0 2px #e7ddba26,0 3px var(--game-edge,#060d10);align-items:start}
+.game-shell .game-hud-layer .hud-cell{text-shadow:1px 1px var(--game-edge,#060d10)}
+.game-shell .game-hud-layer .hud-cell strong{font-variant-numeric:tabular-nums;color:var(--game-cream,#f0e5c6);font-weight:600}
+.game-shell .hud-cell .micro-label{margin-bottom:5px;color:var(--game-muted,#9caeaa);letter-spacing:.8px}
+.game-shell .hud-cell strong small{color:var(--game-muted,#9caeaa)}
+.game-shell .doom-readout{--doom-color:#d9ad75;overflow:visible}
+.game-shell .doom-readout[data-form=masked]{--doom-color:#e7ce88}
+.game-shell .doom-readout[data-form=foom]{--doom-color:#f59d83}
+.game-shell .game-hud-layer .doom-readout strong{color:var(--doom-color)}
+.game-shell .doom-form-label{display:inline-block;margin-left:4px;color:var(--doom-color);font-size:8px;letter-spacing:0}
+.game-shell .doom-track{position:relative;width:100%;height:3px;margin-top:5px;background:var(--game-edge,#060d10);box-shadow:0 1px #7f896542}
+.game-shell .doom-track i{display:block;height:100%;background:var(--doom-color);transition:width .2s steps(5,end)}
+.game-shell .doom-threshold{position:absolute;top:-1px;width:1px;height:5px;background:#f1dfad99;box-shadow:1px 0 var(--game-edge,#060d10)}
+.doom-threshold--mask{left:50%}.doom-threshold--foom{left:80%}
+.game-shell .integrity-track{background:var(--game-edge,#060d10);box-shadow:0 -1px var(--game-edge,#060d10),0 1px #84968255}
+.game-shell .integrity-track i{background-color:#b4c8a3;background-image:repeating-linear-gradient(90deg,transparent 0,transparent 7px,#0c141864 7px,#0c141864 8px);box-shadow:inset 0 1px #f0e5c647;transition:width .18s steps(4,end)}
+.game-shell .integrity-readout[data-health=low] .integrity-track i{background-color:#ed9b7c}
+.game-shell .game-hud-layer .integrity-readout[data-health=low] strong{color:#f2ad8e}
+.game-shell .integrity-missing{color:#cbb9cf;text-shadow:1px 1px var(--game-edge,#060d10)}
+.game-shell .game-context-button.is-overloaded{color:#f3bb95;border-color:#bd8965}
+.game-shell .game-context-button.is-overloaded span{color:#f3bb95}
+.game-shell .hud-details{border-top-color:#6d756466}
+.game-shell .hud-details[open]{background:var(--game-ink,#0c1418);margin:0 -14px -10px;padding:8px 14px 10px;width:calc(100% + 28px);box-shadow:inset 0 1px #6d756466}
+.game-shell .hud-status-line{color:#d0d9c3}
+.game-shell .hud-detail-toggle{color:var(--game-gold,#d8b880);font-weight:600}
+.game-shell .hud-detail-toggle:after{content:' +'}
+.game-shell .hud-details[open] .hud-detail-toggle:after{content:' −'}
+.game-shell .hud-detail-body{color:var(--game-muted,#9caeaa);scrollbar-color:var(--game-line,#6d7564) var(--game-ink,#0c1418)}
+.game-shell .hud-detail-body dd{color:var(--game-cream,#f0e5c6)}
+/* Cooperative identity colors stay distinct inside the same instrument frame. */
+.game-shell .coop-play-hud .coop-player,.game-shell .coop-play-hud .coop-hud-shared{background:var(--game-panel,#15232a);box-shadow:inset 0 1px #e7ddba26,inset 0 -1px #6d756459,0 2px var(--game-edge,#060d10)}
+.game-shell .coop-play-hud .coop-player-health>strong,.game-shell .coop-play-hud .coop-shared-stats dd{color:var(--game-cream,#f0e5c6);text-shadow:1px 1px var(--game-edge,#060d10)}
+.game-shell .coop-play-hud .coop-shared-stats dt{color:var(--game-muted,#9caeaa)}
+.game-shell .coop-play-hud .coop-player-health>progress::-webkit-progress-value{background-color:var(--player-color);background-image:repeating-linear-gradient(90deg,transparent 0,transparent 7px,#0c141864 7px,#0c141864 8px)}
+.game-shell .coop-play-hud .coop-player-health>progress::-moz-progress-bar{background-color:var(--player-color);background-image:repeating-linear-gradient(90deg,transparent 0,transparent 7px,#0c141864 7px,#0c141864 8px)}
+@media(max-width:900px){.game-shell .doom-form-label{display:none}}
+@media(orientation:portrait){.game-shell .hud-grid{padding:6px 8px}.game-shell .doom-track{margin-top:3px}.game-shell .hud-details[open]{margin:0 -8px -6px;padding:6px 8px;width:calc(100% + 16px)}}
+@media(prefers-reduced-motion:reduce){.game-shell .doom-track i,.game-shell .integrity-track i{transition:none}}

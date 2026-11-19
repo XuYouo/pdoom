@@ -1,6 +1,7 @@
 import type { Ending } from '../../../objects/game/GameSaveData';
 import type { LoomHudSnapshot, OmegaHudSnapshot } from '../game/bridge';
 import type { GameSession } from '../hooks/useGameSession';
+import { rerollButtonView } from './skillButtons';
 
 export const OBJECTIVE_CHARACTER_LIMIT = 45;
 
@@ -71,19 +72,21 @@ export function compactNotice(notice: string): string | null {
   return compute ? `禁忌算力 +${compute[1]}% Doom` : null;
 }
 
-export function missionPresentation({ screen, hud, notice, saveStatus }: Pick<GameSession, 'screen' | 'hud' | 'notice' | 'saveStatus'>): { objective: string; notice: string | null } | null {
+export function missionPresentation({ screen, hud, saveStatus }: Pick<GameSession, 'screen' | 'hud' | 'notice' | 'saveStatus'>): { objective: string; notice: string | null } | null {
   if (screen.kind !== 'playing' && screen.kind !== 'paused') return null;
   const objective = compactObjective(hud.objective);
   // Storage failures stay visible rather than disappearing with the former runtime log.
-  const feedback = saveStatus === '本地保存失败' ? '本地保存失败 · 本次进度尚未写入' : compactNotice(notice);
-  return { objective, notice: objective.startsWith('精神控制：') && feedback === '控制解除' ? null : feedback };
+  const feedback = saveStatus === '本地保存失败' ? '本地保存失败 · 本次进度尚未写入' : null;
+  return { objective, notice: feedback };
 }
 
 export function loomStatus(loom: LoomHudSnapshot, ending?: Ending): string {
   const branch = loom.timeline === 0 ? 'A' : loom.timeline === 1 ? 'B' : String(loom.timeline + 1);
   if (ending !== undefined) return `分支 ${branch} · 本局已结束`;
   const state = loom.sharpTurnReady ? '急左转窗口' : loom.narrow ? '平台收窄' : `音轨被吞 ${loom.stemsLost}/4`;
-  return `分支 ${branch} · R ${loom.rerollReady ? '就绪' : '冷却中'} · ${state}`;
+  const reroll = rerollButtonView(loom);
+  const availability = reroll.state === 'ready' ? '就绪' : reroll.state === 'cooldown' ? '冷却中' : reroll.label;
+  return `分支 ${branch} · R ${availability} · ${state}`;
 }
 
 export function omegaStatus(omega: OmegaHudSnapshot, ending?: Ending): string {

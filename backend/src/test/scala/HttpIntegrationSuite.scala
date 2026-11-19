@@ -214,6 +214,28 @@ class HttpIntegrationSuite extends CatsEffectSuite:
     }
   }
 
+  test("unsupported UUID versions and variants fail over HTTP without creating saves or scores") {
+    withServer { env =>
+      val invalidIds = List("00000000-0000-0000-0000-000000000000", "abcdef12-3456-9abc-8def-123456789abc",
+        "abcdef12-3456-4abc-cdef-123456789abc", "1-1-1-1-1")
+      val save = sampleSave
+      for
+        user <- env.register()
+        saves <- invalidIds.traverse(id => env.call("SaveGame",
+          fields("save" -> update(save, "runId", text(id)), "expectedRevision" -> number(0)), Some(user.token)))
+        scores <- invalidIds.traverse(id => env.call("SubmitScore", sampleScore(id), Some(user.token)))
+        noSave <- env.call("LoadGame", token = Some(user.token))
+        noScores <- env.call("ListLeaderboard", fields("limit" -> number(10), "offset" -> number(0)))
+      yield
+        (saves ++ scores).foreach(error(_, 400))
+        assertEquals(noSave._1, 200)
+        assertEquals(noSave._2.hcursor.get[Long]("revision"), Right(0L))
+        assert(noSave._2.hcursor.downField("save").focus.exists(_.isNull))
+        assertEquals(noScores._1, 200)
+        assertEquals(noScores._2.hcursor.get[List[Json]]("entries"), Right(Nil))
+    }
+  }
+
   List("aligned" -> 8.0, "warden" -> 55.0, "foom" -> 88.0).foreach { case (ending, doom) =>
     test(s"terminal $ending: complete checkpoint90 save round-trips and score retries stay idempotent") {
       withServer { env =>

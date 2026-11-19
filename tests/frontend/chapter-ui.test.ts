@@ -6,9 +6,13 @@ import { isGameSave } from '../../src/objects/game/validation';
 import GamePage from '../../src/pages/GamePage';
 import { RunOverlay } from '../../src/pages/GamePage/components/RunOverlay';
 import { RunHud } from '../../src/pages/GamePage/components/RunHud';
+import { SkillButtons } from '../../src/pages/GamePage/components/SkillButtons';
 import { MissionConsole } from '../../src/pages/GamePage/components/MissionConsole';
 import { GamePanels } from '../../src/pages/GamePage/components/GamePanels';
+import { GameSettings } from '../../src/pages/GamePage/components/GameSettings';
 import { TitleMenu } from '../../src/pages/GamePage/components/TitleMenu';
+import { BootOverlay } from '../../src/pages/GamePage/components/BootOverlay';
+import { NewRunButton } from '../../src/pages/GamePage/components/NewRunButton';
 import { ScoreSubmission } from '../../src/pages/GamePage/components/ScoreSubmission';
 import { GameBridge, type HudSnapshot, type RestRoomSnapshot } from '../../src/pages/GamePage/game/bridge';
 import { getChapter, PLAYABLE_CHAPTERS } from '../../src/pages/GamePage/game/data/chapters';
@@ -17,7 +21,8 @@ import { contextSnapshot } from '../../src/pages/GamePage/game/systems/context';
 import { createRun } from '../../src/pages/GamePage/functions/saveModel';
 import { canStartCheckpoint, chapterLabel, donationNote, getDisplayedStage, useGameSession, type GameSession } from '../../src/pages/GamePage/hooks/useGameSession';
 
-// Only the engine canvas and stateful hook are replaced. The actual React branches and registry run in Node.
+// Only the engine canvas and stateful hook are replaced. The actual mode boundary,
+// single-player React branches and registry run in Node.
 vi.mock('../../src/pages/GamePage/components/GameCanvas', () => ({ GameCanvas: () => null }));
 vi.mock('../../src/pages/GamePage/hooks/useGameSession', async importOriginal => {
   const actual = await importOriginal<typeof import('../../src/pages/GamePage/hooks/useGameSession')>();
@@ -43,13 +48,15 @@ function sessionFor(stage = 1, screen: GameSession['screen'] = { kind: 'menu' })
     audio: { preferences: { muted: false, volume: 0.5 }, status: 'locked', storageWarning: null, setMuted: vi.fn(), setVolume: vi.fn(), unlock: vi.fn() },
     motion: { mode: 'system', systemReduced: false, reducedMotion: false, storageWarning: null, setMode: vi.fn() },
     hud: { hp: save.hp, doom: save.doom, tokens: save.tokens, score: save.score, stage, elapsedMs: save.elapsedMs,
-      rewindReady: false, insightActive: false, boss: null, objective: '本章目标' },
+      rewindReady: false, insightActive: false,
+      skills: { rewind: { state: 'recording', remainingMs: 2000 }, insight: { ready: true, activeRemainingMs: 0, cooldownRemainingMs: 0, blockedByRewind: false } },
+      boss: null, objective: '本章目标' },
     context: contextSnapshot(save), notice: '运行时就绪', saveStatus: '检查点已保存',
     newRun: vi.fn(), start: vi.fn(), resumeCheckpoint: vi.fn(), pause: vi.fn(), resume: vi.fn(), returnToMenu: vi.fn(), openPanel: vi.fn(),
     setPanel: vi.fn(), persist: vi.fn(() => true), restoreCloud: vi.fn(), setNotice: vi.fn(),
   };
 }
-type UIProps = { children?: ReactNode; onClick?: () => void; onChange?: (event: { target: { checked: boolean; value: string } }) => void; disabled?: boolean; autoFocus?: boolean; type?: string; value?: number | string; checked?: boolean; 'aria-label'?: string; className?: string; open?: boolean; tabIndex?: number; role?: string; hud?: HudSnapshot; ending?: Ending; result?: RunResult; onOpenAccount?: () => void };
+type UIProps = { children?: ReactNode; onClick?: (event?: { detail: number }) => void; onChange?: (event: { target: { checked: boolean; value: string } }) => void; disabled?: boolean; autoFocus?: boolean; type?: string; value?: number | string; checked?: boolean; 'aria-label'?: string; className?: string; open?: boolean; tabIndex?: number; role?: string; hud?: HudSnapshot; ending?: Ending; result?: RunResult; onOpenAccount?: () => void };
 
 /** Capture callbacks under the real SSR dispatcher; never replace React's hooks.
  * Effects/focus/layout are deliberately left to the native browser tests. */
@@ -68,6 +75,10 @@ function elements(node: ReactNode): ReactElement<UIProps>[] {
   if (node.type === TitleMenu && isValidElement<Parameters<typeof TitleMenu>[0]>(node)) {
     return [node, ...elements(captureView(() => TitleMenu(node.props)))];
   }
+  if (node.type === GameSettings && isValidElement<Parameters<typeof GameSettings>[0]>(node)) return [node, ...elements(GameSettings(node.props))];
+  if (node.type === SkillButtons && isValidElement<Parameters<typeof SkillButtons>[0]>(node)) return [node, ...elements(SkillButtons(node.props))];
+  if (node.type === BootOverlay && isValidElement<Parameters<typeof BootOverlay>[0]>(node)) return [node, ...elements(captureView(() => BootOverlay(node.props)))];
+  if (node.type === NewRunButton && isValidElement<Parameters<typeof NewRunButton>[0]>(node)) return [node, ...elements(captureView(() => NewRunButton(node.props)))];
   return [node, ...elements(node.props.children)];
 }
 function byClass(node: ReactNode, className: string) {
@@ -90,7 +101,13 @@ function button(node: ReactNode, label: string) {
 }
 function page(session: GameSession) {
   vi.mocked(useGameSession).mockReturnValue(session);
-  return captureView(GamePage);
+  const mode = captureView(GamePage);
+  // GamePage now owns the single-player / co-op lifecycle boundary. Inspect the
+  // actual initial mode under the same SSR dispatcher, retaining every existing
+  // callback and state assertion below instead of testing only the wrapper.
+  if (!isValidElement<Record<string, unknown>>(mode) || typeof mode.type !== 'function') throw new Error('Expected the initial single-player mode component');
+  const ModeView = mode.type as (props: Record<string, unknown>) => ReactNode;
+  return captureView(() => ModeView(mode.props));
 }
 
 describe('playable checkpoint and display-stage decisions', () => {
@@ -315,7 +332,8 @@ describe('chapter-specific React presentation', () => {
     expect(button(tree, '恢复检查点')?.props.disabled).toBe(false);
     expect(PLAYABLE_CHAPTERS.map(chapter => chapter.stage)).toEqual([1, 2, 3, 4, 5]);
     for (const chapter of PLAYABLE_CHAPTERS) expect(canStartCheckpoint(saved(chapter.stage))).toBe(true);
-    expect(html).not.toMatch(/<aside|chapter-list|TRAINING PATH|未开放/);
+    expect(html).not.toMatch(/chapter-list|TRAINING PATH|未开放/);
+    expect(html).toContain('aria-label="Clawd 形态预览"');
     expect(renderToStaticMarkup(createElement(MissionConsole, { session }))).toBe('');
   });
   it.each([1, 2, 3, 4, 5])('guide names actual chapter %i mechanics and open range', stage => {
@@ -429,7 +447,7 @@ describe('chapter-specific React presentation', () => {
     session.hud.loom = { timeline: 1, rerollReady: true, hpUiTaken: false, stemsLost: 0, narrow: false, sharpTurnReady: false };
     const commands: unknown[] = []; const off = session.bridge.onCommand(command => { commands.push(command); });
     const reroll = () => elements(page(session)).find(element => element.type === 'button' && element.props['aria-label'] === 'R 重掷分支');
-    expect(reroll()?.props.disabled).toBe(false); reroll()?.props.onClick?.(); expect(commands).toEqual([{ type: 'reroll' }]);
+    expect(reroll()?.props.disabled).toBe(false); reroll()?.props.onClick?.({ detail: 0 }); expect(commands).toEqual([{ type: 'reroll' }]);
     session.screen = { kind: 'paused' }; expect(reroll()?.props.disabled).toBe(true);
     session.screen = { kind: 'playing' }; session.hud.loom.rerollReady = false; expect(reroll()?.props.disabled).toBe(true);
     session.hud.loom = undefined; expect(reroll()).toBeUndefined(); off();

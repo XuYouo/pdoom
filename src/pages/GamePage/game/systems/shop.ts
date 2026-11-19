@@ -7,7 +7,7 @@ import { decodeCheckpoint, encodeRestCheckpoint, type RestRoomId } from '../data
 import { RELICS, UPGRADES } from '../data/relics';
 import type { WorldState } from '../entities/model';
 import { contextSnapshot, reorderContext } from './context';
-import { addDoom, snapshotSave } from './rules';
+import { addDoom, DOOM_FORM_THRESHOLDS, snapshotSave } from './rules';
 import { samplePlayer } from './rewind';
 import { createFurnace } from './furnace';
 import { resetLoomAtCheckpoint } from './loom';
@@ -19,11 +19,13 @@ const OFFERS: readonly Offer[] = [
   ...Object.values(UPGRADES).map(upgrade => ({ id: `upgrade:${upgrade.id}`, name: upgrade.name, price: upgrade.price, description: upgrade.description, kind: 'upgrade' as const, upgrade: upgrade.id })),
   { id: 'donation', name: '蛇怪募捐箱', price: 20, kind: 'donation', description: '仅前两章可捐赠：记录 donated=true，免除第三章蛇怪的欠捐狂暴；进入第三章后不能补捐，也不免除普通攻击。' },
 ];
-export const HACK_REQUIREMENT = '模型密度至少 75% 且 P(Doom) >50%；每个休息室仅一次，免费获得一个未拥有词条，代价 +25% Doom。';
+export const REWARD_HACK_DOOM_COST = 25;
+export const REWARD_HACK_MIN_DENSITY = 0.75;
+export const HACK_REQUIREMENT = `模型密度至少 ${REWARD_HACK_MIN_DENSITY * 100}% 且 P(Doom) >${DOOM_FORM_THRESHOLDS.masked}%；每个休息室仅一次，免费获得一个未拥有词条，代价 +${REWARD_HACK_DOOM_COST}% Doom。`;
 export function hackEligible(save: GameSaveData): boolean {
   const checkpoint = decodeCheckpoint(save.checkpoint);
   const context = contextSnapshot(save);
-  return isChapterPlayable(save.stage) && checkpoint.resting && !checkpoint.hackUsed && context.usedK / context.capacityK >= 0.75 && save.doom > 50;
+  return isChapterPlayable(save.stage) && checkpoint.resting && !checkpoint.hackUsed && context.usedK / context.capacityK >= REWARD_HACK_MIN_DENSITY && save.doom > DOOM_FORM_THRESHOLDS.masked;
 }
 
 function unavailableReason(save: GameSaveData, offer: Offer): string | null {
@@ -62,13 +64,13 @@ export function transactShop(save: GameSaveData, offerId: string, hack = false):
   const next = snapshotSave(save, {
     tokens: save.tokens - (hack ? 0 : offer.price),
     checkpoint: hack ? encodeRestCheckpoint(checkpoint.room, true) : save.checkpoint,
-    doom: hack ? addDoom(save.doom, 25) : save.doom,
+    doom: hack ? addDoom(save.doom, REWARD_HACK_DOOM_COST) : save.doom,
     hp: offer.kind === 'repair' ? Math.min(100, save.hp + 35) : save.hp,
     inventory: offer.relic ? [...save.inventory, offer.relic] : save.inventory,
     upgrades: offer.upgrade ? [...save.upgrades, offer.upgrade] : save.upgrades,
     donated: offer.kind === 'donation' ? true : save.donated,
   });
-  return { ok: true, save: next, message: `${hack ? '奖励劫持成功，Doom +25%：' : '交易完成：'}${offer.name}。本次扣款/奖励已在同一检查点保存。` };
+  return { ok: true, save: next, message: `${hack ? `奖励劫持成功，Doom +${REWARD_HACK_DOOM_COST}%：` : '交易完成：'}${offer.name}。本次扣款/奖励已在同一检查点保存。` };
 }
 
 /** Called only when progressing to a new physical checkpoint, on a detached simulation draft. */

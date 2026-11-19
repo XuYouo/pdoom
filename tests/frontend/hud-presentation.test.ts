@@ -15,6 +15,7 @@ const save = createRun('eee107c5-2789-4560-ad0a-647227630492', 42);
 const hud = (patch: Partial<HudSnapshot> = {}): HudSnapshot => ({
   hp: 73, doom: 8, tokens: 123, elapsedMs: 65432, score: 2468, stage: 1,
   rewindReady: false, insightActive: false, boss: null, objective: '跳过断口', ...patch,
+  skills: patch.skills ?? { rewind: { state: 'recording', remainingMs: 1000 }, insight: { ready: true, activeRemainingMs: 0, cooldownRemainingMs: 0, blockedByRewind: false } },
 });
 const loom: LoomHudSnapshot = { timeline: 0, rerollReady: true, hpUiTaken: false, stemsLost: 0, narrow: false, sharpTurnReady: false };
 const omega: OmegaHudSnapshot = { phaseLabel: '现场模仿学习', memorySource: 'counts-only', dominantAction: '冲刺', combo: '频次编排：冲刺 → 射击', activeTraits: ['残差连接'], observedCombos: 0, mirrorAction: '预警 / 冲刺' };
@@ -84,6 +85,8 @@ describe('one-line chapter status and honest optional details', () => {
   it('keeps real R availability and branch identity without inventing intact terrain', () => {
     expect(loomStatus(loom)).toBe('分支 A · R 就绪 · 音轨被吞 0/4');
     expect(loomStatus({ ...loom, timeline: 1, rerollReady: false, narrow: true })).toBe('分支 B · R 冷却中 · 平台收窄');
+    expect(loomStatus({ ...loom, rerollReady: false, rerollBlocked: 'self-rewind' })).toBe('分支 A · R 回溯中 · 音轨被吞 0/4');
+    expect(loomStatus({ ...loom, rerollReady: false, rerollBlocked: 'teammate-rewind' })).toBe('分支 A · R 队友回溯 · 音轨被吞 0/4');
     const partial = { ...loom, hpUiTaken: true, stemsLost: 2 };
     expect(loomStatus(partial)).toContain('音轨被吞 2/4');
     expect(loomStatus(partial)).not.toMatch(/完整|等待左转|已恢复/);
@@ -127,9 +130,9 @@ describe('mission visibility and minimal feedback', () => {
   it('shows storage failure instead of pretending the removed runtime log saved progress', () => {
     expect(missionPresentation(mission({ saveStatus: '本地保存失败' }))?.notice).toBe('本地保存失败 · 本次进度尚未写入');
   });
-  it('keeps real release feedback, but not a stale release during a new control bubble', () => {
+  it('does not resurrect an old release notice as live feedback, including during a new control bubble', () => {
     const notice = 'PUA气泡已击碎，控制解除。';
-    expect(missionPresentation(mission({ notice }))?.notice).toBe('控制解除');
+    expect(missionPresentation(mission({ notice }))?.notice).toBeNull();
     expect(missionPresentation(mission({ notice, hud: hud({ objective: objectiveCases[0].source }) }))?.notice).toBeNull();
   });
   it('does not turn persistent narrative or expired threat notices into current objectives', () => {
@@ -151,10 +154,21 @@ const renderHud = (snapshot: HudSnapshot, ending?: Parameters<typeof RunHud>[0][
 const summaryHtml = (html: string) => /<summary[^>]*>([\s\S]*?)<\/summary>/.exec(html)?.[1] ?? '';
 
 describe('minimal HUD component structure', () => {
+  it.each([
+    [50, 'aligned', '对齐'], [50.01, 'masked', '面具'],
+    [80, 'masked', '面具'], [80.01, 'foom', 'FOOM'],
+  ] as const)('keeps the %s%% form boundary identical to combat and exposes the real risk value', (doom, form, label) => {
+    const snapshot = hud({ doom });
+    const html = renderHud(snapshot);
+    expect(html).toContain(`data-form="${form}"`);
+    expect(html).toContain(`aria-valuenow="${doom}"`);
+    expect(html).toContain(`aria-valuetext="${doom.toFixed(1)}%，${label}形态"`);
+    expect(snapshot.doom).toBe(doom);
+  });
   it('has only HP, Doom, tokens and the last clock cell by default', () => {
     const html = renderHud(hud());
     expect(html.match(/class="hud-cell(?: [^"]*)?"/g)).toHaveLength(4);
-    expect(html).toContain('>HP</span>'); expect(html).toContain('>P(DOOM)</span>');
+    expect(html).toContain('>HP</span>'); expect(html).toContain('>P(DOOM) <span class="doom-form-label">对齐</span>');
     expect(html).toContain('>TOKENS</span>'); expect(html).toContain('>TIME</span><strong>01:05</strong>');
     expect(html).toContain('123<small> TOK</small>'); expect(html).toContain('8.0<small>%</small>');
     expect(html).not.toMatch(/<details|ALIGNED|MASKED|2468|COMPUTE \/|训练时长/);
@@ -212,16 +226,16 @@ describe('in-world mission component structure', () => {
     const session = fullSession(mission({ hud: hud({ objective: objectiveCases[17].source }) }));
     const commands: unknown[] = []; session.bridge.onCommand(command => commands.push(command));
     const html = renderToStaticMarkup(createElement(MissionConsole, { session }));
-    expect(html).toContain('<section class="mission-console mission-overlay" aria-label="当前目标">');
+    expect(html).toContain('<section class="mission-console mission-overlay" aria-label="当前目标" data-tone="action">');
     expect(html.match(/class="objective"/g)).toHaveLength(1);
     expect(html).toContain('吸力窗口：先到金线右侧，再A + Shift向左跨线');
     expect(html).not.toMatch(/<aside|chapter-list|CONTEXT WINDOW|TRAINING PATH|RUNTIME LOG|安全工程师|hidden=|<button/);
     expect(commands).toEqual([]); expect(session.pause).not.toHaveBeenCalled(); expect(session.persist).not.toHaveBeenCalled();
   });
-  it('shows genuine release feedback as a short visible status, not hidden legacy text', () => {
+  it('requires a new event receipt rather than replaying a historical session notice on mount', () => {
     const session = fullSession(mission({ notice: 'PUA气泡已击碎，控制解除。' }));
     const html = renderToStaticMarkup(createElement(MissionConsole, { session }));
-    expect(html).toContain('<p class="runtime-log mission-notice" role="status">控制解除</p>');
+    expect(html).not.toContain('控制解除');
     expect(html).not.toContain('PUA气泡已击碎');
   });
   it('does not render a mission alongside the menu or ending narrative', () => {

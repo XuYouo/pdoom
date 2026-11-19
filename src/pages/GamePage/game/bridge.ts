@@ -1,5 +1,9 @@
 import type { HumanRaterSnapshot } from './data/humanRater';
 import type { GameSaveData, RelicId, RunResult } from '../../../objects/game/GameSaveData';
+import type { CoopClient } from '../network/CoopClient';
+import type { CoopRoom } from '../network/protocol';
+import type { CoopPlayStatus, CoopViewSnapshot } from '../network/coopPresentation';
+import type { TouchControlState } from './systems/touchInput';
 
 export interface ContextSnapshot {
   capacityK: 32 | 128;
@@ -44,6 +48,7 @@ export type AudioStatus = 'locked' | 'running' | 'suspended' | 'unavailable';
 export interface LoomHudSnapshot {
   timeline: number;
   rerollReady: boolean;
+  rerollBlocked?: 'self-rewind' | 'teammate-rewind';
   hpUiTaken: boolean;
   stemsLost: number;
   narrow: boolean;
@@ -60,6 +65,11 @@ export interface OmegaHudSnapshot {
   mirrorAction: string;
 }
 
+export interface SkillHudSnapshot {
+  rewind: { state: 'ready' | 'recording' | 'cooldown' | 'controlled' | 'rewinding'; remainingMs: number };
+  insight: { ready: boolean; activeRemainingMs: number; cooldownRemainingMs: number; blockedByRewind: boolean };
+}
+
 export interface HudSnapshot {
   hp: number;
   doom: number;
@@ -69,6 +79,7 @@ export interface HudSnapshot {
   elapsedMs: number;
   rewindReady: boolean;
   insightActive: boolean;
+  skills: SkillHudSnapshot;
   boss: { name: string; hp: number; maxHp: number } | null;
   objective: string;
   loom?: LoomHudSnapshot;
@@ -76,6 +87,10 @@ export interface HudSnapshot {
 }
 
 export type GameCommand =
+  | { type: 'touch-input'; input: TouchControlState }
+  | { type: 'coop-start'; client: CoopClient; room: CoopRoom }
+  | { type: 'coop-stop' }
+  | { type: 'coop-repair-target'; playerId: 'p1' | 'p2' }
   | { type: 'start'; save: GameSaveData }
   | { type: 'pause' }
   | { type: 'resume' }
@@ -93,7 +108,10 @@ export type GameCommand =
   | { type: 'request-context' };
 
 export type GameEvent =
+  | { type: 'coop-view'; snapshot: CoopViewSnapshot }
+  | { type: 'coop-status'; status: CoopPlayStatus; message: string }
   | { type: 'ready' }
+  | { type: 'load-progress'; progress: number }
   | { type: 'load-failed'; message: string }
   | { type: 'audio-status'; status: AudioStatus }
   | { type: 'hud'; snapshot: HudSnapshot }

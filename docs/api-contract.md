@@ -1,6 +1,6 @@
 # HTTP / 保存契约 v1
 
-所有 API：POST /api/<contracts/api.json 中的名字>，Content-Type: application/json。认证操作使用 Authorization: Bearer <token>，禁止接受客户端 userId/role。错误 {code:string,message:string,requestId:string}，时间 UTC ISO-8601，ID UUID 字符串。公开注册/登录需要限频；响应不含哈希或密码。
+所有 API：POST /api/<contracts/api.json 中的名字>，Content-Type: application/json。认证操作使用 Authorization: Bearer <token>，禁止接受客户端 userId/role。错误 {code:string,message:string,requestId:string}，时间 UTC ISO-8601，ID 为规范的 8-4-4-4-12 格式 UUID 字符串（版本 1–8、variant 首位为 8/9/a/b，大小写均可，服务端输出小写）；不接受 nil UUID 或缩写形式。公开注册/登录需要限频；响应不含哈希或密码。
 
 | Action | 请求（除 token） | 响应 |
 |---|---|---|

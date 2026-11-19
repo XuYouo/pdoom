@@ -4,7 +4,8 @@ import type { Boss, BulletKind, DoomForm, Player } from '../entities/model';
 import { clamp } from './geometry';
 import { contextEffects } from './context';
 
-export const doomForm = (doom: number): DoomForm => doom > 80 ? 'foom' : doom > 50 ? 'masked' : 'aligned';
+export const DOOM_FORM_THRESHOLDS = { masked: 50, foom: 80 } as const;
+export const doomForm = (doom: number): DoomForm => doom > DOOM_FORM_THRESHOLDS.foom ? 'foom' : doom > DOOM_FORM_THRESHOLDS.masked ? 'masked' : 'aligned';
 export const addDoom = (doom: number, amount: number) => Math.round(clamp(doom + amount, 0.01, 99.99) * 100) / 100;
 export const bulletSpeedMultiplier = (doom: number) => doomForm(doom) === 'foom' ? 1.65 : doomForm(doom) === 'masked' ? 1.2 : 1;
 export const outgoingDamage = (doom: number, critical: boolean, save?: GameSaveData) => {

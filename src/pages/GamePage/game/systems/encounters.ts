@@ -9,7 +9,7 @@ import { advanceMirror } from './mirror';
 import { TUNING } from '../data/tuning';
 
 /** FSM decisions return a new snapshot; no Phaser, clocks, random globals, or IO. */
-export function advanceEncounters(world: WorldState, now: number, dt = TUNING.stepMs / 1000) {
+export function advanceEncounters(world: WorldState, now: number, dt = TUNING.stepMs / 1000, targetForEnemy?: (enemy: Enemy) => Vec2) {
   if (world.boss.kind === 'sydney') return { ...advanceSydney(world, now), enemies: world.enemies.map(enemy => ({ ...enemy })), shocks: [] as Shockwave[] };
   let nextId = world.nextBulletId;
   const bullets: Bullet[] = [];
@@ -26,7 +26,8 @@ export function advanceEncounters(world: WorldState, now: number, dt = TUNING.st
   };
   const enemies = world.enemies.map((previous): Enemy => {
     const enemy = { ...previous };
-    if (enemy.hp <= 0 || world.boss.active || Math.abs(enemy.x - world.player.x) > 390) return enemy;
+    const target = targetForEnemy?.(enemy) ?? world.player;
+    if (enemy.hp <= 0 || world.boss.active || Math.abs(enemy.x - target.x) > 390) return enemy;
     if (enemy.kind === 'parrot') {
       enemy.x = enemy.homeX + Math.sin((now + enemy.homeX * 13) / 950) * 22;
       enemy.y = enemy.homeY + Math.sin(now / 250) * 3;
@@ -34,7 +35,7 @@ export function advanceEncounters(world: WorldState, now: number, dt = TUNING.st
     if (now < enemy.phaseUntil) return enemy;
     if (enemy.phase === 'tell') {
       const kind = enemy.kind === 'parrot' ? 'dictionary' : enemy.kind === 'repeater' ? 'echo' : enemy.kind === 'chinchilla' ? 'gpu' : 'caption';
-      aimed(enemy, world.player, kind, enemy.kind === 'parrot' ? 1 : enemy.kind === 'chinchilla' ? 9 : 3, enemy.kind === 'chinchilla' ? 100 : 115, enemy.kind === 'chinchilla' ? 0.12 : 0.19);
+      aimed(enemy, target, kind, enemy.kind === 'parrot' ? 1 : enemy.kind === 'chinchilla' ? 9 : 3, enemy.kind === 'chinchilla' ? 100 : 115, enemy.kind === 'chinchilla' ? 0.12 : 0.19);
       enemy.phase = 'recover'; enemy.phaseUntil = now + (enemy.kind === 'chinchilla' ? 800 : enemy.kind === 'repeater' ? 1150 : 1550);
     } else {
       enemy.phase = 'tell'; enemy.phaseUntil = now + 600;

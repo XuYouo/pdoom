@@ -54,3 +54,32 @@ class ValidationSuite extends FunSuite:
       assert(ValidateGame.pagination(limit, offset).isLeft)
     }
   }
+
+  test("run IDs accept versions 1 through 8 and every RFC variant in either case") {
+    val ids = for
+      version <- 1 to 8
+      variant <- List("8", "9", "a", "b")
+    yield s"abcdef12-3456-${version}abc-${variant}def-123456789abc"
+    ids.flatMap(id => List(id, id.toUpperCase)).foreach { id =>
+      val expected = Right(RunId(UUID.fromString(id)))
+      assertEquals(RunId.parse(id), expected, clues(id))
+      assertEquals(GameSaveData.fromDomain(sample).copy(runId = id).toDomain.map(_.runId), expected, clues(id))
+      assertEquals(SubmitScoreRequest(id, 42, 1, 1000, 10, "defeat").toDomain.map(_.runId), expected, clues(id))
+    }
+  }
+
+  test("save and score requests reject UUIDs that the frontend cannot load") {
+    val invalidVersions = List("0", "9", "a", "b", "c", "d", "e", "f")
+      .map(version => s"abcdef12-3456-${version}abc-8def-123456789abc")
+    val invalidVariants = List("0", "1", "2", "3", "4", "5", "6", "7", "c", "d", "e", "f")
+      .map(variant => s"abcdef12-3456-4abc-${variant}def-123456789abc")
+    val malformed = List("00000000-0000-0000-0000-000000000000", "1-1-1-1-1",
+      "abcdef1234564abc8def123456789abc", "abcdef12-3456-4abc-8def-123456789abg",
+      " abcdef12-3456-4abc-8def-123456789abc", "abcdef12-3456-4abc-8def-123456789abc\n",
+      "abcdef12-3456-4abc-8def-123456789abc\r\n")
+    (invalidVersions ++ invalidVariants ++ malformed).foreach { id =>
+      assert(RunId.parse(id).isLeft, clues(id))
+      assert(GameSaveData.fromDomain(sample).copy(runId = id).toDomain.isLeft, clues(id))
+      assert(SubmitScoreRequest(id, 42, 1, 1000, 10, "defeat").toDomain.isLeft, clues(id))
+    }
+  }

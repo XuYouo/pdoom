@@ -444,6 +444,7 @@ test('ordinary collected token returns after real menu and a new training run, n
   await firstToken(page, info, source, 'new-run-lifecycle');
   await paused(page).getByRole('button', { name: '返回终端', exact: true }).click();
   const button = page.getByRole('button', { name: '开始新训练', exact: true }); await expect(button).toBeVisible(); await button.click();
+  await page.getByRole('dialog', { name: '开始新的训练？', exact: true }).getByRole('button', { name: '替换并开始新训练', exact: true }).click();
   const acquired = await window(page, source, 1, 1200), view = acquired.views.find(v => v.hero && v.items.some(i => i.kind === 'token'))!;
   const next = JSON.parse((await stored(page))!) as GameSaveData; expect(next.runId).not.toBe(attempt.runId); expect(next.stage).toBe(1);
   positive(view, source, referenceItem(view, 'token1').hit); positive(view, source, referenceItem(view, 'compute1').hit);

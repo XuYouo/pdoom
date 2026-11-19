@@ -41,6 +41,7 @@ import { cameraTarget, stepCamera, worldLabelFits, worldAnnotationCenterX, raste
 
 const ink = { orange: 0xf3aa78, purple: 0xb197ef };
 const bulletColors: Record<BulletKind, number> = { dictionary: 0xeec76d, echo: 0x80d5c8, caption: 0xda91ca, impact: 0xee866a, dialogue: 0x9dcbe4, knife: 0xff9ec3, gpu: 0xf1dc8b, causal: 0xb7ef83, void: 0xb4e2c6, mirror: 0xc7a4f5 };
+interface WorldFraming { cameraFocus?: Pick<WorldState['player'], 'x' | 'y' | 'facing' | 'vy'>; cameraTarget?: CameraPoint; hidePlayer?: boolean }
 
 /** View-only native bodies and environment; Core owns every combat cue and state. */
 export class WorldRenderer {
@@ -65,6 +66,7 @@ export class WorldRenderer {
   private omegaEnvironment: OmegaEnvironmentRenderer;
   private nativeOmegaEnvironment = false;
   private lastWorld: WorldState | null = null;
+  private lastFraming: WorldFraming | undefined;
   private cameraFollow: CameraPoint | null = null;
   private disposed = false;
   private factory: FactoryRenderer;
@@ -117,7 +119,7 @@ export class WorldRenderer {
   }
 
   private repaintFrozenEnvironment = () => {
-    if (!this.disposed && this.lastWorld) this.draw(this.lastWorld, 0);
+    if (!this.disposed && this.lastWorld) this.draw(this.lastWorld, 0, false, this.lastFraming);
   };
 
   private rebuildBackdrop = () => {
@@ -173,9 +175,10 @@ export class WorldRenderer {
     this.scene.cameras.main.setBounds(0, 0, world.chapter.width, world.chapter.height);
   }
 
-  draw(world: WorldState, deltaMs: number, snapCamera = false) {
+  draw(world: WorldState, deltaMs: number, snapCamera = false, framing?: WorldFraming) {
     if (this.disposed) return;
     this.lastWorld = world;
+    this.lastFraming = framing;
     if (this.chapter !== world.chapter) { this.configureChapter(world); snapCamera = true; this.lastRerollAt = null; }
     const rerollAt = world.loom?.lastReroll?.at ?? null;
     if (rerollAt !== null && rerollAt !== this.lastRerollAt) snapCamera = true;
@@ -183,9 +186,9 @@ export class WorldRenderer {
     const { chapter, player } = world;
     const now = world.save.elapsedMs;
     const camera = this.scene.cameras.main;
-    const focus = world.mode === 'finished' ? { ...player, x: chapter.arena.x + 320, y: chapter.floor - 11, vy: 0 } : player;
+    const focus = world.mode === 'finished' ? { ...player, x: chapter.arena.x + 320, y: chapter.floor - 11, vy: 0 } : framing?.cameraFocus ?? player;
     const frameQuietRoom = !!world.omega && (world.omega.phase === 'chamber' || world.omega.phase === 'reveal') && player.x >= chapter.arena.x + 16;
-    const target = cameraTarget(chapter, focus, world.boss.active || world.mode === 'finished' || frameQuietRoom);
+    const target = framing?.cameraTarget ?? cameraTarget(chapter, focus, world.boss.active || world.mode === 'finished' || frameQuietRoom);
     const current = this.cameraFollow ?? { x: camera.scrollX, y: camera.scrollY };
     const scroll = stepCamera(current, target, deltaMs, snapCamera);
     // Phaser4.0 mirrored Images can mis-sample at half-pixel scroll even with roundPixels.
@@ -343,7 +346,7 @@ export class WorldRenderer {
     this.furnace.drawCombat(world.boss.kind === 'basilisk' ? core : g, world);
     this.loom.drawCombat(core, world);
     this.omega.drawCombat(world.omega ? core : g, world);
-    this.clawd.draw(world);
+    if (framing?.hidePlayer) this.clawd.setVisible(false); else this.clawd.draw(world);
     const actorEffects = world.factory ? afterSea : world.omega ? core : g;
     if (Object.values(player.immunity).some(until => until !== undefined && until > now)) actorEffects.lineStyle(1, 0x87e3cd, 0.8).strokeCircle(player.x, player.y, 17);
     if (now < player.dashUntil) actorEffects.lineStyle(2, 0xffd9ae, 0.6).lineBetween(player.x, player.y, player.x - player.facing * 32, player.y);

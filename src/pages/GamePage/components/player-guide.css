@@ -1,0 +1,57 @@
+.game-shell .terminal-dialog.player-guide-dialog{--guide-inset:26px;width:min(720px,calc(100vw - 32px));max-width:720px;max-height:calc(100dvh - 32px);padding:var(--guide-inset);overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--game-line,#6d7564) var(--game-ink,#0c1418)}
+.game-shell .terminal-dialog.player-guide-dialog>header{position:sticky;top:calc(-1 * var(--guide-inset));z-index:2;margin:calc(-1 * var(--guide-inset)) calc(-1 * var(--guide-inset)) 22px;padding:18px var(--guide-inset) 16px;background:var(--game-panel,#15232a);border-bottom:1px solid #6d756466}
+.game-shell .terminal-dialog.player-guide-dialog>header h2{font-size:18px;letter-spacing:.3px;color:var(--game-cream,#f0e5c6)}
+.game-shell .terminal-dialog.player-guide-dialog>header .icon-button{width:44px;height:44px;min-height:44px;flex:none}
+.player-guide{--guide-accent:var(--game-gold,#d8b880);--guide-line:#6d756455;line-height:1.65}
+.player-guide .guide-section-label{color:var(--guide-accent);font-size:9px;letter-spacing:1.5px;margin:0 0 12px}
+.guide-controls{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;margin:0}
+.guide-controls>div{padding:10px 0 12px;border-bottom:1px solid var(--guide-line);min-width:0}
+.guide-controls dt{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.game-shell .guide-controls kbd,.game-shell .guide-pause-hint kbd{display:inline-grid;place-items:center;color:var(--game-cream,#f0e5c6);border:1px solid var(--game-line,#6d7564);border-bottom-color:var(--game-edge,#060d10);background:var(--game-panel-raised,#22343a);box-shadow:0 2px 0 var(--game-edge,#060d10),inset 0 1px 0 #f0e5c614;min-width:46px;min-height:28px;padding:4px 7px;letter-spacing:.5px;font-size:10px;line-height:1}
+.guide-controls strong{font-size:13px;font-weight:500;color:var(--game-cream,#f0e5c6)}
+.guide-controls dt>span{color:var(--game-muted,#9caeaa);font-size:10px;margin-left:auto}
+.guide-controls dd{margin:7px 0 0;font-size:11px;color:var(--game-muted,#9caeaa);line-height:1.6}
+.guide-pause-hint{display:flex;align-items:center;gap:12px;color:var(--game-muted,#9caeaa);font-size:11px;margin:14px 0 24px}
+.guide-pause-hint kbd{flex:none}
+.guide-chapter{padding:17px 19px;margin:0 0 25px;background:var(--game-ink,#0c1418);border:1px solid #6d756455;border-left:3px solid var(--guide-accent);box-shadow:inset 0 1px 0 #f0e5c608}
+.player-guide .guide-chapter .guide-section-label{color:var(--guide-accent);font-size:9px;margin-bottom:7px}
+.guide-chapter h3{font-size:18px;font-weight:500;line-height:1.5;color:var(--game-cream,#f0e5c6);margin:0 0 8px}
+.guide-chapter>p:not(.guide-section-label){font-size:12px;color:#c5cfbf;margin:0;line-height:1.85;overflow-wrap:anywhere}
+.guide-chapter .status-message{margin-top:14px!important;padding:10px}
+.guide-rules details{border-top:1px solid var(--guide-line)}
+.guide-rules details:last-child{border-bottom:1px solid var(--guide-line)}
+.guide-rules summary{display:flex;align-items:center;gap:11px;min-height:46px;padding:11px 8px;font-size:12px;color:var(--game-cream,#f0e5c6);cursor:pointer;list-style:none;transition:color 80ms,background-color 80ms}
+.guide-rules summary::-webkit-details-marker{display:none}
+.guide-rules summary::before{content:'+';display:grid;place-items:center;color:var(--guide-accent);font-size:15px;line-height:1;width:16px;height:16px;flex:none;border:1px solid #6d756477;background:var(--game-ink,#0c1418)}
+.guide-rules details[open]>summary::before{content:'−'}
+.guide-rules summary:hover,.guide-rules details[open]>summary{color:var(--guide-accent);background:#22343a66}
+.guide-rules summary:active{background:var(--game-panel-raised,#22343a)}
+.guide-rules summary:focus-visible{outline:2px solid var(--guide-accent);outline-offset:2px}
+.guide-rules .guide-summary-hint{margin-left:auto;color:var(--game-muted,#9caeaa);white-space:nowrap;font-size:10px}
+.guide-rule-content{padding:10px 12px 15px 35px;color:#c5cfbf;font-size:12px;overflow-wrap:anywhere}
+.guide-rule-content p{margin:0 0 10px;line-height:1.85}
+.guide-rule-content p:last-child{margin:0}
+.guide-device-note{font-size:10px;color:var(--game-muted,#9caeaa);margin:18px 0 0}
+@media(max-width:540px){
+  .game-shell .terminal-dialog.player-guide-dialog{--guide-inset:20px;width:calc(100vw - 20px);max-height:calc(100dvh - 20px);scrollbar-gutter:auto}
+  .game-shell .terminal-dialog.player-guide-dialog>header{padding-top:14px;padding-bottom:12px;margin-bottom:18px}
+  .game-shell .terminal-dialog.player-guide-dialog>header h2{font-size:15px}
+  .guide-controls{gap:0 15px}
+  .guide-controls dt{gap:7px}.guide-controls dt>span{width:100%;margin:0;line-height:1.2}
+  .guide-controls dd{font-size:10px}.guide-controls strong{font-size:12px}
+  .guide-chapter{padding:14px}.guide-chapter h3{font-size:16px}
+  .guide-summary-hint{display:none}
+  .guide-rule-content{padding-left:24px}
+}
+.guide-touch-controls { display:none; }
+.game-shell[data-touch-controls="true"] .guide-touch-controls { display:block; margin:0 0 20px; color:#c5cfbf; font-size:13px; line-height:1.8; }
+.game-shell[data-touch-controls="true"] .guide-touch-controls p { margin:0 0 10px; }
+.game-shell[data-touch-controls="true"] .guide-touch-controls strong { color:var(--game-gold,#d8b880); font-weight:500; }
+@media(max-height:540px) and (orientation:landscape){
+  .game-shell .terminal-dialog.player-guide-dialog{--guide-inset:18px;max-height:calc(100dvh - 20px)}
+  .game-shell .terminal-dialog.player-guide-dialog>header{padding-top:10px;padding-bottom:10px;margin-bottom:16px}
+  .game-shell .terminal-dialog.player-guide-dialog>header h2{font-size:16px}
+  .guide-pause-hint{margin-bottom:20px}.guide-chapter{margin-bottom:20px}
+}
+@media(prefers-reduced-motion:reduce){.guide-rules summary{transition:none}}
+.game-shell[data-reduced-motion="true"] .guide-rules summary{transition:none}

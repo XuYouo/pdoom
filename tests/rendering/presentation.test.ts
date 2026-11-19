@@ -59,8 +59,11 @@ describe('Loom low-frequency presentation', () => {
     expect(loomHudSnapshot(world)?.rerollReady).toBe(false);
     world.loom!.rerollReadyAt = 0;
     world.rewind = { path: [{ at: 0, x: 100, y: 349, vx: 0, vy: 0, facing: 1 }], startedAt: 0, durationMs: 600 };
-    expect(loomHudSnapshot(world)?.rerollReady).toBe(false);
-    world.rewind = null; world.mode = 'rest';
+    expect(loomHudSnapshot(world)).toMatchObject({ rerollReady: false, rerollBlocked: 'self-rewind' });
+    world.rewind = null;
+    expect(loomHudSnapshot(world)?.rerollReady).toBe(true);
+    expect(loomHudSnapshot(world)?.rerollBlocked).toBeUndefined();
+    world.mode = 'rest';
     expect(loomHudSnapshot(world)?.rerollReady).toBe(false);
     expect(worldObjective(world)).toContain('世界与机关计时冻结');
   });

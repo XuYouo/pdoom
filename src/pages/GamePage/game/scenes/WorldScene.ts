@@ -31,12 +31,14 @@ import { cloneBehavior } from '../systems/behavior';
 import { omegaHudSnapshot } from '../systems/omegaPresentation';
 import { InputSystem } from '../systems/InputSystem';
 import { loomHudSnapshot, worldObjective } from '../systems/presentation';
+import { skillHudSnapshot } from '../systems/skillPresentation';
 import { AudioSystem } from '../audio/AudioSystem';
 import { DEFAULT_AUDIO_PREFERENCES, normalizePreferences } from '../audio/types';
 import { createWorld, stepWorld } from '../systems/simulation';
 import { WorldRenderer } from '../systems/WorldRenderer';
 import { contextSnapshot } from '../systems/context';
 import { applyProgressionCommand, restSnapshot } from '../systems/shop';
+import { CoopRuntime } from '../../network/CoopRuntime';
 
 /** Thin lifecycle/bridge adapter. Simulation has no React, persistence, timers or browser dependencies. */
 export class WorldScene extends Phaser.Scene {
@@ -52,10 +54,16 @@ export class WorldScene extends Phaser.Scene {
   private unsubscribe: (() => void) | undefined;
   private cleaned = false;
   private checkpointMemory = new CheckpointMemoryCache<BehaviorMemory>(cloneBehavior);
+  private coop: CoopRuntime | null = null;
 
   constructor(private bridge: GameBridge) { super({ key: 'world' }); }
 
   preload() {
+    const reportProgress = (progress: number) => this.bridge.emit({ type: 'load-progress', progress });
+    this.load.on('progress', reportProgress);
+    const stopProgress = () => this.load.off('progress', reportProgress);
+    this.load.once('complete', stopProgress);
+    this.events.once('shutdown', stopProgress);
     for (const form of CLAWD_FORMS) {
       const key = clawdTexture(form);
       this.load.atlas(key, `game/${key}.png`, `game/${key}.json`);
@@ -196,12 +204,13 @@ export class WorldScene extends Phaser.Scene {
   }
 
   update(_time: number, delta: number) {
+    if (!this.cleaned && this.coop) { this.coop.update(delta); return; }
     if (this.cleaned || !this.world || this.world.mode !== 'playing' || this.paused) return;
     this.controls.poll();
     if (this.paused) return;
     this.accumulator += Math.min(delta, 100);
     while (this.accumulator >= TUNING.stepMs && this.world.mode === 'playing') {
-      this.world = stepWorld(this.world, this.controls.consume());
+      this.world = stepWorld(this.world, this.controls.consume({ x: this.world.player.x, y: this.world.player.y - 3 }));
       this.syncAudio();
       this.accumulator -= TUNING.stepMs;
       this.emitWorldEvents();
@@ -215,6 +224,18 @@ export class WorldScene extends Phaser.Scene {
 
   private command = (command: GameCommand) => {
     if (this.cleaned) return;
+    if (command.type === 'touch-input') { this.controls?.setTouchInput(command.input); return; }
+    if (command.type === 'coop-start') {
+      this.coop?.destroy(); this.cameras.main.shakeEffect.reset();
+      this.coop = new CoopRuntime({ scene: this, bridge: this.bridge, controls: this.controls, view: this.view,
+        client: command.client, room: command.room, reducedMotion: () => this.reducedMotion,
+        presentWorld: (world, paused) => { this.world = world; this.paused = paused; this.syncAudio(); } });
+      void this.audio.unlock(); return;
+    }
+    if (command.type === 'coop-stop') {
+      this.coop?.destroy(); this.coop = null; this.paused = true; this.controls.setEnabled(false); this.syncAudio(); return;
+    }
+    if (this.coop && !['set-audio', 'set-muted', 'set-reduced-motion'].includes(command.type)) { this.coop.command(command); return; }
     switch (command.type) {
       case 'start':
       case 'restart':
@@ -269,6 +290,7 @@ export class WorldScene extends Phaser.Scene {
   };
 
   private requestPause = () => {
+    if (!this.cleaned && this.coop) { this.coop.requestPause(); return; }
     if (this.cleaned || this.world.mode !== 'playing' || this.paused) return;
     this.setPaused(true);
     this.bridge.emit({ type: 'pause-requested' });
@@ -335,13 +357,14 @@ export class WorldScene extends Phaser.Scene {
   }
 
   private emitHud(force = false) {
-    const { save, player, boss, mode } = this.world;
+    const { save, boss, mode } = this.world;
     if (!force && save.elapsedMs - this.lastHudAt < 200 && mode === 'playing') return;
     this.lastHudAt = save.elapsedMs;
+    const skills = skillHudSnapshot(this.world);
     this.bridge.emit({ type: 'hud', snapshot: {
       hp: save.hp, doom: save.doom, tokens: save.tokens, score: save.score, stage: save.stage,
-      elapsedMs: Math.floor(save.elapsedMs), rewindReady: !this.world.rewind && save.elapsedMs >= player.rewindReadyAt && this.world.history.length > 1 && save.elapsedMs - this.world.history[0].at >= 1999,
-      insightActive: save.elapsedMs < player.insightUntil,
+      elapsedMs: Math.floor(save.elapsedMs), rewindReady: skills.rewind.state === 'ready',
+      insightActive: skills.insight.activeRemainingMs > 0, skills,
       boss: boss.active && boss.hp > 0 ? { name: `${boss.name} · ${boss.phase}/3`, hp: boss.hp, maxHp: boss.maxHp } : null,
       objective: worldObjective(this.world),
       loom: loomHudSnapshot(this.world),
@@ -357,6 +380,7 @@ export class WorldScene extends Phaser.Scene {
     this.game.events.off(Phaser.Core.Events.HIDDEN, this.requestPause);
     this.game.renderer.off(Phaser.Renderer.Events.LOSE_WEBGL, this.requestPause);
     this.audio?.destroy();
+    this.coop?.destroy(); this.coop = null;
     this.checkpointMemory.clear();
     this.controls?.destroy(); this.view?.destroy();
   }

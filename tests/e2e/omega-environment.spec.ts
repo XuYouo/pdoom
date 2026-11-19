@@ -181,6 +181,7 @@ test('CP0 source-positive pause/menu then new chapter removes old Omega source r
   await paused(page).getByRole('button', { name: '返回终端', exact: true }).click();
   // The menu intentionally freezes its current backdrop. Cleanup is required when normal new-training changes chapter.
   await page.getByRole('button', { name: '开始新训练', exact: true }).click();
+  await page.getByRole('dialog', { name: '开始新的训练？', exact: true }).getByRole('button', { name: '替换并开始新训练', exact: true }).click();
   await expect(page.locator('.world-titlebar strong')).toHaveText('01');
   const afterFrames = await grab(page, 1250); await pause(page);
   const residuals = afterFrames.map((capture, index) => ({ index,

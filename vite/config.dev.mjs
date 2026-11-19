@@ -10,6 +10,6 @@ export default defineConfig({
     port: 8080,
     strictPort: true,
     watch: { ignored: ['**/backend/**', '**/docs/**', '**/tests/**', '**/artifacts/**', '**/test-results/**', '**/dsh-game-dev-bundle/**', '**/.game-dev-build/**'] },
-    proxy: { '/api': 'http://127.0.0.1:8081', '/health': 'http://127.0.0.1:8081' },
+    proxy: { '/api': 'http://127.0.0.1:8081', '/health': 'http://127.0.0.1:8081', '/realtime': { target: 'http://127.0.0.1:8081', ws: true } },
   },
 });

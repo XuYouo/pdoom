@@ -28,6 +28,15 @@ private[user] object UserSessionTable:
     }
   }
 
+  private val activeSql = "SELECT 1 FROM user_sessions WHERE id = ? AND user_id = ? AND revoked_at IS NULL AND expires_at > ?"
+  def isActive(connection: Connection, user: AuthenticatedUser, now: Instant): IO[Boolean] = IO.blocking {
+    Using.resource(connection.prepareStatement(activeSql)) { statement =>
+      statement.setObject(1, user.sessionId.value); statement.setObject(2, user.userId.value)
+      statement.setTimestamp(3, Timestamp.from(now))
+      Using.resource(statement.executeQuery())(_.next())
+    }
+  }
+
   private val revokeSql = "UPDATE user_sessions SET revoked_at = ? WHERE id = ? AND user_id = ?"
   def revoke(connection: Connection, userId: UserId, sessionId: SessionId, now: Instant): IO[Unit] = IO.blocking {
     Using.resource(connection.prepareStatement(revokeSql)) { statement =>

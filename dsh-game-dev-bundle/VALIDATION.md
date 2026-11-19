@@ -69,3 +69,15 @@ Phaser/Gamedev 原始文件通过 SHA256 与 Git blob 校验，Aseprite 下载�
 - 未运行真实模型的多代理工作流；验证的是 native workflow 挂载和模板控制流。
 - 未用浏览器截图验证下拉菜单视觉呈现；模式名称和 roster 来源于 live preset registry。
 - npm runtime 0.8.2 不包含 vendor HEAD 的全部修复，详见 [Aseprite 报告](vendor/aseprite/audit/ASEPRITE-AUDIT.md)。
+
+## 2026-11-07：DSH 0.2.2-rc.1 加载修复
+
+原生临时环境复现了 `game-dev` 的 `Failed to load`：旧声明引用 `@deepseek-ai/dsh-tool-subagent-control/list-agents`，当前发行包已删除该独立导出，由主控制插件注册 `list_agents`。原生 registry 返回 `tool-subagent-list-agents ... never started`，底层错误为 `ERR_PACKAGE_PATH_NOT_EXPORTED`。
+
+修复保留旧行 ID 和包引用，按原生包导出表决定是否禁用旧行；只在仍提供旧入口的版本加载它。没有修改应用文件、真实 profile、默认模式、依赖版本或模型选择策略。
+
+- 现有 bundle、workflow 与独立 MCP 测试：**8 passed / 0 failed**。
+- 安装包原生 Loader、PresetRegistry 和完整模式挂载通过：预设没有 `broken`，120 个专属技能、18 个 Aseprite 工具、workflow、subagent、subagent_fork、list_agents、send_message 均可见。
+- 全局 scope 无游戏模式专属技能或 Aseprite MCP 工具；旧独立 list-agents 行在导入前禁用，主插件保留原生列表工具。
+- 可复用回归入口为 `test/verify-native.mjs`，运行方法见 README。使用临时 profile、临时 DSH_HOME、独立 MCP 端口且关闭 bridge 预启动；只做 MCP 握手与目录读取，没有模型请求、绘图工具调用或用户文档操作。
+- 当前桌面 profile 的安装链接指向本源码。加载修复需要通过官方插件管理器重新应用该 bundle，或正常重启 DSH；未操作桌面，也未声称已确认重启后的视觉状态。

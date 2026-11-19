@@ -90,5 +90,39 @@
 @media(max-width:620px){.rest-offer-select strong{font-size:12px}.rest-donation{font-size:9px}}
 
 /* Whole-card keyboard reveal leaves a pixel-safe gap at both scrollport edges. */
-.rest-offers{scroll-padding-block:3px}
+.rest-offers{scroll-padding-block:3px;grid-auto-rows:max-content}
 .rest-offer{scroll-margin-block:3px}
+
+/* Transaction limits are readable beside the affected offer. */
+.game-shell .rest-dialog .rest-offer{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:6px;row-gap:5px;transition:border-color 120ms ease,background-color 120ms ease}
+.rest-offer-reason{grid-column:1/-1;font-size:10px;line-height:1.5;color:#c0aa95;overflow-wrap:anywhere}
+.game-shell .rest-stat>small.rest-storage-failed{color:#efac8d}
+.game-shell .rest-selection>small.rest-hack-note{margin-top:5px;color:#bdab8c}
+.game-shell .rest-dialog .rest-save-error{max-height:90px;overflow-y:auto;align-items:flex-start;border-left-color:#efac8d;background:#512b2338;color:#efcab4;overscroll-behavior:contain}
+.rest-save-error strong{color:#ffc9a7}.rest-save-error small{display:block;font-size:10px;color:#d4ac9b;overflow-wrap:anywhere}
+
+/* Native nested confirmation: consequence first, with both actions always reachable. */
+.game-shell .terminal-dialog.rest-hack-dialog{box-sizing:border-box;width:min(520px,calc(100vw - 28px));max-width:520px;max-height:calc(100dvh - 28px);padding:22px;border:2px solid #ab815e;background:#17231e;color:#e8e1c9;overflow:hidden;box-shadow:0 0 0 4px #0a1110,8px 8px #0008;animation:rest-confirm-arrive 140ms ease-out}
+.game-shell .terminal-dialog.rest-hack-dialog[open]{display:flex;flex-direction:column}
+.game-shell .rest-hack-dialog::backdrop{background:#050b09db;backdrop-filter:blur(2px)}
+.game-shell .rest-hack-dialog>header{flex:none;margin:0 0 16px;padding:0 0 13px;border-bottom:1px solid #657255}
+.game-shell .rest-hack-dialog>header h2{font-size:18px;line-height:1.3;color:#f2dfb8}
+.rest-hack-confirmation{min-height:0;display:flex;flex-direction:column}
+.rest-hack-content{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#856e52 #17231e;padding-right:3px}
+.rest-hack-item{display:flex;align-items:center;gap:12px}.rest-hack-item>.rest-item-icon{width:32px;height:32px}.rest-hack-item>div{flex:1;min-width:0}.rest-hack-item span{font-size:10px;color:#b8b799;letter-spacing:.5px}.rest-hack-item h3{font-size:18px;margin:4px 0 0;color:#eee1bf}.rest-hack-item>strong{flex:none;font-size:24px;color:#e6c48a}.rest-hack-item small{font-size:10px;font-weight:400}
+.rest-hack-description{margin:12px 0 19px;color:#b9c4af;font-size:12px;line-height:1.7}
+.rest-hack-change{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px}
+.rest-hack-change>div{display:flex;flex-direction:column;gap:6px}.rest-hack-change>div:last-child{text-align:right}.rest-hack-change span{font-size:11px;color:#a8b39e}.rest-hack-change>span{font-size:23px;color:#ba9e76}.rest-hack-change strong{font-size:32px;line-height:1.2;font-variant-numeric:tabular-nums;font-weight:600}.rest-hack-change small{font-size:14px;color:#a8b39e;margin-left:3px}.rest-hack-change>div:last-child strong{color:#edc18e}.rest-hack-change[data-result-form="foom"]>div:last-child strong{color:#f4aa8a}
+.rest-hack-meter{position:relative;flex:none;height:8px;margin:13px 0;background:#364437;overflow:hidden}.rest-hack-meter i,.rest-hack-meter b{display:block;position:absolute;inset-block:0}.rest-hack-meter i{left:0;background:#9aab80}.rest-hack-meter b{background:#e6ab7a}.rest-hack-meter>span{position:absolute;top:0;bottom:0;width:2px;background:#14231d}
+.rest-hack-consequence{font-size:13px;line-height:1.7;margin:0 0 8px;color:#efc8a2}.rest-hack-cost{font-size:11px;line-height:1.7;color:#b7b79e;margin:0}.rest-hack-unavailable{font-size:12px;line-height:1.7;padding:9px 0 0;margin:0;color:#f2ad8f}
+.rest-hack-confirm-actions{flex:none;display:grid;grid-template-columns:1fr 1.4fr;gap:10px;margin-top:18px;padding-top:15px;border-top:1px solid #4a5946}
+.game-shell .rest-hack-confirm-actions button{min-width:0;min-height:46px;padding:10px 12px;border:1px solid #829476;font-size:12px;line-height:1.5;white-space:normal;transition:background-color 120ms ease}
+.game-shell .rest-hack-confirm-actions .rest-hack-cancel{background:#334532;color:#e3e5ce}.game-shell .rest-hack-confirm-actions .rest-hack-cancel:hover{background:#43583d}
+.game-shell .rest-hack-confirm-actions .rest-hack-accept{background:#50382a;color:#f2c69b;border-color:#a17a55}.game-shell .rest-hack-confirm-actions .rest-hack-accept:hover{background:#624532}.game-shell .rest-hack-confirm-actions .rest-hack-accept:disabled{opacity:.45}
+.game-shell .rest-hack-confirm-actions button:focus-visible{outline:2px solid #f3d69a;outline-offset:3px}
+@keyframes rest-confirm-arrive{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:620px){.game-shell .terminal-dialog.rest-hack-dialog{padding:17px}.rest-hack-change{gap:12px}.rest-hack-change strong{font-size:29px}.rest-hack-confirm-actions{gap:8px}.rest-offer-reason{font-size:9px}.rest-side{grid-template-columns:minmax(0,1fr);grid-auto-rows:max-content;max-height:min(230px,28dvh)}}
+@media(max-height:570px) and (orientation:landscape){.game-shell .terminal-dialog.rest-hack-dialog{padding:16px;max-height:calc(100dvh - 20px)}.game-shell .rest-hack-dialog>header{margin-bottom:11px;padding-bottom:10px}.rest-hack-description{margin:9px 0 12px}.rest-hack-change strong{font-size:28px}.rest-hack-confirm-actions{margin-top:12px;padding-top:11px}.game-shell .rest-dialog .rest-save-error{max-height:62px}}
+@media(prefers-reduced-motion:reduce){.game-shell .terminal-dialog.rest-hack-dialog{animation:none}.game-shell .rest-dialog .rest-offer,.game-shell .rest-hack-confirm-actions button{transition:none}}
+.game-shell[data-reduced-motion="true"] .terminal-dialog.rest-hack-dialog{animation:none}
+.game-shell[data-reduced-motion="true"] .rest-offer,.game-shell[data-reduced-motion="true"] .rest-hack-confirm-actions button{transition:none}

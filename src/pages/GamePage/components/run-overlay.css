@@ -1,0 +1,74 @@
+/* The shared dialog owns the frame; this page owns the chapter sheet and command list. */
+.game-shell .terminal-dialog.run-menu-dialog {
+  --run-accent:var(--game-gold,#d8b880);
+  width:min(820px,calc(100vw - 40px)); max-width:none; padding:28px 30px;
+  max-height:calc(100dvh - 40px); overflow:auto; overscroll-behavior:contain;
+  scrollbar-width:thin; scrollbar-color:var(--game-line,#6d7564) var(--game-ink,#0c1418);
+}
+.game-shell .terminal-dialog.run-menu-dialog--cleared { --run-accent:#b7c8a0; }
+.game-shell .terminal-dialog.run-menu-dialog--defeat { --run-accent:#d6a18c; }
+.game-shell .terminal-dialog.run-menu-dialog>header { margin:0 0 12px; padding:0; border:0; }
+.game-shell .terminal-dialog.run-menu-dialog>header h2 { font-size:clamp(21px,2.5vw,27px); line-height:1.4; color:var(--game-cream,#f0e5c6); letter-spacing:.2px; margin:0; }
+.run-overlay-status { display:flex; align-items:center; gap:8px; margin:0 0 28px; color:var(--run-accent); font-size:9px; letter-spacing:1.5px; }
+.run-overlay-status small { margin-left:auto; font-size:10px; color:var(--game-muted,#9caeaa); letter-spacing:1px; }
+.run-status-light { width:6px; height:6px; flex:none; background:var(--run-accent); box-shadow:1px 1px 0 var(--game-edge,#060d10); }
+.run-menu-body { display:grid; grid-template-columns:minmax(0,1fr) minmax(240px,.9fr); gap:32px; }
+.run-debrief { min-width:0; }
+.run-chapter-heading { display:flex; align-items:center; gap:14px; padding:0 0 20px; }
+.run-chapter-number { font-size:40px; line-height:1; font-weight:600; color:var(--run-accent); letter-spacing:-1px; flex:none; font-variant-numeric:tabular-nums; text-shadow:2px 2px 0 var(--game-edge,#060d10); }
+.run-chapter-number small { display:block; margin-top:7px; font-size:9px; font-weight:400; letter-spacing:1px; color:var(--game-muted,#9caeaa); text-shadow:none; }
+.run-chapter-heading p { font-size:8px; line-height:1.5; letter-spacing:1px; margin:0 0 5px; color:var(--game-muted,#9caeaa); }
+.run-chapter-heading h3 { margin:0; font-size:15px; line-height:1.6; font-weight:500; color:var(--game-cream,#f0e5c6); }
+.run-metrics { display:grid; grid-template-columns:1fr 1fr; gap:18px 24px; margin:0; padding:19px 0; border-top:1px solid #6d756455; border-bottom:1px solid #6d756455; }
+.run-metrics dt { font-size:10px; color:var(--game-muted,#9caeaa); margin:0 0 7px; }
+.run-metrics dd { margin:0; font-size:25px; line-height:1.25; color:var(--game-cream,#f0e5c6); font-variant-numeric:tabular-nums; letter-spacing:-.4px; }
+.run-metrics dd small { font-size:9px; letter-spacing:0; color:var(--game-muted,#9caeaa); margin-left:6px; }
+.run-metrics .run-doom-metric dd { color:var(--game-gold,#d8b880); }
+.run-metrics .run-hp-missing { font-size:15px; letter-spacing:0; color:#d3b5c5; }
+.run-hidden-hp-note { color:#baa9b1; font-size:10px; line-height:1.7; margin:10px 0 0; }
+.run-resume-objective { padding:18px 0 0; }
+.run-resume-objective>span { font-size:9px; color:var(--game-gold,#d8b880); letter-spacing:1px; }
+.run-resume-objective p { margin:7px 0 0; font-size:12px; color:#c5cfbf; line-height:1.8; }
+.run-score-line { display:flex; align-items:center; justify-content:space-between; padding:16px 0; border-bottom:1px solid #6d756455; font-size:10px; color:var(--game-muted,#9caeaa); }
+.run-score-line strong { font-size:19px; font-weight:500; color:var(--game-cream,#f0e5c6); }
+.run-command-panel { min-width:0; border-left:1px solid #6d756455; padding-left:30px; }
+.game-shell .run-menu-dialog .run-menu-caption { font-size:12px; line-height:1.8; margin:0 0 16px; color:#c5cfbf; }
+.game-shell .run-menu-dialog .run-menu-actions { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+.game-shell .run-menu-dialog .run-menu-actions .primary-button { min-height:48px; margin-bottom:8px; padding:12px 15px; font-size:14px; gap:14px; }
+.game-shell .run-menu-dialog .run-menu-actions .primary-button kbd { font-size:8px; padding:4px 5px; color:var(--game-ink,#0c1418); background:#ffffff24; border-color:#0c141840; white-space:nowrap; }
+.game-shell .run-menu-dialog .run-menu-actions .secondary-button { min-height:44px; padding:10px; font-size:11px; gap:8px; text-align:left; justify-content:flex-start; }
+.game-shell .run-menu-dialog .run-display-actions { padding-top:14px; margin-top:20px; border-top:1px solid #6d756455; flex-wrap:wrap; }
+.game-shell .run-menu-dialog .run-display-actions button { min-height:44px; }
+.run-new-attempt-note { margin:13px 0 0; font-size:10px; color:var(--game-muted,#9caeaa); line-height:1.7; }
+.run-action-error { margin:0 0 15px; padding:11px 12px; border-left:2px solid #d89680; background:#d896800c; color:#e3b39d; font-size:11px; line-height:1.7; overflow-wrap:anywhere; }
+.run-checkpoint-note { display:flex; gap:11px; padding:16px 0 0; }
+.run-checkpoint-symbol { color:var(--game-gold,#d8b880); font-size:24px; line-height:1; }
+.run-checkpoint-note h4 { margin:0 0 7px; color:var(--game-cream,#f0e5c6); font-size:12px; font-weight:500; }
+.run-checkpoint-note p { margin:0 0 6px; font-size:11px; line-height:1.7; color:#c5cfbf; }
+.run-checkpoint-note .run-checkpoint-resources { color:var(--game-muted,#9caeaa); font-size:10px; }
+.run-checkpoint-note small { font-size:10px; line-height:1.7; color:var(--game-muted,#9caeaa); }
+.run-chapter-route { display:flex; list-style:none; margin:22px 0 0; padding:0; gap:0; }
+.run-chapter-route li { position:relative; min-width:0; flex:1; display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--game-muted,#9caeaa); }
+.run-chapter-route li:not(:last-child):after { content:''; position:absolute; left:calc(50% + 16px); right:calc(-50% + 16px); top:13px; height:1px; background:#6d756466; }
+.run-chapter-route li>span:first-child { display:grid; place-items:center; width:27px; height:27px; font-size:10px; border:1px solid #6d756477; background:var(--game-ink,#0c1418); }
+.run-chapter-route small { font-size:8px; white-space:nowrap; }
+.run-chapter-route li[data-state="complete"] { color:#b7c8a0; }.run-chapter-route li[data-state="complete"]>span:first-child { border-color:#b7c8a077; background:#b7c8a009; }
+.run-chapter-route li[data-state="next"] { color:var(--game-gold,#d8b880); }.run-chapter-route li[data-state="next"]>span:first-child { border-color:var(--game-gold,#d8b880); background:#d8b88016; }
+.run-submission { margin-top:25px; padding-top:20px; border-top:1px solid #6d756455; }
+.run-submission>section { margin-top:0; }.run-submission h3 { font-size:12px; color:#c5cfbf; }
+.run-submission .muted-text { font-size:11px; line-height:1.7; }
+@media(max-width:620px) {
+  .game-shell .terminal-dialog.run-menu-dialog { width:calc(100vw - 24px); padding:22px; max-height:calc(100dvh - 24px); }
+  .run-menu-body { grid-template-columns:1fr; gap:24px; }.run-command-panel { order:-1; border:0; padding:0; }
+  .run-overlay-status { margin-bottom:20px; }.run-overlay-status small { font-size:9px; }
+  .run-debrief { border-top:1px solid #6d756455; padding-top:22px; }.run-chapter-heading { padding-bottom:17px; }
+  .run-metrics { gap:16px 22px; }.run-metrics dd { font-size:23px; }
+  .game-shell .run-menu-dialog .run-display-actions { margin-top:14px; padding-top:11px; }
+}
+@media(max-height:540px) and (min-width:621px) {
+  .game-shell .terminal-dialog.run-menu-dialog { padding:19px 25px; max-height:calc(100dvh - 20px); }
+  .game-shell .terminal-dialog.run-menu-dialog>header h2 { font-size:21px; }.run-overlay-status { margin-bottom:18px; }
+  .run-menu-body { gap:24px; }.run-command-panel { padding-left:22px; }.run-chapter-heading { padding-bottom:14px; }
+  .run-metrics { gap:12px 20px; padding:14px 0; }.run-metrics dd { font-size:21px; }
+  .run-resume-objective { padding-top:13px; }.run-resume-objective p { font-size:11px; }
+}

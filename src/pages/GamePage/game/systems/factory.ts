@@ -20,7 +20,7 @@ export function segmentHitsCircle(from: Vec2, to: Vec2, center: Vec2, radius: nu
 }
 
 /** Moves only the detached draft. Sea contact bypasses dash, Q and ordinary damage immunity. */
-export function advanceFactory(world: WorldState, now: number, dt: number): void {
+export function advanceFactory(world: WorldState, now: number, dt: number, actors: readonly Vec2[] = [world.player]): void {
   const factory = world.factory;
   if (!factory) return;
   factory.seaY = Math.max(world.chapter.arena.y + world.chapter.arena.h + 20, factory.seaY - factory.riseSpeed * dt);
@@ -38,10 +38,11 @@ export function advanceFactory(world: WorldState, now: number, dt: number): void
   if (world.boss.active) return;
   const claimed = new Set(factory.probes.map(probe => probe.targetPlatformId));
   factory.probes.forEach(probe => {
-    if (Math.abs(probe.y - world.player.y) > 390) return;
+    const player = [...actors].sort((a, b) => Math.abs(probe.y - a.y) - Math.abs(probe.y - b.y))[0] ?? world.player;
+    if (Math.abs(probe.y - player.y) > 390) return;
     if (probe.phase === 'seek' && now >= probe.phaseUntil) {
-      const target = world.chapter.platforms.filter(platform => platform.oneWay && !platform.protected && !world.collapsed.includes(platform.id) && !claimed.has(platform.id) && Math.abs(platform.y - world.player.y) < 320)
-        .sort((a, b) => Math.abs(a.y - world.player.y) - Math.abs(b.y - world.player.y))[0];
+      const target = world.chapter.platforms.filter(platform => platform.oneWay && !platform.protected && !world.collapsed.includes(platform.id) && !claimed.has(platform.id) && Math.abs(platform.y - player.y) < 320)
+        .sort((a, b) => Math.abs(a.y - player.y) - Math.abs(b.y - player.y))[0];
       if (target) {
         probe.targetPlatformId = target.id; claimed.add(target.id); probe.phase = 'tell'; probe.phaseUntil = now + FACTORY_LIMITS.tellMs;
         world.events.push({ type: 'notice', message: '探针锁定侧路平台：1.8秒红色预警后吞噬。射击探针可阻止；绿色主路仍安全。' });
@@ -63,7 +64,7 @@ export function advanceFactory(world: WorldState, now: number, dt: number): void
   });
   if (now >= factory.nextReplicateAt) {
     factory.nextReplicateAt = now + FACTORY_LIMITS.replicateMs;
-    const parent = factory.probes.find(probe => probe.hp > 0 && Math.abs(probe.y - world.player.y) < 390);
+    const parent = factory.probes.find(probe => probe.hp > 0 && actors.some(player => Math.abs(probe.y - player.y) < 390));
     if (parent && factory.probes.length < FACTORY_LIMITS.probeCap) {
       factory.probes.push({ id: factory.nextProbeId++, x: clamp(parent.x + 28, 20, world.chapter.width - 20), y: parent.y - 24, hp: FACTORY_LIMITS.probeHp, targetPlatformId: null, phase: 'seek', phaseUntil: now + 900 });
       world.events.push({ type: 'notice', message: '存活探针完成自复制。摧毁全部探针可彻底停止复制，没有凭空刷新的波次。' });

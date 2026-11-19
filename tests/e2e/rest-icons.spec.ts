@@ -86,6 +86,7 @@ for (const viewport of VIEWS) test(`rest relic icons ${viewport.name}: real icon
   await expect.poll(async () => JSON.parse((await saved(page))!)).toEqual(purchased);
   await expect(dialog.getByRole('button', { name: '购买 高温采样', exact: true })).toBeDisabled();
   await dialog.getByRole('button', { name: '奖励劫持 Lisp 符号校验', exact: true }).click();
+  await page.getByRole('dialog', { name: '确认奖励劫持？', exact: true }).getByRole('button', { name: '确认劫持 Lisp 符号校验', exact: true }).click();
   const hacked = { ...purchased, doom: 85, checkpoint: 21, inventory: [...purchased.inventory, 'lisp'] };
   await expect.poll(async () => JSON.parse((await saved(page))!)).toEqual(hacked);
   await expect(dialog.getByRole('button', { name: '奖励劫持 机械可解释性', exact: true })).toBeDisabled(); await capture(page, info, viewport.name + '-real-transactions');

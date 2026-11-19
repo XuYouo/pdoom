@@ -1,0 +1,16 @@
+.game-shell .terminal-dialog.boot-dialog { position:fixed; inset:0; width:min(520px,calc(100vw - 32px)); height:fit-content; max-height:calc(100dvh - 32px); padding:32px; display:block; outline:none; text-align:left; background:#101e1c; border:1px solid #b0bf9e55; letter-spacing:0; box-shadow:10px 10px 0 #0004; }
+.game-shell .terminal-dialog.boot-dialog::backdrop { background:#0b1516f5; backdrop-filter:none; }
+.game-shell .boot-dialog>header { padding:0; border:0; margin:0 0 24px; }
+.game-shell .boot-dialog>header h2 { margin:0; font-size:12px; letter-spacing:1px; font-weight:400; color:#a3b39b; }
+.boot-brand { font-family:Arial,sans-serif; font-size:46px; font-weight:800; letter-spacing:-2px; color:#f0ead7; margin-bottom:32px; }
+.boot-brand span { color:#edac7a; margin-left:12px; font-size:32px; }
+.game-shell .boot-dialog section { width:auto; padding:0; background:none; border:0; }
+.boot-progress-label { display:flex; justify-content:space-between; align-items:baseline; color:#d1ddc6; font-size:12px; }
+.boot-progress-label strong { font-size:22px; font-weight:400; color:#e9af7d; font-variant-numeric:tabular-nums; }
+.game-shell .boot-progress-label strong small { display:inline; margin:0 0 0 3px; color:inherit; }
+.boot-dialog progress { display:block; width:100%; height:5px; margin:12px 0 28px; border:0; background:#324439; accent-color:#e8ab79; }
+.boot-dialog progress::-webkit-progress-bar { background:#324439; }.boot-dialog progress::-webkit-progress-value { background:#e8ab79; transition:width .12s; }.boot-dialog progress::-moz-progress-bar { background:#e8ab79; }
+.game-shell .boot-dialog .boot-hint { font-size:12px; color:#aebda5; margin:0 0 12px; line-height:1.9; }
+.game-shell .boot-dialog section>small { font-size:10px; color:#91a58e; margin-top:12px; }
+.game-shell .boot-dialog section>p { line-height:1.9; margin:0 0 20px; }
+@media(max-height:430px) { .game-shell .terminal-dialog.boot-dialog { padding:22px; }.boot-brand { margin-bottom:20px; font-size:36px; }.game-shell .boot-dialog>header { margin-bottom:12px; } }

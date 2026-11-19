@@ -151,8 +151,10 @@ async function earned(page: Page, info: TestInfo) {
   }
   expect(incoming, 'Two actual yellow-bullet positions approach the stationary Clawd before Q').not.toBeNull();
   await page.keyboard.press('q');
-  // The compact HUD intentionally omits old gradient notice prose; actual Q state and native rewards are the contract.
-  await expect(page.getByRole('button', { name: 'Q 冷却', exact: true })).toBeDisabled({ timeout: 4000 });
+  // The cooldown includes a live countdown; assert the same real state and native rewards independently of its label.
+  const rewind = page.locator('.skill-button').filter({ has: page.locator('kbd', { hasText: /^Q$/ }) });
+  await expect(rewind).toHaveAttribute('data-state', 'cooldown', { timeout: 4000 });
+  await expect(rewind).toBeDisabled();
   for (let i = 0; i < 45; i++) { f = await capture(page); if (f.actor && f.markers.length === 1) break; await page.waitForTimeout(30); }
   const m = marker(f); expect(m.book).toBe(true); expect(m.ticks).toBeGreaterThanOrEqual(9); expect(m.charges).toBe(2);
   await show(info, 'incoming-dictionary-before-real-q', incoming!); await show(info, 'actual-dictionary-reward', f);
@@ -217,7 +219,9 @@ for (const lisp of [false, true]) test(`ordinary dictionary Q reward ${lisp ? 'l
   await show(info, 'paused-positive-reward-held', held);
   if (lisp) {
     await page.getByRole('button', { name: '返回终端', exact: true }).click();
-    await page.getByRole('button', { name: '开始新训练', exact: true }).click(); await ready(page);
+    await page.getByRole('button', { name: '开始新训练', exact: true }).click();
+    await page.getByRole('dialog', { name: '开始新的训练？', exact: true }).getByRole('button', { name: '替换并开始新训练', exact: true }).click();
+    await ready(page);
     const reset = await capture(page); expect(reset.markers).toEqual([]); await show(info, 'new-run-no-old-reward', reset);
     const saved = await page.evaluate(() => localStorage.getItem('pdoom.save.v1'));
     expect(saved).not.toContain('criticalCharges'); expect(saved).not.toContain('immunity'); return;

@@ -93,7 +93,9 @@ test('ordinary Shift and E create real action cues, blocked keys do not, and pau
   const resumed = await actionAudioEvidence(page); expect(abilityVoices(resumed, 'dash')).toHaveLength(1); expect(abilityVoices(resumed, 'insight')).toHaveLength(1);
   await page.getByRole('button', { name: '音频设置', exact: true }).click();
   await page.getByLabel('静音全部音乐与音效').check(); await page.getByRole('button', { name: '关闭弹窗', exact: true }).click();
-  await page.getByRole('button', { name: '返回终端', exact: true }).click(); await start.click(); await page.waitForTimeout(1100);
+  await page.getByRole('button', { name: '返回终端', exact: true }).click(); await start.click();
+  await page.getByRole('dialog', { name: '开始新的训练？', exact: true }).getByRole('button', { name: '替换并开始新训练', exact: true }).click();
+  await page.waitForTimeout(1100);
   await expect.poll(async () => (await actionAudioEvidence(page)).states).toEqual(['suspended']);
   const mutedBefore = await nativeHero(page); await page.keyboard.press('Shift'); await page.waitForTimeout(250);
   const mutedAfter = await nativeHero(page); expect(mutedAfter.x! - mutedBefore.x!).toBeGreaterThan(40);

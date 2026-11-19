@@ -80,6 +80,7 @@ test('the real game waits for a gesture, suspends on pause and reuses one contex
   await expect.poll(() => contextStates(page)).toEqual(['suspended']);
   await page.getByRole('button', { name: '返回终端' }).click();
   await start.click();
+  await page.getByRole('dialog', { name: '开始新的训练？', exact: true }).getByRole('button', { name: '替换并开始新训练', exact: true }).click();
   await expect.poll(() => contextStates(page)).toEqual(['running']);
   await page.keyboard.press('Escape');
   await expect.poll(() => contextStates(page)).toEqual(['suspended']);

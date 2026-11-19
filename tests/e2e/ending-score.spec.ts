@@ -23,7 +23,7 @@ for (const [ending, doom] of [['aligned', 8], ['warden', 55], ['foom', 88]] as c
     await endingDialog.getByRole('button', { name: /查看结算/ }).click();
     const score = page.getByRole('region', { name: '本局成绩上传' });
     await score.getByRole('button', { name: '登录后上传' }).click();
-    await page.getByRole('button', { name: '注册智能体', exact: true }).click();
+    await page.getByRole('tab', { name: '注册智能体', exact: true }).click();
     await page.getByLabel('玩家名称').fill(`end_${randomUUID().replace(/-/g, '').slice(0, 20)}`);
     await page.getByLabel('密码', { exact: false }).fill('isolated_ending_password_2026');
     await page.getByRole('button', { name: '创建智能体' }).click();
@@ -39,10 +39,12 @@ for (const [ending, doom] of [['aligned', 8], ['warden', 55], ['foom', 88]] as c
     await page.getByRole('button', { name: '读取云存档', exact: true }).click();
     await expect(page.getByText('云端暂无存档，可以上传本地检查点。')).toBeVisible();
     await page.getByRole('button', { name: '本地 → 云端', exact: true }).click();
-    await expect(page.getByText('CH 5 · REV 1', { exact: true })).toBeVisible();
+    await expect(page.getByRole('region', { name: '云端检查点', exact: true }).getByText('版本 1', { exact: true })).toBeVisible();
+    await expect(page.getByRole('region', { name: '云端检查点', exact: true })).toContainText('CH 05');
     await page.getByRole('button', { name: '关闭弹窗' }).click();
     await endingDialog.getByRole('button', { name: '返回终端', exact: true }).click();
     await page.getByRole('button', { name: '开始新训练' }).click();
+    await page.getByRole('dialog', { name: '开始新的训练？', exact: true }).getByRole('button', { name: '替换并开始新训练', exact: true }).click();
     await page.getByRole('button', { name: 'Ⅱ PAUSE' }).click();
     await page.getByRole('button', { name: '返回终端', exact: true }).click();
     expect(await page.evaluate(() => JSON.parse(localStorage.getItem('pdoom.save.v1') ?? 'null').stage)).toBe(1);
@@ -50,9 +52,13 @@ for (const [ending, doom] of [['aligned', 8], ['warden', 55], ['foom', 88]] as c
     await expect(page.getByRole('button', { name: '开始新训练' })).toBeEnabled({ timeout: 15000 });
     await page.getByRole('button', { name: 'LOCAL AGENT' }).click();
     await page.getByRole('button', { name: '读取云存档', exact: true }).click();
-    await expect(page.getByText('CH 5 · REV 1', { exact: true })).toBeVisible();
-    page.once('dialog', dialog => { expect(dialog.message()).toContain('用云端检查点替换'); void dialog.accept(); });
+    await expect(page.getByRole('region', { name: '云端检查点', exact: true }).getByText('版本 1', { exact: true })).toBeVisible();
+    await expect(page.getByRole('region', { name: '云端检查点', exact: true })).toContainText('CH 05');
     await page.getByRole('button', { name: '云端 → 本地', exact: true }).click();
+    const restoreConfirm = page.getByRole('dialog', { name: '载入云端检查点？', exact: true });
+    await expect(restoreConfirm).toContainText('将退出当前战斗并返回终端');
+    await expect(restoreConfirm.getByRole('button', { name: '取消，保留本地', exact: true })).toBeFocused();
+    await restoreConfirm.getByRole('button', { name: '载入云端并返回终端', exact: true }).click();
     expect(await page.evaluate(() => JSON.parse(localStorage.getItem('pdoom.save.v1') ?? 'null'))).toEqual(save);
     await page.getByRole('button', { name: '回看结局', exact: true }).click();
     await endingDialog.getByRole('button', { name: /查看结算/ }).click();

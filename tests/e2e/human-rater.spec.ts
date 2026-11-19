@@ -69,6 +69,7 @@ test('restored settled badge survives repair, changes only on a real successful 
   await expect.poll(async () => (await saved(page)).hp).toBe(95); await expect(badge(page)).toHaveAttribute('data-rater-pose', 'neutral');
   const repaired = await saved(page); expect(repaired.tokens).toBe(188);
   await dialog(page).getByRole('button', { name: '奖励劫持 梯度校准', exact: true }).click();
+  await page.getByRole('dialog', { name: '确认奖励劫持？', exact: true }).getByRole('button', { name: '确认劫持 梯度校准', exact: true }).click();
   await expect(badge(page)).toHaveAttribute('data-rater-pose', 'hacked'); await expect(badge(page)).toHaveText('劫持');
   await proveRater(page, info, 'hacked', 'actual-successful-hack');
   const hacked = await saved(page); expect(hacked).toMatchObject({ checkpoint: 21, doom: 85, hp: 95, tokens: 188 }); expect(hacked.upgrades).toContain('calibrated');

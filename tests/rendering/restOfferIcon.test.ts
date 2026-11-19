@@ -38,13 +38,15 @@ describe('rest offer SVG presentation contract, not raster/recognition proof', (
     expect(renderToStaticMarkup(createElement(RestOfferIcon, offer))).toBe(markup(offer.id));
     expect(offer).toEqual({ id: 'relic:temperature', kind: 'relic', name: 'renamed', owned: true, price: 999, canBuy: false });
   });
-  it('uses the same helper for every actual offer and the initial selected detail without mutating the DTO', () => {
+  it('uses the same helper for every offer, selected detail and equipped Context relic without mutating the DTO', () => {
     const snapshot = restSnapshot(createWorld({ ...PREVIEW_SAVE, checkpoint: 11, hp: 60, tokens: 200 }))!;
     const before = JSON.stringify(snapshot), html = renderToStaticMarkup(createElement(RestRoomPanel, { bridge: new GameBridge(), snapshot }));
     const svgs = [...html.matchAll(/<svg[^>]*class="rest-item-icon [^"]+"[^>]*>.*?<\/svg>/g)].map(match => path(match[0]));
-    expect(svgs).toHaveLength(snapshot.offers.length + 1);
-    expect(svgs.slice(0, -1)).toEqual(snapshot.offers.map(offer => path(markup(offer.id, offer.kind))));
+    expect(svgs).toHaveLength(snapshot.offers.length + 1 + snapshot.context.slots.length);
+    expect(svgs.slice(0, snapshot.offers.length)).toEqual(snapshot.offers.map(offer => path(markup(offer.id, offer.kind))));
     const selected = snapshot.offers.find(offer => !offer.owned && offer.canBuy) ?? snapshot.offers[0];
-    expect(svgs[svgs.length - 1]).toBe(path(markup(selected.id, selected.kind))); expect(JSON.stringify(snapshot)).toBe(before);
+    expect(svgs[snapshot.offers.length]).toBe(path(markup(selected.id, selected.kind)));
+    expect(svgs.slice(snapshot.offers.length + 1)).toEqual(snapshot.context.slots.map(slot => path(markup(`relic:${slot.id}`))));
+    expect(JSON.stringify(snapshot)).toBe(before);
   });
 });

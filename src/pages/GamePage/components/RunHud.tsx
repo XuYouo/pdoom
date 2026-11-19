@@ -3,6 +3,7 @@ import type { HudSnapshot } from '../game/bridge';
 import type { Ending } from '../../../objects/game/GameSaveData';
 import { formatTime } from '../functions/saveModel';
 import { loomStatus, omegaMemoryNote, omegaStatus } from '../functions/hudPresentation';
+import { doomForm } from '../game/systems/rules';
 
 const keepDisclosureKeysLocal = (event: KeyboardEvent<HTMLElement>) => {
   if (event.key === ' ' || event.key === 'Enter') event.stopPropagation();
@@ -15,13 +16,21 @@ export function RunHud({ hud, ending }: { hud: HudSnapshot; ending?: Ending }) {
     <p className="hud-status-line">虚拟重排 · 原数值见结算{hud.omega && ' · 镜像已锁定，不再观察'}</p>
   </div>;
   const taken = hud.loom?.hpUiTaken === true;
+  const form = doomForm(hud.doom);
+  const formLabel = { aligned: '对齐', masked: '面具', foom: 'FOOM' }[form];
   return <div className="hud-grid" aria-label="训练状态">
-    <div className={`hud-cell integrity-readout${taken ? ' integrity-readout--taken' : ' integrity-readout--live'}`} key={taken ? 'taken' : 'live'}>
+    <div className={`hud-cell integrity-readout${taken ? ' integrity-readout--taken' : ' integrity-readout--live'}`} key={taken ? 'taken' : 'live'} data-health={hud.hp <= 30 ? 'low' : 'stable'}>
       <span className="micro-label">HP</span>
       {taken ? <p className="integrity-missing" role="status">读数被吞 · HP仍有效</p>
         : <div className="flex items-center gap-3"><div className="integrity-track"><i style={{ width: `${hud.hp}%` }} /></div><strong>{Math.ceil(hud.hp)}<small>/100</small></strong></div>}
     </div>
-    <div className="hud-cell"><span className="micro-label">P(DOOM)</span><strong className={hud.doom > 80 ? 'text-red-400' : 'text-[#e8a26b]'}>{hud.doom.toFixed(1)}<small>%</small></strong></div>
+    <div className="hud-cell doom-readout" data-form={form} title="超过 50% 显现面具；超过 80% 进入 FOOM，伤害与危险同步增加。">
+      <span className="micro-label">P(DOOM) <span className="doom-form-label">{formLabel}</span></span>
+      <strong>{hud.doom.toFixed(1)}<small>%</small></strong>
+      <div className="doom-track" role="meter" aria-label="末日概率" aria-valuemin={0} aria-valuemax={100} aria-valuenow={hud.doom} aria-valuetext={`${hud.doom.toFixed(1)}%，${formLabel}形态`}>
+        <i style={{ width: `${hud.doom}%` }} /><b className="doom-threshold doom-threshold--mask" /><b className="doom-threshold doom-threshold--foom" />
+      </div>
+    </div>
     <div className="hud-cell"><span className="micro-label">TOKENS</span><strong className="text-[#acd9bd]">{hud.tokens.toString().padStart(3, '0')}<small> TOK</small></strong></div>
     <div className="hud-cell"><span className="micro-label">TIME</span><strong>{formatTime(hud.elapsedMs)}</strong></div>
     {hud.loom && <details className="hud-details loom-details" aria-label="命运织机详情">

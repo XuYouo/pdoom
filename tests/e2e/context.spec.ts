@@ -98,6 +98,7 @@ test('one reward hack and context reordering stay effective after refresh, then 
   await resumeCheckpoint(page);
   const dialog = restDialog(page);
   await dialog.getByRole('button', { name: '奖励劫持 梯度校准', exact: true }).click();
+  await page.getByRole('dialog', { name: '确认奖励劫持？', exact: true }).getByRole('button', { name: '确认劫持 梯度校准', exact: true }).click();
   await expect.poll(async () => (await saved(page)).checkpoint).toBe(21);
   expect(await saved(page)).toMatchObject({ tokens: 200, doom: 85, upgrades: ['calibrated'] });
   await expect(dialog.getByRole('button', { name: '奖励劫持 高温采样', exact: true })).toBeDisabled();
@@ -136,6 +137,7 @@ test('returning to the menu retains the encoded safe point and context is read-o
   await page.keyboard.press('Escape');
   await expect(dialog).toHaveCount(0);
   await page.getByRole('button', { name: '开始新训练' }).click();
+  await page.getByRole('dialog', { name: '开始新的训练？', exact: true }).getByRole('button', { name: '替换并开始新训练', exact: true }).click();
   await contextButton(page).click();
   await expect(dialog).toBeVisible();
   await expect(dialog.getByRole('button', { name: '下移 宪法毛线', exact: true })).toBeDisabled();
@@ -189,7 +191,7 @@ test('real cloud restore exits the old rest world to the menu and loads the sele
   await resumeCheckpoint(page);
   await restDialog(page).getByRole('button', { name: '返回终端并保留检查点', exact: true }).click();
   await page.getByRole('button', { name: 'LOCAL AGENT' }).click();
-  await page.getByRole('button', { name: '注册智能体', exact: true }).click();
+  await page.getByRole('tab', { name: '注册智能体', exact: true }).click();
   await page.getByLabel('玩家名称').fill(`ctx_${randomUUID().replace(/-/g, '').slice(0, 20)}`);
   await page.getByLabel('密码', { exact: false }).fill('context_fixture_password_2026');
   await page.getByRole('button', { name: '创建智能体' }).click();
@@ -204,8 +206,11 @@ test('real cloud restore exits the old rest world to the menu and loads the sele
   expect(status).toBe(200);
   await page.getByRole('button', { name: '读取云存档', exact: true }).click();
   await expect(page.getByText('云存档已读取，尚未覆盖本地检查点。')).toBeVisible();
-  page.once('dialog', dialog => dialog.accept());
   await page.getByRole('button', { name: '云端 → 本地', exact: true }).click();
+  const restoreConfirm = page.getByRole('dialog', { name: '载入云端检查点？', exact: true });
+  await expect(restoreConfirm).toContainText('将退出当前战斗并返回终端');
+  await expect(restoreConfirm.getByRole('button', { name: '取消，保留本地', exact: true })).toBeFocused();
+  await restoreConfirm.getByRole('button', { name: '载入云端并返回终端', exact: true }).click();
   await expect(page.getByRole('dialog')).toHaveCount(0);
   await expect(page.getByRole('button', { name: '开始新训练' })).toBeVisible();
   await expect(page.getByText('云档已载入本地；选择恢复检查点继续。', { exact: true })).toBeVisible();

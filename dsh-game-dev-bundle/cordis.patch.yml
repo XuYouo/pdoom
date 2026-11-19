@@ -91,6 +91,9 @@
                 name: '@deepseek-ai/dsh-tool-subagent-control'
               - id: tool-subagent-list-agents
                 name: '@deepseek-ai/dsh-tool-subagent-control/list-agents'
+                # DSH 0.2.2 merges list_agents into the main control plugin.
+                # Retain this separate row only while the native package exports it.
+                disabled: !!js "!process.getBuiltinModule('node:module').createRequire(baseUrl)('@deepseek-ai/dsh-tool-subagent-control/package.json').exports['./list-agents']"
               - id: tool-subagent
                 name: '@deepseek-ai/dsh-tool-subagent'
                 config:

@@ -14,7 +14,7 @@ test('real Scala account and cloud checkpoint survive a page reload', async ({ p
   await page.getByRole('button', { name: 'Ⅱ PAUSE' }).click();
   await page.getByRole('button', { name: '返回终端' }).click();
   await page.getByRole('button', { name: 'LOCAL AGENT' }).click();
-  await page.getByRole('button', { name: '注册智能体', exact: true }).click();
+  await page.getByRole('tab', { name: '注册智能体', exact: true }).click();
   await page.getByLabel('玩家名称').fill(username);
   await page.getByLabel('密码', { exact: false }).fill('browser_test_password_2026');
   await page.getByRole('button', { name: '创建智能体' }).click();
@@ -23,7 +23,8 @@ test('real Scala account and cloud checkpoint survive a page reload', async ({ p
   await expect(page.getByText('云端暂无存档，可以上传本地检查点。')).toBeVisible();
   await page.getByRole('button', { name: '本地 → 云端', exact: true }).click();
   await expect(page.getByText('云端保存成功。')).toBeVisible();
-  await expect(page.getByText('CH 1 · REV 1', { exact: true })).toBeVisible();
+  await expect(page.getByRole('region', { name: '云端检查点', exact: true }).getByText('版本 1', { exact: true })).toBeVisible();
+  await expect(page.getByRole('region', { name: '云端检查点', exact: true })).toContainText('CH 01');
   await page.screenshot({ path: 'artifacts/browser/cloud-saved.png', fullPage: true });
   await page.getByRole('button', { name: '关闭弹窗' }).click();
   await page.reload();
@@ -31,7 +32,8 @@ test('real Scala account and cloud checkpoint survive a page reload', async ({ p
   await page.getByRole('button', { name: 'LOCAL AGENT' }).click();
   await expect(page.getByText('已认证智能体', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: '读取云存档', exact: true }).click();
-  await expect(page.getByText('CH 1 · REV 1', { exact: true })).toBeVisible();
+  await expect(page.getByRole('region', { name: '云端检查点', exact: true }).getByText('版本 1', { exact: true })).toBeVisible();
+  await expect(page.getByRole('region', { name: '云端检查点', exact: true })).toContainText('CH 01');
   await page.getByRole('button', { name: /撤销会话/ }).click();
   await expect(page.getByText('会话已撤销；本地游戏进度保留。')).toBeVisible();
   await page.getByRole('button', { name: '关闭弹窗' }).click();
@@ -57,7 +59,7 @@ test('real Scala cloud restores the complete schema-v1 Loom rest after a differe
   const cloudSnapshot = await assertCheckpointAttempt(page, save);
   await rest.getByRole('button', { name: '返回终端并保留检查点' }).click();
   await page.getByRole('button', { name: 'LOCAL AGENT' }).click();
-  await page.getByRole('button', { name: '注册智能体', exact: true }).click();
+  await page.getByRole('tab', { name: '注册智能体', exact: true }).click();
   await page.getByLabel('玩家名称').fill(`loom_${Date.now().toString(36)}`);
   await page.getByLabel('密码', { exact: false }).fill('isolated_loom_browser_password');
   await page.getByRole('button', { name: '创建智能体' }).click();
@@ -66,9 +68,11 @@ test('real Scala cloud restores the complete schema-v1 Loom rest after a differe
   await expect(page.getByText('云端暂无存档，可以上传本地检查点。')).toBeVisible();
   await page.getByRole('button', { name: '本地 → 云端', exact: true }).click();
   await expect(page.getByText('云端保存成功。')).toBeVisible();
-  await expect(page.getByText('CH 4 · REV 1', { exact: true })).toBeVisible();
+  await expect(page.getByRole('region', { name: '云端检查点', exact: true }).getByText('版本 1', { exact: true })).toBeVisible();
+  await expect(page.getByRole('region', { name: '云端检查点', exact: true })).toContainText('CH 04');
   await page.getByRole('button', { name: '关闭弹窗' }).click();
   await page.getByRole('button', { name: '开始新训练' }).click();
+  await page.getByRole('dialog', { name: '开始新的训练？', exact: true }).getByRole('button', { name: '替换并开始新训练', exact: true }).click();
   await page.getByRole('button', { name: 'Ⅱ PAUSE' }).click();
   await page.getByRole('button', { name: '返回终端', exact: true }).click();
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('pdoom.save.v1') ?? 'null').stage)).toBe(1);
@@ -76,9 +80,13 @@ test('real Scala cloud restores the complete schema-v1 Loom rest after a differe
   await expect(page.getByRole('button', { name: '开始新训练' })).toBeEnabled();
   await page.getByRole('button', { name: 'LOCAL AGENT' }).click();
   await page.getByRole('button', { name: '读取云存档', exact: true }).click();
-  await expect(page.getByText('CH 4 · REV 1', { exact: true })).toBeVisible();
-  page.once('dialog', dialog => { expect(dialog.message()).toContain('用云端检查点替换'); void dialog.accept(); });
+  await expect(page.getByRole('region', { name: '云端检查点', exact: true }).getByText('版本 1', { exact: true })).toBeVisible();
+  await expect(page.getByRole('region', { name: '云端检查点', exact: true })).toContainText('CH 04');
   await page.getByRole('button', { name: '云端 → 本地', exact: true }).click();
+  const confirm = page.getByRole('dialog', { name: '载入云端检查点？', exact: true });
+  await expect(confirm).toContainText('将退出当前战斗并返回终端');
+  await expect(confirm.getByRole('button', { name: '取消，保留本地', exact: true })).toBeFocused();
+  await confirm.getByRole('button', { name: '载入云端并返回终端', exact: true }).click();
   await expect(page.getByRole('button', { name: '恢复检查点', exact: true })).toBeEnabled();
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('pdoom.save.v1') ?? 'null'))).toEqual(cloudSnapshot);
   await page.getByRole('button', { name: '恢复检查点', exact: true }).click();

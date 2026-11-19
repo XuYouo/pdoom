@@ -20,13 +20,21 @@ describe('rest hierarchy presentation only; SSR/CSS contracts not actual pixels'
     expect(snapshot.usedK).toBe(row.used); expect(snapshot.capacityK).toBe(row.capacity); expect(snapshot.overloaded).toBe(row.overloaded);
     const html = renderToStaticMarkup(createElement(ContextPanel, { bridge: new GameBridge(), snapshot, compact }));
     expect(html).toContain(`data-overloaded="${row.overloaded}"`);
-    expect(html).toContain(`value="${Math.min(row.used, row.capacity)}" max="${row.capacity}"`);
+    expect(html).toContain('role="meter"');
+    expect(html).toContain(`aria-valuemin="0" aria-valuemax="${row.capacity}" aria-valuenow="${Math.min(row.used, row.capacity)}"`);
     expect(html).toContain(`aria-label="上下文占用 ${row.used}K，容量 ${row.capacity}K"`);
+    expect(html).toContain(row.used > row.capacity ? `超出容量 ${row.used - row.capacity}K` : `剩余 ${row.capacity - row.used}K`);
     expect((html.match(/<li /g) ?? []).length).toBe(row.inventory.length);
     expect((html.match(/aria-label="上移 /g) ?? []).length).toBe(row.inventory.length);
     expect((html.match(/aria-label="下移 /g) ?? []).length).toBe(row.inventory.length);
-    expect((html.match(/data-active="false"/g) ?? []).length).toBe(snapshot.slots.filter(slot => !slot.active).length);
-    expect(html.includes(compact ? '窗口满载 · 中间词条失活' : 'Lost in the Middle')).toBe(row.overloaded);
+    const inactive = snapshot.slots.filter(slot => !slot.active).length;
+    expect((html.match(/<li[^>]*data-active="false"/g) ?? []).length).toBe(inactive);
+    expect((html.match(/class="context-segment context-segment--relic" data-active="false"/g) ?? []).length).toBe(inactive);
+    expect(html.includes('class="context-overload"')).toBe(row.overloaded);
+    if (row.overloaded) {
+      expect(html).toContain(`${row.used > row.capacity ? '窗口过载' : '窗口满载'} · ${inactive} 个词条失活`);
+      expect(html).toContain('中间词条失活，仍占容量。');
+    }
     expect(JSON.stringify(snapshot)).toBe(before);
   });
   it('preserves the active first/last and inactive middle presentation flags at full capacity', () => {
@@ -35,12 +43,15 @@ describe('rest hierarchy presentation only; SSR/CSS contracts not actual pixels'
     expect([...html.matchAll(/<li[^>]*data-active="(true|false)"/g)].map(match => match[1])).toEqual(['true', 'false', 'true']);
     expect(html).toContain('中间迷失 · 被动失活'); expect(html).toContain('role="status"');
   });
-  it('scopes explicit Chrome/WebKit and Firefox meter fills to the existing rest compact control', () => {
-    const css = readFileSync(new URL('../../src/pages/GamePage/components/rest-room.css', import.meta.url), 'utf8');
-    expect(css).toContain('progress[data-overloaded="true"]{--context-meter:#df9b7d}');
-    expect(css).toContain('progress{--context-meter:#adca8d;height:5px;');
-    for (const pseudo of ['::-webkit-progress-value', '::-moz-progress-bar']) expect(css).toContain(`.rest-dialog .context-compact progress${pseudo}{background:var(--context-meter)}`);
-    expect(css).toContain('.rest-offer.is-owned:not(.is-selected){background:transparent}');
-    expect(css).toContain('li[data-active="false"]{border-color:#986b55;background:#382920;box-shadow:inset 2px 0 #df9b7d}');
+  it('scopes the browser-independent segmented meter and inactive rows while preserving subdued owned offers', () => {
+    const css = readFileSync(new URL('../../src/pages/GamePage/components/context-panel.css', import.meta.url), 'utf8');
+    const restCss = readFileSync(new URL('../../src/pages/GamePage/components/rest-room.css', import.meta.url), 'utf8');
+    expect(css).toContain('.game-shell .context-panel .context-capacity-heading strong[data-overloaded=true]{color:#e7ae8c}');
+    expect(css).toContain('.game-shell .context-panel.context-compact .context-capacity-track{height:9px}');
+    expect(css).toContain('.game-shell .context-panel .context-segment--base{background:#809e83}');
+    expect(css).toContain('.game-shell .context-panel .context-segment--relic{background:#c9a477}');
+    expect(css).toContain('.game-shell .context-panel .context-segment--relic[data-active=false]{background:repeating-linear-gradient(');
+    expect(restCss).toContain('.rest-offer.is-owned:not(.is-selected){background:transparent}');
+    expect(css).toContain('.game-shell .context-panel .context-slot[data-active=false]{background:#b4785a09;border-color:#b4785a40;box-shadow:inset 2px 0 #b4785a;');
   });
 });

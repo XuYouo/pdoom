@@ -67,6 +67,7 @@ export function loomHudSnapshot(world: WorldState): LoomHudSnapshot | undefined 
   return {
     timeline: loom.timeline,
     rerollReady: world.mode === 'playing' && now >= loom.rerollReadyAt && !world.rewind,
+    ...(world.rewind ? { rerollBlocked: 'self-rewind' as const } : {}),
     hpUiTaken: loom.hpUiTaken, stemsLost: loom.stemsLost, narrow: loom.narrow.w <= 200,
     sharpTurnReady: world.mode === 'playing' && loom.turn.until > now && loom.turn.weakUntil <= now,
   };

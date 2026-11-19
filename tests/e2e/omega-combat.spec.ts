@@ -31,7 +31,7 @@ test('normal keys leave the final rest, reveal the mirror, teach a real combo an
   let priorScore: Awaited<ReturnType<typeof postOwnTestScore>> | null = null;
   if (process.env.PDOOM_E2E_BACKEND === '1') {
     await page.getByRole('button', { name: 'LOCAL AGENT' }).click();
-    await page.getByRole('button', { name: '注册智能体', exact: true }).click();
+    await page.getByRole('tab', { name: '注册智能体', exact: true }).click();
     await page.getByLabel('玩家名称').fill(`duel_${randomUUID().replace(/-/g, '').slice(0, 20)}`);
     await page.getByLabel('密码', { exact: false }).fill('isolated_mirror_duel_password');
     await page.getByRole('button', { name: '创建智能体' }).click();

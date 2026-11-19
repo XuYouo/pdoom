@@ -23,7 +23,7 @@ describe('context and rest-room React contract', () => {
     expect(html).toContain('Lost in the Middle');
     expect(html).toContain('中间迷失 · 被动失活');
     expect(html).toContain('aria-label="上移 递归自升级"');
-    expect(html).toContain('aria-label="下移 残差连接" disabled=""');
+    expect(html).toMatch(/aria-label="下移 残差连接"[^>]*disabled=""/);
   });
   it('disables reordering outside a rest room with a visible explanation', () => {
     const html = renderToStaticMarkup(createElement(ContextPanel, { bridge: new GameBridge(), snapshot: contextSnapshot(PREVIEW_SAVE) }));
@@ -65,7 +65,7 @@ describe('context and rest-room React contract', () => {
     const snapshot = restSnapshot(createWorld({ ...PREVIEW_SAVE, checkpoint: 11 }))!;
     const html = renderToStaticMarkup(createElement(RestRoomPanel, { bridge: new GameBridge(), snapshot }));
     expect(html).toContain('<details class="rest-rules">');
-    expect(html).toContain('class="context-compact"');
+    expect(html).toContain('class="context-panel context-compact"');
     expect(html).toContain('aria-label="已装备词条顺序"');
     expect(html).toContain(snapshot.hackRequirement.replace('>','&gt;'));
     expect(html).not.toContain('人类标注员工作台');
@@ -73,7 +73,7 @@ describe('context and rest-room React contract', () => {
   it('compact context preserves overload, inactive-middle and reorder semantics', () => {
     const snapshot = contextSnapshot({ ...PREVIEW_SAVE, inventory: ['constitutional', 'recursive', 'residual'] }, true);
     const html = renderToStaticMarkup(createElement(ContextPanel, { bridge: new GameBridge(), snapshot, compact: true }));
-    expect(html).toContain('窗口满载 · 中间词条失活');
+    expect(html).toContain('窗口满载 · 1 个词条失活');
     expect(html).toContain('中间迷失 · 被动失活');
     expect(html).toContain('32K / 32K');
     expect(html).toContain('aria-label="上移 递归自升级"');

@@ -83,6 +83,8 @@ export interface Player extends Vec2 {
 export interface HistorySample extends Vec2 { at: number; vx: number; vy: number; facing: -1 | 1 }
 export interface RewindState { path: HistorySample[]; startedAt: number; durationMs: number }
 export interface Bullet extends Vec2 {
+  /** Co-op shot ownership is optional; the existing single-player contract stays unchanged. */
+  ownerPlayerId?: 'p1' | 'p2';
   id: number; vx: number; vy: number; radius: number; damage: number;
   faction: 'player' | 'enemy'; kind: BulletKind; expiresAt: number; critical?: boolean;
   harmless?: boolean; glyph?: '(' | ')';

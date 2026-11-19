@@ -1,0 +1,75 @@
+/* Shared materials. Component styles own their layout and semantic states. */
+.game-shell {
+  --game-ink:#0c1418;
+  --game-panel:#15232a;
+  --game-panel-raised:#22343a;
+  --game-gold:#d8b880;
+  --game-cream:#f0e5c6;
+  --game-muted:#9caeaa;
+  --game-line:#6d7564;
+  --game-edge:#060d10;
+  background-color:var(--game-ink);
+  color:var(--game-cream);
+  font-family:"SFMono-Regular",Consolas,"Liberation Mono","PingFang SC",monospace;
+}
+.game-shell button:hover:not(:disabled) { filter:none; }
+.game-shell .terminal-dialog {
+  border:2px solid var(--game-line);
+  border-top-color:#a69e7d;
+  border-left-color:#8c8d72;
+  background-color:var(--game-panel);
+  color:var(--game-cream);
+  box-shadow:inset 0 0 0 2px #0b1418,0 0 0 1px var(--game-edge),6px 6px 0 #02080db3;
+  scrollbar-width:thin;
+  scrollbar-color:#7d8268 #101c22;
+}
+.game-shell .terminal-dialog::backdrop { background:#050c14c9; backdrop-filter:none; }
+.game-shell .terminal-dialog[open] { animation:classic-panel-enter 120ms steps(3,end) both; }
+.game-shell .terminal-dialog>header { border-bottom-color:#d8b88042; }
+.game-shell .terminal-dialog>header h2 { color:var(--game-cream); text-shadow:2px 2px 0 var(--game-edge); font-weight:700; }
+.game-shell :is(.primary-button,.secondary-button,.display-button,.icon-button) {
+  border-style:solid;
+  border-width:1px;
+  border-radius:0;
+  transition:background-color 80ms,border-color 80ms,color 80ms;
+}
+.game-shell :is(.secondary-button,.display-button,.icon-button) {
+  color:var(--game-cream);
+  background:var(--game-panel-raised);
+  border-color:#82907b #35483f #35483f #82907b;
+  box-shadow:inset 1px 1px 0 #d8e1c214,inset -1px -1px 0 #070e124d,0 2px 0 var(--game-edge);
+}
+.game-shell .primary-button {
+  background:#d8b07c;
+  color:#1b2526;
+  border-color:#f1d4a2 #8d6544 #8d6544 #f1d4a2;
+  box-shadow:inset 1px 1px 0 #fff0c566,inset -1px -1px 0 #b17e4c,0 3px 0 #090f13;
+  font-weight:700;
+}
+.game-shell .primary-button:hover:not(:disabled) { background:#efd09a; }
+.game-shell :is(.secondary-button,.display-button,.icon-button):hover:not(:disabled) { background:#2e4144; border-top-color:#d8b880; color:#fff1ce; }
+.game-shell :is(.primary-button,.secondary-button,.display-button,.icon-button):active:not(:disabled) {
+  translate:0 1px;
+  box-shadow:inset 1px 2px 0 #050d133d,0 1px 0 var(--game-edge);
+}
+.game-shell :is(button,summary,a,input):focus-visible { outline:2px solid var(--game-gold); outline-offset:3px; }
+.game-shell .terminal-dialog input:not([type="range"]):not([type="checkbox"]):not([type="radio"]) {
+  border-color:#62766a;
+  background-color:#0c181d;
+  color:var(--game-cream);
+  box-shadow:inset 2px 2px 0 #030a0d66;
+}
+.game-shell .terminal-dialog input::placeholder { color:#92a198; }
+.game-shell kbd {
+  border-color:#7a826b #3b4c43 #3b4c43 #7a826b;
+  background:#253732;
+  color:#efe0b9;
+  box-shadow:0 2px 0 #080f12;
+}
+.game-shell .display-message { border:1px solid #a18960; background:#17252b; color:#f0d6a5; box-shadow:3px 3px 0 #040b10; }
+@keyframes classic-panel-enter { from { opacity:.5; } to { opacity:1; } }
+@media(prefers-reduced-motion:reduce) {
+  .game-shell .terminal-dialog[open] { animation:none; }
+  .game-shell :is(.primary-button,.secondary-button,.display-button,.icon-button) { transition:none; }
+}
+.game-shell[data-reduced-motion="true"] .terminal-dialog[open] { animation:none; }

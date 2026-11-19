@@ -1,0 +1,13 @@
+.records-intro { font-size:15px; color:#dce3cf; margin:0 0 22px; }.records-intro small { display:block; font-size:10px; letter-spacing:.5px; color:#96ac94; margin-top:9px; }
+.records-content { min-height:225px; border-top:1px solid #9ab38b33; border-bottom:1px solid #9ab38b33; }
+.records-empty { min-height:225px; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:22px 12px; text-align:center; }
+.records-symbol { font-size:34px; color:#d7ac80; line-height:1; margin-bottom:14px; }
+.records-empty h3 { margin:0 0 10px; font-size:16px; font-weight:500; color:#d5dfc8; }
+.records-empty p { margin:0; font-size:12px; max-width:350px; color:#a2b69a; line-height:1.8; }
+.records-empty button { margin-top:18px; }
+.records-pagination { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:18px; }
+.records-pagination>span { font-size:11px; color:#97ad90; white-space:nowrap; }
+.records-note { font-size:10px; line-height:1.8; color:#8fa088; margin:20px 0 0; }
+.records-table-scroll { overflow-x:auto; padding-top:5px; }.records-panel .leaderboard { min-width:420px; font-variant-numeric:tabular-nums; }
+.records-panel .leaderboard td { padding:16px 8px; }.records-panel .leaderboard td:nth-child(2) { color:#dce3d1; overflow-wrap:anywhere; }.records-panel .leaderboard tbody tr:hover { background:#b4c4a008; }
+@media(max-height:440px) { .records-content,.records-empty { min-height:130px; }.records-intro { margin-bottom:14px; }.records-empty { padding:14px; }.records-symbol { font-size:25px; } }

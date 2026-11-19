@@ -24,3 +24,6 @@ object UserRoutes:
     ResolveUserTokenAPIMessage(token).plan(connection).map { trusted =>
       AuthenticatedUser(UserId(UUID.fromString(trusted.userId)), SessionId(UUID.fromString(trusted.sessionId)))
     }
+
+  def validateSession(connection: Connection, user: AuthenticatedUser): IO[Unit] =
+    ValidateUserSessionAPIMessage(user).plan(connection)

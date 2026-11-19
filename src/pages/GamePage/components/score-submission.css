@@ -1,0 +1,15 @@
+.game-shell section.score-submission{margin-top:24px;min-width:0;text-align:left}
+.game-shell .run-submission section.score-submission{margin-top:0}
+.score-submission .score-submission-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 8px}
+.game-shell .score-submission .score-submission-heading h3{font-size:13px;font-weight:500;color:#ccdabd;line-height:1.5;margin:0}
+.score-submission .score-submission-heading>span{font-size:9px;letter-spacing:.5px;color:#8ea281;white-space:nowrap}
+.game-shell .score-submission .score-submission-note{font-size:10px;line-height:1.8;color:#82977b;margin:0 0 13px}
+.game-shell .score-submission .score-submission-help{font-size:11px;line-height:1.85;color:#a6b697;margin:0 0 13px}
+.game-shell .score-submission .score-submission-account{font-size:10px;color:#8ea281;margin:14px 0;line-height:1.7}
+.score-submission .score-submission-account strong{font-size:12px;color:#d4d9be;font-weight:500;margin-left:9px;overflow-wrap:anywhere}
+.score-submission .score-submission-account small{display:block;font-size:10px;color:#8ea281;margin-top:5px}
+.game-shell .score-submission .score-submission-status{font-size:11px;line-height:1.85;color:#bbd4a5;background:#a4c58608;border-left:2px solid #92b77a;margin:13px 0;padding:11px 13px;overflow-wrap:anywhere}
+.game-shell .score-submission .score-submission-status.is-error{color:#e5b194;background:#dba58208;border-color:#d9a280}
+.score-submission .score-submission-actions{display:flex;flex-wrap:wrap;gap:12px;margin:13px 0 0}
+.game-shell .score-submission .score-submission-actions button{font-size:11px;min-height:40px;padding:10px 16px;gap:0;white-space:normal}
+.score-submission .score-submission-actions+.score-submission-help{margin-top:12px}

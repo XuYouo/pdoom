@@ -11,16 +11,17 @@ import { WorldScene } from '../../src/pages/GamePage/game/scenes/WorldScene';
 import { GameBridge, type GameCommand } from '../../src/pages/GamePage/game/bridge';
 import type { WorldState } from '../../src/pages/GamePage/game/entities/model';
 import { createRun } from '../../src/pages/GamePage/functions/saveModel';
+import { EMPTY_TOUCH_INPUT } from '../../src/pages/GamePage/game/systems/touchInput';
 interface Probe {
   world: WorldState; paused: boolean; cleaned: boolean; accumulator: number;
   command(value: GameCommand): void; requestPause(): void; update(time: number, delta: number): void;
 }
 // Scene-boundary unit doubles, not browser/gameplay evidence or mutations of a running World.
-const world = (mode: WorldState['mode'] = 'playing') => Object.freeze({ mode, save: Object.freeze(createRun('unit-camera', 42)), events: Object.freeze([]) }) as unknown as WorldState;
+const world = (mode: WorldState['mode'] = 'playing') => Object.freeze({ mode, save: Object.freeze(createRun('unit-camera', 42)), player: Object.freeze({ x: 200, y: 309 }), events: Object.freeze([]) }) as unknown as WorldState;
 function harness() {
   const bridge = new GameBridge(), emitted = vi.fn(); bridge.onEvent(emitted);
   const effect = { offset: 1, reset: vi.fn(() => { effect.offset = 0; }) };
-  const controls = { setEnabled: vi.fn(), poll: vi.fn(), consume: vi.fn() };
+  const controls = { setEnabled: vi.fn(), setTouchInput: vi.fn(), poll: vi.fn(), consume: vi.fn() };
   const draw = vi.fn(), audio = vi.fn(), hud = vi.fn(), events = vi.fn();
   const actual = new WorldScene(bridge);
   Object.assign(actual as object, { world: world(), accumulator: 7, cameras: { main: { shakeEffect: effect } },
@@ -31,6 +32,13 @@ function harness() {
 }
 beforeEach(() => { core.create.mockReset(); core.step.mockReset(); core.apply.mockReset(); });
 describe('Scene ends camera shake at frozen presentation boundaries without changing Core', () => {
+  it('routes touch state directly to controls without starting or stepping the simulation', () => {
+    const h = harness(), input = { ...EMPTY_TOUCH_INPUT, jump: true, fire: true };
+    h.scene.command({ type: 'touch-input', input });
+    expect(h.controls.setTouchInput).toHaveBeenCalledExactlyOnceWith(input); expect(core.step).not.toHaveBeenCalled();
+    h.scene.cleaned = true; h.scene.command({ type: 'touch-input', input });
+    expect(h.controls.setTouchInput).toHaveBeenCalledTimes(1);
+  });
   it('manual pause zeros residual camera movement before publishing the frozen HUD', () => {
     const h = harness(), initial = h.scene.world, before = JSON.stringify(initial);
     h.scene.command({ type: 'pause' });
@@ -63,7 +71,7 @@ describe('Scene ends camera shake at frozen presentation boundaries without chan
   });
   it('ordinary playing frames leave camera impact feedback alone', () => {
     const h = harness(); core.step.mockReturnValue(h.scene.world); h.scene.update(100, 17);
-    expect(core.step).toHaveBeenCalledOnce(); expect(h.effect.reset).not.toHaveBeenCalled(); expect(h.draw).toHaveBeenCalledOnce();
+    expect(core.step).toHaveBeenCalledOnce(); expect(h.controls.consume).toHaveBeenCalledWith({ x: 200, y: 306 }); expect(h.effect.reset).not.toHaveBeenCalled(); expect(h.draw).toHaveBeenCalledOnce();
   });
   it.each(['rest', 'dead', 'cleared', 'finished'] as const)('a real adapter transition to%s settles shake before the final frozen draw', mode => {
     const h = harness(), next = world(mode); core.step.mockReturnValue(next); h.scene.update(100, 17);

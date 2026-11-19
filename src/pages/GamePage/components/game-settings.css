@@ -1,0 +1,87 @@
+/* Settings owns its controls; selectors outrank the older shell without changing other dialogs. */
+.game-shell .terminal-dialog.settings-dialog{--settings-inset:26px;width:min(680px,calc(100vw - 32px));max-width:680px;max-height:calc(100dvh - 32px);padding:var(--settings-inset);overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--game-line,#6d7564) var(--game-panel,#15232a)}
+.game-shell .terminal-dialog.settings-dialog>header{position:sticky;top:calc(-1 * var(--settings-inset));z-index:2;margin:calc(-1 * var(--settings-inset)) calc(-1 * var(--settings-inset)) 20px;padding:20px var(--settings-inset) 16px;background:var(--game-panel,#15232a);border-bottom:1px solid #6d756466}
+.game-shell .terminal-dialog.settings-dialog>header h2{font-size:18px;letter-spacing:.3px;color:var(--game-cream,#f0e5c6)}
+.game-shell .terminal-dialog.settings-dialog>header .icon-button{width:44px;height:44px;min-height:44px;flex:none}
+.game-shell .game-settings{--settings-accent:var(--game-gold,#d8b880);--settings-line:#6d756455;font-size:12px;line-height:1.65}
+.game-shell .game-settings .settings-intro{margin:0 0 24px;color:var(--game-muted,#9caeaa);font-size:12px;line-height:1.8}
+.game-shell .game-settings .settings-section-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 15px}
+.game-shell .game-settings .settings-section-heading h3{font-size:19px;font-weight:500;line-height:1.4;letter-spacing:.5px;margin:4px 0 0;color:var(--game-cream,#f0e5c6)}
+.game-shell .game-settings .settings-section-index{font-size:9px;letter-spacing:1.8px;color:var(--game-gold,#d8b880)}
+.game-shell .game-settings .settings-state{display:flex;align-items:center;gap:7px;white-space:nowrap;font-size:10px;letter-spacing:.5px;color:#c4d1b6}
+.game-shell .game-settings .settings-state::before{content:'';width:6px;height:6px;background:currentColor;box-shadow:1px 1px 0 var(--game-edge,#060d10)}
+.game-shell .game-settings .settings-state[data-state=locked]{color:var(--game-gold,#d8b880)}
+.game-shell .game-settings .settings-state[data-state=unavailable]{color:#e4a38e}
+.game-shell .game-settings .settings-audio-status{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px;min-height:38px}
+.game-shell .game-settings .settings-audio-status p{margin:0;font-size:11px;color:var(--game-muted,#9caeaa);line-height:1.8}
+.game-shell .game-settings .settings-enable-audio{min-height:44px;flex:none;padding:9px 14px;font-size:11px;letter-spacing:.4px}
+.game-shell .game-settings .settings-enable-audio.is-available{background:#d8b88018;border-color:#d8b88099;color:var(--game-gold,#d8b880)}
+.game-shell .game-settings .settings-volume{padding:17px 20px 12px;background:var(--game-ink,#0c1418);border:1px solid #6d756466;box-shadow:inset 0 1px 0 var(--game-edge,#060d10)}
+.game-shell .game-settings .settings-volume-heading{display:flex;justify-content:space-between;align-items:baseline;gap:15px;color:var(--game-cream,#f0e5c6)}
+.game-shell .game-settings .settings-volume-heading label{font-size:12px;cursor:pointer}
+.game-shell .game-settings .settings-volume-heading output{font-size:26px;font-variant-numeric:tabular-nums;font-weight:500;color:var(--settings-accent);line-height:1}
+.game-shell .game-settings .settings-volume-heading output span{font-size:12px;margin-left:5px;color:var(--game-muted,#9caeaa)}
+.game-shell .game-settings .settings-volume input{display:block;appearance:none;-webkit-appearance:none;width:100%;height:44px;margin:7px 0 0;border:0;background:transparent;cursor:pointer;accent-color:var(--settings-accent);touch-action:pan-y}
+.game-shell .game-settings .settings-volume input::-webkit-slider-runnable-track{height:8px;border:1px solid #6d756477;background:linear-gradient(to right,var(--settings-accent) 0 var(--audio-volume),var(--game-panel-raised,#22343a) var(--audio-volume) 100%)}
+.game-shell .game-settings .settings-volume input::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:24px;margin-top:-9px;border:2px solid var(--game-ink,#0c1418);border-radius:0;background:var(--game-cream,#f0e5c6);box-shadow:0 0 0 1px var(--settings-accent),2px 2px 0 var(--game-edge,#060d10);cursor:ew-resize}
+.game-shell .game-settings .settings-volume input::-moz-range-track{height:6px;border:1px solid #6d756477;background:linear-gradient(to right,var(--settings-accent) 0 var(--audio-volume),var(--game-panel-raised,#22343a) var(--audio-volume) 100%)}
+.game-shell .game-settings .settings-volume input::-moz-range-thumb{width:12px;height:20px;border:2px solid var(--game-ink,#0c1418);border-radius:0;background:var(--game-cream,#f0e5c6);box-shadow:0 0 0 1px var(--settings-accent),2px 2px 0 var(--game-edge,#060d10);cursor:ew-resize}
+.game-shell .game-settings .settings-volume[data-muted=true]{--settings-accent:var(--game-muted,#9caeaa)}
+.game-shell .game-settings .settings-volume-scale{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0;font-size:9px;line-height:1.6;color:var(--game-muted,#9caeaa)}
+.game-shell .game-settings .settings-volume-scale span:nth-child(2){text-align:center}
+.game-shell .game-settings .settings-mute{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:66px;padding:13px 0;cursor:pointer;border-bottom:1px solid var(--settings-line)}
+.game-shell .game-settings .settings-mute strong{display:block;font-size:12px;font-weight:500;color:var(--game-cream,#f0e5c6)}
+.game-shell .game-settings .settings-mute small{display:block;font-size:10px;color:var(--game-muted,#9caeaa);margin-top:3px}
+.game-shell .game-settings .settings-mute input{appearance:none;-webkit-appearance:none;position:relative;width:42px;height:25px;flex:none;margin:0;border:1px solid var(--game-line,#6d7564);border-radius:0;background:var(--game-ink,#0c1418);cursor:pointer;transition:background-color 80ms,border-color 80ms;box-shadow:inset 1px 1px 0 var(--game-edge,#060d10)}
+.game-shell .game-settings .settings-mute input::before{content:'';position:absolute;left:3px;top:3px;width:17px;height:17px;background:var(--game-muted,#9caeaa);box-shadow:1px 1px 0 var(--game-edge,#060d10)}
+.game-shell .game-settings .settings-mute input:checked{background:#d8b88026;border-color:#d8b880bb}
+.game-shell .game-settings .settings-mute input:checked::before{transform:translateX(17px);background:var(--game-gold,#d8b880)}
+.game-shell .game-settings .settings-mute:hover strong{color:var(--game-cream,#f0e5c6)}
+.game-shell .game-settings .settings-motion{margin-top:25px}
+.game-shell .game-settings .settings-motion fieldset{border:0;padding:0;margin:0;min-width:0}
+.game-shell .game-settings .settings-motion-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.game-shell .game-settings .settings-motion-options label{display:flex;align-items:flex-start;gap:11px;min-height:76px;padding:14px 12px;cursor:pointer;border:1px solid #6d756466;background:var(--game-ink,#0c1418);transition:border-color 80ms,background-color 80ms}
+.game-shell .game-settings .settings-motion-options label[data-selected=true]{border-color:var(--game-gold,#d8b880);background:var(--game-panel-raised,#22343a);box-shadow:inset 2px 0 0 var(--game-gold,#d8b880)}
+.game-shell .game-settings .settings-motion-options label:hover{border-color:var(--game-gold,#d8b880)}
+.game-shell .game-settings .settings-motion-options input{appearance:none;-webkit-appearance:none;width:15px;height:15px;flex:none;margin:3px 0 0;border:1px solid var(--game-line,#6d7564);border-radius:0;background:var(--game-ink,#0c1418);cursor:pointer}
+.game-shell .game-settings .settings-motion-options input:checked{border-color:var(--game-gold,#d8b880);background:var(--game-gold,#d8b880);box-shadow:inset 0 0 0 3px var(--game-ink,#0c1418)}
+.game-shell .game-settings .settings-motion-options label:active{background:var(--game-panel-raised,#22343a)}
+.game-shell .game-settings .settings-motion-options strong{display:block;font-size:12px;font-weight:500;color:var(--game-cream,#f0e5c6)}
+.game-shell .game-settings .settings-motion-options small{display:block;font-size:10px;line-height:1.7;color:var(--game-muted,#9caeaa);margin-top:5px}
+.game-shell .game-settings .settings-motion-status{font-size:11px;color:#c5cfbf;line-height:1.8;margin:13px 0 6px}
+.game-shell .game-settings .settings-help{font-size:10px;color:var(--game-muted,#9caeaa);margin:0;line-height:1.8}
+.game-shell .game-settings .settings-warning{font-size:11px;color:#e9b69a;line-height:1.85;background:#d6a18c0b;border-left:2px solid #d6a18c;padding:10px 12px;margin:12px 0 0}
+.game-shell .game-settings .settings-notes{margin-top:22px;border-top:1px solid var(--settings-line);border-bottom:1px solid var(--settings-line)}
+.game-shell .game-settings .settings-notes summary{min-height:44px;display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none;font-size:11px;color:var(--game-cream,#f0e5c6);transition:color 80ms}
+.game-shell .game-settings .settings-notes summary::-webkit-details-marker{display:none}
+.game-shell .game-settings .settings-notes summary::before{content:'+';font-size:16px;color:var(--game-gold,#d8b880);width:12px}
+.game-shell .game-settings .settings-notes[open] summary::before{content:'−'}
+.game-shell .game-settings .settings-notes summary:hover,.game-shell .game-settings .settings-notes[open] summary{color:var(--game-gold,#d8b880)}
+.game-shell .game-settings .settings-notes>div{padding:0 0 12px 22px;font-size:10px;color:var(--game-muted,#9caeaa);line-height:1.85}
+.game-shell .game-settings .settings-notes p{margin:0 0 7px}
+.game-shell .game-settings .settings-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:17px 0 0;font-size:9px;color:var(--game-muted,#9caeaa);letter-spacing:.5px}
+.game-shell .game-settings .settings-footer>span:last-child{display:flex;align-items:center;gap:7px}
+.game-shell .game-settings .settings-footer kbd{font-size:9px;min-height:20px;min-width:26px;color:var(--game-muted,#9caeaa);background:var(--game-ink,#0c1418);border-color:#6d756466}
+.game-shell .game-settings .settings-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.game-shell .game-settings input:focus-visible,.game-shell .game-settings button:focus-visible,.game-shell .game-settings summary:focus-visible{outline:2px solid var(--game-gold,#d8b880);outline-offset:4px}
+.game-shell .game-settings .settings-mute:focus-within{border-bottom-color:var(--game-gold,#d8b880)}
+@media(max-width:540px){
+  .game-shell .terminal-dialog.settings-dialog{--settings-inset:20px;width:calc(100vw - 20px);max-height:calc(100dvh - 20px);scrollbar-gutter:auto}
+  .game-shell .terminal-dialog.settings-dialog>header{padding-top:14px;padding-bottom:12px;margin-bottom:16px}
+  .game-shell .terminal-dialog.settings-dialog>header h2{font-size:15px}
+  .game-shell .game-settings .settings-intro{font-size:11px;margin-bottom:20px}
+  .game-shell .game-settings .settings-audio-status{gap:12px}.game-shell .game-settings .settings-audio-status p{font-size:10px}
+  .game-shell .game-settings .settings-enable-audio{padding:7px 10px;font-size:10px}
+  .game-shell .game-settings .settings-volume{padding:14px 14px 10px}
+  .game-shell .game-settings .settings-motion-options{grid-template-columns:1fr}
+  .game-shell .game-settings .settings-motion-options label{min-height:62px;padding:11px 12px}
+  .game-shell .game-settings .settings-motion-options small{margin-top:2px}
+}
+@media(prefers-reduced-motion:reduce){.game-shell .game-settings .settings-mute input,.game-shell .game-settings .settings-motion-options label,.game-shell .game-settings .settings-notes summary{transition:none}}
+.game-shell[data-reduced-motion="true"] .game-settings input,.game-shell[data-reduced-motion="true"] .game-settings label,.game-shell[data-reduced-motion="true"] .game-settings summary{transition:none}
+@media(max-height:540px) and (orientation:landscape){
+  .game-shell .terminal-dialog.settings-dialog{--settings-inset:18px;max-height:calc(100dvh - 20px)}
+  .game-shell .terminal-dialog.settings-dialog>header{padding-top:10px;padding-bottom:10px;margin-bottom:14px}
+  .game-shell .terminal-dialog.settings-dialog>header h2{font-size:16px}
+  .game-shell .game-settings .settings-intro{margin-bottom:16px}.game-shell .game-settings .settings-motion{margin-top:20px}
+}

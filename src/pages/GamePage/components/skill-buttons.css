@@ -1,0 +1,15 @@
+.game-shell .game-actions .skill-button,.game-shell .game-actions .game-context-button{position:relative;border-color:var(--game-line,#6d7564);background:var(--game-panel,#15232a);color:var(--game-cream,#f0e5c6);box-shadow:inset 0 1px #e5d6aa20,inset 0 -2px var(--game-edge,#060d10),1px 2px var(--game-edge,#060d10);text-shadow:1px 1px var(--game-edge,#060d10);transition:background-color 80ms linear,border-color 80ms linear}
+.game-shell .game-actions .skill-button kbd{min-width:19px;text-align:center;padding:2px 4px;border:1px solid #b5a57866;border-bottom-color:var(--game-edge,#060d10);background:var(--game-panel-raised,#22343a);color:var(--game-gold,#d8b880);box-shadow:inset 0 1px #e4d9b223,0 1px var(--game-edge,#060d10);font-weight:600}
+.game-shell .skill-button .skill-countdown{font-size:9px;font-variant-numeric:tabular-nums;min-width:3.4ch;text-align:right;color:#b8c3b4;line-height:1}
+.game-shell .game-actions .skill-button[data-state=recording]{border-style:dashed;border-color:#8a9681}
+.game-shell .game-actions .skill-button[data-state=controlled]{color:#e3bbce;border-color:#ac7f96;opacity:.8}
+.game-shell .game-actions .skill-button[aria-disabled=true]{border-color:#596b66;color:#9daea7;cursor:default}
+.game-shell .game-actions .skill-button:disabled{color:#9daea7}
+.game-shell .game-actions .skill-button.is-active[aria-disabled=true],.game-shell .game-actions .skill-button.is-active{border-color:#b9c698;background:#293d35;color:#e4edc9;box-shadow:inset 0 1px #d7e1b236,inset 0 -2px var(--game-edge,#060d10),1px 2px var(--game-edge,#060d10)}
+.game-shell .game-actions .skill-button.is-active kbd{background:#465846;color:#f0edc9;border-color:#a8b48c}
+.game-shell .skill-button.is-active .skill-countdown{color:#e1e9c5}
+.game-shell .game-actions .skill-button:enabled:not([aria-disabled=true]):active{background:#3b3c2e;border-color:var(--game-gold,#d8b880);box-shadow:inset 0 2px var(--game-edge,#060d10),inset 0 -1px #d8b88035}
+.game-shell .game-actions .skill-button:enabled:not([aria-disabled=true]):active kbd{translate:0 1px}
+.game-shell .skill-button:focus-visible{outline:2px solid var(--game-cream,#f0e5c6);outline-offset:3px}
+@media(hover:hover) and (pointer:fine){.game-shell .game-actions .skill-button:enabled:not([aria-disabled=true]):hover,.game-shell .game-actions .game-context-button:hover{border-color:var(--game-gold,#d8b880);background:var(--game-panel-raised,#22343a)}}
+@media(prefers-reduced-motion:reduce){.game-shell .game-actions .skill-button,.game-shell .game-actions .game-context-button{transition:none}}

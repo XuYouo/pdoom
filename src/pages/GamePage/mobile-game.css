@@ -1,0 +1,94 @@
+/* A full 16:9 playfield, with touch controls in dedicated space around it. */
+.game-shell[data-touch-controls="true"] {
+  --touch-side:150px;
+  --touch-top:calc(90px + env(safe-area-inset-top,0px));
+  --touch-bottom:env(safe-area-inset-bottom,0px);
+  --touch-width:calc(100vw - var(--touch-side)*2 - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px));
+  --touch-height:calc(100dvh - var(--touch-top) - var(--touch-bottom) - 8px);
+  -webkit-user-select:none; user-select:none;
+}
+.game-shell[data-touch-controls="true"][data-touch-detail="true"] { --touch-top:calc(130px + env(safe-area-inset-top,0px)); }
+.game-shell[data-touch-controls="true"]:not(.game-shell--menu) .world-viewport {
+  width:min(var(--touch-width),calc(var(--touch-height)*1.77777778));
+  height:auto;
+  top:calc(var(--touch-top) + var(--touch-height)/2);
+  aspect-ratio:16/9;
+  box-shadow:0 0 0 1px #a6b68a25,0 12px 50px #0004;
+}
+.game-shell[data-touch-controls="true"]>.game-hud-layer {
+  inset:0 0 auto; height:auto;
+  padding:calc(env(safe-area-inset-top,0px) + 8px) max(12px,env(safe-area-inset-right,0px)) 0 max(12px,env(safe-area-inset-left,0px));
+  display:flex; flex-direction:column; gap:6px;
+}
+.game-shell[data-touch-controls="true"] .game-hud-layer>.hud-grid {
+  position:relative; inset:auto; width:min(480px,calc(100% - 250px)); margin:0 auto;
+  padding:5px 8px; gap:4px 12px; grid-template-columns:minmax(90px,1.4fr) repeat(3,minmax(40px,1fr));
+  background:#14211dcc; border:0; border-bottom:1px solid #92aa8e33;
+}
+.game-shell[data-touch-controls="true"] .hud-cell strong { font-size:14px; }
+.game-shell[data-touch-controls="true"] .hud-cell strong small { font-size:8px; }
+.game-shell[data-touch-controls="true"] .integrity-track { width:40px; }
+.game-shell[data-touch-controls="true"] .integrity-readout>div { gap:7px; }
+.game-shell[data-touch-controls="true"] .micro-label { font-size:8px; margin-bottom:3px; }
+.game-shell[data-touch-controls="true"] .hud-status-line { font-size:10px; min-height:44px; }
+.game-shell[data-touch-controls="true"] .hud-detail-body { max-height:38dvh; }
+.game-shell[data-touch-controls="true"] .game-hud-layer>.world-titlebar,
+.game-shell[data-touch-controls="true"] .game-hud-layer>.game-actions,
+.game-shell[data-touch-controls="true"]>.orientation-hint { display:none; }
+.game-shell[data-touch-controls="true"] .game-hud-layer>.mission-console {
+  position:relative; inset:auto; transform:none; margin:0 auto;
+  width:max-content; max-width:calc(100% - var(--touch-side)*2); text-align:left;
+}
+.game-shell[data-touch-controls="true"] .mission-console .objective { font-size:10px; line-height:1.45; padding:4px 8px; }
+.game-shell[data-touch-controls="true"] .mission-console .mission-label { display:none; }
+.game-shell[data-touch-controls="true"] .mission-console .combat-feedback { position:absolute; top:100%; left:0; min-width:180px; background:#101a1bf5; }
+.game-shell[data-touch-controls="true"] .game-hud-layer.coop-play-hud { gap:5px; }
+.game-shell[data-touch-controls="true"] .coop-play-topline {
+  position:relative; inset:auto; margin:0 auto; width:calc(100% - 280px);
+  display:flex; gap:10px; align-items:center; justify-content:space-between;
+}
+.game-shell[data-touch-controls="true"] .coop-play-topline .coop-players { flex-direction:row; gap:6px; }
+.game-shell[data-touch-controls="true"] .coop-play-topline .coop-player { display:block; min-width:0; padding:4px 6px; }
+.game-shell[data-touch-controls="true"] .coop-play-topline .coop-player-health { gap:5px; }
+.game-shell[data-touch-controls="true"] .coop-play-topline .coop-player-health>progress { width:42px; }
+.game-shell[data-touch-controls="true"] .coop-play-topline .coop-player-health>strong { font-size:12px; }
+.game-shell[data-touch-controls="true"] .coop-chapter-label { display:none; }
+.game-shell[data-touch-controls="true"] .coop-hud-shared { padding:3px 6px; }
+.game-shell[data-touch-controls="true"] .coop-play-topline .coop-shared-stats { grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; }
+.game-shell[data-touch-controls="true"] .coop-play-topline .coop-shared-stats dt { font-size:7px; }
+.game-shell[data-touch-controls="true"] .coop-play-topline .coop-shared-stats dd { font-size:12px; }
+.game-shell[data-touch-controls="true"] .coop-play-topline .coop-shared-stats dd>small { font-size:7px; }
+.game-shell[data-touch-controls="true"] .terminal-dialog { max-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 20px); }
+.game-shell[data-touch-controls="true"] .terminal-dialog input,
+.game-shell[data-touch-controls="true"] .terminal-dialog textarea { font-size:16px; user-select:text; -webkit-user-select:text; }
+.game-shell[data-touch-controls="true"] .terminal-dialog button,
+.game-shell[data-touch-controls="true"] .terminal-dialog summary { min-width:44px; min-height:44px; }
+.game-shell[data-touch-controls="true"] .menu-utilities button,
+.game-shell[data-touch-controls="true"] .window-actions button { min-width:44px; min-height:44px; }
+.game-shell[data-touch-controls="true"] .menu-build-label { padding-bottom:env(safe-area-inset-bottom,0px); }
+@media(orientation:portrait) {
+  .game-shell[data-touch-controls="true"] {
+    --touch-top:calc(106px + env(safe-area-inset-top,0px));
+    --touch-bottom:calc(240px + env(safe-area-inset-bottom,0px));
+    --touch-width:calc(100vw - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px));
+  }
+  .game-shell[data-touch-controls="true"][data-touch-detail="true"] { --touch-top:calc(150px + env(safe-area-inset-top,0px)); }
+  .game-shell[data-touch-controls="true"]>.game-hud-layer {
+    top:max(0px,calc((var(--touch-height) - var(--touch-width)*.5625)/2));
+  }
+  .game-shell[data-touch-controls="true"] .game-hud-layer>.hud-grid { width:100%; }
+  .game-shell[data-touch-controls="true"] .game-hud-layer>.mission-console { max-width:100%; }
+  .game-shell[data-touch-controls="true"] .mission-console .objective { font-size:11px; }
+  .game-shell[data-touch-controls="true"] .coop-play-topline { width:100%; gap:8px; }
+  .game-shell[data-touch-controls="true"] .coop-play-topline .coop-players { flex-direction:column; gap:3px; }
+  .game-shell[data-touch-controls="true"] .coop-play-topline .coop-player { display:grid; grid-template-columns:34px 1fr; gap:4px; }
+  .game-shell[data-touch-controls="true"] .coop-play-topline .coop-shared-stats { grid-template-columns:repeat(2,minmax(0,1fr)); gap:3px 12px; }
+  .game-shell[data-touch-controls="true"].coop-play { --touch-top:calc(128px + env(safe-area-inset-top,0px)); }
+  .game-shell[data-touch-controls="true"] .mission-console .combat-feedback { position:relative; top:auto; margin-top:4px; }
+}
+@media(orientation:landscape) and (max-width:740px) {
+  .game-shell[data-touch-controls="true"] { --touch-side:132px; }
+  .game-shell[data-touch-controls="true"] .game-hud-layer>.hud-grid { width:calc(100% - 230px); gap:4px 7px; }
+  .game-shell[data-touch-controls="true"] .coop-play-topline { width:calc(100% - 250px); gap:5px; }
+  .game-shell[data-touch-controls="true"] .coop-play-topline .coop-shared-stats { grid-template-columns:repeat(2,minmax(0,1fr)); gap:2px 6px; }
+}

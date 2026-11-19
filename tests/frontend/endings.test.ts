@@ -5,6 +5,7 @@ import type { RunResult } from '../../src/objects/game/GameSaveData';
 import { createRun } from '../../src/pages/GamePage/functions/saveModel';
 import { ENDING_CLIP_COUNT, FOOM_MESSAGE, finalDoomText, getEndingPresentation, immutableRunResult, type VictoryEnding } from '../../src/pages/GamePage/functions/endingPresentation';
 import { EndingOverlayContent } from '../../src/pages/GamePage/components/EndingOverlay';
+import { NewRunButton, type NewRunButtonProps } from '../../src/pages/GamePage/components/NewRunButton';
 import { buildScoreSubmission } from '../../src/pages/GamePage/hooks/useScoreSubmission';
 
 const cases: { ending: VictoryEnding; doom: number; title: string; symbol: string }[] = [
@@ -40,8 +41,12 @@ describe('three explicit final presentations', () => {
     const buttons = elements(tree).filter(element => element.type === 'button');
     buttons.find(button => text(button.props.children).includes('查看结算'))?.props.onClick?.();
     buttons.find(button => text(button.props.children) === '返回终端')?.props.onClick?.();
-    buttons.find(button => text(button.props.children) === '开始新训练')?.props.onClick?.();
-    expect(props.onSummary).toHaveBeenCalledOnce(); expect(props.onReturnToMenu).toHaveBeenCalledOnce(); expect(props.onNewRun).toHaveBeenCalledOnce();
+    const restart = elements(tree).find(element => element.type === NewRunButton) as ReactElement<NewRunButtonProps> | undefined;
+    expect(restart?.props.save).toBe(result.save);
+    expect(restart?.props.onNewRun).toBe(props.onNewRun);
+    expect(text(restart?.props.children)).toBe('开始新训练');
+    expect(props.onSummary).toHaveBeenCalledOnce(); expect(props.onReturnToMenu).toHaveBeenCalledOnce();
+    expect(props.onNewRun).not.toHaveBeenCalled(); // Native confirmation is exercised in the browser before replacement.
     expect(JSON.stringify(result)).toBe(before);
   });
   it.each(cases)('$ending summary uses the same snapshot and explicit score upload region', ({ ending, doom }) => {

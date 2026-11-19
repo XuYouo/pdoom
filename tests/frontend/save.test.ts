@@ -29,3 +29,29 @@ describe('versioned checkpoints', () => {
   });
   it('formats paused-independent simulation duration', () => expect(formatTime(125499)).toBe('02:05'));
 });
+
+describe('run ID wire contract', () => {
+  const acceptedIds = Array.from({ length: 8 }, (_, index) => index + 1)
+    .flatMap(version => ['8', '9', 'a', 'b'].map(variant => `abcdef12-3456-${version}abc-${variant}def-123456789abc`))
+    .flatMap(id => [id, id.toUpperCase()]);
+
+  it.each(acceptedIds)('loads RFC UUID versions 1–8 with either case: %s', runId => {
+    const save = { ...valid, runId };
+    expect(isGameSave(save)).toBe(true);
+    expect(parseSave(JSON.stringify(save))).toEqual(save);
+  });
+
+  const rejectedIds = [
+    ...['0', '9', 'a', 'b', 'c', 'd', 'e', 'f'].map(version => `abcdef12-3456-${version}abc-8def-123456789abc`),
+    ...['0', '1', '2', '3', '4', '5', '6', '7', 'c', 'd', 'e', 'f'].map(variant => `abcdef12-3456-4abc-${variant}def-123456789abc`),
+    '00000000-0000-0000-0000-000000000000', '1-1-1-1-1',
+    'abcdef1234564abc8def123456789abc', 'abcdef12-3456-4abc-8def-123456789abg',
+    ' abcdef12-3456-4abc-8def-123456789abc', 'abcdef12-3456-4abc-8def-123456789abc\n',
+    'abcdef12-3456-4abc-8def-123456789abc\r\n',
+  ];
+  it.each(rejectedIds)('rejects an unsupported or noncanonical run ID: %s', runId => {
+    const save = { ...valid, runId };
+    expect(isGameSave(save)).toBe(false);
+    expect(parseSave(JSON.stringify(save))).toBeNull();
+  });
+});

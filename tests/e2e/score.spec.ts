@@ -39,7 +39,7 @@ async function endedRun(page: Page) {
 async function registerThroughScore(page: Page) {
   const username = `score_${randomUUID().replace(/-/g, '').slice(0, 20)}`;
   await page.getByRole('region', { name: '本局成绩上传' }).getByRole('button', { name: '登录后上传' }).click();
-  await page.getByRole('button', { name: '注册智能体', exact: true }).click();
+  await page.getByRole('tab', { name: '注册智能体', exact: true }).click();
   await page.getByLabel('玩家名称').fill(username);
   await page.getByLabel('密码', { exact: false }).fill(password);
   await page.getByRole('button', { name: '创建智能体' }).click();
@@ -140,7 +140,7 @@ test('a real 409 remains an honest conflict and retries cannot alter the run pay
   const conflict = page.waitForResponse(response => response.url().endsWith('/api/submitscoreapi') && response.status() === 409);
   await region.getByRole('button', { name: '重试相同成绩' }).click();
   await conflict;
-  await expect(region.getByRole('alert')).toContainText('不会更换 runId');
+  await expect(region.getByRole('alert')).toContainText('不会改成另一局');
   await expect(region.getByText('云端已记录本局成绩。', { exact: false })).toHaveCount(0);
   expect(payloads).toHaveLength(2);
   expect(payloads[0]).toBe(payloads[1]);
